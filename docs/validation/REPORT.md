@@ -146,3 +146,12 @@ check reported import and multi-statement formatting findings. Formatting/import
 resolved them. Subsequent edge-case tests passed 44 tests before the final source-content
 fingerprint regression was added. Final exact commands and exit codes are in commands.json.
 Application tests/builds were not executed, and no application acceptance completion is claimed.
+
+## Final AEO-1B executed results
+
+Recorded at 2026-10-24T20:50:33.839976+00:00. The required scripts/validate.py returned exit 0.
+Pytest: 45 passed, no skips. Ruff lint/format, pip check, Alembic upgrade/check,
+legacy CLI checks and dependency inventory all returned exit 0. The real-workspace
+verification at 2026-10-24T20:50:23.432574+00:00 returned exit 0: 12 application repositories,
+no missing manifest entries, unchanged application Git metadata/evidence fingerprints,
+and identical snapshot/counts on repeated reconciliation. Snapshot: a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4.
