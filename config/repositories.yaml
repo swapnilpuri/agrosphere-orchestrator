@@ -1,0 +1,64 @@
+{
+  "repositories": [
+    {
+      "id": "agrosphere-ai-service",
+      "path": "..\\..\\agrosphere-ai-service",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-analytics-service",
+      "path": "..\\..\\agrosphere-analytics-service",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-api-gateway",
+      "path": "..\\..\\agrosphere-api-gateway",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-architecture",
+      "path": "..\\..\\agrosphere-architecture",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-contracts",
+      "path": "..\\..\\agrosphere-contracts",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-estate-service",
+      "path": "..\\..\\agrosphere-estate-service",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-immersive",
+      "path": "..\\..\\agrosphere-immersive",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-infrastructure",
+      "path": "..\\..\\agrosphere-infrastructure",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-operations-service",
+      "path": "..\\..\\agrosphere-operations-service",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-spatial-service",
+      "path": "..\\..\\agrosphere-spatial-service",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-telemetry-service",
+      "path": "..\\..\\agrosphere-telemetry-service",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-web",
+      "path": "..\\..\\agrosphere-web",
+      "status": "confirmed"
+    }
+  ]
+}

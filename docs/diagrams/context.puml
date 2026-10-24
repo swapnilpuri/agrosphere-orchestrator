@@ -1,0 +1,17 @@
+@startuml AEO_Context
+title C4 Context — AgroSphere Engineering Orchestrator
+left to right direction
+actor "Human operator / approver" as user
+rectangle "AgroSphere AEO
+[Software System]
+Validates plans and records engineering state" as aeo
+rectangle "Existing AgroSphere Git repositories
+[External Systems]
+Independent local repositories" as repos
+rectangle "OpenAI Agents SDK / Codex
+[Future External Integration]
+AEO-2 only" as future #EEEEEE
+user --> aeo : Inspect / validate / read status
+aeo --> repos : Read-only local Git inspection
+aeo ..> future : Protocol boundary only; no calls
+@enduml

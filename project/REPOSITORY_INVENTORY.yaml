@@ -1,0 +1,1679 @@
+# BEGIN AEO RECOVERY
+recovered_observations:
+  snapshot_id: a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4
+  observed_at: '2026-10-24T20:50:19.636730+00:00'
+  repositories:
+  - id: agrosphere-ai-service
+    path: C:\Projects\agrosphere\agrosphere-ai-service
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: cc92974049a50d64e6a5c1fb06868f01aa7f5def
+    status: ''
+    error: null
+    dirty: false
+    main_language: Python
+    languages:
+    - Python
+    frameworks: []
+    build_systems:
+    - Python packaging
+    test_commands:
+    - python -m pytest
+    commands_executed: false
+    readmes:
+    - README.md
+    - src/agrosphere_ai/adapters/outbound/README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents: []
+    contracts: []
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - src/agrosphere_ai/adapters/outbound/README.md
+    source_files:
+    - src/agrosphere_ai/__init__.py
+    - src/agrosphere_ai/main.py
+    - src/agrosphere_ai/adapters/__init__.py
+    - src/agrosphere_ai/adapters/inbound/__init__.py
+    - src/agrosphere_ai/adapters/outbound/__init__.py
+    - src/agrosphere_ai/application/__init__.py
+    - src/agrosphere_ai/application/ports/__init__.py
+    - src/agrosphere_ai/domain/__init__.py
+    file_fingerprints:
+      AGENTS.md: c7123fd1fbca8ed1071d942c61a11e3aece67e282f2ad1cd185cbec0fe0338d6
+      CHANGELOG.md: 83e7383f0bca0e2d294c290662a32d061a773025b62c814e8c432aa61130590b
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 1570d9994f958c888e797b9db6206023a98f94b752dcd4e01ac27adb71110ed0
+      pyproject.toml: 47d6e8f9748f4ed3dd3cce8cb636a8c63a114c8ae99db98db691f6a4f9f52e86
+      .github/workflows/ci.yml: d5c7889ce4780a35e5c05a82a6c2f61a59e32e4e949b78f82bb04fa9f4d5b5be
+      migrations/env.py: a5d0d5541f573d05bf40943d899256493ef06c9c353764ee66febf443de5856b
+      migrations/versions/0001_messaging.py: 8a80cfbbcacf7b7de657d9cf2733c8c11a78652a27fca441df3d35006b808dba
+      src/agrosphere_ai/__init__.py: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      src/agrosphere_ai/main.py: 584189ebb21fb2d22023563ce379f60fe848762f17cc3222440bfef4b157645a
+      src/agrosphere_ai/adapters/__init__.py: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      src/agrosphere_ai/adapters/inbound/__init__.py: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      src/agrosphere_ai/adapters/outbound/README.md: be65de23ddd4500f1ae691ce2137221f1abf9c85b47410663c7046dc3c1a67d5
+      src/agrosphere_ai/adapters/outbound/__init__.py: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      src/agrosphere_ai/application/__init__.py: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      src/agrosphere_ai/application/ports/__init__.py: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      src/agrosphere_ai/domain/__init__.py: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      tests/test_foundation.py: c02ebcc1dd7d5f62599fb2129de28b7102bfa458bfec005af24f92e85f5b9d9b
+    test_files:
+    - tests/test_foundation.py
+    test_results: []
+    recent_commits:
+    - commit: cc92974049a50d64e6a5c1fb06868f01aa7f5def
+      date: '2026-10-24T01:02:40-05:00'
+      subject: Initial commit for Agrosphere AI Service foundation, including project
+        structure, environment setup, CI configuration, and basic health check endpoint.
+    warnings: []
+  - id: agrosphere-analytics-service
+    path: C:\Projects\agrosphere\agrosphere-analytics-service
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: 38725317675493237b2769ed38e1840b3991d69e
+    status: ''
+    error: null
+    dirty: false
+    main_language: Java
+    languages:
+    - Java
+    frameworks:
+    - Spring Boot
+    build_systems:
+    - Maven
+    test_commands:
+    - ./mvnw verify
+    commands_executed: false
+    readmes:
+    - README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents: []
+    contracts: []
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    source_files:
+    - src/main/java/com/agrosphere/analytics/Application.java
+    - src/main/java/com/agrosphere/analytics/SecurityConfiguration.java
+    - src/main/java/com/agrosphere/analytics/adapter/in/messaging/package-info.java
+    - src/main/java/com/agrosphere/analytics/adapter/in/web/package-info.java
+    - src/main/java/com/agrosphere/analytics/adapter/out/persistence/package-info.java
+    - src/main/java/com/agrosphere/analytics/application/package-info.java
+    - src/main/java/com/agrosphere/analytics/application/port/out/package-info.java
+    - src/main/java/com/agrosphere/analytics/domain/package-info.java
+    file_fingerprints:
+      AGENTS.md: 5f775c814988eeacfeaa08ba80975a49ff838d74a956f625a052b97b1ffd97c0
+      CHANGELOG.md: 83e7383f0bca0e2d294c290662a32d061a773025b62c814e8c432aa61130590b
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 0dfcf62c3d2a75b5a2e13ab184fc97b6badf3a97f2acb367d43ad3437a0a9cba
+      .github/workflows/ci.yml: 8c3fd3639cb51714972f3cae5a17da0b7f2c50b992e4ded2d60c1133274956ca
+      src/main/java/com/agrosphere/analytics/Application.java: efb3c80439833ae946df1c8841fdfde5f2509d1fbafb00cc904650ca501de7cb
+      src/main/java/com/agrosphere/analytics/SecurityConfiguration.java: cb47360992625587a5063ece93e5ee4da54149c6ee825bc0f68d2b6efe65cd21
+      src/main/java/com/agrosphere/analytics/adapter/in/messaging/package-info.java: 4f6b750f772f1d9c4fc0250d9d5a2e925638c6a1e29e4cea0268a87358595a23
+      src/main/java/com/agrosphere/analytics/adapter/in/web/package-info.java: eb4ef63764a25d463735256e95099ea8b506afbaeff5f92f7d10c4ed7f4e96cf
+      src/main/java/com/agrosphere/analytics/adapter/out/persistence/package-info.java: a004aabbce815eacd78811e3b2a4ef8ee376e24ba3e0b6037ec2ef7738fffed6
+      src/main/java/com/agrosphere/analytics/application/package-info.java: 83f378e07a4154c96958ca8d7bd1d789bc8f12c443f0d9659a1d13e73227368a
+      src/main/java/com/agrosphere/analytics/application/port/out/package-info.java: 9ae94635d0bc9d9cdaef2d284282d15237db9424d20cae8f77c23453253dc3f1
+      src/main/java/com/agrosphere/analytics/domain/package-info.java: db3f28a3a1bfd6ae4305a6009964a08afc1812a98b328c84cf3247d9ba9e498f
+      src/main/resources/application.yaml: fbc7995b68db803892fdaf540f3c9f45b857f72977a20b7ae34eb2c0f230d94a
+      src/main/resources/db/migration/V1__messaging_foundation.sql: a7dcd975d538706cafa027625ed9393a1cc6f3c855f69a3c7fadec851c979220
+      src/test/java/com/agrosphere/analytics/SecurityPolicyTest.java: d98c631a5cb0afe19fcbcb6bf0d5de77981c88ba13bc94cf66d474186192a388
+    test_files:
+    - src/test/java/com/agrosphere/analytics/SecurityPolicyTest.java
+    test_results:
+    - path: target/surefire-reports/TEST-com.agrosphere.analytics.ApplicationTest.xml
+      tests: 1
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.analytics.SecurityPolicyTest.xml
+      tests: 4
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    recent_commits:
+    - commit: 38725317675493237b2769ed38e1840b3991d69e
+      date: '2026-10-24T01:03:19-05:00'
+      subject: 'feat: initialize agrosphere-analytics-service project structure'
+    warnings: []
+  - id: agrosphere-api-gateway
+    path: C:\Projects\agrosphere\agrosphere-api-gateway
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: fcf7daf66fa0d9efaf2d1aa72f8cc88c600ab6c0
+    status: ''
+    error: null
+    dirty: false
+    main_language: Java
+    languages:
+    - Java
+    frameworks:
+    - Spring Boot
+    build_systems:
+    - Maven
+    test_commands:
+    - ./mvnw verify
+    commands_executed: false
+    readmes:
+    - README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents: []
+    contracts: []
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    source_files:
+    - src/main/java/com/agrosphere/gateway/ActiveTraceFilter.java
+    - src/main/java/com/agrosphere/gateway/Application.java
+    - src/main/java/com/agrosphere/gateway/BodyLimitFilter.java
+    - src/main/java/com/agrosphere/gateway/GatewayProblem.java
+    - src/main/java/com/agrosphere/gateway/JwtValidationConfiguration.java
+    - src/main/java/com/agrosphere/gateway/ProxyClientConfiguration.java
+    - src/main/java/com/agrosphere/gateway/RequestContextFilter.java
+    - src/main/java/com/agrosphere/gateway/SecurityConfiguration.java
+    - src/main/java/com/agrosphere/gateway/SubjectRateLimit.java
+    file_fingerprints:
+      AGENTS.md: e227f0a494a8ce8234297a4fc9f1372499fc9b16c8d18e39e1ac07b5f848a4ad
+      CHANGELOG.md: 9c5ec3e076cc410764033fd81c5d015b0a30eed58613c8b0d25194a83852d27d
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 85861919350ae59778659ac756a01c3d7b4533721761b1e5ae9c912dd7d82b3e
+      .github/workflows/ci.yml: 3b793f05bc527dea3333383be3d88db9bf5f54b2ff1f30f3061286f35839bec3
+      src/main/java/com/agrosphere/gateway/ActiveTraceFilter.java: 6de737a6e23bc4930f4a6f93d1c0377502b1190d2bf74caf9d3b06054e115127
+      src/main/java/com/agrosphere/gateway/Application.java: 173aadf322f9f19d91c2bb9a8d04c090a3130503e028f2a8b12ef56b55dd81c8
+      src/main/java/com/agrosphere/gateway/BodyLimitFilter.java: a44085e4a04650ebce0f97f422c0bb592f020d8f04bc01821255864ef5449e2a
+      src/main/java/com/agrosphere/gateway/GatewayProblem.java: 7d7aa61dfd273e06d6f1d5ff371c5c8ce732347fe30d10a61136284a258bd25e
+      src/main/java/com/agrosphere/gateway/JwtValidationConfiguration.java: 4393ef7ebd5bdfa24471df2b44e803ad7ab602a726e3ef8cd795026b5d1228d6
+      src/main/java/com/agrosphere/gateway/ProxyClientConfiguration.java: d14992f95f4014ceb44e27d1bfa7b8c3e27df14b35f1036a7f3493d2f24888bd
+      src/main/java/com/agrosphere/gateway/RequestContextFilter.java: d673b8c7bfa943020fa7e5bf9cfc0cc292145cd992478374c498f6ffb4d4882c
+      src/main/java/com/agrosphere/gateway/SecurityConfiguration.java: 101281a812b8b44e6e696db503fad7767962a4fda619f7efc2436b5d6ac66af5
+      src/main/java/com/agrosphere/gateway/SubjectRateLimit.java: 5ff147ba6e1505ca0898b33528917fc78ad77ab05e52a83613fd0a96dc71967d
+      src/main/resources/application.yaml: 11fb447cfbcd37e6efce75e77b62ddb9d3cc39f05caa042eada3b0f28c3713f6
+      src/test/java/com/agrosphere/gateway/GatewayIntegrationTest.java: 5e2a59ac330e8c0e55794ea690c491ccee264be16eaecf6f21777c0db535f7e6
+      src/test/java/com/agrosphere/gateway/SecurityPolicyTest.java: 5670c709e59006dd1d0aa26da63714fb63b39d80afad29f7190834e743659a21
+    test_files:
+    - src/test/java/com/agrosphere/gateway/GatewayIntegrationTest.java
+    - src/test/java/com/agrosphere/gateway/SecurityPolicyTest.java
+    test_results:
+    - path: target/surefire-reports/TEST-com.agrosphere.gateway.GatewayIntegrationTest.xml
+      tests: 8
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.gateway.SecurityPolicyTest.xml
+      tests: 4
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    recent_commits:
+    - commit: fcf7daf66fa0d9efaf2d1aa72f8cc88c600ab6c0
+      date: '2026-10-24T15:47:23-05:00'
+      subject: 'feat: Update changelog, version, and add operations route for tapping
+        API'
+    - commit: f6c7755c28ccb7b30d0e559380e59d01ec87db7e
+      date: '2026-10-24T01:13:57-05:00'
+      subject: 'feat: Update changelog and README for release 0.2.0; add ActiveTraceFilter
+        for tracing support'
+    - commit: e8ee7ff375702e9f260a0f80e250944cdf13937d
+      date: '2026-10-24T01:04:15-05:00'
+      subject: 'feat: Implement body size limit filter for requests'
+    - commit: e966bd68f3dc09ddba3b5aeabd8f48e665170ea2
+      date: '2026-10-24T01:03:48-05:00'
+      subject: 'feat: Initialize Agrosphere API Gateway project'
+    warnings: []
+  - id: agrosphere-architecture
+    path: C:\Projects\agrosphere\agrosphere-architecture
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+    status: ''
+    error: null
+    dirty: false
+    main_language: Python
+    languages:
+    - Python
+    frameworks: []
+    build_systems:
+    - Python packaging
+    test_commands:
+    - python scripts/validate.py
+    commands_executed: false
+    readmes:
+    - README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents:
+    - docs/DEPENDENCIES.md
+    - docs/adr/0001-independent-repositories.md
+    - docs/adr/0002-service-data-ownership.md
+    - docs/adr/0003-api-event-integration.md
+    - docs/adr/0004-geospatial-provenance.md
+    - docs/adr/0005-toolchains.md
+    - docs/adr/0006-local-infrastructure.md
+    - docs/adr/0007-license-security.md
+    - docs/adr/0008-estate-management.md
+    - docs/adr/0009-spatial-digital-twin.md
+    - docs/adr/0010-local-platform-integration.md
+    - docs/adr/0011-outbox-tracing-and-reference-reconciliation.md
+    - docs/adr/0012-rubber-tapping-operations.md
+    - docs/architecture/INTEGRATION_PATTERNS.md
+    - docs/architecture/XR_ARCHITECTURE.md
+    - docs/milestones/milestone-3a-completion.md
+    - docs/milestones/milestone-3a-development.md
+    - docs/milestones/milestone-3a-discovery.md
+    - docs/requirements/FUNCTIONAL_REQUIREMENTS.md
+    - docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md
+    - docs/requirements/POC_SCOPE.md
+    - docs/requirements/PRODUCT_VISION.md
+    - docs/roadmap/IMPLEMENTATION_BACKLOG.md
+    - docs/roadmap/MILESTONES.md
+    - docs/roadmap/MILESTONE_1A.md
+    - docs/roadmap/MILESTONE_1B.md
+    - docs/roadmap/MILESTONE_1C.md
+    - docs/roadmap/NEXT_CODEX_PROMPT.md
+    contracts: []
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    - docs/adr/0001-independent-repositories.md
+    - docs/adr/0002-service-data-ownership.md
+    - docs/adr/0003-api-event-integration.md
+    - docs/adr/0004-geospatial-provenance.md
+    - docs/adr/0005-toolchains.md
+    - docs/adr/0006-local-infrastructure.md
+    - docs/adr/0007-license-security.md
+    - docs/adr/0008-estate-management.md
+    - docs/adr/0009-spatial-digital-twin.md
+    - docs/adr/0010-local-platform-integration.md
+    - docs/adr/0011-outbox-tracing-and-reference-reconciliation.md
+    - docs/adr/0012-rubber-tapping-operations.md
+    - docs/architecture/INTEGRATION_PATTERNS.md
+    - docs/architecture/XR_ARCHITECTURE.md
+    - docs/milestones/milestone-3a-completion.md
+    - docs/milestones/milestone-3a-development.md
+    - docs/milestones/milestone-3a-discovery.md
+    - docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md
+    - docs/requirements/POC_SCOPE.md
+    - docs/roadmap/IMPLEMENTATION_BACKLOG.md
+    - docs/roadmap/MILESTONES.md
+    - docs/roadmap/MILESTONE_1A.md
+    - docs/roadmap/MILESTONE_1B.md
+    - docs/roadmap/MILESTONE_1C.md
+    - docs/roadmap/NEXT_CODEX_PROMPT.md
+    source_files: []
+    file_fingerprints:
+      AGENTS.md: 1b2146ae99a16f89fd37687087692cdf8671a755b6826692eeba7798c4183ba9
+      CHANGELOG.md: 69d2737a4327c71fc2b6d1decb3d546dac43a8efebdac7f99c1e6b25f45e23c1
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 9eadb16bf0847d3de7b371132eb5e744bfc89b647618f818721a3e47b3385c63
+      .github/workflows/ci.yml: 863f64cf7eb0d7c2a7f34a2101b913a0b6336bb7242d00a699bf49e2a15321db
+      docs/DEPENDENCIES.md: 08d4f4a238f2fb37ff43a251b0586b09375525e4cba861723345f54549b29257
+      docs/adr/0001-independent-repositories.md: ebefa8487b4783d98609f1b6135fa0ddef8d84f1a8f67775f1230e7cb83a87e6
+      docs/adr/0002-service-data-ownership.md: e7e5b46851da5198455e783e44b41cc58377240dfe8cad5831dd47bf0a8368e1
+      docs/adr/0003-api-event-integration.md: db5cf1a918c48cca0d76a24db5ec679815260bc1f7dd511a12b6461ebe8513de
+      docs/adr/0004-geospatial-provenance.md: ee63caf667f94e240a4d8946c1b32ad89451e129f91957c92da36a0119886a03
+      docs/adr/0005-toolchains.md: ecaee325b4fc71eaad1542b4267fac036876578c488c62cc14c74dc9c0cead8c
+      docs/adr/0006-local-infrastructure.md: 1c499aaa1ae287afaa66cd5bcc86cf8eb8d9b7e455f58dddcd0701719a35e1ad
+      docs/adr/0007-license-security.md: 0604a9e170cc06774ba73d52b3ac015f22dd5a6e753f8f07621cc7331c6fc4ac
+      docs/adr/0008-estate-management.md: 604bde442b67758ba8f26764cb237f8c09578bbfd2cde6cf6b1dd7632f0a15d2
+      docs/adr/0009-spatial-digital-twin.md: dc4de257c426aeff90aac7bb039af329e8fbd3f94f9f693920c788e5291586e5
+      docs/adr/0010-local-platform-integration.md: f1a778828f3b1e4ff2ddf721ac74263b137bd24daba2426ff5427584c18922f8
+      docs/adr/0011-outbox-tracing-and-reference-reconciliation.md: 374b3621e4add695284e35975df7264bffc642351882ddf478baa71d32efb7e7
+      docs/adr/0012-rubber-tapping-operations.md: f9eb3c1ce02edfdac35b9bf77bef0fec6393cffac720ece24472128c1b8d1d0c
+      docs/architecture/INTEGRATION_PATTERNS.md: 7678be84c56aaa0baa10fb53e7a233b3051ec9758403172c633d15a0da32c0f5
+      docs/architecture/XR_ARCHITECTURE.md: e6b6718100d502926ba1dc8666b3a6c89f64c1d2b2a215e750bdcd8f9dc5443a
+      docs/milestones/milestone-3a-completion.md: ff43513d59585b92ad082372fda96d83b7dc4901dd94f6d53cd135a70f027737
+      docs/milestones/milestone-3a-development.md: e255be96d885b3e28a7faed84e589495c2f861ff20101097a9eeaa4ee165223c
+      docs/milestones/milestone-3a-discovery.md: 6fe5611322d04ce1454c4eb70a69d4f5dc74511f1481eba4ad803de82308c98c
+      docs/requirements/FUNCTIONAL_REQUIREMENTS.md: 920e2b46397a04b2602063217c3d293e94ed17809a99c1e575230f9f91885126
+      docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md: 274dfc985fc55e545ec66215a12b6b6683eba153984d050596df66906f34c995
+      docs/requirements/POC_SCOPE.md: a898a2067e57f85d05433c019aeb8ad5831de290c0e9d5b14fc725671cdb6319
+      docs/requirements/PRODUCT_VISION.md: dfbff96b61998a54e2fb2f8bd302df7da0393591e6f2792637515cb31417d870
+      docs/roadmap/IMPLEMENTATION_BACKLOG.md: 7e0b3d6218705394bc64759e1fa3e58bc93a71b88d43607bb72abce47891cc11
+      docs/roadmap/MILESTONES.md: ef718f842e2b0a8d508d46d3a7479149ecdb5ee4e21e97a11f064c914188ee22
+      docs/roadmap/MILESTONE_1A.md: 8e8de42348aa2a35746b66bcc21588b7d9ce85940eee15690c6adce7ebfe5169
+      docs/roadmap/MILESTONE_1B.md: cfbf5fde319526b589caca27f52b4c2c89f7e28fd67cdc1d125cafe1c203d10c
+      docs/roadmap/MILESTONE_1C.md: c92a26d0c12c3b6277ba9aab9984f83dbb6795e6fc5654208bd778d8fb09f0f6
+      docs/roadmap/NEXT_CODEX_PROMPT.md: 065eac9f3d0b4afa5306060c2ae5429440c5a92c64e4c9bc9b898be15f6f24c6
+      scripts/validate.py: 6186823ccffb469647e04f4429f33327ec378b1d992e34e08a1404646016f793
+    test_files: []
+    test_results: []
+    recent_commits:
+    - commit: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      date: '2026-10-24T15:47:35-05:00'
+      subject: 'feat: Update version to 0.5.0, add Milestone 3A diagrams, and enhance
+        documentation with completion and development reports'
+    - commit: 4d160742b419db657456d976ab74ad34c46b3fde
+      date: '2026-10-24T01:14:12-05:00'
+      subject: 'feat: Update changelog and documentation for Milestone 1C integration,
+        including new ADRs and architectural diagrams'
+    - commit: 11cc09cfc1e576cba4e89bfc2a6909def9dc4fb5
+      date: '2026-10-24T00:57:35-05:00'
+      subject: 'feat: Add initial documentation and requirements for AgroSphere project'
+    warnings: []
+  - id: agrosphere-contracts
+    path: C:\Projects\agrosphere\agrosphere-contracts
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: 7e962552421f15ad5d1492276817db1e1692b104
+    status: ''
+    error: null
+    dirty: false
+    main_language: Python
+    languages:
+    - Python
+    frameworks: []
+    build_systems:
+    - Python packaging
+    test_commands:
+    - python scripts/validate.py
+    commands_executed: false
+    readmes:
+    - README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents:
+    - docs/COMPATIBILITY.md
+    contracts:
+    - events/operations/v1/TappingAssignmentCancelled.schema.json
+    - events/operations/v1/TappingAssignmentCreated.schema.json
+    - events/operations/v1/TappingAssignmentStarted.schema.json
+    - events/operations/v1/TappingCompleted.schema.json
+    - events/operations/v1/TappingMissed.schema.json
+    - events/operations/v1/TappingScheduleActivated.schema.json
+    - events/spatial/v1/DigitalTwinAssetRegistered.schema.json
+    - events/spatial/v1/SpatialBoundaryChanged.schema.json
+    - events/spatial/v1/SpatialFeatureCreated.schema.json
+    - events/spatial/v1/SpatialFeatureUpdated.schema.json
+    - events/spatial/v1/SpatialLayerCreated.schema.json
+    - events/v1/CropHealthIncidentDetected.schema.json
+    - events/v1/EstateCreated.schema.json
+    - events/v1/LatexCollectionRecorded.schema.json
+    - events/v1/PlantationBlockCreated.schema.json
+    - events/v1/PlantationBlockUpdated.schema.json
+    - events/v1/SensorReadingReceived.schema.json
+    - events/v1/TappingActivityRecorded.schema.json
+    - events/v1/YieldForecastGenerated.schema.json
+    - events/v1/envelope.schema.json
+    - events/v2/EstateCreated.schema.json
+    - events/v2/EstateUpdated.schema.json
+    - events/v2/PlantationBlockCreated.schema.json
+    - events/v2/PlantationBlockUpdated.schema.json
+    - openapi/ai-service.yaml
+    - openapi/analytics-service.yaml
+    - openapi/estate-service.yaml
+    - openapi/operations-service.yaml
+    - openapi/spatial-service.yaml
+    - openapi/telemetry-service.yaml
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    - docs/COMPATIBILITY.md
+    source_files: []
+    file_fingerprints:
+      AGENTS.md: 00ac26879e4316af19a23f3e10c87ebe9f1792dd50175ba3ca5b708d9bdd9171
+      CHANGELOG.md: 3d97cebbd6c9596adfe1a41a9f22dc36592d0961c1fa5b350d4ee67c69f5a348
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: a793db4d4549801df258ea262c41562f0ca032630c65363f03b7151747d65be4
+      .github/workflows/ci.yml: 53fcf5f61da2d67422fb1ea34aa6807a5cc6fcc40926be38003e91d32e656d02
+      docs/COMPATIBILITY.md: b0183ac3036155b1c09bf3336b2f6b9093d51d23586ecc2b5fcb7ac7faeb7dd6
+      events/operations/v1/TappingAssignmentCancelled.schema.json: 71b18783088fb9b0c31de3f89ee290b9763a50039cd4264d3289088a6400d3f7
+      events/operations/v1/TappingAssignmentCreated.schema.json: 13627255d5263816357abdf4ca14b02ee0182df786f89b1cd580a6addbfa3189
+      events/operations/v1/TappingAssignmentStarted.schema.json: b187cc74a92c81d4617357b1fecbf55d2b116e410f5ea9fba283239d041c82a0
+      events/operations/v1/TappingCompleted.schema.json: 5b16dd80b6516087468223bff372c8f6cc5a5a5851c2b27771a16cc2b15b993b
+      events/operations/v1/TappingMissed.schema.json: 4c4b7695551be1dd685a377447fedec40f3a9d05a903fdc8f10e5793af1244c7
+      events/operations/v1/TappingScheduleActivated.schema.json: 554f177a23339a491930508b7241220cf6f7ce21ef4f64019ca12a39f435abac
+      events/spatial/v1/DigitalTwinAssetRegistered.schema.json: d46b29fb3171339c986e5e2dee526c080965c1314434a81b6983a0b5a9b0c91b
+      events/spatial/v1/SpatialBoundaryChanged.schema.json: ee2883c66b3b8606799f73733c14761a0f2c617e22f1e12c2d3c4adfce1b85d7
+      events/spatial/v1/SpatialFeatureCreated.schema.json: 4edd367673b4f8d0c634100265676b36eaed92eb4f1cbe9345202180d120ff4c
+      events/spatial/v1/SpatialFeatureUpdated.schema.json: d5aff1cb168c96453ef79e329d903b2495d88a3c5c5069dcb673ecacf43f701a
+      events/spatial/v1/SpatialLayerCreated.schema.json: 569fa41811f3728f478ccd7ca4942031b92b03f68303b17ddafcc1bad86dece5
+      events/v1/CropHealthIncidentDetected.schema.json: af448a69432a22a1fb21485771a4cf704392ee3c3ab178a952062e6c509928d3
+      events/v1/EstateCreated.schema.json: 09e203d4fa19e37106ec7aebae11ead60494e35a46e2a1ad39b90e5bb731a8de
+      events/v1/LatexCollectionRecorded.schema.json: 593106b29369bde3f70aa6ac60278863b4c5986489fe78ddd27fbffdbaa5636e
+      events/v1/PlantationBlockCreated.schema.json: 3dad1b862f54d38057a3d367726bc9ab803c24dbb017c85bfaebfe25484701a5
+      events/v1/PlantationBlockUpdated.schema.json: 604d290044d9059f0e523ddf6e8356286074a4f980774e7c34d7559bfd9b2733
+      events/v1/SensorReadingReceived.schema.json: c1e4270ffbbb919d904b7adbce021ab6e465a3db5cc023731d7a5325e7126666
+      events/v1/TappingActivityRecorded.schema.json: 7f919feba565a6e1624d26b66473bfcf78e1c12b2fbd1a122e8f6f0967b366ba
+      events/v1/YieldForecastGenerated.schema.json: 062c7471b8c1f5f91f645197faa2a0b234e82ec3fdee7b0c001acaeffb8e85bf
+      events/v1/envelope.schema.json: 1385db4529ec56cfbd59956c1f8c109295c5e98b17a726d3c98f05ed3e763c3a
+      events/v2/EstateCreated.schema.json: 9f6d63c477759e2a3a7fcce3a1444febad0cef7e59548c6da7a04c160882d668
+      events/v2/EstateUpdated.schema.json: f74b3829d2889a363792df10eb3c05dfdfc2b553a75e51a5ec9b20de2e2a46bc
+      events/v2/PlantationBlockCreated.schema.json: d7a6a5bff8a8c1fc3fa930c044098dbbf0877a944d87109cd25e00417c0cadee
+      events/v2/PlantationBlockUpdated.schema.json: c99731baf15262ef3ddefac0dc64eacf76bbd1f82c87d12f8cb1077dcbdfcd02
+      examples/CropHealthIncidentDetected.json: 977ca745f3db62784885f2521e9aceb7c03dd50d142efca3df85250f134215a5
+      examples/EstateCreated.json: 7c7822cbd9c2dbe3bdcb9042b0d1300d56f55fcec8375c1675ae9da31cb2b983
+      examples/LatexCollectionRecorded.json: edce38a9f183934c20120f44f9f3517a9e9bbf294a50df76a76039ea324ce934
+      examples/PlantationBlockCreated.json: 086f116194575c84a58da7577923766fee1b6f5d3be920fee591961326cb4be5
+      examples/PlantationBlockUpdated.json: cb5d19efe2a25a3506b7a5a87c72df20d2e4f9b0f3da1d9fed89f4a6d0ffb644
+      examples/SensorReadingReceived.json: 689c9963bc25303ab99da8f7d6e46f601e3082a819a8eb4f3fd4bbeb2aa01e69
+      examples/TappingActivityRecorded.json: c454d301a940d0f1a58efc01c2cc8fdc96472ec0cf5ec549cf84ca53a2fe5d07
+      examples/YieldForecastGenerated.json: 774c617aacbc3aaff5361845e35228c887c67649db441d51edb79a2783a74c85
+      examples/operations/v1/TappingAssignmentCancelled.json: 2ec21f01d511e56d33d8085bb7761d33a0276bd1745aefc2c0ea0e44b55bc485
+      examples/operations/v1/TappingAssignmentCreated.json: 2194798a7a8a0b1ef63123f1de5f1babcec3434bb08f838f584c7d1afb0c9d05
+      examples/operations/v1/TappingAssignmentStarted.json: f0fd522b493c6dce03e54c92eaace66fe285cd19128eee6f891e057e7ca3822d
+      examples/operations/v1/TappingCompleted.json: 20c7337b0872f9f04b0013d4f327cf9f822ee28c6d1b725f38f535ecefe1a79f
+      examples/operations/v1/TappingMissed.json: 9b053d5d7986a95df4b54a50958dfd9bbcd2aa5c6a57643434457498aeef1f9a
+      examples/operations/v1/TappingScheduleActivated.json: 5383c9ad86d1156d91bb313173653a2a1b7d67b6e92519d9fb257524cdb73221
+      examples/spatial/v1/DigitalTwinAssetRegistered.json: 7ebcada146d0fd961d9ac370740d5fb7d739fd1e55cdb06df1372d913cc67188
+      examples/spatial/v1/SpatialBoundaryChanged.json: de3bc447fd3a3d2e43b5b0e64f2e0b238c757748556278e052c4cef5b594239f
+      examples/spatial/v1/SpatialFeatureCreated.json: 24948f35d1798f06fbc557422fa180ec966294cfc302dc838f83fa347f21eac2
+      examples/spatial/v1/SpatialFeatureUpdated.json: e7b89cbf4018a07da6eae59b5e17f634cd7ba1349412fd02fab8d820321c3d68
+      examples/spatial/v1/SpatialLayerCreated.json: 9f19e976ab8e894671fec787bcb049c31f26948c59eae98ae57cf79510cd8854
+      examples/v2/EstateCreated.json: 454b4e4c17675563907d37f8fc6306bfba5ba51091006956deb2ec47fe79b9e5
+      examples/v2/EstateUpdated.json: e0423f2af4d8ad9de5cb889b3aad378fba2b1711302c1344474a7db7620f0851
+      examples/v2/PlantationBlockCreated.json: bde3b583db04a6b4ecf8b6c106ee8f19167c5f643e8a90659d03814c685c7d28
+      examples/v2/PlantationBlockUpdated.json: 88b054cc09fb6cc3a8d9213788fd77c257d41dc9647dff9890b5b53518dad2fc
+      openapi/ai-service.yaml: 0bc93aa4c50c05c2df65228304f203b7b2c4b738ae6de66fac9560c6e3f66dc9
+      openapi/analytics-service.yaml: 2efa666c3e48c2fce9338645adb2ad6ef42be1154de49712f14d4360c3bc2514
+      openapi/estate-service.yaml: 2e7a0b028d91f9f2996289955d52d84e14d65e813582ade46772e59cd504a060
+      openapi/operations-service.yaml: 84d83a3e0f116eb3a32738ce0f528b48df3c27cc4f6c13ef1821f25d8dab40b3
+      openapi/spatial-service.yaml: ca853e9ff9e8f8b752854ceaaf001622490b2a089478757320c356d15b301f74
+      openapi/telemetry-service.yaml: 1bfc36028bd17709009e45ab1625da80307fdfb8d89a37b6487f8e7be3a9a829
+      scripts/validate.py: 94957b82da94360615c01d8fa66984868118b1cc3715f1a9d70292bd21b41ad6
+    test_files: []
+    test_results: []
+    recent_commits:
+    - commit: 7e962552421f15ad5d1492276817db1e1692b104
+      date: '2026-10-24T15:47:49-05:00'
+      subject: Add validation for operations event schemas and examples
+    - commit: 5e7182da1c386c35717d5894a133a28ab1e2e6a1
+      date: '2026-10-24T01:13:38-05:00'
+      subject: Update documentation for Milestone 1C compatibility and version bump
+        to 0.3.1
+    - commit: 2cde6b5d30fd5ba892697d8f6185489af5f41a41
+      date: '2026-10-24T01:05:02-05:00'
+      subject: Add OpenAPI specification and validation scripts
+    warnings: []
+  - id: agrosphere-estate-service
+    path: C:\Projects\agrosphere\agrosphere-estate-service
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: 7fdd691431a6962f5ac71fb08e9e3e09380bae00
+    status: ''
+    error: null
+    dirty: false
+    main_language: Java
+    languages:
+    - Java
+    frameworks:
+    - Spring Boot
+    build_systems:
+    - Maven
+    test_commands:
+    - ./mvnw verify
+    commands_executed: false
+    readmes:
+    - README.md
+    - src/test/resources/contracts/README.md
+    - target/test-classes/contracts/README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents:
+    - docs/MILESTONE_1A_REPORT.md
+    contracts:
+    - src/test/resources/contracts/estate-service.openapi.json
+    - src/test/resources/contracts/events/v2/EstateCreated.schema.json
+    - src/test/resources/contracts/events/v2/EstateUpdated.schema.json
+    - src/test/resources/contracts/events/v2/PlantationBlockCreated.schema.json
+    - src/test/resources/contracts/events/v2/PlantationBlockUpdated.schema.json
+    - target/test-classes/contracts/estate-service.openapi.json
+    - target/test-classes/contracts/events/v2/EstateCreated.schema.json
+    - target/test-classes/contracts/events/v2/EstateUpdated.schema.json
+    - target/test-classes/contracts/events/v2/PlantationBlockCreated.schema.json
+    - target/test-classes/contracts/events/v2/PlantationBlockUpdated.schema.json
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    - docs/MILESTONE_1A_REPORT.md
+    source_files:
+    - src/main/java/com/agrosphere/estate/EstateServiceApplication.java
+    - src/main/java/com/agrosphere/estate/SecurityConfiguration.java
+    - src/main/java/com/agrosphere/estate/adapter/in/messaging/package-info.java
+    - src/main/java/com/agrosphere/estate/adapter/in/web/ApiErrors.java
+    - src/main/java/com/agrosphere/estate/adapter/in/web/BodyLimitFilter.java
+    - src/main/java/com/agrosphere/estate/adapter/in/web/CorrelationFilter.java
+    - src/main/java/com/agrosphere/estate/adapter/in/web/EstateController.java
+    - src/main/java/com/agrosphere/estate/adapter/in/web/OpenApiConfiguration.java
+    - src/main/java/com/agrosphere/estate/adapter/in/web/SecurityProblem.java
+    - src/main/java/com/agrosphere/estate/adapter/in/web/package-info.java
+    - src/main/java/com/agrosphere/estate/adapter/out/messaging/JdbcEventOutbox.java
+    - src/main/java/com/agrosphere/estate/adapter/out/messaging/MessagingConfiguration.java
+    - src/main/java/com/agrosphere/estate/adapter/out/messaging/OutboxDispatcher.java
+    - src/main/java/com/agrosphere/estate/adapter/out/messaging/TraceTransport.java
+    - src/main/java/com/agrosphere/estate/adapter/out/persistence/DivisionEntity.java
+    - src/main/java/com/agrosphere/estate/adapter/out/persistence/EstateEntity.java
+    - src/main/java/com/agrosphere/estate/adapter/out/persistence/JpaEstateStore.java
+    - src/main/java/com/agrosphere/estate/adapter/out/persistence/PlantationBlockEntity.java
+    - src/main/java/com/agrosphere/estate/adapter/out/persistence/RubberCloneEntity.java
+    - src/main/java/com/agrosphere/estate/adapter/out/persistence/package-info.java
+    - src/main/java/com/agrosphere/estate/adapter/out/security/JwtEstateAccess.java
+    - src/main/java/com/agrosphere/estate/adapter/out/security/JwtValidationConfiguration.java
+    - src/main/java/com/agrosphere/estate/application/CorrelationContext.java
+    - src/main/java/com/agrosphere/estate/application/EstateApplicationService.java
+    - src/main/java/com/agrosphere/estate/application/PageResult.java
+    - src/main/java/com/agrosphere/estate/application/Requests.java
+    - src/main/java/com/agrosphere/estate/application/Responses.java
+    - src/main/java/com/agrosphere/estate/application/package-info.java
+    - src/main/java/com/agrosphere/estate/application/port/out/EstateAccess.java
+    - src/main/java/com/agrosphere/estate/application/port/out/EstateStore.java
+    - src/main/java/com/agrosphere/estate/application/port/out/EventOutbox.java
+    - src/main/java/com/agrosphere/estate/application/port/out/package-info.java
+    - src/main/java/com/agrosphere/estate/domain/CropType.java
+    - src/main/java/com/agrosphere/estate/domain/Division.java
+    - src/main/java/com/agrosphere/estate/domain/DomainException.java
+    - src/main/java/com/agrosphere/estate/domain/Estate.java
+    - src/main/java/com/agrosphere/estate/domain/PlantationBlock.java
+    - src/main/java/com/agrosphere/estate/domain/RubberClone.java
+    - src/main/java/com/agrosphere/estate/domain/Rules.java
+    - src/main/java/com/agrosphere/estate/domain/Status.java
+    - src/main/java/com/agrosphere/estate/domain/package-info.java
+    file_fingerprints:
+      AGENTS.md: fd958eb74fbe609ce5ec6fcf227720cf3feb0a9c558684fe5687f264d02e2053
+      CHANGELOG.md: 38d6dd1d95853fd6903ba60d32dcd8b707cf2d4ed66cdd1af32f1db4cdb67cb4
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: e81fcdf48ed4af0bd6d7ec07cf3579d6d849f358aeae001a4015a9767712f39f
+      .github/workflows/ci.yml: 1b82f3089190b5f27455fa749a30a7f2ac0d970ef9b2ad2dc63dbe119bf3abc3
+      docs/MILESTONE_1A_REPORT.md: de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826
+      scripts/validate_api.py: 9b4e72612bac0676690a2b12139477008e34f7567642705b0395965b69c94d36
+      scripts/validate_events.py: 3d3136a7c4c71d50c6e3955583761898320f7bf06845dae6d457c970e633e486
+      src/main/java/com/agrosphere/estate/EstateServiceApplication.java: a5e663a5220d9ae898d24d22eab4516529dea53ddc1a3bf498ead9b0b2430176
+      src/main/java/com/agrosphere/estate/SecurityConfiguration.java: 60433f59634e5bc35fd5443fe8505fb3ab39625400410aafb2ea79e1a6e8463b
+      src/main/java/com/agrosphere/estate/adapter/in/messaging/package-info.java: 61cc99430aa7cd911386624c5e29e9cc7a7c41ced1498c8c643574b2f79656b1
+      src/main/java/com/agrosphere/estate/adapter/in/web/ApiErrors.java: 540d497cdf50292c45caf524b3df9ded090e246c4bca5be5f7c5ba905d85d991
+      src/main/java/com/agrosphere/estate/adapter/in/web/BodyLimitFilter.java: ac3daeb120d38863dea7db33785ec1e435b4b2e73e07e57c4e5654c227f6505c
+      src/main/java/com/agrosphere/estate/adapter/in/web/CorrelationFilter.java: 86277bf476b07c9046f68b4d5b39d65ef26b33d8905b50399a2ef83ad8229dd5
+      src/main/java/com/agrosphere/estate/adapter/in/web/EstateController.java: 7a653d59040aafe0f383b85b37b145cfdff4653f891bca339988ba5dc5c20a7f
+      src/main/java/com/agrosphere/estate/adapter/in/web/OpenApiConfiguration.java: ef43caab6412de22c8de9b74a01808ec31c16e4cfde62dc7ffc9ab1e688135b2
+      src/main/java/com/agrosphere/estate/adapter/in/web/SecurityProblem.java: 9fe0f1b6fcf8a3df6c3618af568a6ad6354119fb5e63dbf0053ff4de542f488c
+      src/main/java/com/agrosphere/estate/adapter/in/web/package-info.java: 90c54f1e230437998c32f4c5612120a11b6c79279145509d1d07c5a48a25e725
+      src/main/java/com/agrosphere/estate/adapter/out/messaging/JdbcEventOutbox.java: 66c83619e86a1efee954e4f2fdfcea8695acd6c02847964216f6d11feb9c734e
+      src/main/java/com/agrosphere/estate/adapter/out/messaging/MessagingConfiguration.java: 278bbcb9b0add242ab8cd484c1f3479fe59f713bb63d25e9296b3a3e3974b2a2
+      src/main/java/com/agrosphere/estate/adapter/out/messaging/OutboxDispatcher.java: aaee74b064096d4d5a39a56ce73afc51f94350d3d6f9bcf2e87ee91511ae362a
+      src/main/java/com/agrosphere/estate/adapter/out/messaging/TraceTransport.java: f006f350daa47bbae72b9bafdd4709cd8d3d1a488da102d76e284305274bb1d2
+      src/main/java/com/agrosphere/estate/adapter/out/persistence/DivisionEntity.java: fd7786577cc4a1ece94c237a68693dc5c2859f50e25456acf80fd6cbd7883bff
+      src/main/java/com/agrosphere/estate/adapter/out/persistence/EstateEntity.java: a681f91b7cbe66a92a973beea30995e83f33687d2a88da09056a51cc7e699583
+      src/main/java/com/agrosphere/estate/adapter/out/persistence/JpaEstateStore.java: 701a3151fcbf600cee3bfdb67d8fd7cfa373289abf74d219f13e17a275b4bafb
+      src/main/java/com/agrosphere/estate/adapter/out/persistence/PlantationBlockEntity.java: 3ee7a264d6368985c9f670af39bfef864906c35bd5f56a94757a8a3114624a12
+      src/main/java/com/agrosphere/estate/adapter/out/persistence/RubberCloneEntity.java: 3a17070cb9d6999222bdadf9bcdf07547920af58a5284e85d2491df3a2a3afd2
+      src/main/java/com/agrosphere/estate/adapter/out/persistence/package-info.java: 573c47eb59be50090e3a1c8c61128fdabf3c6891bd9bf1836f6e0251fff3f635
+      src/main/java/com/agrosphere/estate/adapter/out/security/JwtEstateAccess.java: 639679fecc2e930a8706b24a2516624f4379f8f0dd67eeb84083236c9c9ca970
+      src/main/java/com/agrosphere/estate/adapter/out/security/JwtValidationConfiguration.java: f79c83b11b479904f9b8a3ce52dd98dca353e01cc8c60b2e136df8f67ad804e8
+      src/main/java/com/agrosphere/estate/application/CorrelationContext.java: 30a94639100ec6178b773376fdcb229c3f3cb436c6d7f4fc8540d77c520e9b87
+      src/main/java/com/agrosphere/estate/application/EstateApplicationService.java: 22966689f87cd5c370f592ca3f8ddc611e88864c8d4ee5c52582dffd92ae3ca4
+      src/main/java/com/agrosphere/estate/application/PageResult.java: 54f1941ba774f962647d28a97f09c89033858221a32470466c44b4e7d03e6dfe
+      src/main/java/com/agrosphere/estate/application/Requests.java: b8de030c17912cf0b67cdea21013865cbb8404d622ff6c52d80859293041cd33
+      src/main/java/com/agrosphere/estate/application/Responses.java: 59d953072a990a969df0c521ca75dd98226cde7af7de9ea4ca3acb69fb83d1af
+      src/main/java/com/agrosphere/estate/application/package-info.java: 6a58cf446559b041e1016aa184100e9dbb8e2d6061e1939f107f40feeeacbca6
+      src/main/java/com/agrosphere/estate/application/port/out/EstateAccess.java: 191d11c3e4f2845a1db6e1647803fea544121019dfd7368d35dea17600852afd
+      src/main/java/com/agrosphere/estate/application/port/out/EstateStore.java: 57386c6b7275ef382ddd0ad558394704080b74755782b47590325350383e43ab
+      src/main/java/com/agrosphere/estate/application/port/out/EventOutbox.java: 46a4400d8d2ba885037e4c18ad427bdc3ada3d6762e3c6dbc234f955d3c373dc
+      src/main/java/com/agrosphere/estate/application/port/out/package-info.java: 8ecbbe36e09e5aaac44eabf67cb41939c82adb91c4e0048ad7cc8812dd07308a
+      src/main/java/com/agrosphere/estate/domain/CropType.java: 1cecad23d0192f20959eb4966854b48cdc888669709a08ea3c57c376b9ab9462
+      src/main/java/com/agrosphere/estate/domain/Division.java: 78d20335577d02515170d2e68e56b8296d6e9401747e08d6e618783b8dfcac25
+      src/main/java/com/agrosphere/estate/domain/DomainException.java: e74579ea98bd44aebcd164870e06a60f395b6309df16d2190f4c081a8549b302
+      src/main/java/com/agrosphere/estate/domain/Estate.java: 59539e582bcc3110cee67b052801d68f6187640c799804ea3b35bfeed043d558
+      src/main/java/com/agrosphere/estate/domain/PlantationBlock.java: 755358186930d4699027f9e89e58342f09c872c42e8f05ed91cbb56d2b3a15a7
+      src/main/java/com/agrosphere/estate/domain/RubberClone.java: 4a944f01a4e80eacdc6324751d98d658298396bb83bb6e7171855413a837032c
+      src/main/java/com/agrosphere/estate/domain/Rules.java: 69f1424336ad2973e62dd863dc00009cb8ee4128cba26bd503a03d43da510fa4
+      src/main/java/com/agrosphere/estate/domain/Status.java: af8cdc61886c5c63ec8d014681314b37daa41cff775e7444c7da3574bae700e7
+      src/main/java/com/agrosphere/estate/domain/package-info.java: bbde5a05e1efaf1a3a08d617a1324c55b55e278c03edf09415c11963e9a189bd
+      src/main/resources/application.yaml: 161a1986e0700710ce0b46b7ac051383a9eac042fc23b60e2a7dbf602a9882d9
+      src/main/resources/db/migration/V1__messaging_foundation.sql: a7dcd975d538706cafa027625ed9393a1cc6f3c855f69a3c7fadec851c979220
+      src/main/resources/db/migration/V2__estate_management.sql: 15ea271c075b8846c201fcbd02aa67423bcb2dab6bb62b2abebb9b20651732ea
+      src/main/resources/db/migration/V3__outbox_trace_context.sql: 54c2d8f839c42104a770e98acb33726736f19da5150add02fa5e7fa37b9c3c9e
+      src/test/java/com/agrosphere/estate/ApplicationServiceTest.java: b2db0b5e564e94862cec39e438a5a8455dde05066f7c202d48decd02fd9df535
+      src/test/java/com/agrosphere/estate/DomainRulesTest.java: 33011db3efa97ebf8d11014368b06ff2bbc366801f6d4c225eb161882c48438c
+      src/test/java/com/agrosphere/estate/EstateAuthorizationTest.java: cee4c3ac998cc791695bd4199a1fd2788baf18b4291570aa2fcfddba9be40b12
+      src/test/java/com/agrosphere/estate/EstateServiceIT.java: 1c0148e473d983a7efb9a517d70b4baaa67cab644115f24a7d841b251ec28bfb
+      src/test/java/com/agrosphere/estate/OutboxDispatcherTest.java: 76923c9231def830efe021999b6a3ead39a6ca8527c7516fc27782163334d3a0
+      src/test/java/com/agrosphere/estate/SecurityPolicyTest.java: dca7760d5d9e95fe5f42a6dd474f7cea603a06f0499d5ee83d26e57291625f85
+      src/test/resources/contracts/README.md: 69a9d91543a04909edbfc373d182a9c29c9a48c768facdbe9c42d1a083dafc8a
+      src/test/resources/contracts/estate-service.openapi.json: 2e7a0b028d91f9f2996289955d52d84e14d65e813582ade46772e59cd504a060
+      src/test/resources/contracts/events/v2/EstateCreated.schema.json: 9f6d63c477759e2a3a7fcce3a1444febad0cef7e59548c6da7a04c160882d668
+      src/test/resources/contracts/events/v2/EstateUpdated.schema.json: f74b3829d2889a363792df10eb3c05dfdfc2b553a75e51a5ec9b20de2e2a46bc
+      src/test/resources/contracts/events/v2/PlantationBlockCreated.schema.json: d7a6a5bff8a8c1fc3fa930c044098dbbf0877a944d87109cd25e00417c0cadee
+      src/test/resources/contracts/events/v2/PlantationBlockUpdated.schema.json: c99731baf15262ef3ddefac0dc64eacf76bbd1f82c87d12f8cb1077dcbdfcd02
+    test_files:
+    - src/test/java/com/agrosphere/estate/ApplicationServiceTest.java
+    - src/test/java/com/agrosphere/estate/DomainRulesTest.java
+    - src/test/java/com/agrosphere/estate/EstateAuthorizationTest.java
+    - src/test/java/com/agrosphere/estate/EstateServiceIT.java
+    - src/test/java/com/agrosphere/estate/OutboxDispatcherTest.java
+    - src/test/java/com/agrosphere/estate/SecurityPolicyTest.java
+    - src/test/resources/contracts/README.md
+    - src/test/resources/contracts/estate-service.openapi.json
+    - src/test/resources/contracts/events/v2/EstateCreated.schema.json
+    - src/test/resources/contracts/events/v2/EstateUpdated.schema.json
+    - src/test/resources/contracts/events/v2/PlantationBlockCreated.schema.json
+    - src/test/resources/contracts/events/v2/PlantationBlockUpdated.schema.json
+    test_results:
+    - path: target/failsafe-reports/TEST-com.agrosphere.estate.EstateServiceIT.xml
+      tests: 9
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.estate.ApplicationServiceTest.xml
+      tests: 9
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.estate.DomainRulesTest.xml
+      tests: 10
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.estate.EstateAuthorizationTest.xml
+      tests: 9
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.estate.OutboxDispatcherTest.xml
+      tests: 7
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.estate.SecurityPolicyTest.xml
+      tests: 4
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    recent_commits:
+    - commit: 7fdd691431a6962f5ac71fb08e9e3e09380bae00
+      date: '2026-10-24T15:47:56-05:00'
+      subject: Update changelog for version 0.2.2, enhance security roles, and adjust
+        Dockerfile and versioning
+    - commit: 91969d6f4b910bcf7dc9875ef713e3a9b9bd4589
+      date: '2026-10-24T01:13:22-05:00'
+      subject: Update changelog and README for Milestone 1C integration patch 0.2.1,
+        detailing W3C transport context persistence and RabbitMQ observations.
+    - commit: ca992841bc9694a4a9df0e504ade8e42c35acf01
+      date: '2026-10-24T01:06:33-05:00'
+      subject: Add JSON schema definitions for estate and plantation block events
+        (v2)
+    warnings: []
+  - id: agrosphere-immersive
+    path: C:\Projects\agrosphere\agrosphere-immersive
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: 2bf7663e412f86956dbdb831184f2d0ab1a03c70
+    status: ''
+    error: null
+    dirty: false
+    main_language: unknown/documentation/configuration
+    languages: []
+    frameworks: []
+    build_systems: []
+    test_commands:
+    - python scripts/validate.py
+    commands_executed: false
+    readmes:
+    - README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents: []
+    contracts: []
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    source_files: []
+    file_fingerprints:
+      AGENTS.md: 27f98eddc8dd6576457ea6aaa0a11157359510715c7b45859aecec23b9fe521a
+      CHANGELOG.md: 83e7383f0bca0e2d294c290662a32d061a773025b62c814e8c432aa61130590b
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 2a687b9e012caa9344c1202e483d7bd59b2e2cd79832f0b7e8821bcae05ffd9d
+      toolchain.json: 416c099999c7183451d5e8305a6b1bf3a7608d71102d463d9f94c725cf546806
+      .github/workflows/ci.yml: be9efd5432c55ee8a53801465245f6adb61fff4a17dbe1cfb18e9ba09939cb20
+      scripts/validate.py: 26aab0ecee2f21c0004b8583f03f6892492e749c73ec45df94864df62ea72ca7
+    test_files: []
+    test_results: []
+    recent_commits:
+    - commit: 2bf7663e412f86956dbdb831184f2d0ab1a03c70
+      date: '2026-10-24T01:12:58-05:00'
+      subject: Add initial project structure and configuration files for Milestone
+        0
+    warnings: []
+  - id: agrosphere-infrastructure
+    path: C:\Projects\agrosphere\agrosphere-infrastructure
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: 3268651e1d48a38f858351c105ab54b4103c3ded
+    status: ''
+    error: null
+    dirty: false
+    main_language: unknown/documentation/configuration
+    languages: []
+    frameworks: []
+    build_systems: []
+    test_commands:
+    - python scripts/validate.py
+    commands_executed: false
+    readmes:
+    - README.md
+    - azure/README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents:
+    - docs/ENVIRONMENT_CONFIGURATION.md
+    - docs/INTEGRATION_TESTING.md
+    - docs/LOCAL_DEVELOPMENT.md
+    - docs/MILESTONE_1C_REPORT.md
+    - docs/TROUBLESHOOTING.md
+    contracts:
+    - tests/contracts/estate.openapi.json
+    - tests/contracts/manifest.json
+    - tests/contracts/spatial.openapi.json
+    - tests/contracts/events/spatial/v1/DigitalTwinAssetRegistered.schema.json
+    - tests/contracts/events/spatial/v1/SpatialBoundaryChanged.schema.json
+    - tests/contracts/events/spatial/v1/SpatialFeatureCreated.schema.json
+    - tests/contracts/events/spatial/v1/SpatialFeatureUpdated.schema.json
+    - tests/contracts/events/spatial/v1/SpatialLayerCreated.schema.json
+    - tests/contracts/events/v2/EstateCreated.schema.json
+    - tests/contracts/events/v2/EstateUpdated.schema.json
+    - tests/contracts/events/v2/PlantationBlockCreated.schema.json
+    - tests/contracts/events/v2/PlantationBlockUpdated.schema.json
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    - azure/README.md
+    - docs/ENVIRONMENT_CONFIGURATION.md
+    - docs/MILESTONE_1C_REPORT.md
+    source_files: []
+    file_fingerprints:
+      AGENTS.md: 8b7c5a63e0e1145dbab30d6908f1383ddc49690655e5d7db82f4d314e684d9b6
+      CHANGELOG.md: d67319118924ca63404fb38e35daf2dd749460e0b8e8c7325c41fc229c94d4d9
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 59f7a553afc292102d63c4f68ce82ebb102bd8298b5aba7012b5f0fd66dc29cb
+      compose.yaml: 3dd2c33ac6b3e970a23fe91a038cd88b63c40741d8931afe254c390c83ac3ce2
+      .github/workflows/ci.yml: 4b4973d98cad275287379cb437deec54ee3d395858824d3f464046de2df54bb6
+      .github/workflows/platform.yml: e6966cd108a7fc23036a060e282e0bad9c497dd4fdf4383ec300b02fae2e8bec
+      azure/README.md: 0aca8db9c747f80512c70402de5a4b9c513da1571449caf54eb1080a39292967
+      docs/ENVIRONMENT_CONFIGURATION.md: 2ab1d64005f8a3b7f40db2e426759f4a5698884bbe6d0205c6d155fa4ff331ec
+      docs/INTEGRATION_TESTING.md: a88822777fda9a68953f6c0e26667daec229337230e88c1d085780163583cb31
+      docs/LOCAL_DEVELOPMENT.md: 459f6e6142dbfc13efc73eca47908564257be326415500499ad004585b8b75d3
+      docs/MILESTONE_1C_REPORT.md: 8f30abf9a07feb621354ee568f261a433dabf975385cbf5e8381dfd00700c369
+      docs/TROUBLESHOOTING.md: f2ffab934e7831335bac5841dcd95757b967467454382cdb9252b2509cc9a409
+      keycloak/agrosphere-realm.json: 88ad0659c3b583ffbc32aeebcef07c11f98971655b784162ab4949409def4cfb
+      local-secrets/dev-users.json: e0720e394a479e0f9bf55e0e67faa587ef0b245c1acbab8b462bff2c23ba043a
+      otel/collector.yaml: dec46e4f94ad36f335478846d2da9ee1bacf45bf59adf81c7982a533bf0c12ea
+      rabbitmq/definitions.json: cb4fbd04cb4997ae62a4996e885b6ac19a5120ad04d9f98f3cc5a87bfc93b7ff
+      scripts/configure_identity.py: cb354dd9ce3be5475aaaecc664c22c619adc16e3744dc0c48624fe50bd842691
+      scripts/dev_identity.py: 6e6cb8238a8a62c92972183af2a6837b036e767b0c28648f60524c8d20246583
+      scripts/export_openapi.py: 5027b6ff0a1358c89d7c068f7218a8a83b79318f1206b8f4b2e03d75435bc424
+      scripts/init_broker.py: b8511ca24eeafb3a680845f0c10d531b86bf4e52475e5532bca326b9a1a99ebc
+      scripts/init_local.py: f2c3ad07c5c331c7656aded14e49420e90e833cc28af8f091ecf65fbd7985cea
+      scripts/platform_support.py: c0f2011fef75764639c0d55740e763171cdb6880a04e76e610966ac6511baaff
+      scripts/smoke_platform.py: 28073ebe090dba5a90d47ae4e29c850e6eec22304ec75059ba2f4ea84dfd90bc
+      scripts/validate.py: 63b932b585326957e93e8fa14816743ba5e19e7838db0ec8f4d1a0a1f6296484
+      scripts/verify_tapping.py: 39a23ca8151142c89da7640499338d681ed51e9d5da76c8146aec1e041d5eb77
+      tests/contracts/estate.openapi.json: 2e7a0b028d91f9f2996289955d52d84e14d65e813582ade46772e59cd504a060
+      tests/contracts/manifest.json: abb17617e0c3520042aa9dd0aac48519adebbeb5eaba1a416d5a2568464941f3
+      tests/contracts/spatial.openapi.json: ca853e9ff9e8f8b752854ceaaf001622490b2a089478757320c356d15b301f74
+      tests/contracts/events/spatial/v1/DigitalTwinAssetRegistered.schema.json: d46b29fb3171339c986e5e2dee526c080965c1314434a81b6983a0b5a9b0c91b
+      tests/contracts/events/spatial/v1/SpatialBoundaryChanged.schema.json: ee2883c66b3b8606799f73733c14761a0f2c617e22f1e12c2d3c4adfce1b85d7
+      tests/contracts/events/spatial/v1/SpatialFeatureCreated.schema.json: 4edd367673b4f8d0c634100265676b36eaed92eb4f1cbe9345202180d120ff4c
+      tests/contracts/events/spatial/v1/SpatialFeatureUpdated.schema.json: d5aff1cb168c96453ef79e329d903b2495d88a3c5c5069dcb673ecacf43f701a
+      tests/contracts/events/spatial/v1/SpatialLayerCreated.schema.json: 569fa41811f3728f478ccd7ca4942031b92b03f68303b17ddafcc1bad86dece5
+      tests/contracts/events/v2/EstateCreated.schema.json: 9f6d63c477759e2a3a7fcce3a1444febad0cef7e59548c6da7a04c160882d668
+      tests/contracts/events/v2/EstateUpdated.schema.json: f74b3829d2889a363792df10eb3c05dfdfc2b553a75e51a5ec9b20de2e2a46bc
+      tests/contracts/events/v2/PlantationBlockCreated.schema.json: d7a6a5bff8a8c1fc3fa930c044098dbbf0877a944d87109cd25e00417c0cadee
+      tests/contracts/events/v2/PlantationBlockUpdated.schema.json: c99731baf15262ef3ddefac0dc64eacf76bbd1f82c87d12f8cb1077dcbdfcd02
+    test_files:
+    - tests/contracts/estate.openapi.json
+    - tests/contracts/manifest.json
+    - tests/contracts/spatial.openapi.json
+    - tests/contracts/events/spatial/v1/DigitalTwinAssetRegistered.schema.json
+    - tests/contracts/events/spatial/v1/SpatialBoundaryChanged.schema.json
+    - tests/contracts/events/spatial/v1/SpatialFeatureCreated.schema.json
+    - tests/contracts/events/spatial/v1/SpatialFeatureUpdated.schema.json
+    - tests/contracts/events/spatial/v1/SpatialLayerCreated.schema.json
+    - tests/contracts/events/v2/EstateCreated.schema.json
+    - tests/contracts/events/v2/EstateUpdated.schema.json
+    - tests/contracts/events/v2/PlantationBlockCreated.schema.json
+    - tests/contracts/events/v2/PlantationBlockUpdated.schema.json
+    test_results: []
+    recent_commits:
+    - commit: 3268651e1d48a38f858351c105ab54b4103c3ded
+      date: '2026-10-24T15:48:10-05:00'
+      subject: Release version 0.3.0; update changelog, add operations service to
+        compose, enhance identity configuration, and implement isolated acceptance
+        testing
+    - commit: 0caac03f5ebc4b5fe05f70cdca534e5850c19d99
+      date: '2026-10-24T01:22:45-05:00'
+      subject: Update comments for clarity on localhost cookie policy behavior in
+        dev_identity.py
+    - commit: da21832147f2c120b371f98fc0aca7db57ab9201
+      date: '2026-10-24T01:12:45-05:00'
+      subject: Enhance platform integration and validation scripts; add development
+        identity generation and improve smoke test validations
+    - commit: 798f464e33c69d248a7dbac0c428d3bb49fed4f9
+      date: '2026-10-24T01:08:00-05:00'
+      subject: Refactor code structure for improved readability and maintainability
+    warnings: []
+  - id: agrosphere-operations-service
+    path: C:\Projects\agrosphere\agrosphere-operations-service
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: fbfda7e87dc0f650f013e6082d1f886df888b6c9
+    status: ''
+    error: null
+    dirty: false
+    main_language: Java
+    languages:
+    - Java
+    - Python
+    frameworks:
+    - Spring Boot
+    build_systems:
+    - Maven
+    - Python packaging
+    test_commands:
+    - ./mvnw verify
+    commands_executed: false
+    readmes:
+    - README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents: []
+    contracts:
+    - src/main/resources/contracts/operations-service.yaml
+    - src/main/resources/contracts/events/TappingAssignmentCancelled.schema.json
+    - src/main/resources/contracts/events/TappingAssignmentCreated.schema.json
+    - src/main/resources/contracts/events/TappingAssignmentStarted.schema.json
+    - src/main/resources/contracts/events/TappingCompleted.schema.json
+    - src/main/resources/contracts/events/TappingMissed.schema.json
+    - src/main/resources/contracts/events/TappingScheduleActivated.schema.json
+    - target/classes/contracts/operations-service.yaml
+    - target/classes/contracts/events/TappingAssignmentCancelled.schema.json
+    - target/classes/contracts/events/TappingAssignmentCreated.schema.json
+    - target/classes/contracts/events/TappingAssignmentStarted.schema.json
+    - target/classes/contracts/events/TappingCompleted.schema.json
+    - target/classes/contracts/events/TappingMissed.schema.json
+    - target/classes/contracts/events/TappingScheduleActivated.schema.json
+    - target/events/TappingAssignmentCancelled-797c89e6-68ab-4d5d-96d7-d79a251f87db.json
+    - target/events/TappingAssignmentCreated-579ca9e4-41b5-4fc6-8fd5-395caa3cc2a8.json
+    - target/events/TappingAssignmentCreated-9c84ba6d-2726-4056-a10f-af4349e96573.json
+    - target/events/TappingAssignmentCreated-d5960c08-3bdd-49f1-829e-57016a43bb67.json
+    - target/events/TappingAssignmentCreated-ead42268-e115-46dc-86a1-deac9ef6110b.json
+    - target/events/TappingAssignmentCreated-f03e5bd9-9896-4c57-a005-fb0acc460b14.json
+    - target/events/TappingAssignmentStarted-f51b1b82-3849-436e-aa7d-de4329c11ac6.json
+    - target/events/TappingCompleted-d6782624-5e14-4f5a-af65-467e7af04556.json
+    - target/events/TappingMissed-326a64f9-03b3-414d-af34-d4dd6db5234d.json
+    - target/events/TappingScheduleActivated-c75296b2-f042-413d-aae6-a347bb722db2.json
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    source_files:
+    - src/main/java/com/agrosphere/operations/Application.java
+    - src/main/java/com/agrosphere/operations/SecurityConfiguration.java
+    - src/main/java/com/agrosphere/operations/adapter/in/messaging/package-info.java
+    - src/main/java/com/agrosphere/operations/adapter/in/web/package-info.java
+    - src/main/java/com/agrosphere/operations/adapter/out/persistence/package-info.java
+    - src/main/java/com/agrosphere/operations/api/CorrelationFilter.java
+    - src/main/java/com/agrosphere/operations/api/Problems.java
+    - src/main/java/com/agrosphere/operations/api/TappingController.java
+    - src/main/java/com/agrosphere/operations/application/Access.java
+    - src/main/java/com/agrosphere/operations/application/DomainEvents.java
+    - src/main/java/com/agrosphere/operations/application/EstateValidation.java
+    - src/main/java/com/agrosphere/operations/application/Requests.java
+    - src/main/java/com/agrosphere/operations/application/TappingRepository.java
+    - src/main/java/com/agrosphere/operations/application/TappingService.java
+    - src/main/java/com/agrosphere/operations/application/package-info.java
+    - src/main/java/com/agrosphere/operations/application/port/out/package-info.java
+    - src/main/java/com/agrosphere/operations/config/JwtValidationConfiguration.java
+    - src/main/java/com/agrosphere/operations/config/OpenApiConfiguration.java
+    - src/main/java/com/agrosphere/operations/config/RuntimeConfiguration.java
+    - src/main/java/com/agrosphere/operations/domain/Rules.java
+    - src/main/java/com/agrosphere/operations/domain/TappingAssignment.java
+    - src/main/java/com/agrosphere/operations/domain/TappingMissedReason.java
+    - src/main/java/com/agrosphere/operations/domain/TappingRecord.java
+    - src/main/java/com/agrosphere/operations/domain/TappingSchedule.java
+    - src/main/java/com/agrosphere/operations/domain/package-info.java
+    - src/main/java/com/agrosphere/operations/infrastructure/integration/EstateHttpClient.java
+    - src/main/java/com/agrosphere/operations/infrastructure/messaging/Events.java
+    - src/main/java/com/agrosphere/operations/infrastructure/messaging/OutboxDispatcher.java
+    - src/main/java/com/agrosphere/operations/infrastructure/messaging/OutboxMetrics.java
+    - src/main/java/com/agrosphere/operations/infrastructure/persistence/TappingStore.java
+    file_fingerprints:
+      AGENTS.md: 6ba2f5af0d1b26b6c38a92e962902205c455310642a5957344b18e119009f39a
+      CHANGELOG.md: c6029a5523fbefef1d6f79cac8fe78ba718589c0775e7c97fab48644a050cbbb
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 68f751c3059c7dfe95a46442df505ee79354827c00fa94668fe73ef1fe67e305
+      .github/workflows/ci.yml: 269ba0b42a5c4393aaae995b6a7e15069801a95537dfc454105edfbc3b47e26c
+      scripts/validate_contracts.py: 05f6e86ccfd2566467a32aade21f31eca9cc60bb8a56fdd2403c2727d703c316
+      src/main/java/com/agrosphere/operations/Application.java: 76c2ed9251075256451eff89e680ee57be55ee28b324e8249ce7dd1922be30eb
+      src/main/java/com/agrosphere/operations/SecurityConfiguration.java: ef10db3fe59453aedb47a174e065f5900872ec862a58d8d50a93942a71bcc2fa
+      src/main/java/com/agrosphere/operations/adapter/in/messaging/package-info.java: 2b8c016bee170a5c4ad8c884453fdd581f66ed7cbc17cebf1798f4f69d57b93f
+      src/main/java/com/agrosphere/operations/adapter/in/web/package-info.java: 91e9b6da0379e1d616655c3a8829488b1af86a29713784931875c92d61b543e0
+      src/main/java/com/agrosphere/operations/adapter/out/persistence/package-info.java: c3dc7163ec4a6dc5acf9fbb9a508f08ed7adcf923927807f104bcc01ae24dfc2
+      src/main/java/com/agrosphere/operations/api/CorrelationFilter.java: 42f1a36bd0fe5a857e864b84a488184fcd3556f11cb8b848bb2fdd2097e81863
+      src/main/java/com/agrosphere/operations/api/Problems.java: 595dd73da793535ce11040f1999876015042ac51f220177a653c67b4f4cb17bf
+      src/main/java/com/agrosphere/operations/api/TappingController.java: 4de9e5aa0917c002bfcd5990fcb6cae45d26e0d73ff0b1be2fc56aede155011f
+      src/main/java/com/agrosphere/operations/application/Access.java: c1dad35b99250d9d20c4b3d661c4b3597cee3130a834b4bb1b02e865f9d3ba54
+      src/main/java/com/agrosphere/operations/application/DomainEvents.java: d3312b4c981d748b6a60b6648ae014ef4fb49a6abc07c5d8ab3bbee5d08503f2
+      src/main/java/com/agrosphere/operations/application/EstateValidation.java: 44398c2dfb4e977d44fadcd013fef3f7bfa334ed471d78fe3cab030e4d55bbca
+      src/main/java/com/agrosphere/operations/application/Requests.java: 06ab35f8daae937e7e2e9ea1ec5dce3b49ab423d98a24f47bff8df8e8fbc36c4
+      src/main/java/com/agrosphere/operations/application/TappingRepository.java: d0af3b8420acde75b483934d8dc0be739a39b3c7302f43e17ffac2b565e6b11a
+      src/main/java/com/agrosphere/operations/application/TappingService.java: b86cbbccbb38f189a243a98dabfecaa97af82a35eeed4b7a9fcd15e866c019d0
+      src/main/java/com/agrosphere/operations/application/package-info.java: 7c08bf8d79ba880bb4398ceb23aa22ec72800f64104e3dea42ce383fe8aae89c
+      src/main/java/com/agrosphere/operations/application/port/out/package-info.java: afc37f3c463cac0b295566867163c09b608e5c18af3f03d77a7eb07e738ac4b4
+      src/main/java/com/agrosphere/operations/config/JwtValidationConfiguration.java: 23739c96e5f46bbbf352f37cb23f2bc2ddcde1bb57719b4c515f03b69616df41
+      src/main/java/com/agrosphere/operations/config/OpenApiConfiguration.java: 248b86d7724bb89ab4add866da7d1978b2206b6fcca14698aa3029f60a6672fe
+      src/main/java/com/agrosphere/operations/config/RuntimeConfiguration.java: 28900d6599e3eab58a0ab0d04dedd151f8dae6b9d818d77bd2e6b604bb602383
+      src/main/java/com/agrosphere/operations/domain/Rules.java: 939ab9a112bd125b58b89aae2d994b3a6d31cb17267ca46aceb9fe09bd371abd
+      src/main/java/com/agrosphere/operations/domain/TappingAssignment.java: a3c674fcaffcfcfe8ca0a08804ecd3ab5699569f5cf8afddf2dd7208288267fd
+      src/main/java/com/agrosphere/operations/domain/TappingMissedReason.java: beeddd638accc16fd79cff8456a4882dba15401aa957024de1a2c256c4f79c21
+      src/main/java/com/agrosphere/operations/domain/TappingRecord.java: b8435c0f66c38d09cdd62bf3c4cbc59fd14ad233ee012113bb0bd566396bbb34
+      src/main/java/com/agrosphere/operations/domain/TappingSchedule.java: cfe4d0c80373ccc31d2ab3d6ca7e57ac4863c25bc4685170a44243f4833fbf76
+      src/main/java/com/agrosphere/operations/domain/package-info.java: ff48bbc993ea9c14473b1ad6b6693a963527d736206c841bf570811f8439ad47
+      src/main/java/com/agrosphere/operations/infrastructure/integration/EstateHttpClient.java: e2bc5dee582667ee822bf6289fef99ead409e1bc94df9917c7b701fae52e5966
+      src/main/java/com/agrosphere/operations/infrastructure/messaging/Events.java: 89fe9ff4d762ed6d367073db44202729d62eb2104d1111ad94bd58480a66a109
+      src/main/java/com/agrosphere/operations/infrastructure/messaging/OutboxDispatcher.java: a3fe6e3357e83118a3933035aa332581bacf15a54263c53982544598cbffae7d
+      src/main/java/com/agrosphere/operations/infrastructure/messaging/OutboxMetrics.java: a2cfd89dcda6168459a50d4f68f17a8b11fa9416dbdf55a1c6110cf787206900
+      src/main/java/com/agrosphere/operations/infrastructure/persistence/TappingStore.java: 84082f19fd1464a43a820eb69e7dcd3eaa3ba0deb0e8e88d83173c6bcf7d2268
+      src/main/resources/application.yaml: 2639528728362c7816a4cecb7ddb6ac115cc57172f69f767b989d908257cdf6f
+      src/main/resources/contracts/operations-service.yaml: 84d83a3e0f116eb3a32738ce0f528b48df3c27cc4f6c13ef1821f25d8dab40b3
+      src/main/resources/contracts/events/TappingAssignmentCancelled.schema.json: 71b18783088fb9b0c31de3f89ee290b9763a50039cd4264d3289088a6400d3f7
+      src/main/resources/contracts/events/TappingAssignmentCreated.schema.json: 13627255d5263816357abdf4ca14b02ee0182df786f89b1cd580a6addbfa3189
+      src/main/resources/contracts/events/TappingAssignmentStarted.schema.json: b187cc74a92c81d4617357b1fecbf55d2b116e410f5ea9fba283239d041c82a0
+      src/main/resources/contracts/events/TappingCompleted.schema.json: 5b16dd80b6516087468223bff372c8f6cc5a5a5851c2b27771a16cc2b15b993b
+      src/main/resources/contracts/events/TappingMissed.schema.json: 4c4b7695551be1dd685a377447fedec40f3a9d05a903fdc8f10e5793af1244c7
+      src/main/resources/contracts/events/TappingScheduleActivated.schema.json: 554f177a23339a491930508b7241220cf6f7ce21ef4f64019ca12a39f435abac
+      src/main/resources/db/migration/V1__messaging_foundation.sql: a7dcd975d538706cafa027625ed9393a1cc6f3c855f69a3c7fadec851c979220
+      src/main/resources/db/migration/V2__rubber_tapping.sql: f17a05918d5e5540bf1e7c4a2cc88bb7451959198ca48d2e72c111df1cd28306
+      src/test/java/com/agrosphere/operations/AuthorizationTest.java: 1033a53ce9ae302929e5f566c6442c2930dfd6a7b30c4f54bb5fc47b7c53e14f
+      src/test/java/com/agrosphere/operations/DomainTest.java: d6524b4510b3693afe28f99c8009f2ab88c00a8e97df0cf7d6400b4a8d4eb676
+      src/test/java/com/agrosphere/operations/OutboxDispatcherTest.java: 2fe58ca31d61b39edbf031b79d096f326eb676d2a836e6e15a0182db8ad21560
+      src/test/java/com/agrosphere/operations/SecurityPolicyTest.java: d1b309a2e13427aa23a4e62211a9187adf762ed63096c84cf20b2d474791b53c
+      src/test/java/com/agrosphere/operations/TappingServiceIT.java: 9580f1ed33d67f8e7e662be044bf930177f010ad23b2789575d08c30b4bca2ed
+    test_files:
+    - src/test/java/com/agrosphere/operations/AuthorizationTest.java
+    - src/test/java/com/agrosphere/operations/DomainTest.java
+    - src/test/java/com/agrosphere/operations/OutboxDispatcherTest.java
+    - src/test/java/com/agrosphere/operations/SecurityPolicyTest.java
+    - src/test/java/com/agrosphere/operations/TappingServiceIT.java
+    test_results:
+    - path: target/failsafe-reports/TEST-com.agrosphere.operations.TappingServiceIT.xml
+      tests: 10
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.operations.AuthorizationTest.xml
+      tests: 9
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.operations.DomainTest.xml
+      tests: 14
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.operations.OutboxDispatcherTest.xml
+      tests: 7
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.operations.SecurityPolicyTest.xml
+      tests: 4
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    recent_commits:
+    - commit: fbfda7e87dc0f650f013e6082d1f886df888b6c9
+      date: '2026-10-24T15:48:22-05:00'
+      subject: Add comprehensive unit and integration tests for domain operations
+        and messaging
+    - commit: ba453aa1f28c22a0feb8315e9c73872e2ac30331
+      date: '2026-10-24T01:09:33-05:00'
+      subject: 'feat: initialize agrosphere-operations-service with foundational structure'
+    warnings: []
+  - id: agrosphere-spatial-service
+    path: C:\Projects\agrosphere\agrosphere-spatial-service
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: 2a7dbda842141fca041510ca79481ea0454eaaf8
+    status: ''
+    error: null
+    dirty: false
+    main_language: Java
+    languages:
+    - Java
+    frameworks:
+    - Spring Boot
+    build_systems:
+    - Maven
+    test_commands:
+    - ./mvnw verify
+    commands_executed: false
+    readmes:
+    - README.md
+    - examples/README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents:
+    - docs/MILESTONE_1B_REPORT.md
+    contracts:
+    - src/main/resources/contracts/spatial-service.openapi.json
+    - src/main/resources/contracts/events/spatial/v1/DigitalTwinAssetRegistered.schema.json
+    - src/main/resources/contracts/events/spatial/v1/SpatialBoundaryChanged.schema.json
+    - src/main/resources/contracts/events/spatial/v1/SpatialFeatureCreated.schema.json
+    - src/main/resources/contracts/events/spatial/v1/SpatialFeatureUpdated.schema.json
+    - src/main/resources/contracts/events/spatial/v1/SpatialLayerCreated.schema.json
+    - src/main/resources/contracts/events/v2/EstateCreated.schema.json
+    - src/main/resources/contracts/events/v2/EstateUpdated.schema.json
+    - src/main/resources/contracts/events/v2/PlantationBlockCreated.schema.json
+    - src/main/resources/contracts/events/v2/PlantationBlockUpdated.schema.json
+    - target/classes/contracts/spatial-service.openapi.json
+    - target/classes/contracts/events/spatial/v1/DigitalTwinAssetRegistered.schema.json
+    - target/classes/contracts/events/spatial/v1/SpatialBoundaryChanged.schema.json
+    - target/classes/contracts/events/spatial/v1/SpatialFeatureCreated.schema.json
+    - target/classes/contracts/events/spatial/v1/SpatialFeatureUpdated.schema.json
+    - target/classes/contracts/events/spatial/v1/SpatialLayerCreated.schema.json
+    - target/classes/contracts/events/v2/EstateCreated.schema.json
+    - target/classes/contracts/events/v2/EstateUpdated.schema.json
+    - target/classes/contracts/events/v2/PlantationBlockCreated.schema.json
+    - target/classes/contracts/events/v2/PlantationBlockUpdated.schema.json
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    - docs/MILESTONE_1B_REPORT.md
+    source_files:
+    - src/main/java/com/agrosphere/spatial/SecurityConfiguration.java
+    - src/main/java/com/agrosphere/spatial/SpatialServiceApplication.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateListener.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/messaging/package-info.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/web/ApiErrors.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/web/BodyLimitFilter.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/web/CorrelationFilter.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/web/OpenApiConfiguration.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/web/SecurityProblem.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/web/SpatialController.java
+    - src/main/java/com/agrosphere/spatial/adapter/in/web/package-info.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/messaging/JdbcEventOutbox.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/messaging/MessagingConfiguration.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/messaging/OutboxDispatcher.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/messaging/TraceTransport.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/persistence/package-info.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/security/JwtEstateAccess.java
+    - src/main/java/com/agrosphere/spatial/adapter/out/security/JwtValidationConfiguration.java
+    - src/main/java/com/agrosphere/spatial/application/CorrelationContext.java
+    - src/main/java/com/agrosphere/spatial/application/GeoJsonImports.java
+    - src/main/java/com/agrosphere/spatial/application/Requests.java
+    - src/main/java/com/agrosphere/spatial/application/SpatialService.java
+    - src/main/java/com/agrosphere/spatial/application/package-info.java
+    - src/main/java/com/agrosphere/spatial/application/port/out/EstateAccess.java
+    - src/main/java/com/agrosphere/spatial/application/port/out/EventOutbox.java
+    - src/main/java/com/agrosphere/spatial/application/port/out/SpatialStore.java
+    - src/main/java/com/agrosphere/spatial/application/port/out/package-info.java
+    - src/main/java/com/agrosphere/spatial/domain/GeometryValidator.java
+    - src/main/java/com/agrosphere/spatial/domain/SpatialException.java
+    - src/main/java/com/agrosphere/spatial/domain/SpatialModels.java
+    - src/main/java/com/agrosphere/spatial/domain/package-info.java
+    file_fingerprints:
+      AGENTS.md: 12b72ca28c2a18c29341a2c18b083c863ab70f4b02691178ba0e7f6bea38ad10
+      CHANGELOG.md: 67fc8f649dbe0163e8ef5dc3e0b907b5e21f81dc8ff19676f27ac34dde1a58a8
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: fa3975eb140a461606c5b6be22406208d32523b444785f60ef3c210665fd050b
+      .github/workflows/ci.yml: 7babafad6cb724b1a6a1e56acbdfdbc0bc75dfd5d018e8eba1f06aeea6130a72
+      deploy/compose.spatial.yaml: 23601317db0f07e3a0fd129add7f3a4c358cc9255abc8e8f720ba57d3ecd5d25
+      docs/MILESTONE_1B_REPORT.md: c07f7755312a53851ad3ad792a0c65f183cab43ba5f7b5f3e695b8a4b80c57ef
+      examples/README.md: 60566db80f5ea70e97ac6a634ceed45c14d48d4538b0a1131dfdbc1bec4c667d
+      examples/synthetic-assets.json: 1f51947c132008e0a3968914e870ce173cce37a9223e11f9c281a631391527d5
+      examples/synthetic-estate-events.json: e14c619a084415eb513556b1758be94e574ff3e6e30b4c154e34435dd9af3012
+      scripts/smoke_image.py: 32dd673c95c6ab96f8d03f617d60e2629310fada51b9482ed286ffad0abd040f
+      scripts/validate_contracts.py: 42deb7e5c3193fabeae65a815af9d9ac89de49be9214cae807ca9990462b065b
+      src/main/java/com/agrosphere/spatial/SecurityConfiguration.java: 502e1ab407e92b2e0b412b949dadfdfd08bfc5c25453c40465d9bfdbe33f3d56
+      src/main/java/com/agrosphere/spatial/SpatialServiceApplication.java: c149afe15dada746eb0cd8e5a8eeba80c3fbb6642d9e0774d63bca0dc5dd11eb
+      src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateListener.java: fce562d491400cd1c793a3946db43f031fc4faa93d855cc9957f2211abb58911
+      src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java: 8cc0ce460e0773e691fe69f30341a05d381b5f9847938248fd9a1f4237a3dce8
+      src/main/java/com/agrosphere/spatial/adapter/in/messaging/package-info.java: 69de8f9db3f2051b11ba2d602f349268ed6704aefe2a060a1975f2a61990ace7
+      src/main/java/com/agrosphere/spatial/adapter/in/web/ApiErrors.java: 9b3aaa8c20a05538928271477e5306b8acd0ed2abc004f3d37246fbf23542e73
+      src/main/java/com/agrosphere/spatial/adapter/in/web/BodyLimitFilter.java: cc6957df4e3f673b4b0256eb8382c7a0a84d2896571231fd2c7ea7485c84c9cc
+      src/main/java/com/agrosphere/spatial/adapter/in/web/CorrelationFilter.java: 3b1c5f4a71ae03f49d838b63b1a763a6e5be817d5414af990b52ed3e0cb0c4fb
+      src/main/java/com/agrosphere/spatial/adapter/in/web/OpenApiConfiguration.java: 74c21db1eb0c6e23e1279b1b3058a5e711cf5641841f368471d5921fa62afae9
+      src/main/java/com/agrosphere/spatial/adapter/in/web/SecurityProblem.java: 561533a93b30b8546b50891b486e038c5258468cb1d08ef6183bbea123fb1604
+      src/main/java/com/agrosphere/spatial/adapter/in/web/SpatialController.java: e2a6bfea4aaf7ea197a8cdd821ec3b1b64c017b5bbd1e7fadc9d2e5838803e25
+      src/main/java/com/agrosphere/spatial/adapter/in/web/package-info.java: cfc136d9e292d53f0e0c97024b2196dc1127b92f82d826158b512ad53e7cb68a
+      src/main/java/com/agrosphere/spatial/adapter/out/messaging/JdbcEventOutbox.java: ed74e513e4b0a25cafcb6d1addf4a1addcc32c6ccc42ea18ea8470641253bede
+      src/main/java/com/agrosphere/spatial/adapter/out/messaging/MessagingConfiguration.java: 18c8b16bd09203cd2a903c0f1ff4f94a619cf7a936dd2232fddd423baca193d6
+      src/main/java/com/agrosphere/spatial/adapter/out/messaging/OutboxDispatcher.java: 592342cb811613722f54808c925c331ecb69fb7e7bfc55d665e24d8f19b0a24f
+      src/main/java/com/agrosphere/spatial/adapter/out/messaging/TraceTransport.java: bacc6dc38716db9a817e5628de4d30b7998c2cde761e421efe94df08f250905d
+      src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java: 5c528737d999ba5868fae52594acdae269982e9bf1ba23f2dcc41ab9f6165eeb
+      src/main/java/com/agrosphere/spatial/adapter/out/persistence/package-info.java: d0472afdc5df8547c34783cf69f87fde8b811321c37c8c3efdcb6e3370bae4af
+      src/main/java/com/agrosphere/spatial/adapter/out/security/JwtEstateAccess.java: 8ead7a26fbe509fb09dec7373e2cb34b9c57c6a37d074ca2bfdefda547e51c20
+      src/main/java/com/agrosphere/spatial/adapter/out/security/JwtValidationConfiguration.java: 9c4e341dd84da9a88b26cedfe09a2f9e33367d0b64997e586394b79ec887370e
+      src/main/java/com/agrosphere/spatial/application/CorrelationContext.java: 1875df927efd7351d2a9b48133ddcfd2b6581191cd243ca7b5fd2afe5ea8b9b5
+      src/main/java/com/agrosphere/spatial/application/GeoJsonImports.java: 97c265d309d23a6b78003cfa839f077ae06f5f541f0c9989ec28b91657837b00
+      src/main/java/com/agrosphere/spatial/application/Requests.java: f9123b7c113af50cc3ab054878aa01c0f721ad4a7ad96eb39c9a3110805ff491
+      src/main/java/com/agrosphere/spatial/application/SpatialService.java: a9c1b6ffa6663757d6ab872e8c762023a4b76bfa6ddd822fab2bc76bb9a4960a
+      src/main/java/com/agrosphere/spatial/application/package-info.java: 335806bc0902a0900a1d993cd2483057fbb98163b8dae5f9df3f1986d8dce804
+      src/main/java/com/agrosphere/spatial/application/port/out/EstateAccess.java: 172a98c0dc833bb1304063572412f3196d5192bb741c4b8234d12d5173eee903
+      src/main/java/com/agrosphere/spatial/application/port/out/EventOutbox.java: 469584bccdaa7df24c9798d3d20b55e2beef5b76deca890ed977a6b051f508d8
+      src/main/java/com/agrosphere/spatial/application/port/out/SpatialStore.java: 076ba215a387b97fd74f2c83eb20111ca944f1321a00f665c25520421a523d81
+      src/main/java/com/agrosphere/spatial/application/port/out/package-info.java: 4ab66d65a41bc00165b3ea8e89f036c5c22618040b3e958b3556bec52c9ba72b
+      src/main/java/com/agrosphere/spatial/domain/GeometryValidator.java: 8725e87b4ac1ebc51bd9312d04314806b897d6f63edc201d0eeab05db1ecf5f4
+      src/main/java/com/agrosphere/spatial/domain/SpatialException.java: 54de5282b5651c021742c3761c9623d0330b316e381cb0ff0cfcb4f0b15dcd43
+      src/main/java/com/agrosphere/spatial/domain/SpatialModels.java: 1b9ec1041f00b7a1b736db46362484620ed4b1b29e86059aa7d5b322661c160d
+      src/main/java/com/agrosphere/spatial/domain/package-info.java: 958c4a01679298b0c6595546af8e1cf99f95c85080c721edb4c0a34d106d12cf
+      src/main/resources/application.yaml: 36d359f6aa66292e4aa8d253a81a10175ced1475d8aaf9c0b88a83970d736986
+      src/main/resources/contracts/spatial-service.openapi.json: ca853e9ff9e8f8b752854ceaaf001622490b2a089478757320c356d15b301f74
+      src/main/resources/contracts/events/spatial/v1/DigitalTwinAssetRegistered.schema.json: d46b29fb3171339c986e5e2dee526c080965c1314434a81b6983a0b5a9b0c91b
+      src/main/resources/contracts/events/spatial/v1/SpatialBoundaryChanged.schema.json: ee2883c66b3b8606799f73733c14761a0f2c617e22f1e12c2d3c4adfce1b85d7
+      src/main/resources/contracts/events/spatial/v1/SpatialFeatureCreated.schema.json: 4edd367673b4f8d0c634100265676b36eaed92eb4f1cbe9345202180d120ff4c
+      src/main/resources/contracts/events/spatial/v1/SpatialFeatureUpdated.schema.json: d5aff1cb168c96453ef79e329d903b2495d88a3c5c5069dcb673ecacf43f701a
+      src/main/resources/contracts/events/spatial/v1/SpatialLayerCreated.schema.json: 569fa41811f3728f478ccd7ca4942031b92b03f68303b17ddafcc1bad86dece5
+      src/main/resources/contracts/events/v2/EstateCreated.schema.json: 9f6d63c477759e2a3a7fcce3a1444febad0cef7e59548c6da7a04c160882d668
+      src/main/resources/contracts/events/v2/EstateUpdated.schema.json: f74b3829d2889a363792df10eb3c05dfdfc2b553a75e51a5ec9b20de2e2a46bc
+      src/main/resources/contracts/events/v2/PlantationBlockCreated.schema.json: d7a6a5bff8a8c1fc3fa930c044098dbbf0877a944d87109cd25e00417c0cadee
+      src/main/resources/contracts/events/v2/PlantationBlockUpdated.schema.json: c99731baf15262ef3ddefac0dc64eacf76bbd1f82c87d12f8cb1077dcbdfcd02
+      src/main/resources/db/migration/V1__messaging_foundation.sql: a7dcd975d538706cafa027625ed9393a1cc6f3c855f69a3c7fadec851c979220
+      src/main/resources/db/migration/V2__spatial_twin.sql: a7fdcaced0c9543a4e833ca81b753ee42e7c1bfd3056a30cf6442afc31b132c6
+      src/main/resources/db/migration/V3__outbox_trace_context.sql: 54c2d8f839c42104a770e98acb33726736f19da5150add02fa5e7fa37b9c3c9e
+      src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java: 68f74a76caab3bbadbae208839465ddb31b672e6b91081a5fc03d5aabdfe2bac
+      src/test/java/com/agrosphere/spatial/GeometryValidationTest.java: 9cad0bcc0fe8484ec1afb2db1a1270480ba14a7838438774e7768f97c9fa1afc
+      src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java: c0814a56f85aff37475c9902d7ed36a0c9f19d59a034553d2f5f9a556c1e88c7
+      src/test/java/com/agrosphere/spatial/SpatialServiceIT.java: 354012fc3e244a6bcea26d7eb6ba47716795aa6d21d6d415739512ac01924045
+      src/test/resources/oidc-public-jwk.json: 75dd51e4171efbf16a18ab4312be1f9649f7b58b474f1532c400dc8bf3ec4944
+      src/test/resources/postgis.sql: a6f930447ac37ac87795cfa0652ad6d44f6cf683422cb0226f00b181e33fb1bd
+    test_files:
+    - src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java
+    - src/test/java/com/agrosphere/spatial/GeometryValidationTest.java
+    - src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java
+    - src/test/java/com/agrosphere/spatial/SpatialServiceIT.java
+    - src/test/resources/oidc-public-jwk.json
+    - src/test/resources/postgis.sql
+    test_results:
+    - path: target/failsafe-reports/TEST-com.agrosphere.spatial.SpatialServiceIT.xml
+      tests: 12
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.spatial.ApplicationRulesTest.xml
+      tests: 7
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.spatial.GeometryValidationTest.xml
+      tests: 8
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.spatial.SecurityPolicyTest.xml
+      tests: 4
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    recent_commits:
+    - commit: 2a7dbda842141fca041510ca79481ea0454eaaf8
+      date: '2026-10-24T01:12:25-05:00'
+      subject: 'feat(changelog): update changelog for version 0.2.1 with new features
+        and enhancements'
+    - commit: 7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3
+      date: '2026-10-24T01:10:10-05:00'
+      subject: 'feat(database): add initial database migrations for messaging and
+        spatial features'
+    warnings: []
+  - id: agrosphere-telemetry-service
+    path: C:\Projects\agrosphere\agrosphere-telemetry-service
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: 8a3c888dea3e1f3c7a94baf5c55a61285b5bcb7a
+    status: ''
+    error: null
+    dirty: false
+    main_language: Java
+    languages:
+    - Java
+    frameworks:
+    - Spring Boot
+    build_systems:
+    - Maven
+    test_commands:
+    - ./mvnw verify
+    commands_executed: false
+    readmes:
+    - README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents: []
+    contracts: []
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    source_files:
+    - src/main/java/com/agrosphere/telemetry/Application.java
+    - src/main/java/com/agrosphere/telemetry/SecurityConfiguration.java
+    - src/main/java/com/agrosphere/telemetry/adapter/in/messaging/package-info.java
+    - src/main/java/com/agrosphere/telemetry/adapter/in/web/package-info.java
+    - src/main/java/com/agrosphere/telemetry/adapter/out/persistence/package-info.java
+    - src/main/java/com/agrosphere/telemetry/application/package-info.java
+    - src/main/java/com/agrosphere/telemetry/application/port/out/package-info.java
+    - src/main/java/com/agrosphere/telemetry/domain/package-info.java
+    file_fingerprints:
+      AGENTS.md: 4b66a94ff4af13908e36fa2d74c1d296bc746c87dea17d7e99364bb686882fd9
+      CHANGELOG.md: 83e7383f0bca0e2d294c290662a32d061a773025b62c814e8c432aa61130590b
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 528162f52d58d364aaa3910bfe1e2e6e20d2bbbdae52cbfdef10096cd30ac524
+      .github/workflows/ci.yml: 8c3fd3639cb51714972f3cae5a17da0b7f2c50b992e4ded2d60c1133274956ca
+      src/main/java/com/agrosphere/telemetry/Application.java: 223fe8b7b7fe95ea77be8074f9a512a966fbcd3c66a62d59dfe9e0417e13c582
+      src/main/java/com/agrosphere/telemetry/SecurityConfiguration.java: 6488200b44957ede28fc5a6695d15d910e6d61228b315cf7ae4b916246fc745f
+      src/main/java/com/agrosphere/telemetry/adapter/in/messaging/package-info.java: d775d9968c5139dfafead057052fc70584c213bf8ee41885fd334b73117f938b
+      src/main/java/com/agrosphere/telemetry/adapter/in/web/package-info.java: 2a43bf17ea885a8f5959b6db1c92a293fbae64afaa63ca0c3ca2345a070cd9b7
+      src/main/java/com/agrosphere/telemetry/adapter/out/persistence/package-info.java: a0ef9b48511fdb77ff29ab05ae2df8d5abdb19e9a8383fca0afdabf752afcfe9
+      src/main/java/com/agrosphere/telemetry/application/package-info.java: 9b47fbf725b5395659fa1a7511e9d0db1aa68825c0f9630dbc22e738b08b93b6
+      src/main/java/com/agrosphere/telemetry/application/port/out/package-info.java: 95c3f51445cf6ec40273cbf84c465c932ed147ecadf58ca879d608f93d25fbf0
+      src/main/java/com/agrosphere/telemetry/domain/package-info.java: 0122bc75d3e12b2f7e9fdac64376f49d0b341b76ef2f52bb437bf52c0c6964a6
+      src/main/resources/application.yaml: 345dafad51d967fa8d73372ab4730c58d117f45cb3c373fcc0542be680a1abcf
+      src/main/resources/db/migration/V1__messaging_foundation.sql: a7dcd975d538706cafa027625ed9393a1cc6f3c855f69a3c7fadec851c979220
+      src/test/java/com/agrosphere/telemetry/SecurityPolicyTest.java: e17cfea5372025e81ef4d4449856ee7b91e8392936a56c13d48e1046592c34d9
+    test_files:
+    - src/test/java/com/agrosphere/telemetry/SecurityPolicyTest.java
+    test_results:
+    - path: target/surefire-reports/TEST-com.agrosphere.telemetry.ApplicationTest.xml
+      tests: 1
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    - path: target/surefire-reports/TEST-com.agrosphere.telemetry.SecurityPolicyTest.xml
+      tests: 4
+      failures: 0
+      errors: 0
+      skipped: 0
+      outcome: historical-pass
+    recent_commits:
+    - commit: 8a3c888dea3e1f3c7a94baf5c55a61285b5bcb7a
+      date: '2026-10-24T01:10:44-05:00'
+      subject: 'feat: initialize agrosphere-telemetry-service with foundational setup'
+    warnings: []
+  - id: agrosphere-web
+    path: C:\Projects\agrosphere\agrosphere-web
+    declared_status: unverified
+    exists: true
+    is_git: true
+    branch: main
+    head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+    status: 'A  .dockerignore
+
+      M  .github/workflows/ci.yml
+
+      M  .gitignore
+
+      A  .prettierignore
+
+      A  .prettierrc.json
+
+      M  AGENTS.md
+
+      M  CHANGELOG.md
+
+      A  Dockerfile
+
+      M  README.md
+
+      M  VERSION
+
+      M  angular.json
+
+      A  contracts/estate.openapi.json
+
+      A  contracts/spatial.openapi.json
+
+      A  docs/ARCHITECTURE.md
+
+      A  docs/INTEGRATION.md
+
+      A  docs/MILESTONE_2_REPORT.md
+
+      A  e2e/fixtures.ts
+
+      A  e2e/graphics.spec.ts
+
+      A  e2e/live.spec.ts
+
+      A  e2e/ui.spec.ts
+
+      A  eslint.config.mjs
+
+      A  nginx.conf
+
+      M  package-lock.json
+
+      M  package.json
+
+      A  playwright.config.ts
+
+      A  proxy.conf.json
+
+      A  public/config.json
+
+      A  public/silent-check-sso.html
+
+      A  public/silent-check-sso.js
+
+      A  scripts/check-api.mjs
+
+      A  scripts/preview.mjs
+
+      A  src/api/estate.generated.ts
+
+      A  src/api/spatial.generated.ts
+
+      A  src/app/api/clients.spec.ts
+
+      A  src/app/api/estate/estate.api.ts
+
+      A  src/app/api/spatial/spatial.api.ts
+
+      M  src/app/app.component.spec.ts
+
+      M  src/app/app.component.ts
+
+      A  src/app/app.routes.ts
+
+      M  src/app/core/api/api-client.ts
+
+      A  src/app/core/auth/auth.guard.spec.ts
+
+      A  src/app/core/auth/auth.guard.ts
+
+      A  src/app/core/auth/auth.service.spec.ts
+
+      A  src/app/core/auth/auth.service.ts
+
+      A  src/app/core/auth/login.component.html
+
+      A  src/app/core/auth/login.component.ts
+
+      A  src/app/core/config.ts
+
+      A  src/app/core/errors.spec.ts
+
+      A  src/app/core/errors.ts
+
+      A  src/app/core/interceptors/gateway.interceptor.spec.ts
+
+      A  src/app/core/interceptors/gateway.interceptor.ts
+
+      A  src/app/features/blocks/block-detail.component.html
+
+      A  src/app/features/blocks/block-detail.component.spec.ts
+
+      A  src/app/features/blocks/block-detail.component.ts
+
+      A  src/app/features/dashboard/dashboard.component.html
+
+      A  src/app/features/dashboard/dashboard.component.spec.ts
+
+      A  src/app/features/dashboard/dashboard.component.ts
+
+      M  src/app/features/digital-twin/README.md
+
+      A  src/app/features/digital-twin/cesium-viewer.component.html
+
+      A  src/app/features/digital-twin/cesium-viewer.component.spec.ts
+
+      A  src/app/features/digital-twin/cesium-viewer.component.ts
+
+      A  src/app/features/digital-twin/cesium-viewer.service.ts
+
+      A  src/app/features/digital-twin/digital-twin.component.html
+
+      A  src/app/features/digital-twin/digital-twin.component.ts
+
+      M  src/app/features/estate/README.md
+
+      A  src/app/features/estates/estate.store.spec.ts
+
+      A  src/app/features/estates/estate.store.ts
+
+      A  src/app/features/spatial-layers/layer-manager.component.html
+
+      A  src/app/features/spatial-layers/layer-manager.component.spec.ts
+
+      A  src/app/features/spatial-layers/layer-manager.component.ts
+
+      A  src/app/layout/shell.component.html
+
+      A  src/app/layout/shell.component.ts
+
+      A  src/app/shared/models.spec.ts
+
+      A  src/app/shared/models.ts
+
+      M  src/environments/environment.production.ts
+
+      M  src/environments/environment.ts
+
+      M  src/index.html
+
+      M  src/main.ts
+
+      M  src/styles.css
+
+      M  tsconfig.app.json
+
+      M  tsconfig.json
+
+      M  tsconfig.spec.json'
+    error: null
+    dirty: true
+    main_language: TypeScript/JavaScript
+    languages:
+    - TypeScript/JavaScript
+    frameworks:
+    - '@angular/core'
+    - cesium
+    build_systems:
+    - npm
+    test_commands:
+    - npm run test
+    commands_executed: false
+    readmes:
+    - README.md
+    - src/app/features/analytics/README.md
+    - src/app/features/digital-twin/README.md
+    - src/app/features/estate/README.md
+    - src/app/features/operations/README.md
+    agent_guidance:
+    - AGENTS.md
+    architecture_documents:
+    - docs/ARCHITECTURE.md
+    - docs/INTEGRATION.md
+    - docs/MILESTONE_2_REPORT.md
+    contracts:
+    - contracts/estate.openapi.json
+    - contracts/spatial.openapi.json
+    milestone_artifacts:
+    - AGENTS.md
+    - CHANGELOG.md
+    - README.md
+    - docs/INTEGRATION.md
+    - docs/MILESTONE_2_REPORT.md
+    - src/app/features/analytics/README.md
+    - src/app/features/estate/README.md
+    - src/app/features/operations/README.md
+    source_files:
+    - src/main.ts
+    - src/api/estate.generated.ts
+    - src/api/spatial.generated.ts
+    - src/app/app.component.spec.ts
+    - src/app/app.component.ts
+    - src/app/app.routes.ts
+    - src/app/api/clients.spec.ts
+    - src/app/api/estate/estate.api.ts
+    - src/app/api/spatial/spatial.api.ts
+    - src/app/core/config.ts
+    - src/app/core/errors.spec.ts
+    - src/app/core/errors.ts
+    - src/app/core/api/api-client.ts
+    - src/app/core/auth/auth.guard.spec.ts
+    - src/app/core/auth/auth.guard.ts
+    - src/app/core/auth/auth.service.spec.ts
+    - src/app/core/auth/auth.service.ts
+    - src/app/core/auth/login.component.ts
+    - src/app/core/interceptors/gateway.interceptor.spec.ts
+    - src/app/core/interceptors/gateway.interceptor.ts
+    - src/app/features/blocks/block-detail.component.spec.ts
+    - src/app/features/blocks/block-detail.component.ts
+    - src/app/features/dashboard/dashboard.component.spec.ts
+    - src/app/features/dashboard/dashboard.component.ts
+    - src/app/features/digital-twin/cesium-viewer.component.spec.ts
+    - src/app/features/digital-twin/cesium-viewer.component.ts
+    - src/app/features/digital-twin/cesium-viewer.service.ts
+    - src/app/features/digital-twin/digital-twin.component.ts
+    - src/app/features/estates/estate.store.spec.ts
+    - src/app/features/estates/estate.store.ts
+    - src/app/features/spatial-layers/layer-manager.component.spec.ts
+    - src/app/features/spatial-layers/layer-manager.component.ts
+    - src/app/layout/shell.component.ts
+    - src/app/shared/models.spec.ts
+    - src/app/shared/models.ts
+    - src/environments/environment.production.ts
+    - src/environments/environment.ts
+    file_fingerprints:
+      .prettierrc.json: c6bc6fc6b031c97774bea2caa5e77ae85d2d02d4ea80962ffafc7a2b1f50d734
+      AGENTS.md: 4e9c308513f6c9b630c898b733d0ee8101134d3b37f4941d0e6c943fac2527ec
+      CHANGELOG.md: 929a7e89464ed13be2161989442ea1c735a83d48386e6c1275b79ef807412b24
+      LICENSE.md: 288341ea93ca1dce3296a50a2e00f2e32a530249987cb3087091589cd3ba5830
+      README.md: 970dc01fb94537fbb22469e8132cd9509569442fd7dadcaaf89f1c6fb429a745
+      angular.json: f084d8804807caabb14095f7b649199273fa0830523abfd2727568500b049535
+      package-lock.json: 221a9241b2f00b7559f2417693f21f5a17ee4746ac027449de7fd14634184e82
+      package.json: 0853553deebbdded9e6d498b474016b4e54f7317253591b1032c23cd002013df
+      playwright.config.ts: b59d93cbb20ccdb6f29b6c51a4c5a38addb798c20703c0ac2323fd4ceabdd67a
+      proxy.conf.json: b1d2f10afad01264e1e41f27809474876b47fbc4d0db7f14db60b32be8ae3d6f
+      tsconfig.app.json: 5f4183f0947c9a412d936e7ae2a5967d5692a0c9952325f9e8050fccb135d82a
+      tsconfig.json: e291ddb6813726d7b3766c998c62d53f761bba7e602fe1067f99ebc34874a062
+      tsconfig.spec.json: 9b10963104f18795e937f9ff4b22718f5084a4d6cea80010a1e6143f02e706a1
+      .github/workflows/ci.yml: dc9861aa953c43b9cca762a86357b45fa8bc3968917b65c069c10959fca469a6
+      contracts/estate.openapi.json: 2e7a0b028d91f9f2996289955d52d84e14d65e813582ade46772e59cd504a060
+      contracts/spatial.openapi.json: ca853e9ff9e8f8b752854ceaaf001622490b2a089478757320c356d15b301f74
+      docs/ARCHITECTURE.md: 10c1e0f66c28666d553a82924d2083624dc326e6df455bc9d18fb79460c4a8ce
+      docs/INTEGRATION.md: 6fdc336d51c97f633de309ef504d594f2fd779b7345c315abc14ca1e11328b81
+      docs/MILESTONE_2_REPORT.md: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
+      e2e/fixtures.ts: 03f16105c1d973240921fffa9ce0aab52f1e9756432b3412d902b3d2cbbe4717
+      e2e/graphics.spec.ts: c997bd6ceb3dc1294c0360afc7818b327e198a70e932037199e3673158724de0
+      e2e/live.spec.ts: d48ee02fc3c22c72e2d69d67894d926e362af4935ebbd786c5db674fe658e544
+      e2e/ui.spec.ts: 2661c05d0e3df01f02f613efe69942b9f4c465167ac1215b07b034f4d3e223d2
+      public/config.json: 624cf2e9e6cd3f7c282ecff8c5ad634f787db8527bb78b5bda9c120d207fe205
+      src/main.ts: e73a45bebff0d7bddf6f742dee1fceaf872c3b94c2876e1b03c89bf58b42b241
+      src/api/estate.generated.ts: 821f44fdfd11b2d11bcfce233f00f24e1e341392825548c70902cf0fbd71a2ad
+      src/api/spatial.generated.ts: de5d45586fed7225e67c2a375331660dcc3102344fb5cce2940f20bae9b248bd
+      src/app/app.component.spec.ts: d8129591bdc42721e00507f1b2132012012a62990c8b6ddde06ff2bf659393fa
+      src/app/app.component.ts: db42838c32889fd45b49d08721c5bc6a21f4f246cedbdfc8ee297cd420a1098a
+      src/app/app.routes.ts: db6d66f64e9d09543067a0b140e4ca859e6f555097bb0da9cc5d1f1f99a1b776
+      src/app/api/clients.spec.ts: a51a1dee932850abba8245f020e98369f94c41be8475ad70c6153b418ac492cb
+      src/app/api/estate/estate.api.ts: ae8d53f23334e1bb266ba1cd66bd7dde038bbb946a7b155caab7c7161894a41e
+      src/app/api/spatial/spatial.api.ts: eef571f4442bb741f3f235806480a166465434ef952b7bdb365f10574c1cfba5
+      src/app/core/config.ts: 2b331dac3ecdc30bc0d3a7b22400c84b9a6ef7ddcd5193e29562f0c0703e4620
+      src/app/core/errors.spec.ts: e3877680b61b8fb22a160418938882c2b710e3eb7474cde128cbd032023e5920
+      src/app/core/errors.ts: 0deb1f778cb96db52f4c3b47585fe6227134f23652ad658dda84c22c29441547
+      src/app/core/api/api-client.ts: ec06dc7d06378f414957fc84099d8bbd740ac79b3c2fa3ce9163c339ee5357db
+      src/app/core/auth/auth.guard.spec.ts: 4acbe8589bcc645d91a42b8646e865775945c023b4bc40b46054a994f13bdb97
+      src/app/core/auth/auth.guard.ts: afe853e54fc5bd3011f8592bfc824946bb5d110f5c37e95a73420bd9dc2ef264
+      src/app/core/auth/auth.service.spec.ts: 666b69eae77d9bd2f9a36b385ce1fcf52c20a6cd6344e7a9e6b61afe9b20ad04
+      src/app/core/auth/auth.service.ts: 4684e0c08b0b26557f06982f88bfa28132ff3c6ccb2e254ceb0c0f4046fcc008
+      src/app/core/auth/login.component.ts: 0f2b41545e60cdd19a089e5793b23976a40d12a7991097999cbad748c4c431f6
+      src/app/core/interceptors/gateway.interceptor.spec.ts: d1b634a11ceb2bb26249c1494b6dc4464617ce5e31cf3f08789942c3b09aad8e
+      src/app/core/interceptors/gateway.interceptor.ts: 3bd8faa122d687213cbc94532a3d411137e259077d15d86f4115f3bf9bf78dbb
+      src/app/features/analytics/README.md: 9183a321e2979d1cc2a8a0df9b5ed98983bd696e2cc1306b2b189dfff3674d73
+      src/app/features/blocks/block-detail.component.spec.ts: 17062c00ca6f4b77c0beb9c1a26ff2cd3f5aeeef097f99329380bbb8cc1c4594
+      src/app/features/blocks/block-detail.component.ts: 54b77498dbab973a591b768b25501c8438f39580e7556c1b88fae2b3d59a2cfd
+      src/app/features/dashboard/dashboard.component.spec.ts: 89fc680714543ec26472ad891674d4e32f3aa7579a13ef18a6adbcdd660bbd9a
+      src/app/features/dashboard/dashboard.component.ts: feb871a139831b7924a6e5792e29a5d866b612e5bb9dd289d56714e258cd5d48
+      src/app/features/digital-twin/README.md: 7285179d7ef2ceb3ab231d3c6e91ca14133efeb3231f6e2450b484d13396d3e9
+      src/app/features/digital-twin/cesium-viewer.component.spec.ts: 5c89c7c29f48914b9ef113a0fde8e3434b8c0bda26837f652fcaa089f0ef240d
+      src/app/features/digital-twin/cesium-viewer.component.ts: cd0c0ac0e6946d03b7e9f5883f33187dc85ce7f58e83944db8b00b815115e7a8
+      src/app/features/digital-twin/cesium-viewer.service.ts: 78f371da65c79a1551392cc45fadeadb14b3167c27943712745e471581341c82
+      src/app/features/digital-twin/digital-twin.component.ts: 5fd03b751cc025aa082e322a8f972737790c0f79f7d4cf65e669bc9b97d098e2
+      src/app/features/estate/README.md: 7426b4fa79a70bb4e251de9bd9c3bd62ba706a1eb705e670c58a07d17fdf83ca
+      src/app/features/estates/estate.store.spec.ts: ccf2282d67810b9b7dcceef5dd63cb7a59732bdc8633b80b93b7b7bcb7764942
+      src/app/features/estates/estate.store.ts: 29df65fb0a0174eddd716db9ef3697df63b8bba13860e8b09ac0f7da27646a12
+      src/app/features/operations/README.md: 9183a321e2979d1cc2a8a0df9b5ed98983bd696e2cc1306b2b189dfff3674d73
+      src/app/features/spatial-layers/layer-manager.component.spec.ts: 646cf9391984e2bc764d087ca1bdced05f385ace322cf295f15ab793c7b05e7f
+      src/app/features/spatial-layers/layer-manager.component.ts: 5a6a8ba1c57f59b3acf51ec8a38ebbf28bfb47c058927223fc7138aa963e7865
+      src/app/layout/shell.component.ts: 53355fcf83eeee6a33b7989737cf2ef5f95ce9ff0f7d21085632770e36ed3a84
+      src/app/shared/models.spec.ts: 4201b922fe813b714e3eb4c17f514fe9119f462c229a8b1b9ecd75ead6cb32a1
+      src/app/shared/models.ts: cc27ffc86d392ad07558cb5e0e5abf9ad6b9647ade25ef0fe4717f7ed39fa850
+      src/environments/environment.production.ts: 269ef419369dc8710177d9e877aaabecdd0df208f994fc832721d5b2da5dbbde
+      src/environments/environment.ts: 059149bede6dc623dd9577e9c880a8bafabe98da031c362c7e0c8e989547e013
+    test_files:
+    - tsconfig.spec.json
+    - e2e/fixtures.ts
+    - e2e/graphics.spec.ts
+    - e2e/live.spec.ts
+    - e2e/ui.spec.ts
+    - src/app/app.component.spec.ts
+    - src/app/api/clients.spec.ts
+    - src/app/core/errors.spec.ts
+    - src/app/core/auth/auth.guard.spec.ts
+    - src/app/core/auth/auth.service.spec.ts
+    - src/app/core/interceptors/gateway.interceptor.spec.ts
+    - src/app/features/blocks/block-detail.component.spec.ts
+    - src/app/features/dashboard/dashboard.component.spec.ts
+    - src/app/features/digital-twin/cesium-viewer.component.spec.ts
+    - src/app/features/estates/estate.store.spec.ts
+    - src/app/features/spatial-layers/layer-manager.component.spec.ts
+    - src/app/shared/models.spec.ts
+    test_results: []
+    recent_commits:
+    - commit: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      date: '2026-10-24T01:11:20-05:00'
+      subject: 'feat: initialize AgroSphere web application with Angular and Vitest'
+    warnings: []
+  missing_repositories: []
+# END AEO RECOVERY

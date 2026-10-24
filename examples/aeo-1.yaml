@@ -1,0 +1,21 @@
+id: AEO-1
+project: agrosphere
+version: 1
+title: Foundation inventory review
+tasks:
+  - id: inspect-architecture
+    title: Inspect the existing architecture repository
+    repository: agrosphere-architecture
+    role: solution-architect
+    operation: inspect
+    depends_on: []
+    acceptance_criteria:
+      - Repository is confirmed and inspected without Git changes
+  - id: validate-foundation
+    title: Review foundation acceptance evidence
+    repository: agrosphere-architecture
+    role: qa-engineer
+    operation: validate
+    depends_on: [inspect-architecture]
+    acceptance_criteria:
+      - Foundation test evidence is recorded

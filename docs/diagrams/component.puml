@@ -1,0 +1,30 @@
+@startuml AEO_Component
+title C4 Component — Python application
+package "agrosphere_orchestrator" {
+  component "CLI" as cli
+  component "Settings + JSON logging" as settings
+  component "Plan validation" as planning
+  component "Configuration registry" as config
+  component "Typed models + DAG validation" as models
+  component "Repository inspection" as repos
+  component "State + approval services" as state
+  component "Persistence + audit" as persistence
+  interface "AgentExecutor / CodexWorkspace
+Future adapter seams" as seams
+}
+database SQLite
+cli --> settings
+cli --> planning
+cli --> repos
+cli --> persistence : Read status only
+planning --> config
+planning --> models
+planning --> repos
+state --> config : Approval policy
+state --> models
+state --> persistence
+persistence --> models
+persistence --> SQLite
+seams --> models
+note right of seams : No concrete adapter or invocation in AEO-1
+@enduml

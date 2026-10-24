@@ -1,0 +1,272 @@
+{
+  "roles": [
+    {
+      "id": "program-manager",
+      "responsibilities": [
+        "Prioritize program milestones and cross-project risks"
+      ],
+      "inputs": [
+        "Program objectives",
+        "Project summaries"
+      ],
+      "outputs": [
+        "Program roadmap",
+        "Escalations"
+      ],
+      "handoffs": [
+        "project-manager"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    },
+    {
+      "id": "project-manager",
+      "responsibilities": [
+        "Decompose milestones and track dependencies"
+      ],
+      "inputs": [
+        "Program roadmap",
+        "Repository manifest"
+      ],
+      "outputs": [
+        "Milestone plans",
+        "Status reports"
+      ],
+      "handoffs": [
+        "business-analyst",
+        "solution-architect",
+        "qa-engineer"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    },
+    {
+      "id": "business-analyst",
+      "responsibilities": [
+        "Define requirements and acceptance criteria"
+      ],
+      "inputs": [
+        "Product objectives",
+        "Stakeholder constraints"
+      ],
+      "outputs": [
+        "Requirements",
+        "Acceptance criteria"
+      ],
+      "handoffs": [
+        "solution-architect",
+        "project-manager"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    },
+    {
+      "id": "solution-architect",
+      "responsibilities": [
+        "Specify interfaces and architectural decisions"
+      ],
+      "inputs": [
+        "Requirements",
+        "Confirmed repository inventory"
+      ],
+      "outputs": [
+        "Architecture",
+        "ADRs",
+        "Task designs"
+      ],
+      "handoffs": [
+        "developer",
+        "security-engineer",
+        "devops-engineer"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    },
+    {
+      "id": "developer",
+      "responsibilities": [
+        "Implement approved repository-scoped designs in future milestones"
+      ],
+      "inputs": [
+        "Task design",
+        "Acceptance criteria"
+      ],
+      "outputs": [
+        "Proposed patch",
+        "Test evidence"
+      ],
+      "handoffs": [
+        "qa-engineer",
+        "security-engineer",
+        "technical-writer"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent",
+        "One confirmed repository per future task; never consolidate repositories"
+      ],
+      "specializations": [
+        "java",
+        "python",
+        "angular"
+      ]
+    },
+    {
+      "id": "qa-engineer",
+      "responsibilities": [
+        "Assess acceptance criteria and regression evidence"
+      ],
+      "inputs": [
+        "Proposed patch",
+        "Acceptance criteria"
+      ],
+      "outputs": [
+        "Test plan",
+        "Verification report"
+      ],
+      "handoffs": [
+        "developer",
+        "project-manager"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    },
+    {
+      "id": "security-engineer",
+      "responsibilities": [
+        "Assess security boundaries and threats"
+      ],
+      "inputs": [
+        "Architecture",
+        "Proposed patch"
+      ],
+      "outputs": [
+        "Threat assessment",
+        "Security findings"
+      ],
+      "handoffs": [
+        "solution-architect",
+        "developer"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    },
+    {
+      "id": "devops-engineer",
+      "responsibilities": [
+        "Design repeatable build and deployment procedures"
+      ],
+      "inputs": [
+        "Architecture",
+        "Operational constraints"
+      ],
+      "outputs": [
+        "Pipeline design",
+        "Runbooks"
+      ],
+      "handoffs": [
+        "security-engineer",
+        "technical-writer"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    },
+    {
+      "id": "technical-writer",
+      "responsibilities": [
+        "Maintain operator and architecture documentation"
+      ],
+      "inputs": [
+        "ADRs",
+        "Verified behavior"
+      ],
+      "outputs": [
+        "User documentation",
+        "Release notes"
+      ],
+      "handoffs": [
+        "project-manager"
+      ],
+      "allowed_operations": [
+        "plan",
+        "inspect",
+        "validate"
+      ],
+      "boundaries": [
+        "Advisory configuration only in AEO-1; no agent execution",
+        "No model calls, Git writes, network operations or deployment",
+        "Human approval is never delegated to an agent"
+      ],
+      "specializations": []
+    }
+  ]
+}

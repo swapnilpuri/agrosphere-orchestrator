@@ -1,0 +1,26 @@
+{
+  "executed_at": "2026-10-24T20:50:23.432574+00:00",
+  "snapshot_id": "a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4",
+  "application_repositories": 12,
+  "missing_repositories": [],
+  "git_metadata_unchanged": true,
+  "evidence_files_unchanged": true,
+  "idempotent_reconciliation": true,
+  "record_counts": {
+    "recovery_snapshots": 3,
+    "audit_events": 6
+  },
+  "milestones": {
+    "0": "UNVERIFIED",
+    "1": "UNVERIFIED",
+    "1A": "PARTIAL",
+    "1B": "PARTIAL",
+    "1C": "PARTIAL",
+    "2": "PARTIAL",
+    "3": "UNVERIFIED",
+    "3A": "PARTIAL",
+    "3B": "UNVERIFIED",
+    "4": "UNVERIFIED",
+    "5": "UNVERIFIED"
+  }
+}

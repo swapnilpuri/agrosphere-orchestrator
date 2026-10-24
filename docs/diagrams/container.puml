@@ -1,0 +1,24 @@
+@startuml AEO_Container
+title C4 Container — AEO-1
+actor Operator
+package "AEO system boundary" {
+  rectangle "Python CLI + services
+[Application]
+Typer, Pydantic, SQLAlchemy" as app
+  database "Execution state
+[SQLite]
+Projects, milestones, tasks, runs, approvals, audit" as db
+  artifact "Settings and registries
+[YAML / .env]
+Repository paths, roles, policies" as config
+  rectangle "Alembic
+[Migration tool]" as migrations
+}
+folder "Independent local Git repositories
+[External filesystems]" as repos
+Operator --> app : CLI invocation
+app --> config : Typed safe loading
+app --> db : Transactional service writes / read-only CLI status
+migrations --> db : Explicit schema migration
+app --> repos : rev-parse / status; optional locks disabled
+@enduml

@@ -1,0 +1,12 @@
+required_operations:
+  - code-write
+  - git-write
+  - remote-access
+  - deploy
+approvers:
+  - local-user
+default_require_approval: true
+exempt_operations:
+  - plan
+  - inspect
+  - validate

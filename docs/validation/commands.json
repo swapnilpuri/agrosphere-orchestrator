@@ -1,0 +1,132 @@
+{
+  "executed_at": "2026-10-24T20:49:10.037457+00:00",
+  "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "commands": [
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-v",
+        "--junitxml=docs/validation/pytest.xml"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.14.2, pytest-9.1.1, pluggy-1.7.0 -- C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe\ncachedir: .pytest_cache\nrootdir: C:\\Projects\\agrosphere\\agrosphere-orchestrator\nconfigfile: pyproject.toml\ntestpaths: tests\ncollecting ... collected 44 items\n\ntests/test_cli_planning.py::test_validation_and_inspection PASSED        [  2%]\ntests/test_cli_planning.py::test_unverified_and_missing_rejected PASSED  [  4%]\ntests/test_cli_planning.py::test_status_missing_does_not_create_db PASSED [  6%]\ntests/test_cli_planning.py::test_status_existing PASSED                  [  9%]\ntests/test_cli_planning.py::test_unknown_role_and_operation PASSED       [ 11%]\ntests/test_configuration.py::test_settings_environment PASSED            [ 13%]\ntests/test_configuration.py::test_registry_and_policy PASSED             [ 15%]\ntests/test_configuration.py::test_manifest_relative_resolution PASSED    [ 18%]\ntests/test_configuration.py::test_bad_yaml_and_extra_fields PASSED       [ 20%]\ntests/test_configuration.py::test_unknown_handoff PASSED                 [ 22%]\ntests/test_logging_interfaces.py::test_structured_logging PASSED         [ 25%]\ntests/test_logging_interfaces.py::test_interfaces_have_no_execution_implementation PASSED [ 27%]\ntests/test_models.py::test_invalid_definitions[missing-title] PASSED     [ 29%]\ntests/test_models.py::test_invalid_definitions[unknown-field] PASSED     [ 31%]\ntests/test_models.py::test_invalid_definitions[duplicate] PASSED         [ 34%]\ntests/test_models.py::test_invalid_definitions[cycle] PASSED             [ 36%]\ntests/test_models.py::test_invalid_definitions[unknown-dep] PASSED       [ 38%]\ntests/test_models.py::test_invalid_definitions[empty] PASSED             [ 40%]\ntests/test_models.py::test_invalid_definitions[duplicate-dep] PASSED     [ 43%]\ntests/test_models.py::test_schema_and_valid_plan PASSED                  [ 45%]\ntests/test_persistence_state.py::test_idempotent_and_conflicting_import PASSED [ 47%]\ntests/test_persistence_state.py::test_append_only_audit[UPDATE audit_events SET actor='changed'] PASSED [ 50%]\ntests/test_persistence_state.py::test_append_only_audit[DELETE FROM audit_events] PASSED [ 52%]\ntests/test_persistence_state.py::test_transitions_dependencies_and_history PASSED [ 54%]\ntests/test_persistence_state.py::test_approval_gate_and_denial PASSED    [ 56%]\ntests/test_persistence_state.py::test_default_deny PASSED                [ 59%]\ntests/test_persistence_state.py::test_foreign_keys PASSED                [ 61%]\ntests/test_recovery.py::test_discovery_nested_dirty_missing_and_readonly PASSED [ 63%]\ntests/test_recovery.py::test_evidence_never_implies_verified_completion PASSED [ 65%]\ntests/test_recovery.py::test_missing_workspace PASSED                    [ 68%]\ntests/test_recovery.py::test_conflicting_claims_and_no_inferred_implementation PASSED [ 70%]\ntests/test_recovery.py::test_idempotence_preserves_plan_and_approval PASSED [ 72%]\ntests/test_recovery.py::test_transaction_rollback PASSED                 [ 75%]\ntests/test_recovery.py::test_interrupted_export_and_approved_text PASSED [ 77%]\ntests/test_recovery.py::test_unmanaged_reports_fail_closed PASSED        [ 79%]\ntests/test_recovery.py::test_cli_readonly_commands_and_reconcile PASSED  [ 81%]\ntests/test_recovery.py::test_reverted_snapshot_updates_current_pointer PASSED [ 84%]\ntests/test_recovery.py::test_status_does_not_create_database PASSED      [ 86%]\ntests/test_recovery.py::test_next_milestone_reference_does_not_create_false_conflict PASSED [ 88%]\ntests/test_recovery.py::test_unborn_and_detached_repositories PASSED     [ 90%]\ntests/test_recovery.py::test_cli_reconcile_and_export_only PASSED        [ 93%]\ntests/test_repositories.py::test_missing_and_non_git PASSED              [ 95%]\ntests/test_repositories.py::test_existing_repository_inspection_preserves_git_state PASSED [ 97%]\ntests/test_repositories.py::test_git_failure_reported PASSED             [100%]\n\n- generated xml file: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\validation\\pytest.xml -\n============================= 44 passed in 4.61s ==============================\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "44 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "check"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "No new upgrade operations detected.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "project-status"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "{\n  \"records\": {\n    \"projects\": 0,\n    \"milestones\": 0,\n    \"tasks\": 0,\n    \"runs\": 0,\n    \"approvals\": 0,\n    \"audit_events\": 4\n  },\n  \"task_states\": {}\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "repository-inspect"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "[\n  {\n    \"id\": \"agrosphere-ai-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-ai-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"cc92974049a50d64e6a5c1fb06868f01aa7f5def\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-analytics-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-analytics-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"38725317675493237b2769ed38e1840b3991d69e\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-api-gateway\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-api-gateway\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"fcf7daf66fa0d9efaf2d1aa72f8cc88c600ab6c0\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-architecture\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-architecture\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"ab6289d42dcc0ba4a956c39ed55b34c2f0c49746\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-contracts\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-contracts\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"7e962552421f15ad5d1492276817db1e1692b104\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-estate-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-estate-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"7fdd691431a6962f5ac71fb08e9e3e09380bae00\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-immersive\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-immersive\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"2bf7663e412f86956dbdb831184f2d0ab1a03c70\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-infrastructure\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-infrastructure\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"3268651e1d48a38f858351c105ab54b4103c3ded\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-operations-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-operations-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"fbfda7e87dc0f650f013e6082d1f886df888b6c9\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-spatial-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-spatial-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"2a7dbda842141fca041510ca79481ea0454eaaf8\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-telemetry-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-telemetry-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"8a3c888dea3e1f3c7a94baf5c55a61285b5bcb7a\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-web\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-web\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"ea69d3534ee0020717b5bce0f83d4b5cb7965b7c\",\n    \"status\": \"A  .dockerignore\\nM  .github/workflows/ci.yml\\nM  .gitignore\\nA  .prettierignore\\nA  .prettierrc.json\\nM  AGENTS.md\\nM  CHANGELOG.md\\nA  Dockerfile\\nM  README.md\\nM  VERSION\\nM  angular.json\\nA  contracts/estate.openapi.json\\nA  contracts/spatial.openapi.json\\nA  docs/ARCHITECTURE.md\\nA  docs/INTEGRATION.md\\nA  docs/MILESTONE_2_REPORT.md\\nA  e2e/fixtures.ts\\nA  e2e/graphics.spec.ts\\nA  e2e/live.spec.ts\\nA  e2e/ui.spec.ts\\nA  eslint.config.mjs\\nA  nginx.conf\\nM  package-lock.json\\nM  package.json\\nA  playwright.config.ts\\nA  proxy.conf.json\\nA  public/config.json\\nA  public/silent-check-sso.html\\nA  public/silent-check-sso.js\\nA  scripts/check-api.mjs\\nA  scripts/preview.mjs\\nA  src/api/estate.generated.ts\\nA  src/api/spatial.generated.ts\\nA  src/app/api/clients.spec.ts\\nA  src/app/api/estate/estate.api.ts\\nA  src/app/api/spatial/spatial.api.ts\\nM  src/app/app.component.spec.ts\\nM  src/app/app.component.ts\\nA  src/app/app.routes.ts\\nM  src/app/core/api/api-client.ts\\nA  src/app/core/auth/auth.guard.spec.ts\\nA  src/app/core/auth/auth.guard.ts\\nA  src/app/core/auth/auth.service.spec.ts\\nA  src/app/core/auth/auth.service.ts\\nA  src/app/core/auth/login.component.html\\nA  src/app/core/auth/login.component.ts\\nA  src/app/core/config.ts\\nA  src/app/core/errors.spec.ts\\nA  src/app/core/errors.ts\\nA  src/app/core/interceptors/gateway.interceptor.spec.ts\\nA  src/app/core/interceptors/gateway.interceptor.ts\\nA  src/app/features/blocks/block-detail.component.html\\nA  src/app/features/blocks/block-detail.component.spec.ts\\nA  src/app/features/blocks/block-detail.component.ts\\nA  src/app/features/dashboard/dashboard.component.html\\nA  src/app/features/dashboard/dashboard.component.spec.ts\\nA  src/app/features/dashboard/dashboard.component.ts\\nM  src/app/features/digital-twin/README.md\\nA  src/app/features/digital-twin/cesium-viewer.component.html\\nA  src/app/features/digital-twin/cesium-viewer.component.spec.ts\\nA  src/app/features/digital-twin/cesium-viewer.component.ts\\nA  src/app/features/digital-twin/cesium-viewer.service.ts\\nA  src/app/features/digital-twin/digital-twin.component.html\\nA  src/app/features/digital-twin/digital-twin.component.ts\\nM  src/app/features/estate/README.md\\nA  src/app/features/estates/estate.store.spec.ts\\nA  src/app/features/estates/estate.store.ts\\nA  src/app/features/spatial-layers/layer-manager.component.html\\nA  src/app/features/spatial-layers/layer-manager.component.spec.ts\\nA  src/app/features/spatial-layers/layer-manager.component.ts\\nA  src/app/layout/shell.component.html\\nA  src/app/layout/shell.component.ts\\nA  src/app/shared/models.spec.ts\\nA  src/app/shared/models.ts\\nM  src/environments/environment.production.ts\\nM  src/environments/environment.ts\\nM  src/index.html\\nM  src/main.ts\\nM  src/styles.css\\nM  tsconfig.app.json\\nM  tsconfig.json\\nM  tsconfig.spec.json\",\n    \"error\": null\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "milestone-validate",
+        "examples/aeo-1.yaml"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "{\"valid\": true, \"milestone\": \"AEO-1\", \"tasks\": 2}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "# Editable Git install with no remote (agrosphere-orchestrator==0.1.0)\n-e c:\\projects\\agrosphere\\agrosphere-orchestrator\nalembic==1.20.1\nannotated-doc==0.0.5\nannotated-types==0.8.0\ncolorama==0.4.6\niniconfig==2.3.1\nMako==1.4.3\nmarkdown-it-py==4.2.0\nMarkupSafe==3.0.4\nmdurl==0.1.2\npackaging==26.3\npluggy==1.7.0\npydantic==2.14.1\npydantic-settings==2.16.1\npydantic_core==2.50.1\nPygments==2.21.0\npytest==9.1.1\npython-dotenv==1.2.4\nPyYAML==6.0.3\nrich==15.0.0\nruff==0.17.2\nshellingham==1.5.4\nSQLAlchemy==2.1.6\ntyper==0.27.3\ntyping-inspection==0.4.4\ntyping_extensions==4.16.0\n",
+      "stderr": ""
+    }
+  ]
+}
