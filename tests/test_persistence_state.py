@@ -70,9 +70,12 @@ def test_approval_gate_and_denial(engine, plan, policy):
     with pytest.raises(PermissionError):
         transition(engine, task, TaskState.RUNNING, "human", policy)
     record_approval(engine, task, "code-write", "human", True, policy)
-    transition(engine, task, TaskState.RUNNING, "human", policy)
-    transition(engine, task, TaskState.FAILED, "human", policy)
-    transition(engine, task, TaskState.READY, "human", policy)
+    # Operation approval remains necessary but no longer bypasses milestone design approval.
+    with pytest.raises(PermissionError, match="approved design"):
+        transition(engine, task, TaskState.RUNNING, "human", policy)
+    with Session(engine) as session:
+        assert session.get(Task, task).state == TaskState.READY
+        assert session.scalar(select(Run)) is None
 
 
 def test_default_deny(policy):

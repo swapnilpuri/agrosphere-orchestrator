@@ -1,0 +1,25 @@
+{
+  "executed_at": "2026-10-24T23:36:53.670693+00:00",
+  "source": "docs/diagrams/design-lifecycle.puml",
+  "source_sha256": "01f764b27d651cd7d2703acb9ed24191276284ae255013167bfe2f49d9d19ac6",
+  "java": {
+    "argv": [
+      "C:\\myprograms\\jdk-27\\bin\\java.EXE",
+      "-version"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "openjdk version \"27\" 2026-09-15\nOpenJDK Runtime Environment (build 27+35-2325)\nOpenJDK 64-Bit Server VM (build 27+35-2325, mixed mode, sharing)\n"
+  },
+  "plantuml_jar": null,
+  "rendered": false,
+  "design_approval_blocked": true,
+  "findings": [
+    {
+      "code": "plantuml-unavailable",
+      "message": "Configure AEO_PLANTUML_JAR; rendering is required for approval.",
+      "severity": "error",
+      "artifact": null
+    }
+  ]
+}

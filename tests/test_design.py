@@ -1,0 +1,741 @@
+import hashlib
+import json
+import subprocess
+from pathlib import Path
+from types import SimpleNamespace
+
+import pytest
+from sqlalchemy import func, select, text
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import Session
+from typer.testing import CliRunner
+
+from agrosphere_orchestrator.cli import app
+from agrosphere_orchestrator.design import (
+    decide,
+    design_status,
+    export_revision,
+    generate_design,
+    implementation_complete,
+    implementation_ready,
+    register_requirements,
+    validate_design,
+)
+from agrosphere_orchestrator.design_agents import (
+    SECTIONS,
+    RuleBasedArchitectureReviewer,
+    TemplateDocumentationAgents,
+)
+from agrosphere_orchestrator.design_artifacts import (
+    LocalPlantUML,
+    plantuml,
+    source_findings,
+)
+from agrosphere_orchestrator.design_models import AsBuiltInput, DesignInput, DiagramSpec, case_key
+from agrosphere_orchestrator.human_approval import WindowsConsoleHumanVerifier
+from agrosphere_orchestrator.models import TaskState
+from agrosphere_orchestrator.persistence import (
+    AuditEvent,
+    DesignDecision,
+    DesignRevision,
+    import_plan,
+)
+from agrosphere_orchestrator.state import record_approval, transition
+
+ACTOR = "sid:fixture-human"
+
+
+class HumanFixture:
+    def __init__(self, actor=ACTOR):
+        self.actor = actor
+        self.subjects = []
+
+    def verify(self, subject, decision):
+        self.subjects.append((subject, decision))
+        return self.actor
+
+
+class RenderFixture:
+    def render(self, source):
+        findings = source_findings(source)
+        return (
+            (None, findings)
+            if findings
+            else ('<svg xmlns="http://www.w3.org/2000/svg"><text>fixture only</text></svg>', [])
+        )
+
+
+@pytest.fixture
+def design_workspace(tmp_path, monkeypatch):
+    repos = {}
+    heads = {}
+    for name in ("agrosphere-architecture", "agrosphere-contracts", "estate"):
+        repo = tmp_path / name
+        repo.mkdir()
+        subprocess.run(["git", "init", "-b", "main", str(repo)], check=True, capture_output=True)
+        (repo / "README.md").write_text("Verified fixture context only.\n", encoding="utf-8")
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True, capture_output=True)
+        subprocess.run(
+            [
+                "git",
+                "-C",
+                str(repo),
+                "-c",
+                "user.name=Fixture",
+                "-c",
+                "user.email=f@example.invalid",
+                "commit",
+                "-m",
+                "fixture context",
+            ],
+            check=True,
+            capture_output=True,
+        )
+        heads[name] = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        repos[name] = repo
+    manifest = tmp_path / "repos.yaml"
+    manifest.write_text(
+        json.dumps(
+            {
+                "repositories": [
+                    {"id": name, "path": str(repo), "status": "confirmed"}
+                    for name, repo in repos.items()
+                ]
+            }
+        )
+    )
+    registry = Path(__file__).resolve().parents[1] / "config/roles.yaml"
+    inputs = DesignInput.model_validate(
+        {
+            "plan": {
+                "id": "FIXTURE-1",
+                "project": "fixture",
+                "title": "Documentation workflow fixture",
+                "tasks": [
+                    {
+                        "id": "implement",
+                        "title": "Fixture-only task",
+                        "repository": "estate",
+                        "role": "developer",
+                        "operation": "code-write",
+                        "acceptance_criteria": ["fixture accepted"],
+                    }
+                ],
+            },
+            "requirements": [
+                {
+                    "id": "REQ-1",
+                    "text": "Exercise documentation approval with fixture data only",
+                    "acceptance_criteria": ["The design gate blocks unapproved implementation"],
+                }
+            ],
+            "context": [
+                {
+                    "repository": name,
+                    "path": "README.md",
+                    "head": heads[name],
+                    "sha256": hashlib.sha256((repo / "README.md").read_bytes()).hexdigest(),
+                }
+                for name, repo in repos.items()
+            ],
+            "narratives": {
+                kind: {
+                    section: "Approved fixture narrative; no application functionality."
+                    for section in sections
+                }
+                for kind, sections in SECTIONS.items()
+            },
+            "diagrams": [
+                {
+                    "id": "fixture-components",
+                    "kind": "component",
+                    "repository": "estate",
+                    "requirement_ids": ["REQ-1"],
+                    "nodes": [{"id": "Service", "label": "Fixture Service"}],
+                    "rationale": "Fixture service component scope",
+                }
+            ],
+        }
+    )
+    inputs.narratives["service:estate"] = inputs.narratives["service"]
+    monkeypatch.setenv("AEO_DESIGN_APPROVERS", json.dumps([ACTOR]))
+    monkeypatch.setenv("AEO_REPOSITORY_MANIFEST", str(manifest))
+    monkeypatch.setenv("AEO_ROLE_REGISTRY", str(registry))
+    return SimpleNamespace(
+        repos=repos,
+        manifest=manifest,
+        registry=registry,
+        inputs=inputs,
+        key=case_key("fixture", "FIXTURE-1"),
+    )
+
+
+def prepare(engine, fixture):
+    scope = register_requirements(engine, fixture.inputs, fixture.manifest, fixture.registry)
+    decide(engine, fixture.key, "requirements", True, HumanFixture(), [ACTOR])
+    revision = generate_design(
+        engine, fixture.key, TemplateDocumentationAgents(), RenderFixture(), "fixture-renderer-v1"
+    )
+    return scope, revision
+
+
+def approve(engine, fixture):
+    _, revision = prepare(engine, fixture)
+    result = validate_design(engine, fixture.key, RuleBasedArchitectureReviewer())
+    assert result["passed"], result
+    decide(engine, fixture.key, "design", True, HumanFixture(), [ACTOR])
+    import_plan(engine, fixture.inputs.plan)
+    implementation_ready(engine, fixture.key)
+    return revision
+
+
+def test_generation_ownership_traceability_manifest_and_idempotence(engine, design_workspace):
+    fixture = design_workspace
+    scope, revision = prepare(engine, fixture)
+    before = design_status(engine, fixture.key)
+    with Session(engine) as session:
+        count = session.scalar(select(func.count()).select_from(AuditEvent))
+    assert (
+        generate_design(
+            engine,
+            fixture.key,
+            TemplateDocumentationAgents(),
+            RenderFixture(),
+            "fixture-renderer-v1",
+        )
+        == revision
+    )
+    with Session(engine) as session:
+        assert session.scalar(select(func.count()).select_from(AuditEvent)) == count
+        assert session.scalar(select(func.count()).select_from(DesignRevision)) == 1
+    assert before["scope_id"] == scope
+    owners = {a["type"]: a["repository"] for a in before["artifacts"]}
+    assert (
+        owners["business"]
+        == owners["architecture"]
+        == owners["overview"]
+        == "agrosphere-architecture"
+    )
+    assert owners["service"] == owners["diagram:component"] == "estate"
+    assert all(
+        a["generated_at"] and a["sha256"] and a["source_requirements"] == ["REQ-1"]
+        for a in before["artifacts"]
+    )
+    assert all(Path(a["absolute_path"]).is_file() for a in before["artifacts"])
+    assert validate_design(engine, fixture.key, RuleBasedArchitectureReviewer())["passed"]
+
+
+def test_requirements_need_authenticated_human_not_boolean_or_actor(engine, design_workspace):
+    f = design_workspace
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    with pytest.raises(PermissionError, match="requirements"):
+        generate_design(engine, f.key, TemplateDocumentationAgents(), RenderFixture(), "fixture")
+    with pytest.raises(PermissionError, match="authorized"):
+        decide(engine, f.key, "requirements", True, HumanFixture("agent-name"), [ACTOR])
+    with pytest.raises(PermissionError, match="configured"):
+        decide(engine, f.key, "requirements", True, HumanFixture(), [])
+    with Session(engine) as session:
+        assert session.scalar(select(func.count()).select_from(DesignDecision)) == 0
+
+
+def test_context_mismatch_and_missing_requirements(engine, design_workspace):
+    f = design_workspace
+    f.inputs.context[0].sha256 = "0" * 64
+    with pytest.raises(ValueError, match="hash"):
+        register_requirements(engine, f.inputs, f.manifest, f.registry)
+    with pytest.raises(ValueError):
+        DesignInput.model_validate({**f.inputs.model_dump(), "requirements": []})
+    assert design_status(engine, f.key)["findings"][0]["code"] == "missing-requirements"
+
+
+def test_missing_sections_and_tools_block_approval(engine, design_workspace):
+    f = design_workspace
+    f.inputs.narratives = {}
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+    generate_design(
+        engine, f.key, TemplateDocumentationAgents(), LocalPlantUML(None), "unavailable"
+    )
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert not result["passed"]
+    assert {x["code"] for x in result["findings"]} >= {
+        "missing-information",
+        "plantuml-unavailable",
+        "diagram-render",
+    }
+    with pytest.raises(ValueError, match="validation"):
+        decide(engine, f.key, "design", True, HumanFixture(), [ACTOR])
+
+
+def test_implementation_requires_design_and_task_approval(engine, design_workspace, policy):
+    f = design_workspace
+    task = import_plan(engine, f.inputs.plan)[0]
+    transition(engine, task, TaskState.READY, "human", policy)
+    record_approval(engine, task, "code-write", "human", True, policy)
+    with pytest.raises(PermissionError, match="approved design"):
+        transition(engine, task, TaskState.RUNNING, "human", policy)
+    approve(engine, f)
+    transition(engine, task, TaskState.RUNNING, "human", policy)
+    assert design_status(engine, f.key)["state"] == "IMPLEMENTING"
+    transition(engine, task, TaskState.SUCCEEDED, "human", policy)
+    implementation_complete(engine, f.key)
+    assert design_status(engine, f.key)["state"] == "IMPLEMENTATION_VALIDATING"
+
+
+def test_rejection_returns_for_revision_preserves_approved_versions(engine, design_workspace):
+    f = design_workspace
+    _, first = prepare(engine, f)
+    assert validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    human = HumanFixture()
+    decide(engine, f.key, "design", False, human, [ACTOR])
+    assert design_status(engine, f.key)["state"] == "DESIGN_IN_PROGRESS"
+    assert ":design:" in human.subjects[-1][0]
+    f.inputs.narratives["architecture"]["Risks and assumptions"] = "Revised fixture risk analysis."
+    _, second = prepare(engine, f)
+    assert second != first
+    with Session(engine) as session:
+        assert session.get(DesignRevision, first)
+    assert validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    decide(engine, f.key, "design", True, HumanFixture(), [ACTOR])
+    original = {
+        a["absolute_path"]: Path(a["absolute_path"]).read_bytes()
+        for a in design_status(engine, f.key)["artifacts"]
+    }
+    f.inputs.narratives["overview"]["Expected outcomes"] = (
+        "Another explicitly reviewed fixture revision."
+    )
+    prepare(engine, f)
+    assert all(Path(p).read_bytes() == content for p, content in original.items())
+    assert design_status(engine, f.key)["state"] == "DESIGN_IN_PROGRESS"
+
+
+def test_modified_approved_file_blocks_start_and_export(engine, design_workspace, policy):
+    f = design_workspace
+    revision = approve(engine, f)
+    state = design_status(engine, f.key)
+    changed = Path(state["artifacts"][0]["absolute_path"])
+    changed.write_text("edited approved document")
+    task = import_plan(engine, f.inputs.plan)[0]
+    transition(engine, task, TaskState.READY, "human", policy)
+    record_approval(engine, task, "code-write", "human", True, policy)
+    with pytest.raises(PermissionError, match="changed"):
+        transition(engine, task, TaskState.RUNNING, "human", policy)
+    with pytest.raises(ValueError, match="immutable"):
+        export_revision(engine, revision)
+    assert changed.read_text() == "edited approved document"
+
+
+def test_as_built_and_delivery_preserve_original_design(engine, design_workspace, policy):
+    f = design_workspace
+    original = approve(engine, f)
+    task = import_plan(engine, f.inputs.plan)[0]
+    transition(engine, task, TaskState.READY, "human", policy)
+    record_approval(engine, task, "code-write", "human", True, policy)
+    transition(engine, task, TaskState.RUNNING, "human", policy)
+    with pytest.raises(ValueError, match="succeed"):
+        implementation_complete(engine, f.key)
+    transition(engine, task, TaskState.SUCCEEDED, "human", policy)
+    implementation_complete(engine, f.key)
+    report = AsBuiltInput(
+        narratives=f.inputs.narratives, context=f.inputs.context, diagrams=f.inputs.diagrams
+    )
+    built = generate_design(
+        engine, f.key, TemplateDocumentationAgents(), RenderFixture(), "fixture", as_built=report
+    )
+    assert original != built
+    assert validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    assert design_status(engine, f.key)["state"] == "AWAITING_DELIVERY_APPROVAL"
+    decide(engine, f.key, "delivery", False, HumanFixture(), [ACTOR])
+    assert design_status(engine, f.key)["state"] == "IMPLEMENTATION_VALIDATING"
+    assert validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    decide(engine, f.key, "delivery", True, HumanFixture(), [ACTOR])
+    assert design_status(engine, f.key)["state"] == "COMPLETED"
+    with Session(engine) as session:
+        assert session.get(DesignRevision, original).phase == "design"
+        assert session.get(DesignRevision, built).phase == "as-built"
+
+
+@pytest.mark.parametrize(
+    "kind",
+    [
+        "context",
+        "container",
+        "component",
+        "sequence",
+        "domain",
+        "activity",
+        "state",
+        "data-flow",
+        "deployment",
+    ],
+)
+def test_all_diagram_families_supported_without_generating_all(kind):
+    spec = DiagramSpec(
+        id="scope-diagram",
+        kind=kind,
+        repository="estate",
+        requirement_ids=["R1"],
+        nodes=[{"id": "A", "label": "Approved A"}, {"id": "B", "label": "Approved B"}],
+        edges=[{"source": "A", "target": "B", "label": "Reviewed interaction"}],
+        rationale="Explicit scope",
+    )
+    source = plantuml(spec)
+    assert not source_findings(source)
+    if kind in {"context", "container", "component"}:
+        assert "!include <C4/" in source
+
+
+@pytest.mark.parametrize(
+    "source",
+    ["invalid source", "@enduml\n@startuml", "@startuml\n!includeurl https://invalid\n@enduml"],
+)
+def test_invalid_or_external_plantuml_rejected(source):
+    svg, findings = LocalPlantUML(None).render(source)
+    assert svg is None and findings
+    assert findings[0].code in {"plantuml-source", "plantuml-directive"}
+
+
+def test_renderer_records_actual_syntax_failure(tmp_path, monkeypatch):
+    jar = tmp_path / "plantuml.jar"
+    jar.write_bytes(b"fixture")
+
+    def fail(*args, **kwargs):
+        return SimpleNamespace(returncode=200, stderr="Syntax Error")
+
+    monkeypatch.setattr(subprocess, "run", fail)
+    svg, findings = LocalPlantUML(jar).render("@startuml\ninvalid grammar\n@enduml")
+    assert svg is None and findings[0].code == "plantuml-render"
+    assert "200" in findings[0].message
+
+
+def test_design_history_is_append_only(engine, design_workspace):
+    f = design_workspace
+    _, revision = prepare(engine, f)
+    for table in ("design_scopes", "design_revisions", "design_decisions"):
+        with pytest.raises(IntegrityError, match="append-only"):
+            with engine.begin() as connection:
+                connection.execute(text(f"DELETE FROM {table}"))
+    export_revision(engine, revision)
+
+
+def test_no_agent_only_console_approval(monkeypatch):
+    monkeypatch.setattr("sys.stdin", SimpleNamespace(isatty=lambda: False))
+    with pytest.raises(PermissionError, match="interactive"):
+        WindowsConsoleHumanVerifier().verify("exact-digest", "approved")
+
+
+def test_cli_missing_scope_readonly_and_pending_requirements(engine, design_workspace, tmp_path):
+    f = design_workspace
+    runner = CliRunner()
+    for command in ("docs", "design-status"):
+        result = runner.invoke(app, ["milestone", command, "FIXTURE-1", "--project", "fixture"])
+        assert result.exit_code == 0, result.output
+        assert json.loads(result.stdout)["state"] == "DISCOVERED"
+    result = runner.invoke(app, ["milestone", "design", "FIXTURE-1", "--project", "fixture"])
+    assert result.exit_code == 1 and "Missing requirements" in result.output
+    source = tmp_path / "requirements.yaml"
+    source.write_text(json.dumps(f.inputs.model_dump(mode="json")))
+    result = runner.invoke(
+        app,
+        ["milestone", "design", "FIXTURE-1", "--project", "fixture", "--requirements", str(source)],
+    )
+    assert result.exit_code == 0, result.output
+    assert json.loads(result.stdout)["approval_granted"] is False
+    result = runner.invoke(
+        app,
+        [
+            "milestone",
+            "approve-design",
+            "FIXTURE-1",
+            "--project",
+            "fixture",
+            "--actor",
+            "local-user",
+        ],
+    )
+    assert result.exit_code != 0
+
+
+def test_bad_agent_ownership_missing_documents_and_broken_links(engine, design_workspace):
+    from agrosphere_orchestrator.design_artifacts import digest
+    from agrosphere_orchestrator.design_models import AgentResult, Artifact
+
+    f = design_workspace
+
+    class BadAgent:
+        version = "bad-fixture"
+
+        def generate(self, task, inputs):
+            if task.role != "business-analyst":
+                return AgentResult()
+            content = "Wrong fixture owner [broken](aeo://estate/absent.md)"
+            return AgentResult(
+                artifacts=[
+                    Artifact(
+                        type="business",
+                        repository="estate",
+                        path="business.md",
+                        content=content,
+                        sha256=digest(content),
+                        requirement_ids=["UNKNOWN"],
+                        agent=task.role,
+                    )
+                ]
+            )
+
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+    with pytest.raises(ValueError, match="ownership"):
+        generate_design(engine, f.key, BadAgent(), RenderFixture(), "fixture")
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert not result["passed"]
+    assert {x["code"] for x in result["findings"]} >= {
+        "ownership",
+        "required-document",
+        "traceability",
+        "required-section",
+        "cross-reference",
+        "diagram-presence",
+    }
+
+
+def test_approved_source_context_cannot_change_before_generation(engine, design_workspace):
+    f = design_workspace
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+    (f.repos["estate"] / "README.md").write_text("Changed since requirements review")
+    with pytest.raises(ValueError, match="context file changed"):
+        generate_design(engine, f.key, TemplateDocumentationAgents(), RenderFixture(), "fixture")
+
+
+def test_removed_approver_blocks_implementation(engine, design_workspace, policy, monkeypatch):
+    f = design_workspace
+    approve(engine, f)
+    task = import_plan(engine, f.inputs.plan)[0]
+    transition(engine, task, TaskState.READY, "human", policy)
+    record_approval(engine, task, "code-write", "human", True, policy)
+    monkeypatch.setenv("AEO_DESIGN_APPROVERS", "[]")
+    with pytest.raises(PermissionError, match="no longer authorized"):
+        transition(engine, task, TaskState.RUNNING, "human", policy)
+
+
+def test_agent_failure_recorded_and_retry_preserves_state(engine, design_workspace):
+    f = design_workspace
+
+    class FailedAgent:
+        version = "failed-fixture"
+
+        def generate(self, task, inputs):
+            raise RuntimeError("fixture interruption")
+
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+    with pytest.raises(RuntimeError):
+        generate_design(engine, f.key, FailedAgent(), RenderFixture(), "fixture")
+    assert design_status(engine, f.key)["state"] == "DESIGN_IN_PROGRESS"
+    with Session(engine) as session:
+        assert session.scalar(
+            select(AuditEvent).where(AuditEvent.kind == "design.documentation-task.failed")
+        )
+    generate_design(engine, f.key, TemplateDocumentationAgents(), RenderFixture(), "fixture")
+
+
+def test_publication_interruption_repairs_from_durable_revision(
+    engine, design_workspace, monkeypatch
+):
+    import agrosphere_orchestrator.design as design
+
+    f = design_workspace
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+
+    def interrupted(*args, **kwargs):
+        raise OSError("fixture interrupted publication")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(design, "export_revision", interrupted)
+        with pytest.raises(OSError):
+            generate_design(
+                engine, f.key, TemplateDocumentationAgents(), RenderFixture(), "fixture"
+            )
+    state = design_status(engine, f.key)
+    assert state["revision_id"] and state["file_findings"]
+    export_revision(engine, state["revision_id"])
+    assert not design_status(engine, f.key)["file_findings"]
+
+
+def test_versioned_proposals_owned_by_contracts(engine, design_workspace):
+    from agrosphere_orchestrator.design_models import ContractProposal
+
+    f = design_workspace
+    f.inputs.contract_impact = True
+    f.inputs.contracts = [
+        ContractProposal(
+            id="fixture-event",
+            kind="event-schema",
+            version="1.0.0",
+            content=json.dumps(
+                {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "urn:fixture:v1",
+                    "type": "object",
+                }
+            ),
+            requirement_ids=["REQ-1"],
+        )
+    ]
+    prepare(engine, f)
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert result["passed"], result
+    proposals = [
+        a for a in design_status(engine, f.key)["artifacts"] if a["type"].startswith("proposal:")
+    ]
+    assert len(proposals) == 1 and proposals[0]["repository"] == "agrosphere-contracts"
+    assert "1.0.0" in proposals[0]["path"]
+
+
+def test_failed_implementation_retry_keeps_both_gates(engine, design_workspace, policy):
+    f = design_workspace
+    approve(engine, f)
+    task = import_plan(engine, f.inputs.plan)[0]
+    transition(engine, task, TaskState.READY, "human", policy)
+    record_approval(engine, task, "code-write", "human", True, policy)
+    transition(engine, task, TaskState.RUNNING, "human", policy)
+    transition(engine, task, TaskState.FAILED, "human", policy)
+    transition(engine, task, TaskState.READY, "human", policy)
+    transition(engine, task, TaskState.RUNNING, "human", policy)
+    assert design_status(engine, f.key)["implementation_authorized"] is True
+
+
+def test_independent_review_failure_cannot_be_replaced_by_valid_files(engine, design_workspace):
+    from agrosphere_orchestrator.design_models import Finding
+
+    f = design_workspace
+    prepare(engine, f)
+
+    class ReviewFixture:
+        version = "independent-conflict-fixture"
+
+        def review(self, inputs, artifacts):
+            return [Finding(code="conceptual-conflict", message="Fixture inconsistent boundary")]
+
+    result = validate_design(engine, f.key, ReviewFixture())
+    assert not result["passed"]
+    assert design_status(engine, f.key)["state"] == "DESIGN_IN_PROGRESS"
+
+
+def test_scope_plan_mismatch_cannot_be_ready(engine, design_workspace):
+    f = design_workspace
+    prepare(engine, f)
+    assert validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    decide(engine, f.key, "design", True, HumanFixture(), [ACTOR])
+    different = f.inputs.plan.model_copy(deep=True)
+    different.tasks[0].title = "Changed task outside approved scope"
+    import_plan(engine, different)
+    with pytest.raises(PermissionError, match="differs"):
+        implementation_ready(engine, f.key)
+    assert design_status(engine, f.key)["state"] == "DESIGN_APPROVED"
+
+
+def test_atomic_publication_interruption_never_leaves_partial_artifact(
+    engine, design_workspace, monkeypatch
+):
+    import os
+
+    f = design_workspace
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+    original = os.link
+    calls = 0
+
+    def interrupted(source, target):
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            raise OSError("fixture publication interruption")
+        return original(source, target)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(os, "link", interrupted)
+        with pytest.raises(OSError):
+            generate_design(
+                engine, f.key, TemplateDocumentationAgents(), RenderFixture(), "fixture"
+            )
+    state = design_status(engine, f.key)
+    published = [a for a in state["artifacts"] if Path(a["absolute_path"]).is_file()]
+    assert len(published) == 1
+    assert (
+        hashlib.sha256(Path(published[0]["absolute_path"]).read_bytes()).hexdigest()
+        == published[0]["sha256"]
+    )
+    export_revision(engine, state["revision_id"])
+    assert not design_status(engine, f.key)["file_findings"]
+
+
+def test_additive_upgrade_preserves_foundation_and_recovery(tmp_path, monkeypatch, plan, policy):
+    from alembic import command
+    from alembic.config import Config
+
+    from agrosphere_orchestrator.persistence import DesignCase, Milestone, Task, make_engine
+    from agrosphere_orchestrator.recovery import current_snapshot, reconcile
+    from agrosphere_orchestrator.recovery_models import RecoverySnapshot
+
+    root = Path(__file__).resolve().parents[1]
+    database = "sqlite:///" + (tmp_path / "upgrade.db").as_posix()
+    monkeypatch.setenv("AEO_DATABASE_URL", database)
+    config = Config(str(root / "alembic.ini"))
+    config.set_main_option("script_location", str(root / "migrations"))
+    command.upgrade(config, "0002")
+    engine = make_engine(database)
+    try:
+        task = import_plan(engine, plan)[0]
+        record_approval(engine, task, "inspect", "human", True, policy)
+        observed = RecoverySnapshot(
+            workspace=str(tmp_path.resolve()), repositories=[], milestones=[]
+        )
+        snapshot_id = reconcile(engine, observed)
+        with Session(engine) as session:
+            events = session.scalar(select(func.count()).select_from(AuditEvent))
+            milestone_spec = session.scalar(select(Milestone)).spec
+        command.upgrade(config, "head")
+        with Session(engine) as session:
+            assert session.scalar(select(func.count()).select_from(AuditEvent)) == events
+            assert session.scalar(select(Milestone)).spec == milestone_spec
+            assert session.scalar(select(func.count()).select_from(DesignCase)) == 0
+            assert session.get(Task, task).state == "pending"
+        assert current_snapshot(engine, tmp_path)[0] == snapshot_id
+    finally:
+        engine.dispose()
+
+
+def test_revalidation_selects_current_outcome_without_duplicating_history(engine, design_workspace):
+    f = design_workspace
+    prepare(engine, f)
+    first = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert first["passed"]
+    artifact = Path(design_status(engine, f.key)["artifacts"][0]["absolute_path"])
+    original = artifact.read_bytes()
+    artifact.write_text("temporary fixture edit")
+    assert not validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    artifact.write_bytes(original)
+    restored = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert restored["passed"] and restored["validation_id"] == first["validation_id"]
+    decide(engine, f.key, "design", True, HumanFixture(), [ACTOR])
+    assert design_status(engine, f.key)["state"] == "DESIGN_APPROVED"
+
+
+def test_context_changes_after_generation_block_validation_and_approval(engine, design_workspace):
+    f = design_workspace
+    prepare(engine, f)
+    assert validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    (f.repos["estate"] / "README.md").write_text("Changed while human review was pending")
+    with pytest.raises(ValueError, match="context file changed"):
+        decide(engine, f.key, "design", True, HumanFixture(), [ACTOR])
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert not result["passed"] and any(x["code"] == "stale-context" for x in result["findings"])
+    assert design_status(engine, f.key)["state"] == "DESIGN_IN_PROGRESS"

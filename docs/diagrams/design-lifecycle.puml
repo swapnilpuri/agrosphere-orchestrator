@@ -1,0 +1,25 @@
+@startuml
+state DISCOVERED
+state DESIGN_IN_PROGRESS
+state DESIGN_VALIDATING
+state AWAITING_DESIGN_APPROVAL
+state DESIGN_APPROVED
+state IMPLEMENTATION_READY
+state IMPLEMENTING
+state IMPLEMENTATION_VALIDATING
+state AWAITING_DELIVERY_APPROVAL
+state COMPLETED
+[*] --> DISCOVERED
+DISCOVERED --> DESIGN_IN_PROGRESS : human-approved requirements
+DESIGN_IN_PROGRESS --> DESIGN_VALIDATING : generate immutable artifacts
+DESIGN_VALIDATING --> DESIGN_IN_PROGRESS : deterministic failure
+DESIGN_VALIDATING --> AWAITING_DESIGN_APPROVAL : gates and independent review pass
+AWAITING_DESIGN_APPROVAL --> DESIGN_IN_PROGRESS : human rejects
+AWAITING_DESIGN_APPROVAL --> DESIGN_APPROVED : authenticated exact-bundle approval
+DESIGN_APPROVED --> IMPLEMENTATION_READY : imported plan and artifacts match
+IMPLEMENTATION_READY --> IMPLEMENTING : task and design gates pass
+IMPLEMENTING --> IMPLEMENTATION_VALIDATING : all implementation tasks succeeded
+IMPLEMENTATION_VALIDATING --> AWAITING_DELIVERY_APPROVAL : separate as-built revision validated
+AWAITING_DELIVERY_APPROVAL --> IMPLEMENTATION_VALIDATING : human rejects
+AWAITING_DELIVERY_APPROVAL --> COMPLETED : authenticated delivery approval
+@enduml

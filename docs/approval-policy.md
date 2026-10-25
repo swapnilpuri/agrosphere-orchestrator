@@ -15,3 +15,13 @@ Actors are trusted local identity strings, not authenticated principals. Approva
 not single-use, do not expire, and are reusable for retries of the immutable task in
 AEO-1. Authentication, expiry, revocation scopes and adapter enforcement require
 explicit AEO-2 design review before enabling any execution side effects.
+
+## Authenticated design and delivery decisions
+
+The foundation actor-string task approval remains operation bookkeeping; it cannot satisfy
+a design approval. Requirements, exact design bundle and as-built delivery decisions use
+HumanVerifier with interactive Windows credential validation and canonical SID allowlisting.
+Default design allowlist is empty. No --actor or noninteractive approval bypass exists.
+Each decision binds milestone, scope/revision, validation and bundle digest; decisions are
+append-only and checked again at implementation gates. See design-workflow.md for setup
+and the trusted-administrator boundary.

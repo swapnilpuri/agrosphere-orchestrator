@@ -155,3 +155,12 @@ legacy CLI checks and dependency inventory all returned exit 0. The real-workspa
 verification at 2026-10-24T20:50:23.432574+00:00 returned exit 0: 12 application repositories,
 no missing manifest entries, unchanged application Git metadata/evidence fingerprints,
 and identical snapshot/counts on repeated reconciliation. Snapshot: a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4.
+
+## AEO-1C validation update
+
+The latest commands.json/pytest.xml now describe AEO-1C: 82 passed; every required command
+returned exit 0 at 2026-10-24T23:36:54.014513+00:00. Migration 0003 preserved existing recovery and
+foundation records. See [AEO-1C completion report](AEO-1C_REPORT.md),
+[upgrade preservation](design-upgrade.json) and [diagram tooling findings](design-tools.json).
+No PlantUML renderer is configured; that explicit error blocks design approval despite the
+availability probe itself succeeding. No live human approval or application design was created.

@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -12,3 +13,13 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     workspace_root: Path = Path("..")
     recovery_directory: Path = Path("project")
+    design_approvers: list[str] = []
+    plantuml_jar: Path | None = None
+    java_executable: str = "java"
+    codex_executable: str = "codex"
+    codex_startup_arguments: list[str] = []
+    codex_transport: Literal["auto", "exec", "mcp"] = "auto"
+    codex_model: str | None = None
+    execution_root: Path = Path(".aeo/executions")
+    execution_policy: Path = Path("config/execution.yaml")
+    execution_approvers: list[str] = []

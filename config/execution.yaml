@@ -1,0 +1,7 @@
+live_enabled: false
+timeout_limit_seconds: 600
+max_context_bytes: 100000
+max_log_bytes: 2000000
+max_artifact_bytes: 32000000
+validation_commands: []
+trace_metadata: false

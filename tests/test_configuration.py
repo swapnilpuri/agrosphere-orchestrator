@@ -26,7 +26,13 @@ def test_settings_environment(monkeypatch, tmp_path):
 def test_registry_and_policy():
     roles = load_yaml(ROOT / "config/roles.yaml", RoleRegistry).by_id()
     assert len(roles) == 9
-    assert roles["developer"].specializations == ["java", "python", "angular"]
+    assert roles["developer"].specializations == [
+        "java",
+        "python",
+        "angular",
+        "data-postgis",
+        "integration",
+    ]
     policy = load_yaml(ROOT / "config/approvals.yaml", ApprovalPolicy)
     assert policy.requires("deploy") and policy.requires("unknown")
 

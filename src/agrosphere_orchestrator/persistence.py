@@ -159,3 +159,87 @@ class RecoveryHead(Base):
     __tablename__ = "recovery_heads"
     workspace: Mapped[str] = mapped_column(String, primary_key=True)
     snapshot_id: Mapped[str] = mapped_column(ForeignKey("recovery_snapshots.id"))
+
+
+class DesignCase(Base):
+    __tablename__ = "design_cases"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    project_id: Mapped[str]
+    external_id: Mapped[str]
+    state: Mapped[str] = mapped_column(default="DISCOVERED")
+    scope_id: Mapped[str | None]
+    revision_id: Mapped[str | None]
+    validation_id: Mapped[str | None]
+
+
+class DesignScope(Base):
+    __tablename__ = "design_scopes"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    case_id: Mapped[str] = mapped_column(ForeignKey("design_cases.id"))
+    payload: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[str] = mapped_column(default=now)
+
+
+class DesignRevision(Base):
+    __tablename__ = "design_revisions"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    case_id: Mapped[str] = mapped_column(ForeignKey("design_cases.id"))
+    scope_id: Mapped[str] = mapped_column(ForeignKey("design_scopes.id"))
+    phase: Mapped[str]
+    payload: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[str] = mapped_column(default=now)
+
+
+class DesignValidation(Base):
+    __tablename__ = "design_validations"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    revision_id: Mapped[str] = mapped_column(ForeignKey("design_revisions.id"))
+    payload: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[str] = mapped_column(default=now)
+
+
+class DesignDecision(Base):
+    __tablename__ = "design_decisions"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    case_id: Mapped[str] = mapped_column(ForeignKey("design_cases.id"))
+    subject: Mapped[str]
+    kind: Mapped[str]
+    decision: Mapped[str]
+    actor: Mapped[str]
+    payload: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[str] = mapped_column(default=now)
+
+
+class Execution(Base):
+    __tablename__ = "executions"
+    __table_args__ = (UniqueConstraint("active_slot"),)
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    task_id: Mapped[str] = mapped_column(ForeignKey("tasks.id"))
+    state: Mapped[str]
+    active_slot: Mapped[int | None]
+    request: Mapped[dict] = mapped_column(JSON)
+    context: Mapped[dict] = mapped_column(JSON)
+    result: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    session_id: Mapped[str | None]
+    cancel_requested: Mapped[bool] = mapped_column(default=False)
+    created_at: Mapped[str] = mapped_column(default=now)
+    updated_at: Mapped[str] = mapped_column(default=now)
+
+
+class ExecutionGrant(Base):
+    __tablename__ = "execution_grants"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    execution_id: Mapped[str] = mapped_column(ForeignKey("executions.id"))
+    request_digest: Mapped[str]
+    actor: Mapped[str]
+    expires_at: Mapped[str]
+    created_at: Mapped[str] = mapped_column(default=now)
+
+
+class ExecutionAttempt(Base):
+    __tablename__ = "execution_attempts"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    execution_id: Mapped[str] = mapped_column(ForeignKey("executions.id"))
+    state: Mapped[str]
+    payload: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[str] = mapped_column(default=now)

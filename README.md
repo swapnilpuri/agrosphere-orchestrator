@@ -125,3 +125,12 @@ See [recovery report](project/RECOVERY_REPORT.md), [history](project/MILESTONE_H
 [roadmap](project/ROADMAP.yaml). AEO-2 requires separate authorization.
 
 For executed workspace safety/idempotence evidence, run .\.venv\Scripts\python.exe scripts/verify_recovery.py. It compares application Git metadata and evidence-file fingerprints before/after repeat discovery and records docs/validation/recovery.json.
+
+## AEO-1C documentation-first design
+
+Milestone design generation, deterministic validation, immutable artifact manifests and
+authenticated human approval now gate future implementation task starts. See the complete
+[design workflow](docs/design-workflow.md) and [AEO-1C report](docs/validation/AEO-1C_REPORT.md).
+The milestone CLI group adds design, docs, validate-design, design-status and approve-design,
+plus requirements approval, readiness, as-built reconciliation and delivery approval.
+No future application design or implementation is created by installing this capability.

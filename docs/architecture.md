@@ -59,3 +59,13 @@ approval tables retain their semantics. Snapshot identity excludes scan time. Ob
 head changes and audit events share a transaction. Reports use per-file atomic replacement
 with export-only repair. Human text outside generated regions is preserved. Unmarked reports
 fail closed. Application builds/tests, Git writes, agent execution and AEO-2 remain outside scope.
+
+## Documentation-first lifecycle (AEO-1C)
+
+Design scopes, immutable revisions/manifests, deterministic validations and authenticated
+human decisions are separate from imported plans and recovery classifications. Migration
+0003 adds five tables with append-only history guards and mutable case pointers. Serial
+BA/architect/writer adapters and an independent review seam do not call live agents.
+Repository-owned revision paths hold canonical documents; SQLite retains archival bytes.
+The original state.transition entry point enforces exact scope, approval, validation and
+artifact hashes before any implementation operation can start. See [workflow](design-workflow.md).

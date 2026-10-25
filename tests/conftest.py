@@ -60,3 +60,15 @@ def policy():
         approvers=["human"],
         exempt_operations=["inspect", "validate"],
     )
+
+
+@pytest.fixture(autouse=True)
+def restore_logging_after_cli_tests():
+    # CliRunner closes its captured stderr; keep that handler out of later migrations/tests.
+    import logging
+
+    logger = logging.getLogger()
+    handlers, level = list(logger.handlers), logger.level
+    yield
+    logger.handlers = handlers
+    logger.setLevel(level)

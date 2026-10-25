@@ -17,3 +17,12 @@ Starting creates a bookkeeping run. Leaving running finishes that run. Failed ->
 allows a retry; approval remains task/operation-scoped across retries in AEO-1.
 No actual process or agent starts. Transition actor is an asserted local identity;
 role permissions are enforced in plan validation, not a runtime RBAC identity system.
+
+## Milestone design lifecycle
+
+The task state machine above is preserved. New implementation starts additionally require
+a design case in IMPLEMENTATION_READY or IMPLEMENTING, current authenticated scope/design
+approvals, a matching imported plan, passing validation and unchanged artifact hashes.
+Read-only plan/inspect/validate task operations retain their existing behavior.
+See [documentation lifecycle](design-workflow.md) and diagrams/design-lifecycle.puml for
+DISCOVERED through COMPLETED, including revision/rejection and delivery guards.

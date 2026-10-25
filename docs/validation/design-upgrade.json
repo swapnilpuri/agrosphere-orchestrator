@@ -1,0 +1,73 @@
+{
+  "executed_at": "2026-10-24T23:33:34.800327+00:00",
+  "before": {
+    "projects": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "milestones": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "tasks": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "runs": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "approvals": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "audit_events": {
+      "rows": 6,
+      "sha256": "fdb3b551b50f47b67d8f13fa2b13de4ad10b8091a9e7c2b5d2c6d5d22dd0e498"
+    },
+    "recovery_snapshots": {
+      "rows": 3,
+      "sha256": "f0df02c7ddb04d044c738efb9e721d83d364243f2be445dc73ce41f52b2142a0"
+    },
+    "recovery_heads": {
+      "rows": 1,
+      "sha256": "301ebff634992570d8ffaad59af252ac8dbde6c46a05bd543dcb4232211a7917"
+    }
+  },
+  "after": {
+    "projects": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "milestones": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "tasks": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "runs": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "approvals": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "audit_events": {
+      "rows": 6,
+      "sha256": "fdb3b551b50f47b67d8f13fa2b13de4ad10b8091a9e7c2b5d2c6d5d22dd0e498"
+    },
+    "recovery_snapshots": {
+      "rows": 3,
+      "sha256": "f0df02c7ddb04d044c738efb9e721d83d364243f2be445dc73ce41f52b2142a0"
+    },
+    "recovery_heads": {
+      "rows": 1,
+      "sha256": "301ebff634992570d8ffaad59af252ac8dbde6c46a05bd543dcb4232211a7917"
+    }
+  },
+  "existing_records_unchanged": true,
+  "design_case_count": 0
+}

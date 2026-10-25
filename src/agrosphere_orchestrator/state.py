@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from .configuration import ApprovalPolicy
 from .models import TaskState
-from .persistence import Approval, Run, Task, audit, now
+from .persistence import Approval, Milestone, Run, Task, audit, now
 
 TRANSITIONS = {
     TaskState.PENDING: {TaskState.READY, TaskState.CANCELLED},
@@ -81,6 +81,18 @@ def transition(
                 raise PermissionError("operation requires approval")
             if decisions[-1].actor not in policy.approvers:
                 raise PermissionError("approver no longer authorized")
+        if target == TaskState.RUNNING and task.spec["operation"] not in {
+            "plan",
+            "inspect",
+            "validate",
+        }:
+            from .design import assert_design_gate, move
+            from .design_models import MilestoneState
+
+            milestone = session.get(Milestone, task.milestone_id)
+            case = assert_design_gate(session, milestone)
+            if case.state == MilestoneState.IMPLEMENTATION_READY:
+                move(session, case, MilestoneState.IMPLEMENTING, actor)
         task.state = target.value
         if target == TaskState.RUNNING:
             run = Run(id=str(uuid4()), task_id=task_id, status="running")

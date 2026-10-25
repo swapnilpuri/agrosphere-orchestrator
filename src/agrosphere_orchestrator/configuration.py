@@ -41,6 +41,15 @@ class Role(StrictModel):
     handoffs: list[str]
     boundaries: list[str] = Field(min_length=1)
     specializations: list[str] = Field(default_factory=list)
+    system_instructions: str = ""
+    input_schema: str = "ExecutionRequest"
+    output_schema: str = "AgentOutput"
+    allowed_repositories: list[str] = Field(default_factory=list)
+    required_context: list[str] = Field(default_factory=list)
+    validation_expectations: list[str] = Field(default_factory=list)
+    approval_requirements: list[str] = Field(default_factory=list)
+    handoff_contract: dict[str, str] = Field(default_factory=dict)
+    specialization_instructions: dict[str, str] = Field(default_factory=dict)
 
 
 class RoleRegistry(StrictModel):
