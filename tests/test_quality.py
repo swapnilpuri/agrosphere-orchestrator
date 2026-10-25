@@ -299,6 +299,8 @@ def test_remediation_bounded_and_revalidation(engine, quality_fixture):
     with Session(engine) as session, session.begin():
         session.get(Task, f.task_id).state = "succeeded"
     assert run_validation(engine, f)["decision"] == "READY_FOR_APPROVAL"
+    with Session(engine) as session:
+        assert history(session, f.milestone_id, "remediation.revalidated")
 
 
 def test_existing_delivery_guard_cannot_bypass_missing_evidence(engine, quality_fixture):
@@ -490,6 +492,11 @@ def test_expired_approval_and_exception_rejected(engine, quality_fixture, monkey
     monkeypatch.setattr(quality_module, "datetime", FutureClock)
     with pytest.raises(PermissionError, match="expired"):
         consume_approval(engine, f.settings, identity, "PRIVILEGED_EXECUTION", "expiry-test")
+    run_validation(
+        engine,
+        f,
+        Validator(findings=[{"id": "fixture", "message": "Dummy expiry risk", "severity": "HIGH"}]),
+    )
     identity = request(engine, f, "SECURITY_EXCEPTION", "security:fixture", expiry=1)
     # The future clock advances request expiry as well; verify expired absolute request separately.
     monkeypatch.setattr(quality_module, "datetime", real_datetime)
@@ -620,3 +627,27 @@ def test_runtime_reads_cannot_grant_home_roots_or_credentials():
     ]:
         with pytest.raises(ValueError):
             ValidationCommand(id="tool", argv=["tool"], read_paths=[value])
+
+
+def test_waiver_cannot_preapprove_unknown_or_changed_finding(engine, quality_fixture):
+    f = quality_fixture
+    run_validation(engine, f)
+    with pytest.raises(PermissionError, match="existing deterministic"):
+        request(engine, f, "SECURITY_EXCEPTION", "security:invented")
+    run_validation(
+        engine,
+        f,
+        Validator(findings=[{"id": "risk", "message": "Original dummy risk", "severity": "HIGH"}]),
+    )
+    identity = request(engine, f, "SECURITY_EXCEPTION", "security:risk")
+    decide_approval(
+        engine, f.settings, identity, HumanFixture(), "approved", "Exact fixture risk only"
+    )
+    report = run_validation(
+        engine,
+        f,
+        Validator(
+            findings=[{"id": "risk", "message": "Different dummy risk", "severity": "CRITICAL"}]
+        ),
+    )
+    assert report["decision"] == "NOT_READY"

@@ -984,7 +984,6 @@ def quality_policies():
 def quality_activate(milestone: str = typer.Option(...), project: str = "agrosphere"):
     from .human_approval import WindowsConsoleHumanVerifier
     from .quality import activate_policy
-
     from .quality_models import QualityPolicy
 
     try:

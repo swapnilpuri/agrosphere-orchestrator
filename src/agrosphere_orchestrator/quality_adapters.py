@@ -183,12 +183,17 @@ def interpret(gate, raw):
                         if score >= 4
                         else Severity.LOW
                     )
+                physical = (item.get("locations") or [{}])[0].get("physicalLocation", {})
+                location = physical.get("artifactLocation", {}).get("uri")
+                if location and physical.get("region", {}).get("startLine"):
+                    location += ":" + str(physical["region"]["startLine"])
                 # SARIF suppressions are retained in raw evidence, never honored automatically.
                 result["findings"].append(
                     Finding(
                         id="sarif-" + str(index) + "-" + str(len(result["findings"])),
                         message=item["message"]["text"],
                         severity=severity,
+                        location=location,
                     ).model_dump(mode="json")
                 )
     return result

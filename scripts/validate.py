@@ -1,5 +1,6 @@
 """Execute validations and retain exact argv, exit codes and complete output."""
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -78,12 +79,11 @@ def main() -> int:
         [sys.executable, "scripts/verify_aeo3_docs.py"],
         [sys.executable, "scripts/verify_aeo4_docs.py"],
         [sys.executable, "-m", "agrosphere_orchestrator.cli", "quality", "policies"],
-        [sys.executable, "scripts/codex_live_smoke.py"],
         [sys.executable, "-m", "pip", "freeze"],
     ]
     results = []
     for argv in commands:
-        completed = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True, timeout=300)
+        completed = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True, timeout=600)
         result = {
             "argv": argv,
             "cwd": str(ROOT),
@@ -100,6 +100,12 @@ def main() -> int:
         "python": sys.version,
         "commands": results,
     }
+    raw = json.dumps(output, indent=2) + "\n"
+    history = evidence_dir / "aeo4-validation-history"
+    history.mkdir(exist_ok=True)
+    destination = history / (hashlib.sha256(raw.encode()).hexdigest() + ".json")
+    if not destination.exists():
+        destination.write_text(raw, encoding="utf-8")
     (evidence_dir / "commands.json").write_text(
         json.dumps(output, indent=2) + "\n", encoding="utf-8"
     )

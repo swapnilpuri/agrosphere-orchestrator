@@ -1,6 +1,7 @@
 @startuml
+title C4 Component Diagram - Quality and Governance
 skinparam componentStyle rectangle
-rectangle "AgroSphere Orchestrator" {
+rectangle "AgroSphere Orchestrator (Container)" {
 component "CLI / authenticated human" as CLI
 component "AEO-1C design and approval authority" as Design
 component "AEO-3 scheduler / bounded repair" as Scheduler

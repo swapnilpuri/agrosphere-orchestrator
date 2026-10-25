@@ -1,0 +1,64 @@
+{
+  "milestone": "AEO-4",
+  "validation_executed_at": "2026-10-25T05:43:41.624711+00:00",
+  "implementation_status": "IMPLEMENTED_AND_TESTED",
+  "validation_command_count": 18,
+  "validation_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "tests": {
+    "total": 163,
+    "pre_existing": 132,
+    "aeo4": 31,
+    "failed": 0
+  },
+  "real_tools": [
+    "pytest",
+    "ruff check",
+    "ruff format --check",
+    "pip check",
+    "alembic upgrade/check",
+    "Git temporary repositories",
+    "CLI",
+    "local PlantUML",
+    "native read-only sandbox fixture"
+  ],
+  "mocked": [
+    "Codex agent transports",
+    "security scanners",
+    "business acceptance fixtures",
+    "human identity verifier"
+  ],
+  "live_model_invoked": false,
+  "production_scanner_validation": false,
+  "production_identity_validation": false,
+  "aeo5_started": false,
+  "evidence": [
+    "commands.json",
+    "pytest.xml",
+    "aeo4-runtime.json",
+    "aeo4-docs.json"
+  ],
+  "limitations": [
+    "Legacy milestones require explicit policy adoption",
+    "Repository-specific scanner and semantic compatibility tools must be configured",
+    "Local administrators remain trusted; Windows console identity is a development boundary"
+  ]
+}

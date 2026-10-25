@@ -50,6 +50,13 @@ def design_context(session, milestone):
     case = session.get(DesignCase, case_key(milestone.project_id, milestone.external_id))
     if case is None or not case.scope_id:
         raise PermissionError("Approved requirement scope is missing")
+    if case.state in {
+        "DISCOVERED",
+        "DESIGN_IN_PROGRESS",
+        "DESIGN_VALIDATING",
+        "AWAITING_DESIGN_APPROVAL",
+    }:
+        raise PermissionError("Architecture revision is pending human approval")
     scope = session.get(DesignScope, case.scope_id)
     require_approval(session, case, case.scope_id, "requirements")
     decisions = list(
@@ -68,6 +75,14 @@ def design_context(session, milestone):
         or check_files(artifacts_of(revision), revision.payload["repositories"])
     ):
         raise PermissionError("Approved architecture artifacts changed; design revision required")
+    require_approval(session, case, revision.payload["bundle_digest"], "design")
+    current_revision = session.get(DesignRevision, case.revision_id) if case.revision_id else None
+    if (
+        current_revision
+        and current_revision.phase == "design"
+        and current_revision.id != revision.id
+    ):
+        raise PermissionError("Current design revision is not approved")
     return case, scope, revision
 
 
@@ -152,7 +167,9 @@ def check_policy_scope(policy, milestone, scope):
             raise ValueError("Unknown approved requirement or implementing task")
         try:
             index = int(criterion.criterion_id.removeprefix("AC-"))
-            if criterion.criterion_id != "AC-" + str(index) or not 1 <= index <= len(requirement["acceptance_criteria"]):
+            if criterion.criterion_id != "AC-" + str(index) or not 1 <= index <= len(
+                requirement["acceptance_criteria"]
+            ):
                 raise ValueError("Invalid criterion index")
             expected = requirement["acceptance_criteria"][index - 1]
         except (ValueError, IndexError):
@@ -347,6 +364,44 @@ async def validate(engine, settings, external_id, project="agrosphere", validato
                 "validation.completed",
                 {"run": run, "context": bound, "results": results, "ended_at": now()},
             )
+            for repair in history(session, milestone.id, "remediation.prepared"):
+                if repair.payload["validation"] == run:
+                    continue
+                if any(
+                    r.payload.get("repair") == repair.id
+                    for r in history(session, milestone.id, "remediation.revalidated")
+                ):
+                    continue
+                current_execution = session.scalar(
+                    select(Execution)
+                    .where(Execution.task_id == repair.task_id)
+                    .order_by(Execution.created_at.desc())
+                )
+                outcome = next(
+                    (
+                        read_blob(session, ref)
+                        for ref in results
+                        if read_blob(session, ref)["gate_id"] == repair.payload["gate"]
+                    ),
+                    None,
+                )
+                record(
+                    session,
+                    milestone.id,
+                    "remediation.revalidated",
+                    {
+                        "repair": repair.id,
+                        "run": run,
+                        "new_evidence": results,
+                        "agent_execution_id": current_execution.id if current_execution else None,
+                        "files_changed": (current_execution.result or {}).get("changed_files", [])
+                        if current_execution
+                        else [],
+                        "retry_count": repair.payload["retry_count"],
+                        "final_result": outcome["state"] if outcome else "BLOCKED",
+                    },
+                    task=repair.task_id,
+                )
             for task in tasks_for(session, milestone):
                 quality_state(session, task, "QUALITY_REVIEW", run)
                 quality_state(session, task, "SECURITY_REVIEW", run)
@@ -511,6 +566,8 @@ def evaluate(session, settings, milestone):
                                 not in {"SECURITY_EXCEPTION", "DEPENDENCY_EXCEPTION"}
                                 or waiver.payload["action"] != gate.id + ":" + finding.id
                             ):
+                                continue
+                            if waiver.payload.get("finding_hash") != digest(entry):
                                 continue
                             try:
                                 decision = valid_approval(session, settings, waiver, current)
@@ -699,11 +756,28 @@ def request_approval(
                 raise PermissionError(
                     "Delivery cannot request approval before all quality gates pass"
                 )
+        finding_hash = None
+        if category in {ApprovalCategory.SECURITY_EXCEPTION, ApprovalCategory.DEPENDENCY_EXCEPTION}:
+            security_report = evaluate(session, settings, milestone)
+            target = next(
+                (
+                    f
+                    for f in security_report["security_findings"]
+                    if action == f["gate"] + ":" + f["id"]
+                ),
+                None,
+            )
+            if target is None:
+                raise PermissionError(
+                    "Exception requires an existing deterministic scanner finding"
+                )
+            finding_hash = digest(target)
         for prior in history(session, milestone.id, "approval.request"):
             if (
                 prior.payload["category"] == category.value
                 and prior.payload["action"] == action
                 and prior.payload["context"] == current
+                and prior.payload.get("finding_hash") == finding_hash
             ):
                 decided = decisions(session, prior)
                 if decided and decided[-1].decision in {"rejected", "revoked"}:
@@ -723,6 +797,7 @@ def request_approval(
                 "action": action,
                 "requesting_agent": requesting_agent,
                 "justification": justification,
+                "finding_hash": finding_hash,
                 "context": current,
                 "expires_at": (datetime.now(UTC) + timedelta(seconds=expires_seconds)).isoformat(),
             },
@@ -831,6 +906,18 @@ def consume_approval(engine, settings, identity, category, action):
             session, request.payload["milestone"], request.payload["project"]
         )
         current = context(session, settings, milestone, active_policy(session, settings, milestone))
+        if category in {"SECURITY_EXCEPTION", "DEPENDENCY_EXCEPTION"}:
+            security_report = evaluate(session, settings, milestone)
+            finding = next(
+                (
+                    f
+                    for f in security_report["security_findings"]
+                    if action == f["gate"] + ":" + f["id"]
+                ),
+                None,
+            )
+            if finding is None or digest(finding) != request.payload.get("finding_hash"):
+                raise PermissionError("Security exception finding changed or is unavailable")
         if (
             action == "delivery"
             and evaluate(session, settings, milestone)["decision"] != "APPROVED_FOR_DELIVERY"
@@ -893,6 +980,11 @@ def prepare_remediation(engine, settings, external_id, project="agrosphere"):
                     continue
                 task.state = "failed"
                 quality_state(session, task, "IMPLEMENTED", report["validation"])
+                original = session.scalar(
+                    select(Execution)
+                    .where(Execution.task_id == task.id)
+                    .order_by(Execution.created_at.desc())
+                )
                 payload = {
                     "validation": report["validation"],
                     "gate": gate.id,
@@ -904,7 +996,9 @@ def prepare_remediation(engine, settings, external_id, project="agrosphere"):
                         .where(Execution.task_id == task.id)
                         .order_by(Execution.created_at.desc())
                     ),
-                    "files_changed": [],
+                    "files_changed": (original.result or {}).get("changed_files", [])
+                    if original
+                    else [],
                 }
                 record(session, milestone.id, "remediation.prepared", payload, task=task.id)
                 evidence(
