@@ -28,3 +28,6 @@ repositories/operations, context/validation requirements, approval requirements 
 contracts. Developer specializations additionally include Data/PostGIS and Integration.
 All live tasks need exact human grants and sandbox enforcement. Handoff output is advisory;
 it cannot start another agent. See the AEO-2 artifact bundle and CLI agents describe.
+
+
+AEO-3 scheduling, handoffs, resource leases, and operator commands are described in [the orchestration guide](aeo-3/README.md).

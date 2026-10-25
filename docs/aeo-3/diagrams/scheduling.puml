@@ -1,0 +1,21 @@
+@startuml
+start
+:Load approved plan and design;
+if (Paused or invalid approval?) then (yes)
+:Record blocker;
+stop
+endif
+:Sort by priority then task ID;
+:Require verified prerequisite evidence;
+:Check artifact hashes and handoffs;
+:Check global, role and repository limits;
+if (Exact execution grant and resources available?) then (yes)
+:Atomically claim task and sorted resources;
+:Execute independent tasks with asyncio;
+:Persist results and validation evidence;
+:Release confirmed leases;
+else (no)
+:Record blocker without execution;
+endif
+stop
+@enduml

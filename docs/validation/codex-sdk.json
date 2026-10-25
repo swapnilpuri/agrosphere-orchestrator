@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-10-25T03:53:39.688396+00:00",
+  "packages": {
+    "openai-agents": "0.24.0",
+    "mcp": "2.3.0",
+    "openai": "3.37.0"
+  },
+  "interfaces": {
+    "MCPServerStdio": "(params: 'MCPServerStdioParams', cache_tools_list: 'bool' = False, name: 'str | None' = None, client_session_timeout_seconds: 'float | None' = 5, tool_filter: 'ToolFilter' = None, use_structured_content: 'bool' = False, max_retry_attempts: 'int' = 0, retry_backoff_seconds_base: 'float' = 1.0, message_handler: 'MessageHandlerFnT | None' = None, require_approval: 'RequireApprovalSetting' = None, failure_error_function: 'ToolErrorFunction | None | _UnsetType' = <agents.mcp.server._UnsetType object at 0x00000288A38B30E0>, tool_meta_resolver: 'MCPToolMetaResolver | None' = None, custom_data_extractor: 'MCPToolCustomDataExtractor | None' = None, retry_backoff_seconds_max: 'float | None' = None, *, tool_input_guardrails: 'list[ToolInputGuardrail[Any]] | None' = None, tool_output_guardrails: 'list[ToolOutputGuardrail[Any]] | None' = None, max_list_pages: 'int | None' = None)",
+    "list_tools": "(self, run_context: 'RunContextWrapper[Any] | None' = None, agent: 'AgentBase | None' = None) -> 'list[MCPTool]'",
+    "call_tool": "(self, tool_name: 'str', arguments: 'dict[str, Any] | None', meta: 'dict[str, Any] | None' = None) -> 'CallToolResult'",
+    "cleanup": "(self)",
+    "trace": "(workflow_name: 'str', trace_id: 'str | None' = None, group_id: 'str | None' = None, metadata: 'dict[str, Any] | None' = None, tracing: 'TracingConfig | None' = None, disabled: 'bool' = False) -> 'Trace'"
+  },
+  "model_called": false,
+  "mcp_tool_schema_discovery_on_installed_cli": "unsupported: mcp-server absent"
+}

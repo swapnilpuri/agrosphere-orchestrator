@@ -1,0 +1,26 @@
+@startuml
+actor Human
+participant CLI
+participant Planner
+participant Scheduler
+participant "AEO-1C Gate" as Gate
+participant "AEO-2 Executor" as Executor
+Human -> CLI: plan existing milestone
+CLI -> Planner: validate exact approved graph
+Planner -> Gate: verify design and scope
+Planner --> Human: immutable plan for review
+Human -> CLI: approve exact plan
+CLI -> Scheduler: prepare eligible requests
+Scheduler --> Human: exact execution requests
+Human -> CLI: authenticate execution grants
+CLI -> Scheduler: execute
+Scheduler -> Gate: recheck design
+Scheduler -> Scheduler: claim tasks and sorted resources
+par independent task A
+Scheduler -> Executor: approved execution A
+else independent task B
+Scheduler -> Executor: approved execution B
+end
+Executor --> Scheduler: structured results and validation
+Scheduler -> Scheduler: persist evidence and release leases
+@enduml

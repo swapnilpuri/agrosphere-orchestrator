@@ -1,0 +1,177 @@
+{
+  "validation_exit_code": 0,
+  "commands": [
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-v",
+        "--junitxml=docs/validation/pytest.xml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "project-status"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "repository-inspect"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "milestone-validate",
+        "examples/aeo-1.yaml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "milestone",
+        "design-status",
+        "AEO-1C"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "scripts/verify_design_tools.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "agents",
+        "list"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "agents",
+        "describe",
+        "developer"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "scripts/verify_aeo2_docs.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "scripts/verify_aeo3_docs.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "scripts/codex_live_smoke.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "tests": {
+    "passed": 132,
+    "existing": 116,
+    "aeo3": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "diagrams": {
+    "rendered": 7,
+    "total": 7
+  },
+  "live_codex_executed": false,
+  "concurrency_evidence": "deterministic mock transports; peak active executions 2",
+  "repair_authorization": "fresh exact human execution grants",
+  "uncertain_writes": "reconciliation required; leases retained"
+}

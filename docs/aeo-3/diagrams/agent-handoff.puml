@@ -1,0 +1,15 @@
+@startuml
+participant Producer
+participant Scheduler
+participant "Preserved worktree" as Files
+database Evidence
+participant Consumer
+Producer --> Scheduler: structured execution result
+Scheduler -> Evidence: verified completion
+Scheduler -> Files: check source revision and SHA-256
+Scheduler -> Evidence: publish approved artifact references
+Consumer -> Scheduler: request eligible task
+Scheduler -> Files: recheck bytes and version
+Scheduler -> Evidence: acknowledge handoff
+Scheduler -> Consumer: scoped hashed context
+@enduml

@@ -1,0 +1,79 @@
+{
+  "executed_at": "2026-10-25T04:25:39.4841079Z",
+  "expected_count": 9,
+  "actual_count": 9,
+  "roles": [
+    {
+      "id": "program-manager",
+      "resolved_id": "program-manager",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "project-manager",
+      "resolved_id": "project-manager",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "business-analyst",
+      "resolved_id": "business-analyst",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "solution-architect",
+      "resolved_id": "solution-architect",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "developer",
+      "resolved_id": "developer",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "qa-engineer",
+      "resolved_id": "qa-engineer",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "security-engineer",
+      "resolved_id": "security-engineer",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "devops-engineer",
+      "resolved_id": "devops-engineer",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    },
+    {
+      "id": "technical-writer",
+      "resolved_id": "technical-writer",
+      "exit_code": 0,
+      "instructions_present": true,
+      "input_schema": "ExecutionRequest",
+      "output_schema": "AgentOutput"
+    }
+  ]
+}

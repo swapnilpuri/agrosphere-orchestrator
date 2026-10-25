@@ -33,3 +33,6 @@ QUEUED -> AWAITING_APPROVAL -> PREPARING -> RUNNING -> SUCCEEDED/FAILED/TIMED_OU
 Lost owners become INTERRUPTED after process-identity reconciliation. Execution success and
 task acceptance are separate. An unvalidated write proposal cannot mark a task accepted or
 complete a milestone. The DB enforces one active execution; no scheduler is added.
+
+
+AEO-3 scheduling, handoffs, resource leases, and operator commands are described in [the orchestration guide](aeo-3/README.md).

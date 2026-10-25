@@ -1,0 +1,25 @@
+@startuml
+title C4 Component View - AgroSphere Orchestrator
+package "AgroSphere Orchestrator (single host)" {
+component "CLI / human approvals" as CLI <<Component>>
+component "Versioned planner" as Planner <<Component>>
+component "Deterministic scheduler" as Scheduler <<Component>>
+component "Claims and resource leases" as Leases <<Component>>
+component "Artifact handoffs" as Handoffs <<Component>>
+component "AEO-2 execution service" as Executor <<Component>>
+component "Existing Codex adapter" as Adapter <<Component>>
+}
+database "Existing SQLite state and audit" as DB
+folder "Isolated Git worktrees" as Worktrees
+CLI --> Planner
+CLI --> Scheduler
+Planner --> DB
+Scheduler --> Leases
+Scheduler --> Handoffs
+Scheduler --> Executor
+Leases --> DB
+Handoffs --> DB
+Executor --> Adapter
+Executor --> Worktrees
+Executor --> DB
+@enduml

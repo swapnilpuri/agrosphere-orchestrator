@@ -177,3 +177,6 @@ review-design operations do not grant application code-write authority. Future C
 needs isolated repository workspaces, typed live result/error contracts, authentication, budgets,
 cancellation, redaction, trusted renderer distribution, protected config and opt-in live tests.
 The existing AgentExecutor/CodexWorkspace interfaces remain unimplemented. No AEO-2 work starts.
+
+
+AEO-3 scheduling, handoffs, resource leases, and operator commands are described in [the orchestration guide](aeo-3/README.md).

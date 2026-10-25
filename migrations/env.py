@@ -1,5 +1,6 @@
 from alembic import context
 
+from agrosphere_orchestrator import orchestration_store  # noqa: F401
 from agrosphere_orchestrator.config.settings import Settings
 from agrosphere_orchestrator.persistence import Base, make_engine
 

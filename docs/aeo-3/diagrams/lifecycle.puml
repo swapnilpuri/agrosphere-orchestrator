@@ -1,0 +1,13 @@
+@startuml
+[*] --> pending
+pending --> ready : verified prerequisites and approvals
+ready --> running : exact grant and claim
+running --> succeeded : accepted evidence
+running --> failed : classified failure
+running --> cancelled : confirmed termination
+running --> reconciliation_required : uncertain outcome
+failed --> ready : bounded eligible repair / new grant
+reconciliation_required --> reconciliation_required : preserve locks until review
+succeeded --> [*]
+cancelled --> [*]
+@enduml

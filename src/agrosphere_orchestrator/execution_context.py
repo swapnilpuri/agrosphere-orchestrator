@@ -193,6 +193,36 @@ def build_context(
                     content=Redactor().clean(raw.decode("utf-8", errors="replace")),
                 )
             )
+    # Scheduling artifacts are exact hashed inputs, carried into the AEO-2 prompt and digest.
+    from .orchestration_store import OrchestrationControl
+
+    if session.get(OrchestrationControl, milestone.id):
+        from .orchestration import load_plan, verify_artifact
+
+        plan, _, _ = load_plan(session, milestone)
+        for ref in plan.tasks[task.external_id].inputs:
+            verify_artifact(settings, ref, session, milestone)
+            owner_root = repositories[ref.repository].path
+            if ref.producer:
+                producer = siblings[ref.producer]
+                produced = session.scalar(
+                    select(Execution)
+                    .where(Execution.task_id == producer.id, Execution.state == "SUCCEEDED")
+                    .order_by(Execution.created_at.desc())
+                )
+                owner_root = Path(produced.request["worktree_path"])
+            raw = safe_relative(owner_root, ref.path).read_bytes()
+            if len(raw) > 20000:
+                raise ValueError("Handoff input exceeds targeted context budget")
+            entries.append(
+                InputArtifact(
+                    repository=ref.repository,
+                    path=ref.path,
+                    sha256=ref.sha256,
+                    revision=ref.revision,
+                    content=Redactor().clean(raw.decode("utf-8", errors="replace")),
+                )
+            )
     previous = [
         {"execution_id": e.id, "state": e.state, "summary": (e.result or {}).get("summary", "")}
         for e in session.scalars(

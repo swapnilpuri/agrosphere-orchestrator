@@ -158,3 +158,6 @@ request. Both the approved design and original operation approval remain mandato
 execution is unavailable on installed Codex; auto uses the verified non-interactive transport.
 Optional live smoke: python scripts/codex_live_smoke.py --live (human authentication and possible
 quota use). The ordinary suite never runs a model. Native-only diagnostics are separately available.
+
+
+AEO-3 scheduling, handoffs, resource leases, and operator commands are described in [the orchestration guide](docs/aeo-3/README.md).

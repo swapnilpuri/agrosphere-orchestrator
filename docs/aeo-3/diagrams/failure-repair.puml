@@ -1,0 +1,18 @@
+@startuml
+participant Scheduler
+participant Executor
+database Evidence
+actor Human
+Scheduler -> Executor: approved task execution
+Executor --> Scheduler: failure with original evidence
+Scheduler -> Evidence: preserve result and failure category
+alt eligible read-only repair within limit
+Scheduler -> Executor: prepare scoped new request
+Executor --> Human: exact request for human review
+Human -> Executor: authenticated grant
+Scheduler -> Executor: bounded repair execution
+Executor --> Scheduler: new result and validation
+else security, approval, uncertain write or exhausted budget
+Scheduler -> Evidence: block and escalate
+end
+@enduml

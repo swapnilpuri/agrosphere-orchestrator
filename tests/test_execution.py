@@ -632,3 +632,34 @@ def test_redaction_preserves_normal_risk_and_disk_language():
     cleaned = Redactor().clean(text)
     assert "risk-based-analysis" in cleaned and "disk-full-read-access" in cleaned
     assert "sk-example_secret_key_123456" not in cleaned
+
+
+def test_expired_grant_prevents_followup_validation_action(engine, execution_fixture, monkeypatch):
+    from datetime import UTC, datetime, timedelta
+
+    import agrosphere_orchestrator.execution as service
+
+    f = execution_fixture
+
+    class FutureClock:
+        @staticmethod
+        def now(tz):
+            return datetime.now(UTC) + timedelta(days=1)
+
+        fromisoformat = datetime.fromisoformat
+
+    class ExpiringTransport(TransportFixture):
+        async def execute(self, *args, **kwargs):
+            outcome = await super().execute(*args, **kwargs)
+            monkeypatch.setattr(service, "datetime", FutureClock)
+            return outcome
+
+    class ForbiddenValidator:
+        def __init__(self, *args):
+            raise AssertionError("expired grant must not reach validator startup")
+
+    monkeypatch.setattr(service, "CodexProcessManager", ForbiddenValidator)
+    identity = queue(engine, f, ["fixture-test"])
+    result = invoke(engine, f, identity, ExpiringTransport())
+    assert result.status == "FAILED" and result.error.code == "policy"
+    assert "expired" in result.error.message

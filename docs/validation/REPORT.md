@@ -164,3 +164,13 @@ foundation records. See [AEO-1C completion report](AEO-1C_REPORT.md),
 [upgrade preservation](design-upgrade.json) and [diagram tooling findings](design-tools.json).
 No PlantUML renderer is configured; that explicit error blocks design approval despite the
 availability probe itself succeeding. No live human approval or application design was created.
+
+## AEO-2 validation update
+
+The latest retained run at 2026-10-25T03:51:16.455674+00:00 completed with 116 passed in 125.92s (0:02:05);
+all 16 required validation commands returned exit 0. Migration 0004 preserved every
+pre-existing table row. Native Windows permissions were verified in three modes without a model.
+The optional live model smoke remains NOT RUN; no live execution or grant was created.
+See [AEO-2 report](AEO-2_REPORT.md), [runtime evidence](codex-runtime.json),
+[SDK interfaces](codex-sdk.json), [migration evidence](execution-upgrade.json) and
+[documentation observation](aeo2-docs.json). PlantUML rendering remains an explicit missing-tool finding.

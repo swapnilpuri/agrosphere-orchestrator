@@ -14,6 +14,11 @@ from agrosphere_orchestrator.execution_models import (
     ExecutionResult,
 )
 from agrosphere_orchestrator.models import MilestoneSpec, TaskSpec
+from agrosphere_orchestrator.orchestration_models import (
+    ArtifactReference,
+    ExecutionPlan,
+    TaskOptions,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -24,6 +29,9 @@ def main() -> int:
     schema_dir = ROOT / "docs/schemas"
     schema_dir.mkdir(parents=True, exist_ok=True)
     for name, model in (
+        ("orchestration-plan", ExecutionPlan),
+        ("artifact-reference", ArtifactReference),
+        ("task-options", TaskOptions),
         ("milestone", MilestoneSpec),
         ("task", TaskSpec),
         ("design-input", DesignInput),
@@ -64,6 +72,7 @@ def main() -> int:
         [sys.executable, "-m", "agrosphere_orchestrator.cli", "agents", "list"],
         [sys.executable, "-m", "agrosphere_orchestrator.cli", "agents", "describe", "developer"],
         [sys.executable, "scripts/verify_aeo2_docs.py"],
+        [sys.executable, "scripts/verify_aeo3_docs.py"],
         [sys.executable, "scripts/codex_live_smoke.py"],
         [sys.executable, "-m", "pip", "freeze"],
     ]

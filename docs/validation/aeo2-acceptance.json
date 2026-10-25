@@ -1,0 +1,109 @@
+{
+  "executed_at": "2026-10-25T04:27:30.344864+00:00",
+  "verified_count": 9,
+  "total": 10,
+  "percentage": 90,
+  "qualification": "Includes deterministic fixture verification. Full live integration acceptance remains pending.",
+  "live_model_called": false,
+  "live_preflight": {
+    "execution_approver_count": 0,
+    "interactive_human_authentication_required": true
+  },
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "116",
+    "time": "132.693",
+    "timestamp": "2026-10-24T23:23:52.160476-05:00",
+    "hostname": "DESKTOP-O332NJC"
+  },
+  "persistent_fixture_evidence": [
+    {
+      "file": ".aeo\\acceptance-evidence\\test_success_persists_session_0.db",
+      "sha256": "2a29dc885c64456d99d1a1456cd7d17d096743fe76c4296992a0b677f14d0f9d",
+      "records": [
+        {
+          "id": "b724efb6-e7e5-4eac-a0bf-43ba3fc5be5c",
+          "state": "SUCCEEDED",
+          "result_saved": true
+        }
+      ]
+    },
+    {
+      "file": ".aeo\\acceptance-evidence\\test_recovery_marks_orphan_int0.db",
+      "sha256": "b9388d182da562c4be0a3fca4839e49d0e85ed989b314ecf2bf6288785f0ef72",
+      "records": [
+        {
+          "id": "0441e720-c0a5-428b-a286-b0eb8ad16982",
+          "state": "INTERRUPTED",
+          "result_saved": false
+        },
+        {
+          "id": "91717984-f678-43fb-8e47-fe2eb5f62fa3",
+          "state": "AWAITING_APPROVAL",
+          "result_saved": false
+        }
+      ]
+    }
+  ],
+  "renderer": {
+    "version": "1.2026.9",
+    "source": "https://plantuml.com/en/download",
+    "jar": ".aeo/tools/plantuml-1.2026.9.jar",
+    "sha256": "aa4a1d06f8911c4b842beff4828dd955be431692b631a312d04c0e9fab9581de"
+  },
+  "checks": [
+    {
+      "check": "Codex runtime health check succeeds",
+      "status": "verified",
+      "evidence": "Native CLI 0.164.0, authenticated, exec supported; codex-runtime.json"
+    },
+    {
+      "check": "All nine agent roles resolve correctly",
+      "status": "verified",
+      "evidence": "All nine actual CLI describe calls returned the expected role and schemas; aeo2-roles.json"
+    },
+    {
+      "check": "A test agent executes a permitted task",
+      "status": "verified_fixture",
+      "evidence": "test_orchestrator_allowlisted_validation_marks_task_accepted; simulated Codex transport with temporary Git worktree"
+    },
+    {
+      "check": "Execution result is saved in persistent storage",
+      "status": "verified_fixture",
+      "evidence": "test_success_persists_session_but_model_claim_is_not_validation; SQLite backup reopened independently"
+    },
+    {
+      "check": "Repository and worktree restrictions are enforced",
+      "status": "verified",
+      "evidence": "Native canaries for three modes; temporary Git worktree/source-preservation tests"
+    },
+    {
+      "check": "Unauthorized operations are rejected",
+      "status": "verified",
+      "evidence": "Grant bypass, protected scope, unauthorized repository, expiry, disabled policy and validator allowlist tests"
+    },
+    {
+      "check": "An interrupted execution can be reconciled",
+      "status": "verified_fixture",
+      "evidence": "test_recovery_marks_orphan_interrupted_without_success_or_replay; persisted INTERRUPTED record and new unapproved recovery request"
+    },
+    {
+      "check": "Existing AEO-1/1B/1C regression tests pass",
+      "status": "verified",
+      "evidence": "Full suite: 116 tests, zero failures/errors; all 16 validation commands exit 0"
+    },
+    {
+      "check": "Architecture and execution diagrams are generated",
+      "status": "verified",
+      "evidence": "Five PlantUML SVGs rendered and XML-validated, plus design lifecycle SVG; immutable sources/hashes preserved"
+    },
+    {
+      "check": "Optional live smoke test is run and verified",
+      "status": "blocked",
+      "evidence": "Not run: interactive Windows credential verification required; configured execution approver count is zero"
+    }
+  ]
+}

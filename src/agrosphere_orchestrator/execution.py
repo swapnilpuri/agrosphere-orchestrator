@@ -55,7 +55,22 @@ def change(session, execution, state, payload=None):
     if state != E(execution.state) and state not in EDGES.get(E(execution.state), set()):
         raise ValueError(f"Invalid execution transition {execution.state} -> {state}")
     execution.state = state.value
-    execution.active_slot = 1 if state in {E.PREPARING, E.RUNNING} else None
+    if state in {E.PREPARING, E.RUNNING}:
+        if execution.active_slot is None:
+            used = set(
+                session.scalars(
+                    select(Execution.active_slot).where(Execution.active_slot.is_not(None))
+                )
+            )
+            from .orchestration_store import TaskClaim
+
+            claim = session.get(TaskClaim, execution.task_id)
+            scheduled = claim is not None and claim.execution_id == execution.id
+            execution.active_slot = (
+                next(i for i in range(1, len(used) + 2) if i not in used) if scheduled else 1
+            )
+    else:
+        execution.active_slot = None
     execution.updated_at = now()
     session.add(
         ExecutionAttempt(
@@ -229,6 +244,15 @@ def cancel_requested(engine, identity):
         return execution is None or execution.cancel_requested
 
 
+def cancellation_or_expiry(engine, settings, identity):
+    if cancel_requested(engine, identity):
+        return True
+    with Session(engine) as session:
+        execution = session.get(Execution, identity)
+        check_grant(session, execution, settings)
+    return False
+
+
 def cancel_execution(engine, identity):
     with Session(engine) as session, session.begin():
         execution = session.get(Execution, identity)
@@ -315,7 +339,9 @@ async def run_execution(
     adapter = adapter or CodexExecutor(settings, CodexProcessManager(policy.max_log_bytes))
     if not policy.live_enabled:
         raise PermissionError("Live execution is disabled in execution policy")
-    with Session(engine) as session, session.begin():
+    from .orchestration_store import transaction
+
+    with transaction(engine) as session:
         execution = session.get(Execution, identity)
         if execution is None or E(execution.state) != E.AWAITING_APPROVAL:
             raise PermissionError("Execution is not an unconsumed approved request")
@@ -334,12 +360,45 @@ async def run_execution(
             raise PermissionError(
                 "Context/design/role/policy changed after assembly; requeue and reapprove"
             )
-        if session.scalar(
-            select(Execution).where(
-                Execution.id != identity, Execution.state.in_([E.PREPARING.value, E.RUNNING.value])
+        active = list(
+            session.scalars(
+                select(Execution).where(
+                    Execution.id != identity,
+                    Execution.state.in_([E.PREPARING.value, E.RUNNING.value]),
+                )
+            )
+        )
+        from .orchestration_store import ResourceLease, TaskClaim
+
+        claim = session.get(TaskClaim, request.task_id)
+        scheduled = (
+            claim is not None
+            and claim.execution_id == identity
+            and not claim.reconciliation_required
+        )
+        if claim is not None and not scheduled:
+            raise PermissionError("Task has an outstanding claim requiring reconciliation")
+        if not scheduled and session.scalar(select(TaskClaim)):
+            raise PermissionError("Unscheduled execution blocked while scheduler claims exist")
+        if scheduled and any(session.get(TaskClaim, other.task_id) is None for other in active):
+            raise PermissionError("Unscheduled active execution must finish before scheduling")
+        limit = settings.scheduler_max_concurrency if scheduled else 1
+        if len(active) >= limit or (active and not scheduled):
+            raise PermissionError("Configured active execution limit reached")
+        for other in active:
+            if other.request["repository"] == request.repository and (
+                other.request["mode"] != "READ_ONLY" or request.mode != ExecutionMode.READ_ONLY
+            ):
+                raise PermissionError("Conflicting repository writes are blocked")
+        for lease in session.scalars(
+            select(ResourceLease).where(
+                ResourceLease.resource == "repository:" + request.repository
             )
         ):
-            raise PermissionError("AEO-2 supports one active execution only")
+            if lease.task_id != request.task_id and (
+                lease.write or request.mode != ExecutionMode.READ_ONLY
+            ):
+                raise PermissionError("Repository has an outstanding resource lease")
         from .execution_sessions import process_identity
 
         change(
@@ -394,6 +453,7 @@ async def run_execution(
                 request.allowed_file_scopes,
                 request.specialization,
                 request.validation_commands,
+                request.parent_execution_id,
             )
             if rechecked_hash != request.context_digest:
                 raise PermissionError("Context changed during preparation")
@@ -446,13 +506,13 @@ async def run_execution(
                 ):
                     outcome = await invoke(
                         *arguments,
-                        cancel_check=lambda: cancel_requested(engine, identity),
+                        cancel_check=lambda: cancellation_or_expiry(engine, settings, identity),
                         started=lambda pid: record_started(engine, identity, pid),
                     )
             else:
                 outcome = await invoke(
                     *arguments,
-                    cancel_check=lambda: cancel_requested(engine, identity),
+                    cancel_check=lambda: cancellation_or_expiry(engine, settings, identity),
                     started=lambda pid: record_started(engine, identity, pid),
                 )
             from .execution_sessions import extract_session
@@ -489,6 +549,8 @@ async def run_execution(
             result_state = E.SUCCEEDED
         if result_state == E.SUCCEEDED:
             for command in context["validation_commands"]:
+                with Session(engine) as session:
+                    check_grant(session, session.get(Execution, identity), settings)
                 name = next(
                     (
                         p.split("=", 1)[1].strip('"')
@@ -513,7 +575,7 @@ async def run_execution(
                     cwd,
                     "",
                     command["timeout_seconds"],
-                    cancel_check=lambda: cancel_requested(engine, identity),
+                    cancel_check=lambda: cancellation_or_expiry(engine, settings, identity),
                 )
                 validation.append(
                     {
@@ -574,6 +636,7 @@ async def run_execution(
                     request.allowed_file_scopes,
                     request.specialization,
                     request.validation_commands,
+                    request.parent_execution_id,
                 )
                 if final_context_hash != request.context_digest:
                     raise PermissionError("Approved context changed while the runtime was active")

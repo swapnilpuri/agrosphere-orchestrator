@@ -744,5 +744,223 @@ def agent_cleanup(execution: str = typer.Option(...)):
             engine.dispose()
 
 
+# AEO-3 commands retain the existing milestone/agent naming conventions.
+@milestone_app.command("plan")
+def milestone_plan(milestone: str, options: Path | None = None, project: str = "agrosphere"):
+    from .orchestration import propose_plan
+    from .orchestration_models import TaskOptions
+
+    try:
+        settings = Settings()
+        engine = design_engine()
+        data = (
+            None
+            if options is None
+            else {
+                k: TaskOptions.model_validate(v) for k, v in json.loads(options.read_text()).items()
+            }
+        )
+        identity = propose_plan(engine, settings, milestone, data, project)
+        typer.echo(json.dumps({"plan_id": identity, "approved": False}))
+    except Exception as exc:
+        fail(exc)
+
+
+@milestone_app.command("approve-plan")
+def milestone_approve_plan(milestone: str, project: str = "agrosphere"):
+    from .human_approval import WindowsConsoleHumanVerifier
+    from .orchestration import approve_plan, milestone_report
+
+    try:
+        engine = design_engine()
+        typer.echo(json.dumps(milestone_report(engine, milestone, project), indent=2))
+        approve_plan(engine, Settings(), milestone, WindowsConsoleHumanVerifier(), project)
+        typer.echo(json.dumps({"approved": True}))
+    except Exception as exc:
+        fail(exc)
+
+
+def scheduler_action(action, milestone, project):
+    import asyncio
+
+    from .orchestration import TaskScheduler
+
+    engine = None
+    try:
+        engine = design_engine()
+        scheduler = TaskScheduler(engine, Settings())
+        result = asyncio.run(getattr(scheduler, action)(milestone, project))
+        typer.echo(json.dumps(result, indent=2))
+    except Exception as exc:
+        fail(exc)
+    finally:
+        if engine is not None:
+            engine.dispose()
+
+
+@milestone_app.command("prepare")
+def milestone_prepare(milestone: str, project: str = "agrosphere"):
+    """Prepare READY requests for review with agent approve --execution ID."""
+    scheduler_action("prepare", milestone, project)
+
+
+@milestone_app.command("execute")
+def milestone_execute(milestone: str, project: str = "agrosphere"):
+    scheduler_action("execute", milestone, project)
+
+
+@milestone_app.command("pause")
+def milestone_pause(milestone: str, project: str = "agrosphere"):
+    scheduler_action("pause", milestone, project)
+
+
+@milestone_app.command("resume")
+def milestone_resume(milestone: str, project: str = "agrosphere"):
+    scheduler_action("resume", milestone, project)
+
+
+@milestone_app.command("status")
+@milestone_app.command("report")
+def milestone_execution_report(milestone: str, project: str = "agrosphere", markdown: bool = False):
+    from .orchestration import markdown_report, milestone_report
+
+    try:
+        engine = design_engine(readonly=True)
+        report = milestone_report(engine, milestone, project)
+        typer.echo(markdown_report(report) if markdown else json.dumps(report, indent=2))
+    except Exception as exc:
+        fail(exc)
+
+
+@milestone_app.command("graph")
+def milestone_graph(milestone: str, project: str = "agrosphere", plantuml: bool = False):
+    from .orchestration import load_plan, milestone_record
+
+    try:
+        engine = design_engine(readonly=True)
+        with Session(engine) as session:
+            plan, _, _ = load_plan(session, milestone_record(session, milestone, project))
+            typer.echo(plan.plantuml() if plantuml else plan.model_dump_json(indent=2))
+    except Exception as exc:
+        fail(exc)
+
+
+tasks_app = typer.Typer(help="Persisted task execution state.")
+app.add_typer(tasks_app, name="tasks")
+
+
+@tasks_app.command("list")
+def tasks_list(milestone: str = typer.Option(...), project: str = "agrosphere"):
+    from .orchestration import milestone_report
+
+    try:
+        typer.echo(
+            json.dumps(
+                milestone_report(design_engine(readonly=True), milestone, project)["tasks"],
+                indent=2,
+            )
+        )
+    except Exception as exc:
+        fail(exc)
+
+
+@tasks_app.command("inspect")
+def tasks_inspect(task: str):
+    try:
+        with Session(design_engine(readonly=True)) as session:
+            record = session.get(Task, task)
+            if record is None:
+                raise ValueError("Unknown persistent task UUID")
+            typer.echo(
+                json.dumps({"id": record.id, "state": record.state, "spec": record.spec}, indent=2)
+            )
+    except Exception as exc:
+        fail(exc)
+
+
+@agents_app.command("workload")
+def agents_workload():
+    from .orchestration_store import TaskClaim
+
+    try:
+        with Session(design_engine(readonly=True)) as session:
+            rows = session.execute(
+                select(Task.spec, TaskClaim.execution_id, TaskClaim.reconciliation_required).join(
+                    TaskClaim
+                )
+            ).all()
+            typer.echo(
+                json.dumps(
+                    [
+                        {
+                            "role": r[0]["role"],
+                            "execution_id": r[1],
+                            "reconciliation_required": r[2],
+                        }
+                        for r in rows
+                    ],
+                    indent=2,
+                )
+            )
+    except Exception as exc:
+        fail(exc)
+
+
+@milestone_app.command("reconcile")
+def milestone_reconcile_execution(milestone: str, project: str = "agrosphere"):
+    from .orchestration import TaskScheduler
+
+    try:
+        engine = design_engine()
+        typer.echo(
+            json.dumps(TaskScheduler(engine, Settings()).reconcile(milestone, project), indent=2)
+        )
+    except Exception as exc:
+        fail(exc)
+
+
+@milestone_app.command("handoff")
+def milestone_handoff(
+    milestone: str,
+    source: str,
+    destination: str,
+    artifacts: Path,
+    summary: str = "Structured artifact handoff",
+    project: str = "agrosphere",
+):
+    from .orchestration import publish_handoff
+
+    try:
+        engine = design_engine()
+        identity = publish_handoff(
+            engine,
+            Settings(),
+            milestone,
+            source,
+            destination,
+            json.loads(artifacts.read_text()),
+            summary,
+            project,
+        )
+        typer.echo(json.dumps({"handoff_id": identity}))
+    except Exception as exc:
+        fail(exc)
+
+
+@milestone_app.command("deviation")
+def milestone_deviation(milestone: str, description: str, impact: str, project: str = "agrosphere"):
+    import asyncio
+
+    from .orchestration import propose_deviation
+
+    try:
+        identity = asyncio.run(
+            propose_deviation(design_engine(), Settings(), milestone, description, impact, project)
+        )
+        typer.echo(json.dumps({"deviation_id": identity, "approval_required": True}))
+    except Exception as exc:
+        fail(exc)
+
+
 if __name__ == "__main__":
     app()

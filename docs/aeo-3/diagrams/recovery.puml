@@ -1,0 +1,20 @@
+@startuml
+actor Operator
+participant Scheduler
+participant "AEO-2 Session Manager" as Sessions
+database State
+Operator -> Scheduler: resume milestone
+Scheduler -> State: load claims, leases, executions
+Scheduler -> Sessions: reconcile process identities
+alt still active or unverifiable process
+Sessions --> Scheduler: retain ownership
+Scheduler -> State: retain lease and block replay
+else confirmed terminal result
+Sessions --> Scheduler: persisted result
+Scheduler -> State: reconcile evidence and release claim
+else uncertain outcome
+Sessions --> Scheduler: interrupted or unknown
+Scheduler -> State: reconciliation_required, retain leases
+end
+Scheduler --> Operator: evidence and outstanding blockers
+@enduml

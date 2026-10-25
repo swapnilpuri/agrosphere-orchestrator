@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Literal
 
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -23,3 +24,8 @@ class Settings(BaseSettings):
     execution_root: Path = Path(".aeo/executions")
     execution_policy: Path = Path("config/execution.yaml")
     execution_approvers: list[str] = []
+
+    scheduler_max_concurrency: int = Field(default=2, ge=1, le=32)
+    scheduler_per_agent: int = Field(default=2, ge=1, le=32)
+    scheduler_per_repository: int = Field(default=1, ge=1, le=32)
+    scheduler_max_repairs: int = Field(default=3, ge=0, le=3)

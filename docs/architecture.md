@@ -78,3 +78,6 @@ canaries, process/session management and normalized evidence. Migration 0004 add
 records and an atomic single-active slot beside existing state. CLI, SDK and transport health
 are probed; this installed CLI uses exec because mcp-server is unavailable. Existing artifact,
 design, task-operation and delivery approvals remain independent. See [AEO-2 docs](aeo-2/README.md).
+
+
+AEO-3 scheduling, handoffs, resource leases, and operator commands are described in [the orchestration guide](aeo-3/README.md).
