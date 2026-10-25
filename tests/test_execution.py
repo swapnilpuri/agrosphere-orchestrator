@@ -625,3 +625,10 @@ def test_configuration_rejects_duplicate_validators():
         ExecutionPolicy(
             validation_commands=[{"id": "same", "argv": ["one"]}, {"id": "same", "argv": ["two"]}]
         )
+
+
+def test_redaction_preserves_normal_risk_and_disk_language():
+    text = "risk-based-analysis and disk-full-read-access; token=sk-example_secret_key_123456"
+    cleaned = Redactor().clean(text)
+    assert "risk-based-analysis" in cleaned and "disk-full-read-access" in cleaned
+    assert "sk-example_secret_key_123456" not in cleaned

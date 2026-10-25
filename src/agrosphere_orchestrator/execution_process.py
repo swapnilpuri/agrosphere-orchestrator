@@ -23,7 +23,7 @@ class Redactor:
         for value in sorted(self.secrets, key=len, reverse=True):
             text = text.replace(value, "[REDACTED]")
         text = re.sub(r"(?i)(bearer\s+)[A-Za-z0-9._~+/=-]+", r"\1[REDACTED]", text)
-        text = re.sub(r"sk-[A-Za-z0-9_-]{10,}", "[REDACTED]", text)
+        text = re.sub(r"\bsk-[A-Za-z0-9_-]{10,}", "[REDACTED]", text)
         return re.sub(
             r'(?i)((?:password|api_key|access_token|refresh_token)["\s:=>]+)[^\s",}]+',
             r"\1[REDACTED]",
