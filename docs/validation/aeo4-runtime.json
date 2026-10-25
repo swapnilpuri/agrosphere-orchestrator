@@ -1,0 +1,19 @@
+{
+  "executed_at": "2026-10-25T05:26:13.388566+00:00",
+  "model_invoked": false,
+  "scanner_invoked": false,
+  "argv": [
+    "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from pathlib import Path; assert Path('fixture.txt').read_text() == 'quality adapter fixture only'; print('native fixture passed')"
+  ],
+  "state": "PASSED",
+  "outcome": {
+    "exit_code": 0,
+    "stdout": "native fixture passed\r\n",
+    "stderr": "",
+    "timed_out": false,
+    "truncated": false,
+    "cancelled": false
+  }
+}

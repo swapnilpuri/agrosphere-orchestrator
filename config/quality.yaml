@@ -1,0 +1,59 @@
+# Administrator-reviewed template. Missing scanner commands block; no tools are installed.
+id: agrosphere-default
+version: 1
+evidence_ttl_seconds: 86400
+medium_security_blocks: true
+required_gate_types: [build, test, security, architecture, contract, documentation]
+required_review_roles: [qa-engineer, security-engineer, solution-architect, technical-writer]
+criteria: [] # Bind approved requirement IDs, AC-1/AC-2 and exact deterministic test names per milestone.
+gates:
+  - id: build
+    type: build
+    repository: agrosphere-orchestrator
+    command: orchestrator-build
+    validator_version: administrator-configured
+    retry_eligible: true
+  - id: tests
+    type: test
+    repository: agrosphere-orchestrator
+    command: orchestrator-tests-junit
+    format: junit
+    validator_version: administrator-configured
+    retry_eligible: true
+  - id: secrets
+    type: security
+    repository: agrosphere-orchestrator
+    command: secret-scan-sarif
+    format: sarif
+    validator_version: administrator-configured
+  - id: dependencies
+    type: security
+    repository: agrosphere-orchestrator
+    command: dependency-scan-sarif
+    format: sarif
+    validator_version: administrator-configured
+  - id: architecture
+    type: architecture
+    repository: agrosphere-orchestrator
+    evaluator: architecture
+    validator_version: aeo-boundaries-v1
+    architecture_rules:
+      - id: orchestrator-ownership
+        repository: agrosphere-orchestrator
+        path: src/agrosphere_orchestrator/quality.py
+        kind: required-file
+      - id: no-estate-java
+        repository: agrosphere-orchestrator
+        path: pom.xml
+        kind: prohibited-file
+  - id: contracts
+    type: contract
+    repository: agrosphere-orchestrator
+    command: contract-compatibility
+    validator_version: administrator-configured
+  - id: documentation
+    type: documentation
+    repository: agrosphere-orchestrator
+    evaluator: files
+    validator_version: aeo-documents-v1
+    required_files: [docs/aeo-4/DESIGN.md, docs/aeo-4/QUALITY_POLICY.md, docs/aeo-4/diagrams/components.puml]

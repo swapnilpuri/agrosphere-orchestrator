@@ -1,0 +1,20 @@
+@startuml
+start
+:Execute required validation gates;
+:Persist original failure and raw evidence;
+if (Security finding?) then (yes)
+  :Escalate to authorized reviewer;
+  :Keep finding visible;
+else (no)
+  if (Retry eligible and under repair limit?) then (yes)
+    :Record bounded AEO-3 repair instructions;
+    :Prepare new execution request;
+    :Authenticate fresh grant for writes;
+    :Execute repair and preserve changed files;
+    :Revalidate changed artifacts;
+  else (no)
+    :Block delivery and escalate;
+  endif
+endif
+stop
+@enduml

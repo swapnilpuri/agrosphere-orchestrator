@@ -1,0 +1,18 @@
+@startuml
+actor Human
+participant "Artifact Store" as Artifacts
+participant "Readiness / Delivery Guard" as Guard
+participant "Approval Authority" as Approval
+database Evidence
+Human -> Approval : approve exact context digest
+Approval -> Evidence : append authenticated decision
+Artifacts -> Artifacts : code / documentation / policy changes
+Human -> Guard : report readiness or request delivery
+Guard -> Artifacts : recompute complete artifact context
+Artifacts --> Guard : new context digest
+Guard -> Evidence : load immutable validated context
+Evidence --> Guard : prior context digest
+Guard -> Guard : mismatch invalidates readiness and approval
+Guard -> Evidence : append blocked assessment
+Guard --> Human : revalidation and new approval required
+@enduml

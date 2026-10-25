@@ -17,6 +17,13 @@
           "title": "Argv",
           "type": "array"
         },
+        "read_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Read Paths",
+          "type": "array"
+        },
         "timeout_seconds": {
           "default": 120,
           "maximum": 600,

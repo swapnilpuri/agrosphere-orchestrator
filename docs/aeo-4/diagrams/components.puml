@@ -1,0 +1,22 @@
+@startuml
+skinparam componentStyle rectangle
+rectangle "AgroSphere Orchestrator" {
+component "CLI / authenticated human" as CLI
+component "AEO-1C design and approval authority" as Design
+component "AEO-3 scheduler / bounded repair" as Scheduler
+component "AEO-4 quality engine" as Quality
+component "AEO-2 sandboxed command runner" as Runner
+component "Readiness evaluator" as Ready
+database "SQLite: decisions, evidence, audit" as DB
+CLI --> Quality
+CLI --> Design
+Scheduler --> Quality : implementation artifacts
+Quality --> Runner : allowlisted deterministic gates
+Quality --> Design : approved requirements and design
+Quality --> Ready : gate evidence
+Ready --> DB : immutable report
+Design --> DB : authenticated decisions
+Quality --> DB : content-addressed results
+Quality --> Scheduler : repair findings
+}
+@enduml

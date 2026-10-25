@@ -234,6 +234,18 @@
       "title": "Implementation Verified",
       "type": "boolean"
     },
+    "validated_artifact_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Validated Artifact Hash"
+    },
     "evidence_references": {
       "items": {
         "type": "string"

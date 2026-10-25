@@ -1,0 +1,9 @@
+# Guidance only: symbolic validator names mapped by each Repository.validators and quality gate.
+# Actual argv belongs in config/execution.yaml and must be authorized before use.
+java-spring: [maven-build, maven-unit, maven-integration, static-analysis, coverage, dependency-scan]
+python-fastapi: [pytest, ruff, type-check, coverage, dependency-scan]
+angular-typescript: [angular-build, unit-tests, eslint, type-check, dependency-scan]
+docker-infrastructure: [dockerfile-lint, compose-config, infrastructure-validate, image-scan]
+database: [migration-validate, sql-lint, schema-compatibility]
+contracts: [openapi-diff, event-schema-compatibility]
+security: [secret-scan, dependency-scan, sast, image-scan, configuration-audit]

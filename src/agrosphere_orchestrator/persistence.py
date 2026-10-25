@@ -41,6 +41,28 @@ class Task(Base):
     state: Mapped[str] = mapped_column(default="pending")
     spec: Mapped[dict] = mapped_column(JSON)
 
+    @property
+    def quality_state(self):
+        from sqlalchemy.orm import object_session
+
+        from .quality_store import TaskQuality
+
+        item = object_session(self).get(TaskQuality, self.id)
+        return item.state if item else None
+
+    @quality_state.setter
+    def quality_state(self, state):
+        from sqlalchemy.orm import object_session
+
+        from .quality_store import TaskQuality
+
+        session = object_session(self)
+        item = session.get(TaskQuality, self.id)
+        if item is None:
+            session.add(TaskQuality(task_id=self.id, state=state))
+        else:
+            item.state = state
+
 
 class Run(Base):
     __tablename__ = "runs"

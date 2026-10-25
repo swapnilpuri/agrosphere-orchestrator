@@ -962,5 +962,177 @@ def milestone_deviation(milestone: str, description: str, impact: str, project: 
         fail(exc)
 
 
+quality_app = typer.Typer(help="Independent deterministic quality governance.")
+security_app = typer.Typer(help="Security findings and exception evidence.")
+approvals_app = typer.Typer(help="Artifact-bound authenticated human decisions.")
+app.add_typer(quality_app, name="quality")
+app.add_typer(security_app, name="security")
+app.add_typer(approvals_app, name="approvals")
+
+
+@quality_app.command("policies")
+def quality_policies():
+    from .quality_models import QualityPolicy
+
+    try:
+        typer.echo(load_yaml(Settings().quality_policy, QualityPolicy).model_dump_json(indent=2))
+    except Exception as exc:
+        fail(exc)
+
+
+@quality_app.command("activate")
+def quality_activate(milestone: str = typer.Option(...), project: str = "agrosphere"):
+    from .human_approval import WindowsConsoleHumanVerifier
+    from .quality import activate_policy
+
+    from .quality_models import QualityPolicy
+
+    try:
+        typer.echo(load_yaml(Settings().quality_policy, QualityPolicy).model_dump_json(indent=2))
+        typer.echo(
+            json.dumps(
+                {
+                    "policy_hash": activate_policy(
+                        design_engine(),
+                        Settings(),
+                        milestone,
+                        WindowsConsoleHumanVerifier(),
+                        project,
+                    )
+                }
+            )
+        )
+    except Exception as exc:
+        fail(exc)
+
+
+@quality_app.command("validate")
+def quality_validate(
+    milestone: str = typer.Option(...), project: str = "agrosphere", markdown: bool = False
+):
+    import asyncio
+
+    from .quality import markdown_report, validate
+
+    try:
+        report = asyncio.run(validate(design_engine(), Settings(), milestone, project))
+        typer.echo(markdown_report(report) if markdown else json.dumps(report, indent=2))
+        if report["decision"] not in {"READY_FOR_APPROVAL", "APPROVED_FOR_DELIVERY"}:
+            raise typer.Exit(1)
+    except typer.Exit:
+        raise
+    except Exception as exc:
+        fail(exc)
+
+
+@quality_app.command("report")
+@security_app.command("report")
+@milestone_app.command("readiness")
+def quality_report(
+    milestone: str = typer.Option(...), project: str = "agrosphere", markdown: bool = False
+):
+    from .quality import markdown_report, readiness
+
+    try:
+        report = readiness(design_engine(), Settings(), milestone, project)
+        typer.echo(markdown_report(report) if markdown else json.dumps(report, indent=2))
+    except Exception as exc:
+        fail(exc)
+
+
+@quality_app.command("remediate")
+def quality_remediate(milestone: str = typer.Option(...), project: str = "agrosphere"):
+    from .quality import prepare_remediation
+
+    try:
+        typer.echo(
+            json.dumps(
+                {
+                    "tasks": prepare_remediation(design_engine(), Settings(), milestone, project),
+                    "fresh_write_grant_required": True,
+                }
+            )
+        )
+    except Exception as exc:
+        fail(exc)
+
+
+@approvals_app.command("pending")
+def approvals_pending():
+    from .quality import decisions
+    from .quality_store import GovernanceRecord
+
+    try:
+        with Session(design_engine(readonly=True)) as session:
+            typer.echo(
+                json.dumps(
+                    [
+                        {"id": r.id, **r.payload}
+                        for r in session.scalars(
+                            select(GovernanceRecord).where(
+                                GovernanceRecord.kind == "approval.request"
+                            )
+                        )
+                        if not decisions(session, r)
+                    ],
+                    indent=2,
+                )
+            )
+    except Exception as exc:
+        fail(exc)
+
+
+@approvals_app.command("inspect")
+def approvals_inspect(approval: str):
+    from .quality import inspect_approval
+
+    try:
+        typer.echo(json.dumps(inspect_approval(design_engine(readonly=True), approval), indent=2))
+    except Exception as exc:
+        fail(exc)
+
+
+@approvals_app.command("request")
+def approvals_request(
+    milestone: str = typer.Option(...),
+    category: str = "DELIVERY_APPROVAL",
+    action: str = "delivery",
+    reason: str = typer.Option(...),
+    expires_seconds: int = 900,
+):
+    from .quality import request_approval
+
+    try:
+        identity = request_approval(
+            design_engine(),
+            Settings(),
+            milestone,
+            category,
+            action,
+            "orchestrator",
+            reason,
+            expires_seconds,
+        )
+        typer.echo(json.dumps({"approval_id": identity, "approved": False}))
+    except Exception as exc:
+        fail(exc)
+
+
+@approvals_app.command("decide")
+def approvals_decide(approval: str, decision: str = "approved", reason: str = typer.Option(...)):
+    from .human_approval import WindowsConsoleHumanVerifier
+    from .quality import decide_approval, inspect_approval
+
+    try:
+        engine = design_engine()
+        typer.echo(json.dumps(inspect_approval(engine, approval), indent=2))
+        identity = decide_approval(
+            engine, Settings(), approval, WindowsConsoleHumanVerifier(), decision, reason
+        )
+        typer.echo(json.dumps({"decision_id": identity, "decision": decision}))
+    except Exception as exc:
+        fail(exc)
+
+
 if __name__ == "__main__":
     app()

@@ -29,3 +29,6 @@ class Settings(BaseSettings):
     scheduler_per_agent: int = Field(default=2, ge=1, le=32)
     scheduler_per_repository: int = Field(default=1, ge=1, le=32)
     scheduler_max_repairs: int = Field(default=3, ge=0, le=3)
+
+    quality_policy: Path = Path("config/quality.yaml")
+    governance_approvers: list[str] = []

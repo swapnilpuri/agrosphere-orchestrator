@@ -1,7 +1,7 @@
 """Transport-neutral, typed single-task execution contracts."""
 
 from enum import StrEnum
-from pathlib import PurePosixPath
+from pathlib import Path, PurePosixPath
 from typing import Self
 from uuid import uuid4
 
@@ -119,6 +119,7 @@ class ExecutionResult(StrictModel):
     usage: dict = Field(default_factory=dict)
     validation_results: list[dict] = Field(default_factory=list)
     implementation_verified: bool = False
+    validated_artifact_hash: str | None = None
     evidence_references: list[str] = Field(default_factory=list)
     output: AgentOutput | None = None
     estimated_cost: float | None = None
@@ -138,6 +139,23 @@ class HealthStatus(StrictModel):
 class ValidationCommand(StrictModel):
     id: Identifier
     argv: list[str] = Field(min_length=1)
+    read_paths: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def runtime_reads(self) -> Self:
+        for value in self.read_paths:
+            target = Path(value)
+            if (
+                not target.is_absolute()
+                or target == Path(target.anchor)
+                or target.resolve() in {Path.home().resolve(), *Path.home().resolve().parents}
+                or any(p.lower() in {".aws", ".ssh", ".codex", ".env"} for p in target.parts)
+            ):
+                raise ValueError(
+                    "Runtime reads must be explicit absolute tool paths, excluding roots/home/credentials"
+                )
+        return self
+
     timeout_seconds: int = Field(default=120, ge=1, le=600)
 
 

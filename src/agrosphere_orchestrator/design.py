@@ -526,6 +526,18 @@ def decide(
         if kind == "design":
             move(session, case, S.DESIGN_APPROVED if approved else S.DESIGN_IN_PROGRESS, actor)
         elif kind == "delivery":
+            if approved:
+                from .config.settings import Settings
+                from .quality import assert_delivery
+
+                milestone = session.scalar(
+                    select(Milestone).where(
+                        Milestone.project_id == case.project_id,
+                        Milestone.external_id == case.external_id,
+                    )
+                )
+                if milestone is not None:
+                    assert_delivery(session, Settings(), milestone, consume=True)
             move(session, case, S.COMPLETED if approved else S.IMPLEMENTATION_VALIDATING, actor)
         audit(
             session,

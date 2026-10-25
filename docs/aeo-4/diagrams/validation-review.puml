@@ -1,0 +1,19 @@
+@startuml
+actor Human
+participant Developer
+participant "AEO-3 Scheduler" as Scheduler
+participant "QA / Security / Architect / Writer" as Review
+participant "Quality Engine" as Quality
+participant "Sandboxed Validators" as Validators
+database "Evidence Store" as Store
+Human -> Quality : activate reviewed policy
+Developer -> Scheduler : implementation execution completes
+Scheduler -> Review : approved independent read-only reviews
+Review --> Scheduler : advisory findings
+Human -> Quality : validate milestone
+Quality -> Validators : execute required allowlisted checks
+Validators --> Quality : deterministic output and exit status
+Quality -> Store : immutable raw evidence and results
+Quality -> Quality : verify acceptance mappings and freshness
+Quality --> Human : READY_FOR_APPROVAL or blockers
+@enduml

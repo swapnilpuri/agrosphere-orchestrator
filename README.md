@@ -161,3 +161,7 @@ quota use). The ordinary suite never runs a model. Native-only diagnostics are s
 
 
 AEO-3 scheduling, handoffs, resource leases, and operator commands are described in [the orchestration guide](docs/aeo-3/README.md).
+
+## AEO-4 independent quality and governance
+
+Versioned quality gates, requirement/test traceability, scanner evidence, expiring human exceptions and artifact-bound delivery approvals extend the existing workflow. See the [AEO-4 guide](docs/aeo-4/README.md). Configure trusted validators and SID approvers, then explicitly activate a milestone policy; missing evidence blocks readiness. No application change, merge or deployment is performed.

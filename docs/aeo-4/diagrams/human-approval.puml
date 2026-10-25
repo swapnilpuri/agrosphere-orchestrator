@@ -1,0 +1,16 @@
+@startuml
+actor Human
+participant CLI
+participant "HumanVerifier / Windows login" as Verify
+participant "Existing DesignDecision authority" as Approval
+database SQLite
+CLI -> Human : exact action, artifacts, policy and evidence
+Human -> CLI : approve request with justification
+CLI -> Verify : confirm request digest and authenticate
+Verify --> Approval : verified canonical SID
+Approval -> SQLite : BEGIN IMMEDIATE
+Approval -> Approval : recheck artifacts, expiry and allowed identity
+Approval -> SQLite : append decision and audit
+SQLite --> CLI : committed decision
+CLI --> Human : approval record ID
+@enduml

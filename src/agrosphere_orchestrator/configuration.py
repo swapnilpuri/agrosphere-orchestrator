@@ -17,6 +17,7 @@ class Repository(StrictModel):
     id: Identifier
     path: Path
     status: Literal["confirmed", "unverified"] = "unverified"
+    validators: dict[str, Identifier] = Field(default_factory=dict)
 
 
 class RepositoryManifest(StrictModel):

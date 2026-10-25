@@ -19,6 +19,7 @@ from agrosphere_orchestrator.orchestration_models import (
     ExecutionPlan,
     TaskOptions,
 )
+from agrosphere_orchestrator.quality_models import GateResult, QualityPolicy
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -29,6 +30,8 @@ def main() -> int:
     schema_dir = ROOT / "docs/schemas"
     schema_dir.mkdir(parents=True, exist_ok=True)
     for name, model in (
+        ("quality-policy", QualityPolicy),
+        ("quality-gate-result", GateResult),
         ("orchestration-plan", ExecutionPlan),
         ("artifact-reference", ArtifactReference),
         ("task-options", TaskOptions),
@@ -73,6 +76,8 @@ def main() -> int:
         [sys.executable, "-m", "agrosphere_orchestrator.cli", "agents", "describe", "developer"],
         [sys.executable, "scripts/verify_aeo2_docs.py"],
         [sys.executable, "scripts/verify_aeo3_docs.py"],
+        [sys.executable, "scripts/verify_aeo4_docs.py"],
+        [sys.executable, "-m", "agrosphere_orchestrator.cli", "quality", "policies"],
         [sys.executable, "scripts/codex_live_smoke.py"],
         [sys.executable, "-m", "pip", "freeze"],
     ]

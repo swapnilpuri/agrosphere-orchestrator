@@ -34,6 +34,7 @@ from .execution_workspace import (
     tree_fingerprints,
 )
 from .persistence import Execution, ExecutionAttempt, ExecutionGrant, Run, Task, audit, now
+from .quality_store import digest as evidence_digest
 from .state import transition
 
 E = ExecutionState
@@ -549,6 +550,10 @@ async def run_execution(
             result_state = E.SUCCEEDED
         if result_state == E.SUCCEEDED:
             for command in context["validation_commands"]:
+                if isolation_probe is probe_isolation:
+                    permissions = permission_arguments(
+                        request, [Path(p) for p in command.get("read_paths", [])]
+                    )
                 with Session(engine) as session:
                     check_grant(session, session.get(Execution, identity), settings)
                 name = next(
@@ -584,6 +589,7 @@ async def run_execution(
                         "exit_code": checked.exit_code,
                         "timed_out": checked.timed_out,
                         "cancelled": checked.cancelled,
+                        "truncated": checked.truncated,
                         "stdout": Redactor().clean(checked.stdout),
                         "stderr": Redactor().clean(checked.stderr),
                     }
@@ -666,6 +672,9 @@ async def run_execution(
         usage=usage,
         validation_results=validation,
         implementation_verified=verified,
+        validated_artifact_hash=(
+            evidence_digest(tree_fingerprints(cwd, policy.max_artifact_bytes)) if verified else None
+        ),
         evidence_references=evidence,
         output=output,
     )
@@ -703,6 +712,8 @@ async def run_execution(
                 if result_state == E.CANCELLED
                 else "failed"
             )
+            if accepted:
+                task.quality_state = "IMPLEMENTED"
             run = session.scalar(select(Run).where(Run.task_id == task.id, Run.status == "running"))
             if run:
                 run.status, run.finished_at = task.state, now()

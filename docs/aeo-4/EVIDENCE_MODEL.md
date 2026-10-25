@@ -1,0 +1,9 @@
+# Validation evidence model
+
+Migration 0006 adds governance_records (ordered append-only events), validation_evidence (canonical JSON addressed by SHA-256), and task_quality_states projection (exposed as Task.quality_state). Existing records and scheduling states remain valid. Database triggers reject evidence updates and deletes; existing DesignDecision/audit guards preserve approval history. State changes and audit evidence share the existing transaction mechanism. Destructive downgrade is refused.
+
+Each gate produces PENDING/RUNNING events and an immutable result with run ID, repository, Git/artifact hash, validator version, argv, exit code, timestamps, findings, evidence references, decision and policy version. Raw output/configuration/context is a separate content-addressed blob; parsing errors preserve the failed raw output. Reports are also stored as immutable blobs and referenced from readiness events. Repeated evaluations append history rather than overwriting it.
+
+Artifact context includes whole-worktree hash, Git HEAD, approved requirement scope, approved design revision, active as-built revision and policy digest. Re-evaluation recalculates it. Any code, document, root, commit, policy or scope change invalidates evidence and approval. Content hashes are verified on retrieval. Freshness uses UTC timestamps. Latest incomplete validation supersedes earlier success; interruption cannot expose a stale passing decision.
+
+Release reports contain approved scope, repository revisions, build/test/coverage results, all security findings, architecture/contract/document checks, exceptions, pending approvals, blockers, acceptance traceability and final decision. JSON output is the machine contract; --markdown emits a human-readable equivalent. report_hash identifies the persisted report body; the hash field itself is added only to the returned envelope.
