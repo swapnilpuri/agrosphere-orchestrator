@@ -26,3 +26,10 @@ approvals, a matching imported plan, passing validation and unchanged artifact h
 Read-only plan/inspect/validate task operations retain their existing behavior.
 See [documentation lifecycle](design-workflow.md) and diagrams/design-lifecycle.puml for
 DISCOVERED through COMPLETED, including revision/rejection and delivery guards.
+
+## Execution states (AEO-2)
+
+QUEUED -> AWAITING_APPROVAL -> PREPARING -> RUNNING -> SUCCEEDED/FAILED/TIMED_OUT/CANCELLED.
+Lost owners become INTERRUPTED after process-identity reconciliation. Execution success and
+task acceptance are separate. An unvalidated write proposal cannot mark a task accepted or
+complete a milestone. The DB enforces one active execution; no scheduler is added.

@@ -69,3 +69,12 @@ BA/architect/writer adapters and an independent review seam do not call live age
 Repository-owned revision paths hold canonical documents; SQLite retains archival bytes.
 The original state.transition entry point enforces exact scope, approval, validation and
 artifact hashes before any implementation operation can start. See [workflow](design-workflow.md).
+
+## AEO-2 controlled executor
+
+The explicitly authorized AEO-2 implementation adds a transport-neutral execution service,
+version-bound context, authenticated execution grants, isolated worktrees, native permission
+canaries, process/session management and normalized evidence. Migration 0004 adds execution
+records and an atomic single-active slot beside existing state. CLI, SDK and transport health
+are probed; this installed CLI uses exec because mcp-server is unavailable. Existing artifact,
+design, task-operation and delivery approvals remain independent. See [AEO-2 docs](aeo-2/README.md).

@@ -1,7 +1,8 @@
 # AgroSphere AI Engineering Orchestrator
 
-AEO-1 is a local, single-process Python foundation for a future engineering organization.
-It validates plans and inspects repositories. It does not run agents or call models.
+AEO is a local, single-process Python orchestrator. AEO-1 inspection and planning remain
+read-only. AEO-2 adds explicitly approved, sandboxed single-task Codex execution, disabled
+by default; it does not add autonomous scheduling.
 
 ## Run locally (PowerShell, Python 3.12+)
 
@@ -19,7 +20,8 @@ Copy-Item .env.example .env
 .\.venv\Scripts\python.exe scripts/validate.py
 ```
 
-No API keys are needed. Environment variables override .env and defaults in
+Inspection and validation need no API keys. Live Codex requires supported authentication.
+Environment variables override .env and defaults in
 [src/agrosphere_orchestrator/config/settings.py](src/agrosphere_orchestrator/config/settings.py).
 Inspection and validation never import plans or initialize state. Status opens an existing
 SQLite database with mode=ro. Alembic explicitly creates/migrates only the orchestrator database.
@@ -53,20 +55,20 @@ Manifest confirmation records a successful local Git inspection at bootstrap tim
 Paths are relative to the manifest file; existence and Git validity are checked again
 when validating plans. Discovered repositories remain unverified until explicitly reviewed.
 Missing entries are reported, never synthesized. No remote URLs are read or contacted.
-Git commands are restricted to rev-parse, symbolic-ref, status and bounded local log reads with optional locks and fsmonitor
-integration disabled. No branch, commit, merge, fetch or PR operations exist.
+Inspection uses rev-parse, symbolic-ref, status and bounded local log reads with optional
+locks/fsmonitor disabled. AEO-2 additionally creates dedicated worktrees/branches only under
+an authenticated execution grant. No application commit, merge, fetch, push or PR capability exists.
 
 ## Design and scope
 
 See [architecture](docs/architecture.md), [roles](docs/agent-roles.md),
 [state machine](docs/state-machine.md), [approvals](docs/approval-policy.md),
 [validation report](docs/validation/REPORT.md) and [future milestones](docs/roadmap.md).
-OpenAI Agents SDK and Codex are represented only by protocols; SDK dependencies and
-credentials are deliberately deferred until approved AEO-2 adapter work.
+The optional codex extra pins the verified Agents SDK. Codex is integrated behind a
+transport protocol and gated native execution policy; legacy protocols remain compatible.
 
-This directory is an independent Git repository with no commits, branch refs or remote.
-No existing microservice repository is consolidated or modified. AEO-2 requires a
-separate approval and is not started by any AEO-1 command.
+This directory remains an independent Git repository.
+No existing microservice repository is consolidated or modified. AEO-2 was separately authorized by the user; no AEO-1 command starts a live task.
 
 ## AEO-1B project discovery and recovery
 
@@ -134,3 +136,25 @@ authenticated human approval now gate future implementation task starts. See the
 The milestone CLI group adds design, docs, validate-design, design-status and approve-design,
 plus requirements approval, readiness, as-built reconciliation and delivery approval.
 No future application design or implementation is created by installing this capability.
+
+## AEO-2 controlled single-task execution
+
+AEO-2 adds an explicitly invoked, approved Codex executor. Existing inspection, recovery and
+design workflows remain available. The execution policy defaults offline. See the
+[AEO-2 documentation](docs/aeo-2/README.md) and [validation report](docs/validation/AEO-2_REPORT.md).
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[dev,codex]"
+.\.venv\Scripts\python.exe -m alembic upgrade head
+.\.venv\Scripts\aeo.exe codex doctor
+.\.venv\Scripts\aeo.exe agents list
+.\.venv\Scripts\aeo.exe agent run --task TASK-UUID --mode WORKTREE_WRITE --scope src --validate approved-test-id
+.\.venv\Scripts\aeo.exe agent approve --execution EXECUTION-ID
+.\.venv\Scripts\aeo.exe agent run --execution EXECUTION-ID
+```
+
+Configure config/execution.yaml and AEO_EXECUTION_APPROVERS deliberately before preparing a
+request. Both the approved design and original operation approval remain mandatory. SDK/MCP
+execution is unavailable on installed Codex; auto uses the verified non-interactive transport.
+Optional live smoke: python scripts/codex_live_smoke.py --live (human authentication and possible
+quota use). The ordinary suite never runs a model. Native-only diagnostics are separately available.

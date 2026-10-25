@@ -1,0 +1,17 @@
+@startuml
+package "Original registered repository" {
+  folder "User worktree: unchanged" as source
+  database "Git metadata: trusted worktree creation only" as git
+}
+package "Private execution directory" {
+  folder "Isolated task worktree" as task
+  folder "Reports and preserved partial changes" as evidence
+}
+rectangle "Windows MXC: literal writes, target reads, no command network" as sandbox
+rectangle "Model tools: no connectors, web, MCP, hooks or delegation" as tools
+source --> git : approved HEAD reference
+git --> task : dedicated branch and worktree
+sandbox --> task : approved paths only
+tools --> sandbox : constrained commands and edits
+task --> evidence : trusted post-exit capture
+@enduml

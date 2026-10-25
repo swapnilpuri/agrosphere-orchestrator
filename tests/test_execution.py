@@ -556,3 +556,72 @@ def test_normal_smoke_entrypoint_is_offline():
         timeout=15,
     )
     assert result.returncode == 0 and "SKIPPED" in result.stdout
+
+
+def test_worktree_checkout_does_not_execute_repository_hooks(engine, execution_fixture):
+    f = execution_fixture
+    marker = f.settings.execution_root.parent / "unexpected-hook.txt"
+    hook = f.repos["estate"] / ".git/hooks/post-checkout"
+    hook.write_text('#!/bin/sh\necho invoked > "' + marker.as_posix() + '"\n', encoding="utf-8")
+    hook.chmod(0o755)
+    identity = queue(engine, f)
+    result = invoke(engine, f, identity, TransportFixture())
+    assert result.status == "SUCCEEDED" and not marker.exists()
+
+
+def test_global_active_slot_is_atomic(engine, execution_fixture):
+    from uuid import uuid4
+
+    from sqlalchemy.exc import IntegrityError
+
+    from agrosphere_orchestrator.execution import change
+    from agrosphere_orchestrator.persistence import Execution
+
+    f = execution_fixture
+    identity = queue(engine, f)
+    with Session(engine) as session, session.begin():
+        first = session.get(Execution, identity)
+        request_data, context_data = first.request, first.context
+        change(session, first, "PREPARING")
+    with pytest.raises(IntegrityError):
+        with Session(engine) as session, session.begin():
+            second = Execution(
+                id=str(uuid4()),
+                task_id=f.task,
+                state="AWAITING_APPROVAL",
+                request=request_data,
+                context=context_data,
+                cancel_requested=False,
+            )
+            session.add(second)
+            session.flush()
+            change(session, second, "PREPARING")
+
+
+def test_unknown_process_identity_blocks_recovery(engine, execution_fixture, monkeypatch):
+    from agrosphere_orchestrator.execution import change
+
+    f = execution_fixture
+    identity = queue(engine, f)
+    with Session(engine) as session, session.begin():
+        change(
+            session,
+            session.get(Execution, identity),
+            "PREPARING",
+            {"owner_pid": 123, "owner_identity": "unverifiable"},
+        )
+    monkeypatch.setattr(
+        "agrosphere_orchestrator.execution_sessions.process_identity", lambda pid: "UNKNOWN"
+    )
+    findings = CodexSessionManager(engine).reconcile()
+    assert findings[0]["state"] == "PREPARING"
+    assert "blocked" in findings[0]["finding"]
+
+
+def test_configuration_rejects_duplicate_validators():
+    from agrosphere_orchestrator.execution_models import ExecutionPolicy
+
+    with pytest.raises(ValueError, match="Duplicate"):
+        ExecutionPolicy(
+            validation_commands=[{"id": "same", "argv": ["one"]}, {"id": "same", "argv": ["two"]}]
+        )

@@ -7,6 +7,12 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from agrosphere_orchestrator.design_models import AsBuiltInput, DesignInput
+from agrosphere_orchestrator.execution_models import (
+    AgentOutput,
+    ExecutionPolicy,
+    ExecutionRequest,
+    ExecutionResult,
+)
 from agrosphere_orchestrator.models import MilestoneSpec, TaskSpec
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +28,10 @@ def main() -> int:
         ("task", TaskSpec),
         ("design-input", DesignInput),
         ("as-built-input", AsBuiltInput),
+        ("execution-request", ExecutionRequest),
+        ("execution-result", ExecutionResult),
+        ("agent-output", AgentOutput),
+        ("execution-policy", ExecutionPolicy),
     ):
         (schema_dir / f"{name}.schema.json").write_text(
             json.dumps(model.model_json_schema(), indent=2) + "\n", encoding="utf-8"
@@ -51,11 +61,15 @@ def main() -> int:
             "AEO-1C",
         ],
         [sys.executable, "scripts/verify_design_tools.py"],
+        [sys.executable, "-m", "agrosphere_orchestrator.cli", "agents", "list"],
+        [sys.executable, "-m", "agrosphere_orchestrator.cli", "agents", "describe", "developer"],
+        [sys.executable, "scripts/verify_aeo2_docs.py"],
+        [sys.executable, "scripts/codex_live_smoke.py"],
         [sys.executable, "-m", "pip", "freeze"],
     ]
     results = []
     for argv in commands:
-        completed = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True, timeout=120)
+        completed = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True, timeout=300)
         result = {
             "argv": argv,
             "cwd": str(ROOT),

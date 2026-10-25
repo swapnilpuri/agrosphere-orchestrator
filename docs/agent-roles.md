@@ -20,3 +20,11 @@ artifact provenance and machine-enforced handoff schemas are deferred to AEO-2. 
 registry validator rejects duplicate role IDs and unknown handoff targets. Plan validation
 rejects unknown roles and operations outside their declared allowlists. No role can grant
 human approval, change repository boundaries or authorize work in an unverified repository.
+
+## AEO-2 execution metadata
+
+The same nine roles now include developer-priority instructions, schema names, allowed
+repositories/operations, context/validation requirements, approval requirements and handoff
+contracts. Developer specializations additionally include Data/PostGIS and Integration.
+All live tasks need exact human grants and sandbox enforcement. Handoff output is advisory;
+it cannot start another agent. See the AEO-2 artifact bundle and CLI agents describe.

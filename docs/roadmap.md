@@ -1,4 +1,10 @@
-# Proposed milestones (not implemented)
+# AEO roadmap
+
+The foundation proposal below is retained as historical planning. AEO-2 was separately
+authorized and implemented; see docs/aeo-2/README.md and the AEO-2 validation report for
+actual behavior and remaining dependencies. AEO-3 through AEO-6 remain future scope.
+
+# Original foundation proposal
 
 ## AEO-2 — Controlled single-task execution
 

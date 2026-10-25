@@ -25,8 +25,15 @@ class CodingAgentExecutor(Protocol):
 
     name: str
 
-    async def execute(self, request: "ExecutionRequest", prompt: str, directory: Path,
-                      **callbacks) -> "ProcessOutcome": ...
-    async def continue_execution(self, session_id: str, request: "ExecutionRequest", prompt: str,
-                                 directory: Path, **callbacks) -> "ProcessOutcome": ...
+    async def execute(
+        self, request: "ExecutionRequest", prompt: str, directory: Path, **callbacks
+    ) -> "ProcessOutcome": ...
+    async def continue_execution(
+        self,
+        session_id: str,
+        request: "ExecutionRequest",
+        prompt: str,
+        directory: Path,
+        **callbacks,
+    ) -> "ProcessOutcome": ...
     async def health_check(self) -> "HealthStatus": ...

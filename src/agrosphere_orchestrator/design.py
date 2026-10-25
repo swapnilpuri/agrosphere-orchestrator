@@ -734,3 +734,42 @@ def design_status(engine: Engine, key: str) -> dict:
             "authorization_findings": authorization_findings,
             "revision_history": history,
         }
+
+
+def observe_documentation_bundle(engine: Engine, root: Path, manifest: dict) -> str:
+    """Archive references to manually produced framework documentation; grants no approval.
+
+    Reuses the artifact contract and append-only audit, without importing an application plan
+    or creating a synthetic authenticated design decision.
+    """
+    from .design_artifacts import owned_path
+    from .persistence import AuditEvent
+
+    identity = "documentation-bundle:" + manifest["revision_id"]
+    for item in manifest["artifacts"]:
+        path = owned_path(root, item["relative_file_path"])
+        content = path.read_bytes().decode("utf-8")
+        artifact = Artifact(
+            type=item["artifact_type"],
+            repository=item["owning_repository"],
+            path=item["relative_file_path"],
+            content=content,
+            sha256=item["content_hash"],
+            requirement_ids=item["source_requirements"],
+            agent=item["generating_agent"],
+            generated_at=item["generated_timestamp"],
+        )
+        if artifact.sha256 != digest(content) or artifact.repository != "agrosphere-orchestrator":
+            raise ValueError("Documentation bundle artifact integrity/ownership mismatch")
+    with Session(engine) as session, session.begin():
+        previous = session.scalar(
+            select(AuditEvent).where(
+                AuditEvent.entity_id == identity, AuditEvent.kind == "documentation.bundle.observed"
+            )
+        )
+        if previous is not None:
+            if canonical(previous.payload) != canonical(manifest):
+                raise ValueError("Observed documentation revision has different manifest content")
+            return identity
+        audit(session, identity, "documentation.bundle.observed", "orchestrator", manifest)
+    return identity

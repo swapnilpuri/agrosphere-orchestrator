@@ -81,9 +81,7 @@ def doctor(settings: Settings) -> HealthStatus:
         login = probe(["login", "status"])
         health.authenticated = login.returncode == 0
         sdk = importlib.util.find_spec("agents") is not None
-        health.selected_transport = (
-            "mcp" if health.mcp_supported and sdk else "exec" if health.exec_supported else None
-        )
+        health.selected_transport = "exec" if health.exec_supported else None
         if not health.mcp_supported:
             health.findings.append(
                 "Installed CLI has no mcp-server; use the verified non-interactive exec transport."

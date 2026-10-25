@@ -94,9 +94,16 @@ def build_context(
     root = Path(inspection.path)
     if mode != ExecutionMode.READ_ONLY:
         if mode == ExecutionMode.VALIDATION_ONLY and task.spec["operation"] != "validate":
-            raise PermissionError("Validation-only mode requires an explicit validation task; it cannot validate a fresh copy instead of a write proposal")
-        if mode == ExecutionMode.WORKTREE_WRITE and task.spec["operation"] not in {"code-write", "document"}:
-            raise PermissionError("Worktree-write mode requires a registered write/document operation")
+            raise PermissionError(
+                "Validation-only mode requires an explicit validation task; it cannot validate a fresh copy instead of a write proposal"
+            )
+        if mode == ExecutionMode.WORKTREE_WRITE and task.spec["operation"] not in {
+            "code-write",
+            "document",
+        }:
+            raise PermissionError(
+                "Worktree-write mode requires a registered write/document operation"
+            )
         if task.spec["operation"] not in {"code-write", "document", "validate"}:
             raise PermissionError("Operation does not permit worktree writes")
         for scope in scopes:

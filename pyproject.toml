@@ -24,6 +24,7 @@ testpaths = ["tests"]
 pythonpath = ["src"]
 
 [tool.ruff]
+extend-exclude = ["docs/milestones/**"]
 target-version = "py312"
 line-length = 100
 

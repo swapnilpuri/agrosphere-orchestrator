@@ -280,16 +280,27 @@ def store_report(settings, identity, result):
         "## Evidence\n\n" + "\n".join(f"- {p}" for p in result.evidence_references)
     )
     if result.output:
-        for label, entries in (("Work performed", result.output.work_performed),
-                ("Model-reported commands", result.output.commands_executed),
-                ("Errors", result.output.errors), ("Warnings", result.output.warnings),
-                ("Unresolved issues", result.output.unresolved_issues),
-                ("Suggested next actions", result.output.suggested_next_actions)):
+        for label, entries in (
+            ("Work performed", result.output.work_performed),
+            ("Model-reported commands", result.output.commands_executed),
+            ("Errors", result.output.errors),
+            ("Warnings", result.output.warnings),
+            ("Unresolved issues", result.output.unresolved_issues),
+            ("Suggested next actions", result.output.suggested_next_actions),
+        ):
             text += "\n\n## " + label + "\n\n" + "\n".join("- " + s for s in entries)
-    text += "\n\n## Execution metadata\n\n" + json.dumps({"started_at": result.started_at,
-        "ended_at": result.ended_at, "session_id": result.session_id, "exit_code": result.exit_code,
-        "error": result.error.model_dump() if result.error else None, "usage": result.usage,
-        "estimated_cost": result.estimated_cost}, indent=2)
+    text += "\n\n## Execution metadata\n\n" + json.dumps(
+        {
+            "started_at": result.started_at,
+            "ended_at": result.ended_at,
+            "session_id": result.session_id,
+            "exit_code": result.exit_code,
+            "error": result.error.model_dump() if result.error else None,
+            "usage": result.usage,
+            "estimated_cost": result.estimated_cost,
+        },
+        indent=2,
+    )
     (directory / "REPORT.md").write_text(text + "\n", encoding="utf-8")
 
 

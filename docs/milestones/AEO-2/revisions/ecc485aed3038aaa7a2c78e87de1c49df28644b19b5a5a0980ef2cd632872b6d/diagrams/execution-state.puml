@@ -1,0 +1,14 @@
+@startuml
+[*] --> QUEUED
+QUEUED --> AWAITING_APPROVAL
+AWAITING_APPROVAL --> PREPARING : exact human grant
+AWAITING_APPROVAL --> CANCELLED : no process started
+PREPARING --> RUNNING : native boundary verified
+PREPARING --> FAILED : startup or policy failure
+PREPARING --> INTERRUPTED : owner absent after restart
+RUNNING --> SUCCEEDED : valid transport result
+RUNNING --> FAILED : runtime, parse, policy or validator failure
+RUNNING --> TIMED_OUT : process tree stopped
+RUNNING --> CANCELLED : termination confirmed
+RUNNING --> INTERRUPTED : owner and child no longer match
+@enduml

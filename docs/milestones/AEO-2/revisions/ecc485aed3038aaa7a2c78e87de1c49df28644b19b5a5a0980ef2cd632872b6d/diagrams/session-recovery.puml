@@ -1,0 +1,21 @@
+@startuml
+actor Human
+participant CLI
+participant Sessions
+participant OS
+database SQLite
+participant Worktree
+Human -> CLI : reconcile after interruption
+CLI -> Sessions : load active execution attempts
+Sessions -> SQLite : owner PID and creation identity
+Sessions -> OS : verify matching live identities
+alt live or unknown identity
+Sessions --> Human : retain active state and block replay
+else no matching owner or child
+Sessions -> SQLite : INTERRUPTED and task failed
+Sessions -> Worktree : preserve partial files in place
+Human -> CLI : explicit recovery instructions
+CLI -> SQLite : new bounded request and pending grant
+CLI --> Human : new approval required
+end
+@enduml

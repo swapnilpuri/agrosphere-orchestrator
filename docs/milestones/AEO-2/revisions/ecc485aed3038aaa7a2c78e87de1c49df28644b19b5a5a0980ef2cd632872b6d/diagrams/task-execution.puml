@@ -1,0 +1,26 @@
+@startuml
+actor Human
+participant CLI
+participant Context
+participant Approval
+participant Worktree
+participant Sandbox
+participant Codex
+participant Validator
+database SQLite
+Human -> CLI : prepare task scope
+CLI -> Context : approved artifact and runtime hashes
+Context -> SQLite : awaiting approval
+Human -> Approval : exact digest and authenticated identity
+Approval -> SQLite : immutable grant
+Human -> CLI : run execution
+CLI -> Worktree : dedicated branch from approved HEAD
+CLI -> Sandbox : verify native scope and network canaries
+Sandbox --> CLI : boundary evidence
+CLI -> Codex : bounded stdin task and schema
+Codex --> CLI : JSON events and structured proposal
+CLI -> Validator : exact allowlisted commands in sandbox
+Validator --> CLI : observed exit and output
+CLI -> SQLite : normalized result, audit, task outcome
+CLI --> Human : report and preserved proposal
+@enduml

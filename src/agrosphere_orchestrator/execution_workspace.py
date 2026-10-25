@@ -6,6 +6,7 @@ import os
 import socket
 import subprocess
 import tarfile
+import tempfile
 from pathlib import Path
 
 from .execution_models import ExecutionMode
@@ -13,27 +14,56 @@ from .execution_process import runtime_environment
 
 
 def git(repository: Path, *args: str) -> str:
-    result = subprocess.run(
-        [
+    # A checkout must not run repository hooks or configured clean/smudge programs.
+    with tempfile.TemporaryDirectory(prefix="aeo-git-policy-") as temporary:
+        folder = Path(temporary)
+        hooks = folder / "hooks"
+        hooks.mkdir()
+        global_config = folder / "gitconfig"
+        global_config.write_text("", encoding="utf-8")
+        env = {k: v for k, v in runtime_environment().items() if k != "CODEX_API_KEY"}
+        env.update({"GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": str(global_config)})
+        prefix = [
             "git",
             "--no-optional-locks",
             "-c",
             "core.fsmonitor=false",
             "-c",
-            "core.hooksPath=",
+            f"core.hooksPath={hooks}",
             "-C",
             str(repository),
-            *args,
-        ],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        check=True,
-        timeout=30,
-        env={**runtime_environment(), "GIT_CONFIG_NOSYSTEM": "1"},
-    )
-    return result.stdout.strip()
+        ]
+        configured = subprocess.run(
+            [
+                *prefix,
+                "config",
+                "--name-only",
+                "--get-regexp",
+                r"^filter\..*\.(clean|smudge|process|required)$",
+            ],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=15,
+            env=env,
+        )
+        if configured.returncode not in {0, 1}:
+            raise PermissionError("Cannot establish safe Git filter configuration")
+        overrides = []
+        for key in configured.stdout.splitlines():
+            overrides.extend(["-c", key + ("=false" if key.endswith(".required") else "=")])
+        result = subprocess.run(
+            [*prefix, *overrides, *args],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=True,
+            timeout=30,
+            env=env,
+        )
+        return result.stdout.strip()
 
 
 def create_worktree(repository: Path, target: Path, execution_id: str, source_head: str):

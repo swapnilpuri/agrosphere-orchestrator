@@ -1,0 +1,14 @@
+@startuml
+!include <C4/C4_Component>
+Component(cli, "Existing Typer CLI", "Python")
+Component(policy, "Context and approval gates", "Pydantic")
+Component(exec, "Single-task execution service", "Python")
+Component(adapter, "Codex exec adapter", "JSONL and JSON Schema")
+Component(mcp, "SDK MCP discovery adapter", "Capability gated")
+Component(store, "Existing persistence and audit", "SQLite")
+Rel(cli, policy, "Prepare and authenticate scope")
+Rel(policy, exec, "Verified request")
+Rel(exec, adapter, "One bounded task")
+Rel(exec, store, "Atomic state and evidence")
+Rel(cli, mcp, "Discover compatible tools only")
+@enduml

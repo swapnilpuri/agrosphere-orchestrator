@@ -1,0 +1,279 @@
+{
+  "$defs": {
+    "AgentOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "work_performed": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Work Performed",
+          "type": "array"
+        },
+        "files_changed": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Files Changed",
+          "type": "array"
+        },
+        "artifacts_created": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Artifacts Created",
+          "type": "array"
+        },
+        "commands_executed": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Commands Executed",
+          "type": "array"
+        },
+        "validation_evidence": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Validation Evidence",
+          "type": "array"
+        },
+        "errors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Errors",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "unresolved_issues": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unresolved Issues",
+          "type": "array"
+        },
+        "suggested_next_actions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Suggested Next Actions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "summary",
+        "work_performed",
+        "files_changed",
+        "artifacts_created",
+        "commands_executed",
+        "validation_evidence",
+        "errors",
+        "warnings",
+        "unresolved_issues",
+        "suggested_next_actions"
+      ],
+      "title": "AgentOutput",
+      "type": "object"
+    },
+    "ExecutionError": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "retryable": {
+          "default": false,
+          "title": "Retryable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "ExecutionError",
+      "type": "object"
+    },
+    "ExecutionState": {
+      "enum": [
+        "QUEUED",
+        "PREPARING",
+        "RUNNING",
+        "SUCCEEDED",
+        "FAILED",
+        "TIMED_OUT",
+        "CANCELLED",
+        "INTERRUPTED",
+        "AWAITING_APPROVAL"
+      ],
+      "title": "ExecutionState",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "execution_id": {
+      "title": "Execution Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "agent_role": {
+      "title": "Agent Role",
+      "type": "string"
+    },
+    "session_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Session Id"
+    },
+    "status": {
+      "$ref": "#/$defs/ExecutionState"
+    },
+    "started_at": {
+      "title": "Started At",
+      "type": "string"
+    },
+    "ended_at": {
+      "title": "Ended At",
+      "type": "string"
+    },
+    "duration_seconds": {
+      "title": "Duration Seconds",
+      "type": "number"
+    },
+    "summary": {
+      "default": "",
+      "title": "Summary",
+      "type": "string"
+    },
+    "changed_files": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Changed Files",
+      "type": "array"
+    },
+    "generated_artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Generated Artifacts",
+      "type": "array"
+    },
+    "logs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Logs",
+      "type": "array"
+    },
+    "exit_code": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Exit Code"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ExecutionError"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "usage": {
+      "additionalProperties": true,
+      "title": "Usage",
+      "type": "object"
+    },
+    "validation_results": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Validation Results",
+      "type": "array"
+    },
+    "implementation_verified": {
+      "default": false,
+      "title": "Implementation Verified",
+      "type": "boolean"
+    },
+    "evidence_references": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Evidence References",
+      "type": "array"
+    },
+    "output": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AgentOutput"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "estimated_cost": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Estimated Cost"
+    }
+  },
+  "required": [
+    "execution_id",
+    "task_id",
+    "agent_role",
+    "status",
+    "started_at",
+    "ended_at",
+    "duration_seconds"
+  ],
+  "title": "ExecutionResult",
+  "type": "object"
+}
