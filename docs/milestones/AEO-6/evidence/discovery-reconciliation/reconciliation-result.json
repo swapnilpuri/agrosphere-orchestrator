@@ -1,0 +1,38 @@
+{
+  "snapshot_id": "cc98fd3fadb2b7fa0e0e4b6035b06240807560705fd1dc1182132d0b4ac09fdb",
+  "prior_records": 5,
+  "current_records": 6,
+  "historical_records_preserved": true,
+  "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+  "run_unchanged": true,
+  "run_state": "BLOCKED",
+  "checkpoint": {
+    "category": "discovery-conflict",
+    "reason": "Conflicting recovered milestone evidence blocks eligibility",
+    "command": null
+  },
+  "discovery_consistent": false,
+  "conflicts": [
+    "1B"
+  ],
+  "remaining_run_seconds": 2385.5799085999606,
+  "validate": {
+    "valid": true,
+    "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+    "state": "BLOCKED",
+    "formally_completed": false
+  },
+  "milestone_2_design": {
+    "milestone": "agrosphere:2",
+    "state": "DISCOVERED",
+    "findings": [
+      {
+        "code": "missing-requirements",
+        "message": "No approved requirements; implementation is blocked"
+      }
+    ]
+  },
+  "eligibility_precheck": null,
+  "resume_executed": false,
+  "reason": "Unresolved historical status requires human evidence adjudication; resume would also enforce retained deadline."
+}

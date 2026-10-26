@@ -1,0 +1,1593 @@
+[
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "5bad27ec4b3d42999e5aed60a5c595fc8c16d29e7d04e4cbcfa41582d0c5a789",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:docs/MILESTONE_1A_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "7c9032ad3a9b249a07745c1a9777f670b426a1f112818281793267e2c4857210",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=docs/MILESTONE_1A_REPORT.md",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service\\docs\\MILESTONE_1A_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "7c9032ad3a9b249a07745c1a9777f670b426a1f112818281793267e2c4857210",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:docs/MILESTONE_1A_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "docs/MILESTONE_1A_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "141ba8528456880aa6d2622c022c6566bab27171c7e991a8ce8b816b7d8ff487",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "docs/MILESTONE_1A_REPORT.md"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:docs/MILESTONE_1B_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "2104f7d64386fdee62cb003df683f164a545af874efe5e48546e5ecd26671087",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=docs/MILESTONE_1B_REPORT.md",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\docs\\MILESTONE_1B_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "2104f7d64386fdee62cb003df683f164a545af874efe5e48546e5ecd26671087",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:docs/MILESTONE_1B_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "c07f7755312a53851ad3ad792a0c65f183cab43ba5f7b5f3e695b8a4b80c57ef",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "docs/MILESTONE_1B_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "docs/MILESTONE_1B_REPORT.md"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "089e8a6da80e972e8af5624a908c7e67e76c2e69e7e2a3ea8f73f860fa6f0eac",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\main\\java\\com\\agrosphere\\spatial\\adapter\\in\\messaging\\EstateProjection.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "089e8a6da80e972e8af5624a908c7e67e76c2e69e7e2a3ea8f73f860fa6f0eac",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "8cc0ce460e0773e691fe69f30341a05d381b5f9847938248fd9a1f4237a3dce8",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "8cfa7f3686113284f854bf3c7c31dde6bd1b783c74d9c8560dec3547a799ec97",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\main\\java\\com\\agrosphere\\spatial\\adapter\\out\\persistence\\JdbcSpatialStore.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "8cfa7f3686113284f854bf3c7c31dde6bd1b783c74d9c8560dec3547a799ec97",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "5c528737d999ba5868fae52594acdae269982e9bf1ba23f2dcc41ab9f6165eeb",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:src/main/resources/db/migration/V2__spatial_twin.sql"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "d151378a4d70fa70c582ae940ce3830e15d2f946caf37590f6b86a03c03e6100",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=src/main/resources/db/migration/V2__spatial_twin.sql",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\main\\resources\\db\\migration\\V2__spatial_twin.sql"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "d151378a4d70fa70c582ae940ce3830e15d2f946caf37590f6b86a03c03e6100",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:src/main/resources/db/migration/V2__spatial_twin.sql"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "a7fdcaced0c9543a4e833ca81b753ee42e7c1bfd3056a30cf6442afc31b132c6",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "src/main/resources/db/migration/V2__spatial_twin.sql"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "src/main/resources/db/migration/V2__spatial_twin.sql"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:src/test/java/com/agrosphere/spatial/SpatialServiceIT.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "5853948dfd13d8b0018f4295163a7df58d81cb42f893f3e64fbf7b1082aed5ab",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=src/test/java/com/agrosphere/spatial/SpatialServiceIT.java",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\SpatialServiceIT.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "5853948dfd13d8b0018f4295163a7df58d81cb42f893f3e64fbf7b1082aed5ab",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:src/test/java/com/agrosphere/spatial/SpatialServiceIT.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "354012fc3e244a6bcea26d7eb6ba47716795aa6d21d6d415739512ac01924045",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "src/test/java/com/agrosphere/spatial/SpatialServiceIT.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "src/test/java/com/agrosphere/spatial/SpatialServiceIT.java"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:src/test/java/com/agrosphere/spatial/GeometryValidationTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "0393d4bf15192276a42e97c765c1d9cca3ee659a6abd5fa38edb3224456e5c9b",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=src/test/java/com/agrosphere/spatial/GeometryValidationTest.java",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\GeometryValidationTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "0393d4bf15192276a42e97c765c1d9cca3ee659a6abd5fa38edb3224456e5c9b",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:src/test/java/com/agrosphere/spatial/GeometryValidationTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "9cad0bcc0fe8484ec1afb2db1a1270480ba14a7838438774e7768f97c9fa1afc",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "src/test/java/com/agrosphere/spatial/GeometryValidationTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "src/test/java/com/agrosphere/spatial/GeometryValidationTest.java"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "edd6408157a23fd18d16637bcd6bf1dfbf5c55fe165e5fc208ff53bd30abf7b2",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\ApplicationRulesTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "edd6408157a23fd18d16637bcd6bf1dfbf5c55fe165e5fc208ff53bd30abf7b2",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "68f74a76caab3bbadbae208839465ddb31b672e6b91081a5fc03d5aabdfe2bac",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "b6e0847c161bcd9436510f8b5cc90ce7e860b502495862ff274c1e43c9b9122b",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\SecurityPolicyTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "b6e0847c161bcd9436510f8b5cc90ce7e860b502495862ff274c1e43c9b9122b",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "c0814a56f85aff37475c9902d7ed36a0c9f19d59a034553d2f5f9a556c1e88c7",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "62c60168aaa67b479051f762ff1e02a7b2506564a3f8bdaa5c5d479c6b16b1bd",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "f7e1b30d45fcbba0d9f5fea12b38825a119273ef2215659d62dac3a51926f423",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:docs/roadmap/MILESTONE_1B.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "90f7477ed36bd166a2b23e4ecd7139894f850e597185defed1eae6eff13c06b0",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=docs/roadmap/MILESTONE_1B.md",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\roadmap\\MILESTONE_1B.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "90f7477ed36bd166a2b23e4ecd7139894f850e597185defed1eae6eff13c06b0",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:docs/roadmap/MILESTONE_1B.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "cfbf5fde319526b589caca27f52b4c2c89f7e28fd67cdc1d125cafe1c203d10c",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "docs/roadmap/MILESTONE_1B.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "58ca22a3f1a0a6d499a34c724bad895da3c96e8726c0a34743ca6ec59fa3fa9f",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "docs/roadmap/MILESTONE_1B.md"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "f7e1b30d45fcbba0d9f5fea12b38825a119273ef2215659d62dac3a51926f423",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:docs/adr/0009-spatial-digital-twin.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "8543dfc6531b2135e325b5f26ba8a785168174ea16f320296285a12d2499a47f",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=docs/adr/0009-spatial-digital-twin.md",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\adr\\0009-spatial-digital-twin.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "8543dfc6531b2135e325b5f26ba8a785168174ea16f320296285a12d2499a47f",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:docs/adr/0009-spatial-digital-twin.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "dc4de257c426aeff90aac7bb039af329e8fbd3f94f9f693920c788e5291586e5",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "docs/adr/0009-spatial-digital-twin.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "58ca22a3f1a0a6d499a34c724bad895da3c96e8726c0a34743ca6ec59fa3fa9f",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "docs/adr/0009-spatial-digital-twin.md"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "f7e1b30d45fcbba0d9f5fea12b38825a119273ef2215659d62dac3a51926f423",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "995e2d454375ced67ee979ee8ef5878f426e4f00fce6da815ae8d87b149a6a0a",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\milestones\\reconciliation-1a-3a\\ACCEPTANCE_MATRIX.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "995e2d454375ced67ee979ee8ef5878f426e4f00fce6da815ae8d87b149a6a0a",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "7fc327b48c62a7f95d0c8aea9876f7cb5dad3e82b4ca5f192b7b5a3e43f8e48d",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "f7e1b30d45fcbba0d9f5fea12b38825a119273ef2215659d62dac3a51926f423",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:docs/milestones/reconciliation-1a-3a/evidence-index.json"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "210598dd73fcea58c1a48e64184145bc4c98129e9589d62afd3f9fe4c89e67a1",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=docs/milestones/reconciliation-1a-3a/evidence-index.json",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\milestones\\reconciliation-1a-3a\\evidence-index.json"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "210598dd73fcea58c1a48e64184145bc4c98129e9589d62afd3f9fe4c89e67a1",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "show",
+      "HEAD:docs/milestones/reconciliation-1a-3a/evidence-index.json"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "33adaee27870e5446f5435d80b766cefc37aee2a4792dff23e88bda2c7b1dcb1",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "docs/milestones/reconciliation-1a-3a/evidence-index.json"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "7fc327b48c62a7f95d0c8aea9876f7cb5dad3e82b4ca5f192b7b5a3e43f8e48d",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "docs/milestones/reconciliation-1a-3a/evidence-index.json"
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:target/surefire-reports/TEST-com.agrosphere.spatial.ApplicationRulesTest.xml"
+    ],
+    "exit_code": 128,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "fatal: Needed a single revision\n"
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=target/surefire-reports/TEST-com.agrosphere.spatial.ApplicationRulesTest.xml",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\surefire-reports\\TEST-com.agrosphere.spatial.ApplicationRulesTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "d67e15b9c3e7be64e960b13053f353a701bba32a329bbe97fed7b1cb274c0fb5",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "target/surefire-reports/TEST-com.agrosphere.spatial.ApplicationRulesTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "target/surefire-reports/TEST-com.agrosphere.spatial.ApplicationRulesTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "1788ade5ffcbdbe786f51c4d5aea5e94495f55eb1f381e19985485edc1c0f306",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:target/surefire-reports/TEST-com.agrosphere.spatial.GeometryValidationTest.xml"
+    ],
+    "exit_code": 128,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "fatal: Needed a single revision\n"
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=target/surefire-reports/TEST-com.agrosphere.spatial.GeometryValidationTest.xml",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\surefire-reports\\TEST-com.agrosphere.spatial.GeometryValidationTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "b357286f60bb4d8d56f7113d612eb92b266ebbae71d9f8f16d5c45361610fdc5",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "target/surefire-reports/TEST-com.agrosphere.spatial.GeometryValidationTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "target/surefire-reports/TEST-com.agrosphere.spatial.GeometryValidationTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "dd8d16f6229c26c519de554d63fcf4bc15e1f3fee102792a6e1a17ec71bfc976",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:target/surefire-reports/TEST-com.agrosphere.spatial.SecurityPolicyTest.xml"
+    ],
+    "exit_code": 128,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "fatal: Needed a single revision\n"
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=target/surefire-reports/TEST-com.agrosphere.spatial.SecurityPolicyTest.xml",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\surefire-reports\\TEST-com.agrosphere.spatial.SecurityPolicyTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "992cec26babef9a2fb3e1d04293f9aa8b8bfa26f237e1529bf0c5ef3a00e39b1",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "target/surefire-reports/TEST-com.agrosphere.spatial.SecurityPolicyTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "target/surefire-reports/TEST-com.agrosphere.spatial.SecurityPolicyTest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "862b6748896538634361cdfdb8ff16638b5bb226ca42b3659bac1a5a0f559ed3",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "120b8535a2f6262b5c555ce39091324dd78bc6f6c770787dac7125a2b4b09769",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "rev-parse",
+      "--verify",
+      "HEAD:target/failsafe-reports/TEST-com.agrosphere.spatial.SpatialServiceIT.xml"
+    ],
+    "exit_code": 128,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "fatal: Needed a single revision\n"
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "hash-object",
+      "--path=target/failsafe-reports/TEST-com.agrosphere.spatial.SpatialServiceIT.xml",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\failsafe-reports\\TEST-com.agrosphere.spatial.SpatialServiceIT.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "590291fbe251a50a43333c5751eadff7fa1d79968f4d2f1a1b4d009ee5929aad",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "log",
+      "-1",
+      "--format=%H%x09%aI%x09%cI%x09%an%x09%s",
+      "--",
+      "target/failsafe-reports/TEST-com.agrosphere.spatial.SpatialServiceIT.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "-c",
+      "core.fsmonitor=false",
+      "check-ignore",
+      "--",
+      "target/failsafe-reports/TEST-com.agrosphere.spatial.SpatialServiceIT.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "41d97f040914f69b0d01f064cc9deae688b9ec7db88f026f6d82afc1c0c1f00e",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "-c",
+      "core.fsmonitor=false",
+      "blame",
+      "--line-porcelain",
+      "-L",
+      "7,7",
+      "--",
+      "docs/MILESTONE_1A_REPORT.md"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "cb5a678f9cf44cbb5bfef1e05ae5a3879fecd1f4d869a80527684c210dada2cd",
+    "stderr": ""
+  }
+]

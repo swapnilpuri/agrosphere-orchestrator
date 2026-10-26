@@ -1,0 +1,85 @@
+[
+  {
+    "path": "target/surefire-reports/TEST-com.agrosphere.spatial.ApplicationRulesTest.xml",
+    "sha256": "c339cf933813b7622bdfc6cd2d93f26f5ee13262c9aef8314fa945f472c3e3d0",
+    "timestamp": null,
+    "name": "com.agrosphere.spatial.ApplicationRulesTest",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "test_cases": [
+      "generatedTreesCannotClaimSurveyProvenance",
+      "featureVersionPassedToPersistenceAndEvents",
+      "layerEstateCannotChange",
+      "featureUsesServerOwnedEstateForAuthorization",
+      "scopeDeniedBeforePersistence",
+      "layerValidationRejectsUnsupportedFormat",
+      "queryRequiresBoundedBbox"
+    ],
+    "revision_binding": "Untracked/ignored result; no authenticated generating revision attestation recovered."
+  },
+  {
+    "path": "target/surefire-reports/TEST-com.agrosphere.spatial.GeometryValidationTest.xml",
+    "sha256": "cbd03b8bc03225337cb902ab6e110cfd5cc9f39b81041553438f591e48a841e9",
+    "timestamp": null,
+    "name": "com.agrosphere.spatial.GeometryValidationTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "test_cases": [
+      "rejectsSelfIntersection",
+      "rejectsUnclosedRings",
+      "rejectsEmptyAndDegenerate",
+      "polygonEnvelopeAndMultipolygon",
+      "validatesCodeAndLayerUri",
+      "rejectsUnsupportedRangesCrsAndAltitude",
+      "rejectsInvalidHoles",
+      "enforcesCoordinateAndPaginationLimits"
+    ],
+    "revision_binding": "Untracked/ignored result; no authenticated generating revision attestation recovered."
+  },
+  {
+    "path": "target/surefire-reports/TEST-com.agrosphere.spatial.SecurityPolicyTest.xml",
+    "sha256": "90dfc51e63f732c3eae41099e431fd54f267030db6cb17ab425ee70cea89ad5a",
+    "timestamp": null,
+    "name": "com.agrosphere.spatial.SecurityPolicyTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "test_cases": [
+      "invalidBearerTokenIsRejected",
+      "unauthenticatedRequestsAreDenied",
+      "authenticatedRequestReachesProtectedRoute",
+      "healthIsPublic"
+    ],
+    "revision_binding": "Untracked/ignored result; no authenticated generating revision attestation recovered."
+  },
+  {
+    "path": "target/failsafe-reports/TEST-com.agrosphere.spatial.SpatialServiceIT.xml",
+    "sha256": "c589073f5da914f97f0b987f0dcf0109762b63b8a889bcdb5eed241903ba77b9",
+    "timestamp": null,
+    "name": "com.agrosphere.spatial.SpatialServiceIT",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "test_cases": [
+      "migrationsAndProjection",
+      "sampleImportAndGeographicArea",
+      "spatialQueriesAndExport",
+      "historyConflictContainmentAndInvalidGeometry",
+      "layerAndAssetMetadata",
+      "authorizationAndBodyLimits",
+      "atomicImportRollbackAndFailedJob",
+      "publisherConfirmsRetryAndContracts",
+      "consumerDlqAndHealth",
+      "overlappingBlocksAreRejectedAndConcurrentUpdatesConflict",
+      "domainOutboxRollbackAndRealBrokerConsumption",
+      "nonAreaTypesMultipolygonAndConfigurableMinimum"
+    ],
+    "revision_binding": "Untracked/ignored result; no authenticated generating revision attestation recovered."
+  }
+]

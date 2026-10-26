@@ -35,6 +35,7 @@ class RecoveredMilestone(StrictModel):
     outstanding: list[str] = Field(default_factory=list)
     missing_documentation: list[str] = Field(default_factory=list)
     conflicts: list[str] = Field(default_factory=list)
+    adjudications: list[dict] = Field(default_factory=list)
 
 
 class RecoverySnapshot(StrictModel):

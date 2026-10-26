@@ -1,0 +1,13 @@
+ca992841bc9694a4a9df0e504ade8e42c35acf01 7 7 1
+author swapnilpuri
+author-mail <swapnilpuri@gmail.com>
+author-time 1792821993
+author-tz -0500
+committer swapnilpuri
+committer-mail <swapnilpuri@gmail.com>
+committer-time 1792821993
+committer-tz -0500
+summary Add JSON schema definitions for estate and plantation block events (v2)
+boundary
+filename docs/MILESTONE_1A_REPORT.md
+	Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.

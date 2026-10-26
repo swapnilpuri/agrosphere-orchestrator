@@ -1,0 +1,77 @@
+[
+  {
+    "file": "src/agrosphere_orchestrator/recovery_discovery.py",
+    "sha256": "7c7a6e4c99ba580febabded363e2a22b250e57e07af5253992675730507a8055",
+    "modified_by_this_task": true
+  },
+  {
+    "file": "src/agrosphere_orchestrator/recovery_models.py",
+    "sha256": "2f20ebf805efc01e1df524921e49eaed0c36f0527fede1579ec617c640621cb8",
+    "modified_by_this_task": true
+  },
+  {
+    "file": "src/agrosphere_orchestrator/autonomous_cli.py",
+    "sha256": "1487b01d6e22604c3b8214141ffdc871a8e3729d0801c3775389826fc7e5ee18",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "src/agrosphere_orchestrator/autonomous.py",
+    "sha256": "dc5582c6ac16022e233b643e33187af0b51a37d0a3580dff768571a2378dab4d",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "src/agrosphere_orchestrator/autonomous_services.py",
+    "sha256": "3e8c83ae0defb452ec7caf224d7267276913baa55faaa256ad2a4909623c9e33",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "src/agrosphere_orchestrator/autonomous_store.py",
+    "sha256": "00898ece4cd4a9430e90ed7613335f2ba03227d1c9a927493bdb08c3849b26f3",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "src/agrosphere_orchestrator/recovery.py",
+    "sha256": "e36d107b314190a33d5a85f3f721d91c5c3efe7636b4cb51de0c2e401d2d54d2",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "src/agrosphere_orchestrator/config/settings.py",
+    "sha256": "bc5c9faacb9acd6a543ae3dd93e276147dc04b83e5e1a6871af437dc16252b08",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "src/agrosphere_orchestrator/configuration.py",
+    "sha256": "6ef037fcf2fd9ee60419f83a3179091cf6a74df4a65731901aadba4b29c73201",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "config/repositories.yaml",
+    "sha256": "4adcb96e9b913b3c707f40bf75b2bb83b57c79a83aadb3de67ffd06abd9bba73",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "tests/test_recovery.py",
+    "sha256": "28b2d425bacfd1fdde4cdd9b29b9a6b3c9a938f5432470644373dac7451f6be6",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "tests/test_autonomous_security.py",
+    "sha256": "3eca149b29867e708265b1f7ee26e70cebcb0cd025891665a65acc731535828d",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "tests/test_autonomous_recovery.py",
+    "sha256": "4e0ad13ded89ef65425f4d2fd4a0951351e3d2daccd596ccdf861109971fe655",
+    "modified_by_this_task": false
+  },
+  {
+    "file": "tests/test_discovery_adjudication.py",
+    "sha256": "6e7f9188e285217501200f169154f49c53ff48a2e0aecede27736272f57db03a",
+    "modified_by_this_task": true
+  },
+  {
+    "file": "scripts/validate.py",
+    "sha256": "4f1a841ccc3a3558bb96891c49f643660a97790bc11db79e1ac39b04aa611a03",
+    "modified_by_this_task": false
+  }
+]

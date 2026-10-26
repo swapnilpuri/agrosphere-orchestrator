@@ -290,6 +290,86 @@ def claim_text(mid: str, evidence: Evidence) -> str:
     return " ".join(relevant)
 
 
+def adjudicate_claim(mid: str, evidence: Evidence) -> dict:
+    """Separate planning/component claims; uncertainty never establishes supersession."""
+    text = claim_text(mid, evidence)
+    negative = bool(
+        re.search(r"not started|not implemented|no .*implemented|not executed", text, re.I)
+    )
+    result = {
+        "repository": evidence.repository,
+        "path": evidence.path,
+        "line": evidence.line,
+        "sha256": evidence.sha256,
+        "observed_head": evidence.head,
+        "modified_at": evidence.modified_at,
+        "claim_text": text,
+        "disposition": "claim-only",
+        "blocks": False,
+        "superseded": False,
+        "reason": "Claims do not establish acceptance.",
+    }
+    if not negative:
+        return result
+    # A prompt/sequence recommendation says what the old plan proposed, not what
+    # the current delivery contains. Preserve it, but do not compare it as status.
+    if re.fullmatch(
+        rf"\s*#*\s*Recommended Milestone {re.escape(mid)} "
+        r"(?:prompt|sequence|integration tasks) \(not (?:started|executed)\)\s*",
+        text,
+        re.I,
+    ):
+        result.update(
+            disposition="planning-only", reason="Recommended prompt/sequence, not delivery status."
+        )
+        return result
+    subject = rf"(?:milestone[ _-]*|M){re.escape(mid)}(?![A-Za-z0-9])"
+    explicit = re.search(
+        subject
+        + r"\s+(?:(?:was|is|has|had|been|yet)\s+)*(?:not started|not implemented|not executed)",
+        text,
+        re.I,
+    ) or re.search(
+        r"no\s+" + subject + r"\s+(?:feature\s+)?(?:was\s+|is\s+)?implemented", text, re.I
+    )
+    # Short status-only lines in a milestone-specific document remain status.
+    status_only = re.fullmatch(
+        r"[\s#*|:-]*(?:status[\s:*-]+)?not (?:started|implemented|executed)[\s.*|]*", text, re.I
+    )
+    bounded_component = re.search(
+        r"no renderer, client or terrain engine is implemented[.]?$", text, re.I
+    ) or re.fullmatch(
+        r"\s*\| Compose overlay config --quiet \| PASS .*shared services were not started \|\s*",
+        text,
+        re.I,
+    )
+    if not explicit and not status_only and bounded_component:
+        result.update(
+            disposition="component-or-validation-scope",
+            reason="Negative phrase concerns a component or validation action, not milestone delivery.",
+        )
+        return result
+    path_ids = {m.group(1).upper() for m in MILESTONE.finditer(Path(evidence.path).stem)}
+    historical = bool(
+        path_ids and mid not in path_ids and re.search(r"report|completion", evidence.path, re.I)
+    )
+    result.update(
+        disposition="historical-unresolved" if historical else "status-negative",
+        blocks=True,
+        reason=(
+            "Predecessor report status requires explicit provenance-backed supersession review."
+            if historical
+            else "Explicit negative milestone status requires comparison with implementation/completion claims."
+        ),
+    )
+    if not evidence.modified_at:
+        result["reason"] += " Missing timestamp; temporal ordering is unknown."
+    result["reason"] += (
+        " Observation HEAD and filesystem mtime do not establish claim origin or Git ancestry."
+    )
+    return result
+
+
 def recover_milestones(
     repositories: list[dict], evidence: list[Evidence]
 ) -> list[RecoveredMilestone]:
@@ -345,14 +425,8 @@ def recover_milestones(
         claims_complete = any(
             re.search(r"complete|verified|all .*pass", claim_text(mid, e), re.I) for e in mapped
         )
-        claims_unstarted = any(
-            re.search(
-                r"not started|not implemented|no .*implemented|not executed",
-                claim_text(mid, e),
-                re.I,
-            )
-            for e in mapped
-        )
+        adjudications = [adjudicate_claim(mid, e) for e in mapped]
+        claims_unstarted = any(a["blocks"] for a in adjudications)
         validation_conflicts = (
             [
                 "Historical test artifacts include failed, skipped-only or empty suites; current acceptance remains unverified."
@@ -377,6 +451,7 @@ def recover_milestones(
                 missing_documentation=[]
                 if docs
                 else ["Authoritative milestone specification/acceptance criteria not recovered."],
+                adjudications=adjudications,
                 conflicts=validation_conflicts
                 + (
                     [

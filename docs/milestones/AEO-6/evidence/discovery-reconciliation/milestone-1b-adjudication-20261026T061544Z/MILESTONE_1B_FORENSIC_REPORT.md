@@ -1,0 +1,52 @@
+# Milestone 1B forensic report
+
+Outcome: **REQUIRES_AUTHENTICATED_HUMAN_DECISION**. Recommended semantic disposition: non-conflicting historical observation. No runtime disposition, source change, approval or consistency change was applied.
+
+## Original assertion and identity
+
+Original absolute path: `C:\Projects\agrosphere\agrosphere-estate-service\docs\MILESTONE_1A_REPORT.md:7`. Title: Milestone 1A completion report. Line 3 dates the 1A delivery checkpoint October 23, 2026 (America/Chicago), Estate 0.2.0. Line 7 states:
+
+> Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.
+
+This is a real, committed project report, not a fixture, copied export or misattributed observation. It describes what the 1A work delivered and explicitly excludes starting the next increment. It does not say 1B can never be implemented or that 1B remains unstarted at every future observation. Its temporal scope is the reported 1A checkpoint. The no-commit statement also belongs to that work-session report; the report was subsequently committed, so commit dates are capture/import metadata rather than proof of execution time.
+
+Evidence has no standalone database ID. The deterministic review locator `sha256:698ba98b27851730bc049d88692901a6ca164a817b9e72ebaa2bc7b1997c1437` is newly derived for this package, not a fabricated original ID. The original durable container IDs, JSON pointers, captured evidence fields and capture times are enumerated in [assertion-record-provenance.json](assertion-record-provenance.json). There are 8 exact original-source occurrences. The earliest retained snapshot capture found is 2026-10-24T20:47:06.309655+00:00. The prior authoritative snapshot is cc98fd3fadb2b7fa0e0e4b6035b06240807560705fd1dc1182132d0b4ac09fdb at 2026-10-26T05:48:20.180695+00:00. Fresh observation capture: 2026-10-26T06:18:13.418807+00:00. File modified_at is filesystem mtime, not source authorship or collection time.
+
+Git blame attributes the line to `ca992841bc9694a4a9df0e504ade8e42c35acf01`, recorded author/committer time 2026-10-24T01:06:33-05:00. The boundary marker means this is the available history boundary, not proof of the first real-world utterance. Current observed HEAD is `7fdd691431a6962f5ac71fb08e9e3e09380bae00`; committed report blob `e863fe945e6f7a28002fffb507209e733bd9995a`; observed file SHA-256 `de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826`. Working bytes match HEAD under Git filters. Exact blame: [assertion-blame.txt](assertion-blame.txt).
+
+## Separately sourced implementation and validation evidence
+
+Spatial report `C:\Projects\agrosphere\agrosphere-spatial-service\docs\MILESTONE_1B_REPORT.md` is a 1B-scoped delivery report dated 2026-10-24. Its SHA-256 is `c07f7755312a53851ad3ad792a0c65f183cab43ba5f7b5f3e695b8a4b80c57ef`, committed blob `5a936de3be84b3aba0f5bb079664751fe9fcd468`, last file commit `7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3`, current HEAD `2a7dbda842141fca041510ca79481ea0454eaaf8`. It reports delivered geometry/history, projection, JWT, API and outbox behavior and explicitly excludes renderer/terrain-client work.
+
+Directly inspected committed implementation includes EstateProjection.java (transactional validated revision-aware Estate v2 projection and deduplication), JdbcSpatialStore.java (PostGIS geography hectares, bounded predicates, overlap/history/version constraints), and the resolved V2 migration `src/main/resources/db/migration/V2__spatial_twin.sql`. Test source includes SpatialServiceIT.java, GeometryValidationTest.java, ApplicationRulesTest.java and SecurityPolicyTest.java. All inspected tracked artifacts match their current Git blobs under filters. Full paths/commits/hashes are in the matrix and source-artifacts JSON.
+
+Four retained JUnit XML files parse to 31 tests (7+8+4+12), zero failures/errors/skips. They are ignored local artifacts, have no suite timestamp, and have no authenticated generating-revision binding. Test case names corroborate the report and source, including migrations/projection, real-broker rollback, geography, overlap/concurrency, DLQ, scope denial and invalid geometry. No application tests were executed this task, and these historical files are not current acceptance.
+
+Architecture MILESTONE_1B.md and ADR-0009 independently locate the scope; the later acceptance reconciliation explicitly calls itself an engineering assessment, not authenticated approval. These are separate repositories and artifact types, but share the recorded Git author and local administrative trust boundary. The acceptance assessment is derivative. No independent authenticated 1B acceptance decision was established. Cross-repository Git commit dates are not ancestry: Architecture scope was imported before the Estate/Spatial commits despite describing delivery. Timestamp sorting cannot establish supersession.
+
+## Exact conflict root cause
+
+The collector retains the 1A-to-1B transition sentence; claim_text selects its 1B clause. adjudicate_claim recognizes an explicit milestone denial in a different milestone report and emits historical-unresolved, blocks=true, superseded=false. recover_milestones separately detects Spatial implementation and completion claims, then sets the milestone-wide conflict whenever a blocking negative coexists with completion/implementation. There is no authenticated evidence-disposition input or consumer. Thus two compatible checkpoint-scoped propositions are compared as competing present status. The conservative checkpoint is operating as implemented; clearing it needs a governed semantic/authority change.
+
+This remaining source is different from the earlier contaminated observation containing Orchestrator test fixtures and report quotations. Exact-12-root fresh discovery still contains the genuine original Estate assertion. Removing fixtures cannot remove that original. No genuine simultaneous current contradiction has been demonstrated. Proposed historical chain: 1A session did not start 1B -> separately scoped 1B source/report/tests document implementation. This is semantic checkpoint progression, not deletion of history, newest-record precedence, or full acceptance.
+
+## Existing governance and approval boundary
+
+Resolved source paths are under `C:/Projects/agrosphere/agrosphere-orchestrator/`: src/agrosphere_orchestrator/recovery_discovery.py, recovery_models.py, tests/test_discovery_adjudication.py, human_approval.py, design.py, quality.py, quality_models.py, cli.py, persistence.py, autonomous.py, autonomous_services.py, recovery.py and orchestration.py. Exact read-only hashes are in read-only-verification.json.
+
+HumanVerifier/WindowsConsoleHumanVerifier confirms the exact subject, requires interactive Windows authentication via LogonUserW and returns canonical SID. design.decide permits only requirements/design/delivery and checks configured design_approvers and current artifacts. quality.decide_approval checks governance_approvers, no self-approval, context/expiry, and atomically records DesignDecision plus governance/audit evidence. ApprovalCategory has no evidence-adjudication category. Generic ARCHITECTURE_CHANGE requests use quality/task context; arbitrary action text does not create an evidence-disposition authority, and recovery never consumes it. Existing design approvals cannot be repurposed as acceptance/adjudication.
+
+Evidence/RecoveredMilestone can store descriptive adjudications, but lack approved actor/decision/subject/revocation semantics. Recovery reconciliation writes observations and local-user audit events, not authenticated decisions. Therefore a manually prepared JSON disposition or direct SQLite write cannot legitimately clear the checkpoint. A role-registry title does not confer adjudicator authority.
+
+AEO-6 is already IMPLEMENTING, and design.register_requirements refuses scope replacement in that state. The new decision semantics require a separate proposed internal change scope and new exact requirements/design authorization. The package contains a schema-checkable requirements draft using existing design workflow; it is not registered, approved, or implemented. No new autonomous run is proposed.
+
+## Preservation and actual verification
+
+Source remained unchanged. Two fresh read-only discoveries used exactly 12 confirmed application roots and had identical content fingerprints excluding observed_at. Both report conflicts=[1B], discovery_consistent=false, 1B PARTIAL and no verified acceptance criteria. The existing run validates and remains BLOCKED/discovery-conflict. Database file SHA and every table row count/content hash match before/after. No run, snapshot, approval, history or migration was changed; no recover/reconcile/resume invoked.
+
+The run already contained an additional resumed operation committed at 2026-10-26T06:03:13.296781+00:00 before this task baseline. This task did not create it. Preservation is verified relative to the actual task baseline, not the older prior report.
+
+No test suite was executed because source was unchanged and governance approval is missing. Prior 367 full-suite/15 focused results remain prior evidence only. The read-only collector initially queried the wrong table name and exited 1; it was corrected to declared recovery_snapshots and then completed at exit 0. An initial guessed migration path was corrected by inspecting the real V2 filename. These collection errors did not write state. Command attempts and verification artifacts are retained.
+
+
+Historical truth boundary: the original report is evidence of what the author asserted at the stated checkpoint. No independent contemporaneous absence-of-Spatial-code attestation was recovered. Its declared date and scope make the two reports semantically compatible; they do not prove a cross-repository chronological supersession chain. The recommended disposition preserves the historical claim without certifying its truth or current acceptance.

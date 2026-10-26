@@ -1,0 +1,114 @@
+{
+  "approval_granted": false,
+  "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+  "files": [
+    {
+      "path": "MILESTONE_1B_FORENSIC_REPORT.md",
+      "sha256": "781e03ad22b79a37fd96e168136a48f6e25d56fd1ec881489705ef522ebc292c"
+    },
+    {
+      "path": "MILESTONE_1B_ADJUDICATION_MATRIX.md",
+      "sha256": "9993d67658c4ea6ecf65b0f047772efe33e7a261d7a7af227a4237dc4e1196c2"
+    },
+    {
+      "path": "MILESTONE_1B_DECISION_PACKAGE.json",
+      "sha256": "19b90ae4457fbb3c9d5004868bd866818c03c2840ce85d5d79fe9ee155d4fdf2"
+    },
+    {
+      "path": "MILESTONE_1B_RECOVERY_VERIFICATION.md",
+      "sha256": "9cadc5eaedecd210fdd8de7ec35adb57007bec63b4f7d0252fefd5258a63aaa8"
+    },
+    {
+      "path": "AEO-6-ADJUDICATION.requirements-proposed.json",
+      "sha256": "dc76745b5ca555677ac55cdb80e9f64a545853a60474aea248bf9bf553e2e079"
+    },
+    {
+      "path": "assertion-blame.txt",
+      "sha256": "3ad5cde99cd0257081d7ea3add2e2100624e112f663603b18bccd429b33c8383"
+    },
+    {
+      "path": "assertion-record-provenance.json",
+      "sha256": "1595d4b017374b019fb29b582e0c64c9c16441803562337b913e302c530c046b"
+    },
+    {
+      "path": "collect.py",
+      "sha256": "54b7820093a83100cc6575c4a46a5f99efb4251b961e539bb6addd68404f1e3f"
+    },
+    {
+      "path": "collection-attempts.json",
+      "sha256": "8e7db1a5bfb3823922518b6e85e7f03a9e001196cac2af6420d2f7046c0ef668"
+    },
+    {
+      "path": "collection.log",
+      "sha256": "f4636cd782c17c6676e76b497d75fe9cdade9223839d6c2714764390b802d7a3"
+    },
+    {
+      "path": "design-repositories-proposed.json",
+      "sha256": "2ebc0f7f26846f70c17cc28adaed10335e30ed300588ef5de7f341f921b94a2d"
+    },
+    {
+      "path": "final-preservation.json",
+      "sha256": "f9d9da9582db39b876c2878f4a80fb64c68423cb9a4032b9911b90366968ad63"
+    },
+    {
+      "path": "finalize-verification.py",
+      "sha256": "2434afc9396b84e5044e3783dbac49e9f5fa4af30d7a68b012bbe0def27ac33f"
+    },
+    {
+      "path": "fresh-discovery.json",
+      "sha256": "05cec91af35b3d6e451215aa4dbb6f72d825c61eb7ed208ad10861f0cf357e37"
+    },
+    {
+      "path": "git-command-results.json",
+      "sha256": "8e426e2370d97fdbda55909deba87d43ed386856b2bf7ab5fc2a4a2b3aa5e419"
+    },
+    {
+      "path": "matrix-draft.json",
+      "sha256": "f6027bdb1205860c39a0f095a4ddfbb34915a12c8a75d413f5d49f8854baef92"
+    },
+    {
+      "path": "MILESTONE_1B_ADJUDICATION_MATRIX.md",
+      "sha256": "3a51c035dddb91aebd6f48240e2c727491045ceead7afd58df2f2fd0beb12527"
+    },
+    {
+      "path": "MILESTONE_1B_DECISION_PACKAGE.json",
+      "sha256": "19b90ae4457fbb3c9d5004868bd866818c03c2840ce85d5d79fe9ee155d4fdf2"
+    },
+    {
+      "path": "MILESTONE_1B_FORENSIC_REPORT.md",
+      "sha256": "730462c357fc5ba2f5fb87e4b1d50fbc10aa7b0c6ec044f195ca3166f0ee970e"
+    },
+    {
+      "path": "MILESTONE_1B_RECOVERY_VERIFICATION.md",
+      "sha256": "dca31b48cdc994f3f5cd41be4f897503e7049e203fc45ed0ebd1f9abd42397ee"
+    },
+    {
+      "path": "proposal-validation.json",
+      "sha256": "f7e6d82245e8e23a576242729467ecd1e621a79e583846ab45d14b64da0edab0"
+    },
+    {
+      "path": "read-only-verification.json",
+      "sha256": "f3d9e0a721de35be86cdcdddb5bd29b88d8dfa6e43053c0f193dd6073c586173"
+    },
+    {
+      "path": "retained-junit-analysis.json",
+      "sha256": "77759cdd2bf597157835ac8a04eb12450030160b8868b4ac0c85a063cfe3a4a6"
+    },
+    {
+      "path": "run-after.json",
+      "sha256": "54611b5f349e8789a562f021e9c00352fab3ee26c5c90390088040f20d68ad3d"
+    },
+    {
+      "path": "run-before.json",
+      "sha256": "54611b5f349e8789a562f021e9c00352fab3ee26c5c90390088040f20d68ad3d"
+    },
+    {
+      "path": "source-artifacts.json",
+      "sha256": "e4967cdca8d380aab5dc723a41ff24ae1dfb4126b73546d4246099af0843014f"
+    },
+    {
+      "path": "validate-proposal.py",
+      "sha256": "24a6e377e2ac957755d9071d7bf65d00c2a82aaa1eca05ac56d23b1fbf773f4c"
+    }
+  ]
+}

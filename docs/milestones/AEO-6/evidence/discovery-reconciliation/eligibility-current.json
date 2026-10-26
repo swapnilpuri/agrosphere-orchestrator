@@ -1,0 +1,23 @@
+{
+  "reason": null,
+  "request": {
+    "milestone": "2",
+    "mode": "local",
+    "requirements": null,
+    "task_options": null,
+    "delivery_manifest": null,
+    "publication_grants": {},
+    "limits": {
+      "max_milestones": 1,
+      "max_tasks": 20,
+      "max_concurrency": 2,
+      "max_invocations": 30,
+      "max_attempts": 30,
+      "max_repairs": 3,
+      "max_seconds": 3600,
+      "max_poll_seconds": 60,
+      "max_steps": 50,
+      "max_model_cost": null
+    }
+  }
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "attempt": 1,
+    "exit_code": 1,
+    "error": "sqlite3.OperationalError: no such table: recovery_records",
+    "effect": "Read-only collection stopped; corrected query to declared table recovery_snapshots. No state writes."
+  }
+]

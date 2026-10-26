@@ -1,0 +1,161 @@
+{
+  "review_locator": "sha256:698ba98b27851730bc049d88692901a6ca164a817b9e72ebaa2bc7b1997c1437",
+  "locator_note": "Derived review locator, not an original Evidence.id. Evidence model has no standalone record ID. Original durable containers and pointers follow.",
+  "fresh_snapshot_capture_time": "2026-10-26T06:18:13.418807+00:00",
+  "evidence": {
+    "repository": "agrosphere-estate-service",
+    "path": "docs/MILESTONE_1A_REPORT.md",
+    "kind": "document",
+    "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+    "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+    "modified_at": "2026-10-24T04:16:32.259642+00:00",
+    "line": 7,
+    "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+    "outcome": null
+  },
+  "classification_reasoning": {
+    "repository": "agrosphere-estate-service",
+    "path": "docs/MILESTONE_1A_REPORT.md",
+    "line": 7,
+    "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+    "observed_head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+    "modified_at": "2026-10-24T04:16:32.259642+00:00",
+    "claim_text": "No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+    "disposition": "historical-unresolved",
+    "blocks": true,
+    "superseded": false,
+    "reason": "Predecessor report status requires explicit provenance-backed supersession review. Observation HEAD and filesystem mtime do not establish claim origin or Git ancestry."
+  },
+  "durable_containers": [
+    {
+      "recovery_record_id": "5bbf1d0f824a886e9172063e05352eef2ca621ba00bda2af6ffd81f584a713d8",
+      "snapshot_capture_time": "2026-10-24T20:47:06.309655+00:00",
+      "json_pointer": "/milestones/3/evidence/24",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "91969d6f4b910bcf7dc9875ef713e3a9b9bd4589",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "8293bd26568365e074fc129598ca1b1d9e53d52bdec93202de40ca45340cebee",
+      "snapshot_capture_time": "2026-10-24T20:48:59.462823+00:00",
+      "json_pointer": "/milestones/3/evidence/24",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4",
+      "snapshot_capture_time": "2026-10-24T20:50:19.636730+00:00",
+      "json_pointer": "/milestones/3/evidence/24",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "9998b05b9ce23dd304ce8c5f3293a75a612b923eadc6e9489daff5d9b24746c5",
+      "snapshot_capture_time": "2026-10-26T05:00:23.076469+00:00",
+      "json_pointer": "/milestones/3/evidence/26",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113",
+      "snapshot_capture_time": "2026-10-26T04:59:08.394116+00:00",
+      "json_pointer": "/milestones/3/evidence/26",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "cc98fd3fadb2b7fa0e0e4b6035b06240807560705fd1dc1182132d0b4ac09fdb",
+      "snapshot_capture_time": "2026-10-26T05:48:20.180695+00:00",
+      "json_pointer": "/milestones/3/evidence/26",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "autonomous_event_id": "2e2793bd-3bf1-47a1-b400-f1215e8bf1a7",
+      "event_time": "2026-10-26T05:28:09.472790+00:00",
+      "snapshot_capture_time": "2026-10-26T05:28:09.454420+00:00",
+      "evidence_index": 26,
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "autonomous_event_id": "0b0c9275-0043-443d-aabc-4ad3b98c98ae",
+      "event_time": "2026-10-26T06:03:13.296781+00:00",
+      "snapshot_capture_time": "2026-10-26T06:03:13.279656+00:00",
+      "evidence_index": 26,
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    }
+  ]
+}

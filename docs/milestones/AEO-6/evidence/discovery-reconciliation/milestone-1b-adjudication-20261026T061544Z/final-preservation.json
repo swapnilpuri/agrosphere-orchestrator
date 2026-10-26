@@ -1,0 +1,26 @@
+{
+  "runtime_sources_unchanged": true,
+  "prior_package_unchanged": true,
+  "database_file_and_all_tables_unchanged": true,
+  "application_fingerprints_verified": 454,
+  "application_repository_count": 12,
+  "required_artifacts_present": true,
+  "local_report_links_verified": 6,
+  "schema_and_context_validation": {
+    "schema_valid": true,
+    "context_valid": true,
+    "repositories": {
+      "agrosphere-orchestrator": "C:\\Projects\\agrosphere\\agrosphere-orchestrator"
+    },
+    "proposal_sha256": "dc76745b5ca555677ac55cdb80e9f64a545853a60474aea248bf9bf553e2e079",
+    "registration_performed": false,
+    "requirements_approval_granted": false,
+    "design_approval_granted": false,
+    "implementation_authorized": false,
+    "autonomous_run_created": false
+  },
+  "tests_executed": [],
+  "source_changes_authorized": false,
+  "run_preserved": true,
+  "outcome": "REQUIRES_AUTHENTICATED_HUMAN_DECISION"
+}

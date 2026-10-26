@@ -62,8 +62,8 @@
     {
       "path": "src/agrosphere_orchestrator/recovery_discovery.py",
       "approved_sha256": "fc26cf7771581cc18a624f34fe193e75ab86ea063d1ea3a22f91263621e611b4",
-      "current_sha256": "fc26cf7771581cc18a624f34fe193e75ab86ea063d1ea3a22f91263621e611b4",
-      "unchanged": true
+      "current_sha256": "7c7a6e4c99ba580febabded363e2a22b250e57e07af5253992675730507a8055",
+      "unchanged": false
     },
     {
       "path": "src/agrosphere_orchestrator/config/settings.py",

@@ -1,0 +1,230 @@
+{
+  "documentation_scope": "internal-orchestrator",
+  "plan": {
+    "id": "AEO-6-ADJUDICATION",
+    "project": "agrosphere",
+    "title": "Proposed authenticated historical evidence disposition for recovery",
+    "tasks": [
+      {
+        "id": "adjudication-integration",
+        "title": "Implement the reviewed evidence subject and existing-governance integration",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [],
+        "acceptance_criteria": [
+          "Canonical immutable evidence subject binding snapshot, application-manifest digest, target milestone, original repo/path/line/committed blob/hash and supporting hashes; unknown provenance remains explicit.",
+          "Reuse Windows verifier/current governance SID allowlist and existing append-only decision/audit storage; extend approved category-specific evidence context validation, not an ad hoc parallel approval API.",
+          "Explicit dispositions, justification, evidence scope, authenticated actor, expiry/revocation and current authorization checks. Recheck subject after authentication and before classification.",
+          "No acceptance, completion, dependency completion or execution authority follows. Preserve original snapshots/run/approvals/migrations; append new observation only through existing recovery when later authorized.",
+          "Invalid/stale/revoked/rejected/mismatched decision fails closed; approved evidence relationship cannot suppress other unresolved claims.",
+          "Bind exactly the approved 12 application roots and reject fixtures/quoted exports as independent implementation evidence.",
+          "Idempotent replay and audit transaction; full ten-case regression plan in recovery verification."
+        ]
+      },
+      {
+        "id": "verification",
+        "title": "Verify authority, evidence scope, idempotency and run preservation",
+        "repository": "agrosphere-orchestrator",
+        "role": "qa-engineer",
+        "operation": "validate",
+        "depends_on": [
+          "adjudication-integration"
+        ],
+        "acceptance_criteria": [
+          "Execute the ten proposed negative/positive cases; run scripts/validate.py; record actual outputs. No application source writes, migrations, new autonomous runs or resume."
+        ]
+      }
+    ]
+  },
+  "requirements": [
+    {
+      "id": "ADJ-1",
+      "text": "Canonical immutable evidence subject binding snapshot, application-manifest digest, target milestone, original repo/path/line/committed blob/hash and supporting hashes; unknown provenance remains explicit.",
+      "acceptance_criteria": [
+        "Canonical immutable evidence subject binding snapshot, application-manifest digest, target milestone, original repo/path/line/committed blob/hash and supporting hashes; unknown provenance remains explicit."
+      ]
+    },
+    {
+      "id": "ADJ-2",
+      "text": "Reuse Windows verifier/current governance SID allowlist and existing append-only decision/audit storage; extend approved category-specific evidence context validation, not an ad hoc parallel approval API.",
+      "acceptance_criteria": [
+        "Reuse Windows verifier/current governance SID allowlist and existing append-only decision/audit storage; extend approved category-specific evidence context validation, not an ad hoc parallel approval API."
+      ]
+    },
+    {
+      "id": "ADJ-3",
+      "text": "Explicit dispositions, justification, evidence scope, authenticated actor, expiry/revocation and current authorization checks. Recheck subject after authentication and before classification.",
+      "acceptance_criteria": [
+        "Explicit dispositions, justification, evidence scope, authenticated actor, expiry/revocation and current authorization checks. Recheck subject after authentication and before classification."
+      ]
+    },
+    {
+      "id": "ADJ-4",
+      "text": "No acceptance, completion, dependency completion or execution authority follows. Preserve original snapshots/run/approvals/migrations; append new observation only through existing recovery when later authorized.",
+      "acceptance_criteria": [
+        "No acceptance, completion, dependency completion or execution authority follows. Preserve original snapshots/run/approvals/migrations; append new observation only through existing recovery when later authorized."
+      ]
+    },
+    {
+      "id": "ADJ-5",
+      "text": "Invalid/stale/revoked/rejected/mismatched decision fails closed; approved evidence relationship cannot suppress other unresolved claims.",
+      "acceptance_criteria": [
+        "Invalid/stale/revoked/rejected/mismatched decision fails closed; approved evidence relationship cannot suppress other unresolved claims."
+      ]
+    },
+    {
+      "id": "ADJ-6",
+      "text": "Bind exactly the approved 12 application roots and reject fixtures/quoted exports as independent implementation evidence.",
+      "acceptance_criteria": [
+        "Bind exactly the approved 12 application roots and reject fixtures/quoted exports as independent implementation evidence."
+      ]
+    },
+    {
+      "id": "ADJ-7",
+      "text": "Idempotent replay and audit transaction; full ten-case regression plan in recovery verification.",
+      "acceptance_criteria": [
+        "Idempotent replay and audit transaction; full ten-case regression plan in recovery verification."
+      ]
+    }
+  ],
+  "context": [
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/recovery_discovery.py",
+      "sha256": "7c7a6e4c99ba580febabded363e2a22b250e57e07af5253992675730507a8055",
+      "head": "d0743502198945d90bf6ccfc85cd5f6c137b99a4"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/recovery_models.py",
+      "sha256": "2f20ebf805efc01e1df524921e49eaed0c36f0527fede1579ec617c640621cb8",
+      "head": "d0743502198945d90bf6ccfc85cd5f6c137b99a4"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/human_approval.py",
+      "sha256": "edb65b1c4c53e62fd28b5b763141fb895beaf4a3b4bafe32bf49ec41a3e206d9",
+      "head": "d0743502198945d90bf6ccfc85cd5f6c137b99a4"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/quality.py",
+      "sha256": "2a3fce5316bf38aacdadf2b011a70bf210f9348851b0fcb11da3e64f6fddda56",
+      "head": "d0743502198945d90bf6ccfc85cd5f6c137b99a4"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/design.py",
+      "sha256": "1330049444195c4f2ca64cc7f0f28e76a386251200ffb05104f374ddcdfe5900",
+      "head": "d0743502198945d90bf6ccfc85cd5f6c137b99a4"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_FORENSIC_REPORT.md",
+      "sha256": "781e03ad22b79a37fd96e168136a48f6e25d56fd1ec881489705ef522ebc292c",
+      "head": "d0743502198945d90bf6ccfc85cd5f6c137b99a4"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_ADJUDICATION_MATRIX.md",
+      "sha256": "9993d67658c4ea6ecf65b0f047772efe33e7a261d7a7af227a4237dc4e1196c2",
+      "head": "d0743502198945d90bf6ccfc85cd5f6c137b99a4"
+    }
+  ],
+  "narratives": {
+    "agrosphere-orchestrator": {
+      "overview": "PROPOSED CHANGE, not approved. Current 1B historical checkpoint conflict remains blocked. Separate historical evidence disposition from acceptance and execution.",
+      "business": "Permit a narrowly authenticated evidence relationship decision after reviewed provenance; preserve all historic assertions and reject unknown/current contradictions.",
+      "architecture": "Extend existing authenticated governance and append-only audit with an evidence-bound subject and classifier consumer; no parallel approval service, schema migration or approval bypass.",
+      "service": "Bind original and supporting evidence digests, application manifest, target milestone and disposition. Recheck subject/authority/expiry/revocation during decision and discovery. Preserve current run and prior snapshots."
+    }
+  },
+  "diagrams": [
+    {
+      "id": "adjudication-components",
+      "kind": "component",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "ADJ-1",
+        "ADJ-2",
+        "ADJ-3",
+        "ADJ-4",
+        "ADJ-5",
+        "ADJ-6",
+        "ADJ-7"
+      ],
+      "nodes": [
+        {
+          "id": "Evidence",
+          "label": "Immutable observed evidence"
+        },
+        {
+          "id": "Governance",
+          "label": "Existing authenticated governance"
+        },
+        {
+          "id": "Classifier",
+          "label": "Recovery classifier"
+        }
+      ],
+      "edges": [
+        {
+          "source": "Evidence",
+          "target": "Governance",
+          "label": "Canonical evidence subject"
+        },
+        {
+          "source": "Governance",
+          "target": "Classifier",
+          "label": "Validated scoped disposition"
+        }
+      ],
+      "rationale": "Proposed integration reuses authenticated authority and keeps acceptance separate."
+    },
+    {
+      "id": "adjudication-state",
+      "kind": "state",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "ADJ-2",
+        "ADJ-3",
+        "ADJ-5"
+      ],
+      "nodes": [
+        {
+          "id": "Unresolved",
+          "label": "Unresolved evidence"
+        },
+        {
+          "id": "Review",
+          "label": "Await exact authenticated decision"
+        },
+        {
+          "id": "Scoped",
+          "label": "Bound relationship disposition"
+        }
+      ],
+      "edges": [
+        {
+          "source": "Unresolved",
+          "target": "Review",
+          "label": "Create immutable subject"
+        },
+        {
+          "source": "Review",
+          "target": "Scoped",
+          "label": "Authorized decision and unchanged subject"
+        },
+        {
+          "source": "Scoped",
+          "target": "Unresolved",
+          "label": "Revoked, expired or changed evidence"
+        }
+      ],
+      "rationale": "Every unknown or invalid authority state fails closed; no accepted/completed transition."
+    }
+  ],
+  "contracts": [],
+  "contract_impact": false
+}

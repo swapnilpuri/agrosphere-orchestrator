@@ -1,0 +1,569 @@
+{
+  "outcome": "REQUIRES_AUTHENTICATED_HUMAN_DECISION",
+  "approval_granted": false,
+  "decision_record_id": null,
+  "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+  "review_conflict_id": "1B-HIST-001",
+  "derived_evidence_locator": "sha256:698ba98b27851730bc049d88692901a6ca164a817b9e72ebaa2bc7b1997c1437",
+  "record_id_note": "Derived review locator, not an original Evidence.id. Evidence model has no standalone record ID. Original durable containers and pointers follow.",
+  "original_assertion": {
+    "repository": "agrosphere-estate-service",
+    "path": "docs/MILESTONE_1A_REPORT.md",
+    "kind": "document",
+    "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+    "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+    "modified_at": "2026-10-24T04:16:32.259642+00:00",
+    "line": 7,
+    "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+    "outcome": null
+  },
+  "durable_containers": [
+    {
+      "recovery_record_id": "5bbf1d0f824a886e9172063e05352eef2ca621ba00bda2af6ffd81f584a713d8",
+      "snapshot_capture_time": "2026-10-24T20:47:06.309655+00:00",
+      "json_pointer": "/milestones/3/evidence/24",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "91969d6f4b910bcf7dc9875ef713e3a9b9bd4589",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "8293bd26568365e074fc129598ca1b1d9e53d52bdec93202de40ca45340cebee",
+      "snapshot_capture_time": "2026-10-24T20:48:59.462823+00:00",
+      "json_pointer": "/milestones/3/evidence/24",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4",
+      "snapshot_capture_time": "2026-10-24T20:50:19.636730+00:00",
+      "json_pointer": "/milestones/3/evidence/24",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "9998b05b9ce23dd304ce8c5f3293a75a612b923eadc6e9489daff5d9b24746c5",
+      "snapshot_capture_time": "2026-10-26T05:00:23.076469+00:00",
+      "json_pointer": "/milestones/3/evidence/26",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113",
+      "snapshot_capture_time": "2026-10-26T04:59:08.394116+00:00",
+      "json_pointer": "/milestones/3/evidence/26",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "recovery_record_id": "cc98fd3fadb2b7fa0e0e4b6035b06240807560705fd1dc1182132d0b4ac09fdb",
+      "snapshot_capture_time": "2026-10-26T05:48:20.180695+00:00",
+      "json_pointer": "/milestones/3/evidence/26",
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "autonomous_event_id": "2e2793bd-3bf1-47a1-b400-f1215e8bf1a7",
+      "event_time": "2026-10-26T05:28:09.472790+00:00",
+      "snapshot_capture_time": "2026-10-26T05:28:09.454420+00:00",
+      "evidence_index": 26,
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    },
+    {
+      "autonomous_event_id": "0b0c9275-0043-443d-aabc-4ad3b98c98ae",
+      "event_time": "2026-10-26T06:03:13.296781+00:00",
+      "snapshot_capture_time": "2026-10-26T06:03:13.279656+00:00",
+      "evidence_index": 26,
+      "evidence": {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "kind": "document",
+        "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+        "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+        "modified_at": "2026-10-24T04:16:32.259642+00:00",
+        "line": 7,
+        "excerpt": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+        "outcome": null
+      }
+    }
+  ],
+  "classification_reasoning": {
+    "repository": "agrosphere-estate-service",
+    "path": "docs/MILESTONE_1A_REPORT.md",
+    "line": 7,
+    "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+    "observed_head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+    "modified_at": "2026-10-24T04:16:32.259642+00:00",
+    "claim_text": "No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+    "disposition": "historical-unresolved",
+    "blocks": true,
+    "superseded": false,
+    "reason": "Predecessor report status requires explicit provenance-backed supersession review. Observation HEAD and filesystem mtime do not establish claim origin or Git ancestry."
+  },
+  "recommended_disposition": "non-conflicting historical observation",
+  "applied_disposition": null,
+  "genuinely_contradictory": "No simultaneous current contradiction established. 1A checkpoint denial and scoped 1B delivery are semantically compatible; formal runtime resolution is not applied.",
+  "source_independence_limit": "Separate repos/artifact types, same Git author and local administrator trust boundary; neither commits nor ignored results prove independent authenticated acceptance.",
+  "supersession_chain": {
+    "kind": "historical checkpoint progression; proposed interpretation",
+    "from": {
+      "file": "C:\\Projects\\agrosphere\\agrosphere-estate-service\\docs\\MILESTONE_1A_REPORT.md",
+      "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+      "commit": "ca992841bc9694a4a9df0e504ade8e42c35acf01",
+      "meaning": "1B not started within the reported 1A delivery checkpoint"
+    },
+    "to": {
+      "file": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\docs\\MILESTONE_1B_REPORT.md",
+      "sha256": "c07f7755312a53851ad3ad792a0c65f183cab43ba5f7b5f3e695b8a4b80c57ef",
+      "commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3",
+      "meaning": "Scoped Spatial 1B implementation exists"
+    },
+    "basis": "Explicit document scopes + committed implementation/test source + retained result corroboration, not newest-record ordering.",
+    "limitation": "No cross-repository ancestry relation, independent contemporaneous absence-of-code attestation, or authenticated test-revision binding; preserve the original historical claim without certifying its truth."
+  },
+  "decision_options": [
+    {
+      "option": "non-conflicting historical observation",
+      "recommended": true,
+      "impact": "After governed capability and valid authenticated disposition, removes only the temporal-comparison conflict; 1B remains PARTIAL with acceptance unverified."
+    },
+    {
+      "option": "superseded for present discovery only",
+      "recommended": false,
+      "impact": "Requires exact historical boundary and current-state scope; retain original assertion as valid history. Does not authorize completion."
+    },
+    {
+      "option": "unresolved",
+      "recommended": false,
+      "impact": "Retain discovery_consistent=false and BLOCKED pending additional provenance."
+    },
+    {
+      "option": "out-of-scope",
+      "recommended": false,
+      "impact": "Appropriate for fixture/quotation/component copies, unsupported for the genuine original Estate assertion."
+    }
+  ],
+  "existing_authority": {
+    "authenticated_verifier": "src/agrosphere_orchestrator/human_approval.py::WindowsConsoleHumanVerifier; exact subject phrase, interactive LogonUserW, canonical SID",
+    "design_authorization": "Settings.design_approvers allowlist; design.decide supports only requirements/design/delivery; source gate also checks current authorized decisions.",
+    "governance_authorization": "Settings.governance_approvers SID allowlist, no self-approval, current context and expiry, transactional DesignDecision/GovernanceRecord/audit.",
+    "current_evidence_adjudicator_role": "UNDEFINED: no existing evidence-adjudication category or policy. Architect/QA role registry names do not confer authorization.",
+    "current_supported_evidence_decision_command": null,
+    "why_not_generic_approvals": "ApprovalCategory has no evidence adjudication. Arbitrary action strings under ARCHITECTURE_CHANGE do not create validated evidence-disposition semantics; recovery_discovery never consumes such a decision."
+  },
+  "missing_capability_proposal": {
+    "status": "PROPOSED_ONLY_NOT_REGISTERED_OR_APPROVED",
+    "proposed_change_milestone": "AEO-6-ADJUDICATION",
+    "requirements_input": "milestone-1b-adjudication-20261026T061544Z/AEO-6-ADJUDICATION.requirements-proposed.json",
+    "internal_manifest": "milestone-1b-adjudication-20261026T061544Z/design-repositories-proposed.json",
+    "requirements": [
+      "Canonical immutable evidence subject binding snapshot, application-manifest digest, target milestone, original repo/path/line/committed blob/hash and supporting hashes; unknown provenance remains explicit.",
+      "Reuse Windows verifier/current governance SID allowlist and existing append-only decision/audit storage; extend approved category-specific evidence context validation, not an ad hoc parallel approval API.",
+      "Explicit dispositions, justification, evidence scope, authenticated actor, expiry/revocation and current authorization checks. Recheck subject after authentication and before classification.",
+      "No acceptance, completion, dependency completion or execution authority follows. Preserve original snapshots/run/approvals/migrations; append new observation only through existing recovery when later authorized.",
+      "Invalid/stale/revoked/rejected/mismatched decision fails closed; approved evidence relationship cannot suppress other unresolved claims.",
+      "Bind exactly the approved 12 application roots and reject fixtures/quoted exports as independent implementation evidence.",
+      "Idempotent replay and audit transaction; full ten-case regression plan in recovery verification."
+    ],
+    "change_control_reason": "AEO-6 is already IMPLEMENTING: design.register_requirements refuses replacement active scope. Existing AEO-6 approval does not approve the new evidence-decision semantics. Propose a separate internal change scope without another autonomous run."
+  },
+  "matrix": [
+    {
+      "id": "1B-HIST-001",
+      "assertion": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+      "source": "agrosphere-estate-service/docs/MILESTONE_1A_REPORT.md:7",
+      "support": "Title: Milestone 1A completion report; line 3 dates the 1A outcome October 23, 2026, version 0.2.0; line 7 explicitly excludes next-stage work. Git blame and tracked blob verify the assertion is real.",
+      "counter": "Spatial 1B report documents bounded delivered functionality; committed projection/store/migration and tests corroborate existence. They do not refute the earlier checkpoint.",
+      "independence": "Original Estate artifact, separately sourced Spatial and Architecture artifacts. Same recorded Git author; not independent human attestations.",
+      "disposition": "non-conflicting historical observation (RECOMMENDED; not applied)",
+      "rationale": "The propositions describe different milestone checkpoints. Retain 1B not started at the 1A checkpoint; do not turn it into a timeless current-state denial.",
+      "authorization": "Requires governed semantics and an authorized authenticated human disposition before runtime consistency changes.",
+      "consistency": "Could remove this conflict only after approved capability and a valid scoped decision; PARTIAL and empty acceptance remain."
+    },
+    {
+      "id": "1B-IMPL-002",
+      "assertion": "Spatial 1B completion report claims delivered Spatial Service 0.2.0 scope and 19+12 passing tests.",
+      "source": "agrosphere-spatial-service/docs/MILESTONE_1B_REPORT.md:3,43-69,75-93",
+      "support": "Trackable blob, committed PostGIS queries, transaction-bound Estate projection, V2 migration, current matching test source.",
+      "counter": "Test results are ignored local XML; no authenticated revision-binding or current execution; division lifecycle remains inferred and external rendering is excluded.",
+      "independence": "Different repository and implementation artifact types; same project author and locally controlled Git. Strong existence evidence, no independent acceptance certification.",
+      "disposition": "supports historical delivery; acceptance unresolved",
+      "rationale": "Code existence is directly inspectable. Claimed passing tests are corroborated by result files, whose temporal/source binding remains limited.",
+      "authorization": "No approval for read-only inspection; formal acceptance remains separately governed.",
+      "consistency": "Supports semantic comparison only, never ACCEPTED/COMPLETED/execution eligibility."
+    },
+    {
+      "id": "1B-TEST-003",
+      "assertion": "Retained JUnit: ApplicationRules 7, GeometryValidation 8, SecurityPolicy 4, SpatialServiceIT 12; zero failures/errors/skips.",
+      "source": "agrosphere-spatial-service/target/{surefire,failsafe}-reports/TEST-*.xml",
+      "support": "XML parsed this task; exact SHA-256 and case names captured in retained-junit-analysis.json.",
+      "counter": "All four lack suite timestamp and are Git-ignored; no generating revision attestation. No tests rerun this task.",
+      "independence": "Machine-readable local artifacts, different format from narrative; not an independently authenticated test runner.",
+      "disposition": "historical corroboration with missing provenance",
+      "rationale": "Absence of timestamp must remain explicit; a file mtime or matching case name is not execution certification.",
+      "authorization": "A human cannot make these files current by approval; new reproducible validation would be needed for current acceptance.",
+      "consistency": "Does not itself clear the checkpoint."
+    },
+    {
+      "id": "1B-ARCH-004",
+      "assertion": "Scoped 1B local delivery is historically supported; acceptance matrix is an engineering assessment, not authenticated approval.",
+      "source": "agrosphere-architecture/docs/roadmap/MILESTONE_1B.md; docs/adr/0009-spatial-digital-twin.md; docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:3,20",
+      "support": "Tracked and hashed roadmap/ADR/assessment; explicit limits and links to implementation/tests.",
+      "counter": "Roadmap/ADR Git commit time precedes Estate and Spatial imports; cross-repository commit clocks are not a causal DAG. Assessment is derivative of project evidence.",
+      "independence": "Separate architecture repository; same author; assessment is derivative, not an independent test or approval.",
+      "disposition": "scope corroboration, not acceptance authority",
+      "rationale": "Use explicit delivered scope and exclusions; do not rank by timestamp.",
+      "authorization": "Existing signed-off design/acceptance must be demonstrated independently; no 1B runtime approval recovered.",
+      "consistency": "No automatic change."
+    },
+    {
+      "id": "1B-OTHER-005",
+      "assertion": "# Recommended Milestone 1B prompt (not executed); no renderer/client/terrain engine implemented; Compose shared services not started.",
+      "source": "Architecture NEXT_CODEX_PROMPT.md:1; Spatial MILESTONE_1B_REPORT.md:50,89",
+      "support": "Exact records retained in prior 924-row matrix and fresh evidence.",
+      "counter": "These concern planning, an excluded rendering component, and a validation action.",
+      "independence": "Original planning/report sources; copied exports add no independent evidence.",
+      "disposition": "out-of-scope for milestone-wide denial (already classified)",
+      "rationale": "The existing scoped classifier preserves them without treating them as current delivery contradictions.",
+      "authorization": "No new disposition applied here.",
+      "consistency": "Already conflict-free for these sources."
+    },
+    {
+      "id": "1B-CONTAM-006",
+      "assertion": "Quoted reports and nested fixture assertions appeared in the earlier two-root observation.",
+      "source": "Prior contaminated-observation-records.json; autonomous event 2c95ea01-84bd-46c5-a331-59221e65be92",
+      "support": "Persisted observation identifies Orchestrator+Architecture and embedded source paths.",
+      "counter": "Fresh exact-12-root discovery sources the Estate assertion directly; it remains even with fixture exclusion.",
+      "independence": "Quotations are derivative; test fixtures are not application repositories.",
+      "disposition": "out-of-scope (preserved prior audit evidence)",
+      "rationale": "Do not confuse the original real assertion with contaminated copies.",
+      "authorization": "No deletion or history editing permitted.",
+      "consistency": "Cannot resolve the remaining direct-source 1B question."
+    }
+  ],
+  "source_artifacts": [
+    {
+      "repository": "agrosphere-estate-service",
+      "path": "docs/MILESTONE_1A_REPORT.md",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-estate-service\\docs\\MILESTONE_1A_REPORT.md",
+      "sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+      "bytes": 18757,
+      "filesystem_mtime": "2026-10-24T04:16:32.259642+00:00",
+      "observed_head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+      "head_blob": "e863fe945e6f7a28002fffb507209e733bd9995a",
+      "working_git_blob": "e863fe945e6f7a28002fffb507209e733bd9995a",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "de879fb392c8f2d51e27fc97461636bcd1b32a62e9a1cb4747af69ecb58ba826",
+      "last_file_commit": "ca992841bc9694a4a9df0e504ade8e42c35acf01\t2026-10-24T01:06:33-05:00\t2026-10-24T01:06:33-05:00\tswapnilpuri\tAdd JSON schema definitions for estate and plantation block events (v2)",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "docs/MILESTONE_1B_REPORT.md",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\docs\\MILESTONE_1B_REPORT.md",
+      "sha256": "c07f7755312a53851ad3ad792a0c65f183cab43ba5f7b5f3e695b8a4b80c57ef",
+      "bytes": 20790,
+      "filesystem_mtime": "2026-10-24T05:17:40.994104+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "5a936de3be84b3aba0f5bb079664751fe9fcd468",
+      "working_git_blob": "5a936de3be84b3aba0f5bb079664751fe9fcd468",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "c07f7755312a53851ad3ad792a0c65f183cab43ba5f7b5f3e695b8a4b80c57ef",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\main\\java\\com\\agrosphere\\spatial\\adapter\\in\\messaging\\EstateProjection.java",
+      "sha256": "8cc0ce460e0773e691fe69f30341a05d381b5f9847938248fd9a1f4237a3dce8",
+      "bytes": 5174,
+      "filesystem_mtime": "2026-10-24T05:56:53.363907+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "26681fd57a30abd42612ee2f772e72871e8d7f8c",
+      "working_git_blob": "26681fd57a30abd42612ee2f772e72871e8d7f8c",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "8cc0ce460e0773e691fe69f30341a05d381b5f9847938248fd9a1f4237a3dce8",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "src/main/java/com/agrosphere/spatial/adapter/out/persistence/JdbcSpatialStore.java",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\main\\java\\com\\agrosphere\\spatial\\adapter\\out\\persistence\\JdbcSpatialStore.java",
+      "sha256": "5c528737d999ba5868fae52594acdae269982e9bf1ba23f2dcc41ab9f6165eeb",
+      "bytes": 15824,
+      "filesystem_mtime": "2026-10-24T05:04:17.027770+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "9751583b3d26e1d6e6063d47c376994d41b70cca",
+      "working_git_blob": "9751583b3d26e1d6e6063d47c376994d41b70cca",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "5c528737d999ba5868fae52594acdae269982e9bf1ba23f2dcc41ab9f6165eeb",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "src/main/resources/db/migration/V2__spatial_twin.sql",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\main\\resources\\db\\migration\\V2__spatial_twin.sql",
+      "sha256": "a7fdcaced0c9543a4e833ca81b753ee42e7c1bfd3056a30cf6442afc31b132c6",
+      "bytes": 5339,
+      "filesystem_mtime": "2026-10-24T04:57:11.572034+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "6d6e4ab9eecaf145711f5079447b6cda1f8888c2",
+      "working_git_blob": "6d6e4ab9eecaf145711f5079447b6cda1f8888c2",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "a7fdcaced0c9543a4e833ca81b753ee42e7c1bfd3056a30cf6442afc31b132c6",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "src/test/java/com/agrosphere/spatial/SpatialServiceIT.java",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\SpatialServiceIT.java",
+      "sha256": "354012fc3e244a6bcea26d7eb6ba47716795aa6d21d6d415739512ac01924045",
+      "bytes": 24435,
+      "filesystem_mtime": "2026-10-24T05:58:22.266099+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "fb915ef30f726a85c0d6c3953303c5315ebe9330",
+      "working_git_blob": "fb915ef30f726a85c0d6c3953303c5315ebe9330",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "354012fc3e244a6bcea26d7eb6ba47716795aa6d21d6d415739512ac01924045",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "src/test/java/com/agrosphere/spatial/GeometryValidationTest.java",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\GeometryValidationTest.java",
+      "sha256": "9cad0bcc0fe8484ec1afb2db1a1270480ba14a7838438774e7768f97c9fa1afc",
+      "bytes": 2777,
+      "filesystem_mtime": "2026-10-24T05:00:38.421501+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "65152c8c4c311d6fc6947d6b49f6899cfba0eb50",
+      "working_git_blob": "65152c8c4c311d6fc6947d6b49f6899cfba0eb50",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "9cad0bcc0fe8484ec1afb2db1a1270480ba14a7838438774e7768f97c9fa1afc",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "src/test/java/com/agrosphere/spatial/ApplicationRulesTest.java",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\ApplicationRulesTest.java",
+      "sha256": "68f74a76caab3bbadbae208839465ddb31b672e6b91081a5fc03d5aabdfe2bac",
+      "bytes": 2982,
+      "filesystem_mtime": "2026-10-24T05:04:17.028770+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "7c6656cf250e1e0bae7d285cfd8a164b62c1bdae",
+      "working_git_blob": "7c6656cf250e1e0bae7d285cfd8a164b62c1bdae",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "68f74a76caab3bbadbae208839465ddb31b672e6b91081a5fc03d5aabdfe2bac",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "src/test/java/com/agrosphere/spatial/SecurityPolicyTest.java",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\src\\test\\java\\com\\agrosphere\\spatial\\SecurityPolicyTest.java",
+      "sha256": "c0814a56f85aff37475c9902d7ed36a0c9f19d59a034553d2f5f9a556c1e88c7",
+      "bytes": 2963,
+      "filesystem_mtime": "2026-10-23T05:46:17.052396+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": "07d379e644fd572eaaeb4d7a03ca9a8e3749597d",
+      "working_git_blob": "07d379e644fd572eaaeb4d7a03ca9a8e3749597d",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "c0814a56f85aff37475c9902d7ed36a0c9f19d59a034553d2f5f9a556c1e88c7",
+      "last_file_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\t2026-10-24T01:10:10-05:00\tswapnilpuri\tfeat(database): add initial database migrations for messaging and spatial features",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-architecture",
+      "path": "docs/roadmap/MILESTONE_1B.md",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\roadmap\\MILESTONE_1B.md",
+      "sha256": "cfbf5fde319526b589caca27f52b4c2c89f7e28fd67cdc1d125cafe1c203d10c",
+      "bytes": 956,
+      "filesystem_mtime": "2026-10-24T05:42:34.782476+00:00",
+      "observed_head": "edffdc19868b7d8d9139bc8272405a30ce28bb3d",
+      "head_blob": "f53cb81cd93c4658be641146dfac2c15fcaf2c66",
+      "working_git_blob": "f53cb81cd93c4658be641146dfac2c15fcaf2c66",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "cfbf5fde319526b589caca27f52b4c2c89f7e28fd67cdc1d125cafe1c203d10c",
+      "last_file_commit": "11cc09cfc1e576cba4e89bfc2a6909def9dc4fb5\t2026-10-24T00:57:35-05:00\t2026-10-24T00:57:35-05:00\tswapnilpuri\tfeat: Add initial documentation and requirements for AgroSphere project",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-architecture",
+      "path": "docs/adr/0009-spatial-digital-twin.md",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\adr\\0009-spatial-digital-twin.md",
+      "sha256": "dc4de257c426aeff90aac7bb039af329e8fbd3f94f9f693920c788e5291586e5",
+      "bytes": 3611,
+      "filesystem_mtime": "2026-10-24T05:10:59.583548+00:00",
+      "observed_head": "edffdc19868b7d8d9139bc8272405a30ce28bb3d",
+      "head_blob": "bcf7807de305390d56ff293107266a1cb779fbbd",
+      "working_git_blob": "bcf7807de305390d56ff293107266a1cb779fbbd",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "dc4de257c426aeff90aac7bb039af329e8fbd3f94f9f693920c788e5291586e5",
+      "last_file_commit": "11cc09cfc1e576cba4e89bfc2a6909def9dc4fb5\t2026-10-24T00:57:35-05:00\t2026-10-24T00:57:35-05:00\tswapnilpuri\tfeat: Add initial documentation and requirements for AgroSphere project",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-architecture",
+      "path": "docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\milestones\\reconciliation-1a-3a\\ACCEPTANCE_MATRIX.md",
+      "sha256": "63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb",
+      "bytes": 19130,
+      "filesystem_mtime": "2026-10-26T04:48:03.654232+00:00",
+      "observed_head": "edffdc19868b7d8d9139bc8272405a30ce28bb3d",
+      "head_blob": "08b2730ae11e8300b3e979c233e2ce03c80dadaa",
+      "working_git_blob": "08b2730ae11e8300b3e979c233e2ce03c80dadaa",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb",
+      "last_file_commit": "edffdc19868b7d8d9139bc8272405a30ce28bb3d\t2026-10-26T00:42:52-05:00\t2026-10-26T00:42:52-05:00\tswapnilpuri\tAdd evidence index for reconciliation milestone 1a-3a",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-architecture",
+      "path": "docs/milestones/reconciliation-1a-3a/evidence-index.json",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-architecture\\docs\\milestones\\reconciliation-1a-3a\\evidence-index.json",
+      "sha256": "33adaee27870e5446f5435d80b766cefc37aee2a4792dff23e88bda2c7b1dcb1",
+      "bytes": 22779,
+      "filesystem_mtime": "2026-10-26T04:46:23.027015+00:00",
+      "observed_head": "edffdc19868b7d8d9139bc8272405a30ce28bb3d",
+      "head_blob": "d2d9c047b90ed72719aec436e4dff4756c8f1d84",
+      "working_git_blob": "d2d9c047b90ed72719aec436e4dff4756c8f1d84",
+      "matches_head_under_git_filters": true,
+      "committed_blob_sha256": "33adaee27870e5446f5435d80b766cefc37aee2a4792dff23e88bda2c7b1dcb1",
+      "last_file_commit": "edffdc19868b7d8d9139bc8272405a30ce28bb3d\t2026-10-26T00:42:52-05:00\t2026-10-26T00:42:52-05:00\tswapnilpuri\tAdd evidence index for reconciliation milestone 1a-3a",
+      "ignored": false
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "target/surefire-reports/TEST-com.agrosphere.spatial.ApplicationRulesTest.xml",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\surefire-reports\\TEST-com.agrosphere.spatial.ApplicationRulesTest.xml",
+      "sha256": "c339cf933813b7622bdfc6cd2d93f26f5ee13262c9aef8314fa945f472c3e3d0",
+      "bytes": 46729,
+      "filesystem_mtime": "2026-10-24T06:00:13.748893+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": null,
+      "working_git_blob": "c101f36c5c98121fcef81c75e3c01d40d19d2ade",
+      "matches_head_under_git_filters": null,
+      "committed_blob_sha256": null,
+      "last_file_commit": null,
+      "ignored": true
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "target/surefire-reports/TEST-com.agrosphere.spatial.GeometryValidationTest.xml",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\surefire-reports\\TEST-com.agrosphere.spatial.GeometryValidationTest.xml",
+      "sha256": "cbd03b8bc03225337cb902ab6e110cfd5cc9f39b81041553438f591e48a841e9",
+      "bytes": 45678,
+      "filesystem_mtime": "2026-10-24T06:00:13.786291+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": null,
+      "working_git_blob": "625d12a9f5a44faa00cf70a2e55bfb60e80de108",
+      "matches_head_under_git_filters": null,
+      "committed_blob_sha256": null,
+      "last_file_commit": null,
+      "ignored": true
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "target/surefire-reports/TEST-com.agrosphere.spatial.SecurityPolicyTest.xml",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\surefire-reports\\TEST-com.agrosphere.spatial.SecurityPolicyTest.xml",
+      "sha256": "90dfc51e63f732c3eae41099e431fd54f267030db6cb17ab425ee70cea89ad5a",
+      "bytes": 46929,
+      "filesystem_mtime": "2026-10-24T06:00:17.229869+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": null,
+      "working_git_blob": "94adc2170d02a8f2a2bc8aa511dbb9793e08fff9",
+      "matches_head_under_git_filters": null,
+      "committed_blob_sha256": null,
+      "last_file_commit": null,
+      "ignored": true
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "path": "target/failsafe-reports/TEST-com.agrosphere.spatial.SpatialServiceIT.xml",
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service\\target\\failsafe-reports\\TEST-com.agrosphere.spatial.SpatialServiceIT.xml",
+      "sha256": "c589073f5da914f97f0b987f0dcf0109762b63b8a889bcdb5eed241903ba77b9",
+      "bytes": 89139,
+      "filesystem_mtime": "2026-10-24T06:00:51.065489+00:00",
+      "observed_head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "head_blob": null,
+      "working_git_blob": "e97e2cf1e7bc1f58ae6aec132b4b275b50fd0c76",
+      "matches_head_under_git_filters": null,
+      "committed_blob_sha256": null,
+      "last_file_commit": null,
+      "ignored": true
+    }
+  ],
+  "tests_this_task": [],
+  "read_only_verification": "milestone-1b-adjudication-20261026T061544Z/read-only-verification.json",
+  "discovery_consistent": false,
+  "run_preserved": true,
+  "exact_next_action": "Review this package and the proposed requirements. If the change is accepted for review, register the separate internal scope through existing milestone design --requirements, then an authorized human uses approve-requirements. No evidence decision can yet be recorded safely; do not resume.",
+  "proposal_validation": "Read-only DesignInput schema and existing verify_context guards passed; registration, approval and implementation were not performed. See milestone-1b-adjudication-20261026T061544Z/proposal-validation.json."
+}

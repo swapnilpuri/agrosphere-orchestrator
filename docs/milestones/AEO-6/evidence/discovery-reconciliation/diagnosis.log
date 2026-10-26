@@ -1,0 +1,42 @@
+{
+  "repositories": [
+    "agrosphere-ai-service",
+    "agrosphere-analytics-service",
+    "agrosphere-api-gateway",
+    "agrosphere-architecture",
+    "agrosphere-contracts",
+    "agrosphere-estate-service",
+    "agrosphere-immersive",
+    "agrosphere-infrastructure",
+    "agrosphere-operations-service",
+    "agrosphere-spatial-service",
+    "agrosphere-telemetry-service",
+    "agrosphere-web"
+  ],
+  "conflicts": [
+    "1B"
+  ],
+  "classifications": {
+    "0": "UNVERIFIED",
+    "1": "UNVERIFIED",
+    "1A": "PARTIAL",
+    "1B": "PARTIAL",
+    "1C": "PARTIAL",
+    "2": "PARTIAL",
+    "3": "UNVERIFIED",
+    "3A": "PARTIAL",
+    "3B": "UNVERIFIED",
+    "4": "UNVERIFIED",
+    "5": "UNVERIFIED"
+  },
+  "rows": 924,
+  "eligibility": null
+}
+{"milestone": "1B", "repository": "agrosphere-architecture", "path": "docs/roadmap/NEXT_CODEX_PROMPT.md", "line": 1, "claim_text": "# Recommended Milestone 1B prompt (not executed)", "modified_at": "2026-10-24T04:12:39.102992+00:00", "file_last_commit": "11cc09cfc1e576cba4e89bfc2a6909def9dc4fb5\t2026-10-24T00:57:35-05:00\tfeat: Add initial documentation and requirements for AgroSphere project"}
+{"milestone": "1B", "repository": "agrosphere-estate-service", "path": "docs/MILESTONE_1A_REPORT.md", "line": 7, "claim_text": "No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.", "modified_at": "2026-10-24T04:16:32.259642+00:00", "file_last_commit": "ca992841bc9694a4a9df0e504ade8e42c35acf01\t2026-10-24T01:06:33-05:00\tAdd JSON schema definitions for estate and plantation block events (v2)"}
+{"milestone": "1B", "repository": "agrosphere-spatial-service", "path": "docs/MILESTONE_1B_REPORT.md", "line": 50, "claim_text": "GeoJSON import is a bounded JSON FeatureCollection wrapper, atomically validated/persisted in the calling request with a durable job/report No partial features/events survive failed imports Export preserves feature/reference identifiers, geometry versions, provenance, bbox, centroid and calculated hectares 3D Tiles metadata is supported through layers no renderer, client or terrain engine is implemented.", "modified_at": "2026-10-24T05:17:40.994104+00:00", "file_last_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\tfeat(database): add initial database migrations for messaging and spatial features"}
+{"milestone": "1B", "repository": "agrosphere-spatial-service", "path": "docs/MILESTONE_1B_REPORT.md", "line": 89, "claim_text": "| Compose overlay config --quiet | PASS using placeholder configuration shared services were not started |", "modified_at": "2026-10-24T05:17:40.994104+00:00", "file_last_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\tfeat(database): add initial database migrations for messaging and spatial features"}
+{"milestone": "1C", "repository": "agrosphere-spatial-service", "path": "docs/MILESTONE_1B_REPORT.md", "line": 126, "claim_text": "Recommended Milestone 1C integration tasks (not started)", "modified_at": "2026-10-24T05:17:40.994104+00:00", "file_last_commit": "7bce72d595e5f76fd4a7c38b1c4b6bc5997cb1a3\t2026-10-24T01:10:10-05:00\tfeat(database): add initial database migrations for messaging and spatial features"}
+{"milestone": "2", "repository": "agrosphere-infrastructure", "path": "docs/MILESTONE_1C_REPORT.md", "line": 200, "claim_text": "Recommended Milestone 2 sequence (not started)", "modified_at": "2026-10-24T06:14:46.021627+00:00", "file_last_commit": "0caac03f5ebc4b5fe05f70cdca534e5850c19d99\t2026-10-24T01:22:45-05:00\tUpdate comments for clarity on localhost cookie policy behavior in dev_identity.py"}
+{"milestone": "3B", "repository": "agrosphere-architecture", "path": "docs/milestones/milestone-3a-completion.md", "line": 3, "claim_text": "Milestone 3B was not started.", "modified_at": "2026-10-24T19:41:04.786455+00:00", "file_last_commit": "ab6289d42dcc0ba4a956c39ed55b34c2f0c49746\t2026-10-24T15:47:35-05:00\tfeat: Update version to 0.5.0, add Milestone 3A diagrams, and enhance documentation with completion and development reports"}
+{"milestone": "3B", "repository": "agrosphere-architecture", "path": "docs/milestones/milestone-3a-completion.md", "line": 111, "claim_text": "No Milestone 3B feature was implemented.", "modified_at": "2026-10-24T19:41:04.786455+00:00", "file_last_commit": "ab6289d42dcc0ba4a956c39ed55b34c2f0c49746\t2026-10-24T15:47:35-05:00\tfeat: Update version to 0.5.0, add Milestone 3A diagrams, and enhance documentation with completion and development reports"}

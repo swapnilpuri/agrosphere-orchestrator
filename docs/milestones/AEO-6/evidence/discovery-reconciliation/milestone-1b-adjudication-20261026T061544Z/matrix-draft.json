@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1B-HIST-001",
+    "assertion": "Estate Service is implemented, independently buildable and container-tested. All requested acceptance checks completed locally: Java 21 build/tests, PostgreSQL startup, fresh and upgrade Flyway migrations, REST APIs, JWT authorization, atomic outbox creation, real RabbitMQ publication, Docker image and reproducible instructions. No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started.",
+    "source": "agrosphere-estate-service/docs/MILESTONE_1A_REPORT.md:7",
+    "support": "Title: Milestone 1A completion report; line 3 dates the 1A outcome October 23, 2026, version 0.2.0; line 7 explicitly excludes next-stage work. Git blame and tracked blob verify the assertion is real.",
+    "counter": "Spatial 1B report documents bounded delivered functionality; committed projection/store/migration and tests corroborate existence. They do not refute the earlier checkpoint.",
+    "independence": "Original Estate artifact, separately sourced Spatial and Architecture artifacts. Same recorded Git author; not independent human attestations.",
+    "disposition": "non-conflicting historical observation (RECOMMENDED; not applied)",
+    "rationale": "The propositions describe different milestone checkpoints. Retain 1B not started at the 1A checkpoint; do not turn it into a timeless current-state denial.",
+    "authorization": "Requires governed semantics and an authorized authenticated human disposition before runtime consistency changes.",
+    "consistency": "Could remove this conflict only after approved capability and a valid scoped decision; PARTIAL and empty acceptance remain."
+  },
+  {
+    "id": "1B-IMPL-002",
+    "assertion": "Spatial 1B completion report claims delivered Spatial Service 0.2.0 scope and 19+12 passing tests.",
+    "source": "agrosphere-spatial-service/docs/MILESTONE_1B_REPORT.md:3,43-69,75-93",
+    "support": "Trackable blob, committed PostGIS queries, transaction-bound Estate projection, V2 migration, current matching test source.",
+    "counter": "Test results are ignored local XML; no authenticated revision-binding or current execution; division lifecycle remains inferred and external rendering is excluded.",
+    "independence": "Different repository and implementation artifact types; same project author and locally controlled Git. Strong existence evidence, no independent acceptance certification.",
+    "disposition": "supports historical delivery; acceptance unresolved",
+    "rationale": "Code existence is directly inspectable. Claimed passing tests are corroborated by result files, whose temporal/source binding remains limited.",
+    "authorization": "No approval for read-only inspection; formal acceptance remains separately governed.",
+    "consistency": "Supports semantic comparison only, never ACCEPTED/COMPLETED/execution eligibility."
+  },
+  {
+    "id": "1B-TEST-003",
+    "assertion": "Retained JUnit: ApplicationRules 7, GeometryValidation 8, SecurityPolicy 4, SpatialServiceIT 12; zero failures/errors/skips.",
+    "source": "agrosphere-spatial-service/target/{surefire,failsafe}-reports/TEST-*.xml",
+    "support": "XML parsed this task; exact SHA-256 and case names captured in retained-junit-analysis.json.",
+    "counter": "All four lack suite timestamp and are Git-ignored; no generating revision attestation. No tests rerun this task.",
+    "independence": "Machine-readable local artifacts, different format from narrative; not an independently authenticated test runner.",
+    "disposition": "historical corroboration with missing provenance",
+    "rationale": "Absence of timestamp must remain explicit; a file mtime or matching case name is not execution certification.",
+    "authorization": "A human cannot make these files current by approval; new reproducible validation would be needed for current acceptance.",
+    "consistency": "Does not itself clear the checkpoint."
+  },
+  {
+    "id": "1B-ARCH-004",
+    "assertion": "Scoped 1B local delivery is historically supported; acceptance matrix is an engineering assessment, not authenticated approval.",
+    "source": "agrosphere-architecture/docs/roadmap/MILESTONE_1B.md; docs/adr/0009-spatial-digital-twin.md; docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:3,20",
+    "support": "Tracked and hashed roadmap/ADR/assessment; explicit limits and links to implementation/tests.",
+    "counter": "Roadmap/ADR Git commit time precedes Estate and Spatial imports; cross-repository commit clocks are not a causal DAG. Assessment is derivative of project evidence.",
+    "independence": "Separate architecture repository; same author; assessment is derivative, not an independent test or approval.",
+    "disposition": "scope corroboration, not acceptance authority",
+    "rationale": "Use explicit delivered scope and exclusions; do not rank by timestamp.",
+    "authorization": "Existing signed-off design/acceptance must be demonstrated independently; no 1B runtime approval recovered.",
+    "consistency": "No automatic change."
+  },
+  {
+    "id": "1B-OTHER-005",
+    "assertion": "# Recommended Milestone 1B prompt (not executed); no renderer/client/terrain engine implemented; Compose shared services not started.",
+    "source": "Architecture NEXT_CODEX_PROMPT.md:1; Spatial MILESTONE_1B_REPORT.md:50,89",
+    "support": "Exact records retained in prior 924-row matrix and fresh evidence.",
+    "counter": "These concern planning, an excluded rendering component, and a validation action.",
+    "independence": "Original planning/report sources; copied exports add no independent evidence.",
+    "disposition": "out-of-scope for milestone-wide denial (already classified)",
+    "rationale": "The existing scoped classifier preserves them without treating them as current delivery contradictions.",
+    "authorization": "No new disposition applied here.",
+    "consistency": "Already conflict-free for these sources."
+  },
+  {
+    "id": "1B-CONTAM-006",
+    "assertion": "Quoted reports and nested fixture assertions appeared in the earlier two-root observation.",
+    "source": "Prior contaminated-observation-records.json; autonomous event 2c95ea01-84bd-46c5-a331-59221e65be92",
+    "support": "Persisted observation identifies Orchestrator+Architecture and embedded source paths.",
+    "counter": "Fresh exact-12-root discovery sources the Estate assertion directly; it remains even with fixture exclusion.",
+    "independence": "Quotations are derivative; test fixtures are not application repositories.",
+    "disposition": "out-of-scope (preserved prior audit evidence)",
+    "rationale": "Do not confuse the original real assertion with contaminated copies.",
+    "authorization": "No deletion or history editing permitted.",
+    "consistency": "Cannot resolve the remaining direct-source 1B question."
+  }
+]
