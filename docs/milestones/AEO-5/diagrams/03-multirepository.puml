@@ -1,0 +1,21 @@
+@startuml
+title Proposed multi-repository delivery coordination
+rectangle "Milestone manifest" as Manifest
+rectangle "Unit A: contracts repository\nOwn PR, SHA, policy, CI and reviews" as A
+rectangle "Unit B: service repository\nOwn PR, SHA, policy, CI and reviews" as B
+rectangle "Dependency availability check\nPR exists does not imply available changes" as Dependency
+rectangle "Existing repository resource leases" as Leases
+rectangle "Aggregate readiness and evidence report" as Report
+Manifest --> A : independent preparation
+Manifest --> B : independent preparation
+A --> Dependency : observed dependency state
+Dependency --> B : block until required content available
+Leases --> A : repository A write exclusion
+Leases --> B : repository B write exclusion
+A --> Report : observed state and blockers
+B --> Report : observed state and blockers
+note bottom of Report
+No cross-repository atomic transaction.
+No merge or deployment action.
+end note
+@enduml

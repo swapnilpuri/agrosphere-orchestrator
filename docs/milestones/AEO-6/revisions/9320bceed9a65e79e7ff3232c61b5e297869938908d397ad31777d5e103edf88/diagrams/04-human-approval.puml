@@ -1,0 +1,22 @@
+@startuml
+title Authenticated approval and explicit continuation
+actor Human
+participant Controller
+participant "Existing AEO-1C CLI" as CLI
+participant "WindowsConsoleHumanVerifier" as Verifier
+database SQLite
+Controller -> SQLite: persist exact scope and checkpoint
+Controller --> Human: review package and supported approval command
+Human -> CLI: approve-requirements / approve-design
+CLI -> Verifier: confirm exact subject and authenticate
+Verifier --> CLI: canonical authorized identity
+CLI -> SQLite: decision and audit in one transaction
+Human -> Controller: explicit resume by run ID
+Controller -> SQLite: reload latest decision and scope
+Controller -> Controller: verify identity, hashes, policy and limits
+alt Valid unchanged authority
+ Controller -> Controller: next permitted transition
+else Missing / changed / revoked authority
+ Controller -> SQLite: retain checkpoint and reason
+end
+@enduml

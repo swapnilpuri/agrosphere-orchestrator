@@ -1,0 +1,30 @@
+@startuml
+title Bounded end-to-end engineering orchestration
+actor Operator
+participant Controller
+participant "Recovery / Design" as Design
+participant "Existing Scheduler" as Scheduler
+participant "Quality" as QA
+participant "Delivery" as Delivery
+Operator -> Controller: plan (default dry-run)
+Controller -> Design: inspect facts and eligible scope
+Design --> Controller: explanation, diagrams, approval subjects
+Controller --> Operator: exact checkpoint
+Operator -> Design: authenticated requirement/design decisions
+Operator -> Controller: continue exact persisted run
+Controller -> Scheduler: approved plan and granted bounded executions
+Scheduler --> Controller: structured verified child evidence
+Controller -> QA: independent validation
+alt Permitted repair and remaining budget
+ QA --> Controller: failure classification
+ Controller -> QA: prepare remediation
+ Controller -> Scheduler: granted repair task
+ Controller -> QA: revalidate
+end
+Controller -> Delivery: manifest from accepted output identities
+Delivery --> Operator: separate publication checkpoint
+Operator -> Delivery: authenticated privileged authorization if desired
+Controller -> Delivery: bounded authorized observation/operation
+Delivery --> Controller: PR / CI / review facts and blockers
+Controller --> Operator: report with formal completion separately verified
+@enduml

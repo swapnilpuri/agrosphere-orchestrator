@@ -1,0 +1,19 @@
+@startuml
+!include <C4/C4_Component>
+title AEO-5 proposed component architecture (unapproved)
+Container_Boundary(aeo, "agrosphere-orchestrator") {
+Component(cli, "Delivery CLI", "Typer", "Plan, prepare, publish, observe, recover, report")
+Component(coordinator, "Delivery coordinator", "Python", "Deterministic unit state and dependency readiness")
+Component(policy, "Existing AEO-4 governance", "Python", "Exact human approval and quality evidence")
+Component(leases, "Existing AEO-3 resource leases", "SQLite", "One conflicting repository writer")
+Component(store, "Delivery state and evidence", "SQLAlchemy", "Intent, immutable observations, reports")
+Component(adapter, "GitHub provider adapter", "gh argv", "Typed bounded operations")
+}
+System_Ext(github, "GitHub", "PRs, policies, checks and reviews")
+Rel(cli, coordinator, "Explicit actions")
+Rel(coordinator, policy, "Fail-closed authorization")
+Rel(coordinator, leases, "Existing repository resource")
+Rel(coordinator, store, "Transactional intent and evidence")
+Rel(coordinator, adapter, "Typed port")
+Rel(adapter, github, "Authorized operations and observations")
+@enduml

@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="7" skipped="0" tests="9" time="73.888" timestamp="2026-10-25T17:38:08.801440-05:00" hostname="DESKTOP-O332NJC"><testcase classname="tests.test_delivery" name="test_end_to_end_exact_authority_and_delivery_evidence" time="8.140"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation">engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_end_to_end_exact_authorit0/test.db)
+delivery_fixture = namespace(repos={'agrosphere-architecture': WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/t...d07e3aabd486246c0aa775a3ee2e3e7b7b934891af6ab509f04b0', provider=&lt;test_delivery.Provider object at 0x000002A292E946E0&gt;)
+
+    def test_end_to_end_exact_authority_and_delivery_evidence(engine, delivery_fixture):
+        f = delivery_fixture
+&gt;       publish(engine, f)
+
+tests\test_delivery.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_delivery.py:169: in publish
+    prepare(engine, f)
+tests\test_delivery.py:165: in prepare
+    execute(engine, f, "prepare")
+tests\test_delivery.py:159: in execute
+    return delivery.mutate(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_end_to_end_exact_authorit0/test.db)
+settings = Settings(database_url='sqlite:///C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_end_to_end_exact_aut...sPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_end_to_end_exact_authorit0/isolated-delivery'))
+run_id = '44399bdac06d07e3aabd486246c0aa775a3ee2e3e7b7b934891af6ab509f04b0'
+unit_id = 'estate', action = 'prepare'
+approval = '466e9f1b-5a08-4379-8210-d2ff73d47396'
+provider = &lt;test_delivery.Provider object at 0x000002A292E946E0&gt;
+
+    def mutate(engine, settings, run_id, unit_id, action, approval, provider=None):
+        if action not in {"prepare", "push", "create-pr"}:
+            raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+        with Session(engine) as session:
+            _, unit, spec = load(session, run_id, unit_id)
+            persisted = unit.pr_id
+        provider = provider or GitHubCliAdapter(settings, spec.root)
+        observation = provider.observe(spec)
+        pr = matching_pr(spec, observation, persisted)
+        assert_preconditions(settings, spec, observation, action)
+        if action == "push" and observation.branch_sha == spec.head_sha:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and pr is not None:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and observation.branch_sha != spec.head_sha:
+            raise DeliveryError(
+                "PUSH_REQUIRED", "Exact approved branch must be present before PR creation"
+            )
+        target = worktree(settings, run_id, unit_id)
+        if action != "prepare":
+            verify_worktree(spec, target)
+        if action != "prepare":
+            with transaction(engine) as session:
+                run, _, _ = load(session, run_id, unit_id)
+                _, current, _ = authority(session, settings, run)
+                if current["repositories"][spec.repository]["tree"] != digest(
+                    tree_fingerprints(target, 100000000)
+                ):
+                    raise DeliveryError(
+                        "QUALITY_TREE", "Published worktree differs from the validated artifact tree"
+                    )
+        identity = begin_operation(engine, settings, run_id, unit_id, action, approval, observation)
+        try:
+            recheck_operation(engine, settings, run_id, unit_id, identity, observation)
+            if action == "prepare":
+                prepare_local(spec, target)
+                outcome = {"worktree": str(target), "branch": spec.branch, "head_sha": spec.head_sha}
+            elif action == "push":
+                provider.push(spec, target)
+                observed = provider.observe(spec)
+                if observed.branch_sha != spec.head_sha:
+                    raise DeliveryError("PUSH_UNCONFIRMED", "Push completion is not proven")
+                outcome = observed.model_dump(mode="json")
+            elif action == "create-pr":
+                # A second lookup inside the durable leased operation catches external races.
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                recheck_operation(engine, settings, run_id, unit_id, identity, observed)
+                if found is None:
+                    with transaction(engine) as session:
+                        run, _, spec = load(session, run_id, unit_id)
+                        _, _, report = authority(session, settings, run)
+                        related = related_prs(session, run_id)
+                    created = provider.create_pr(
+                        spec,
+                        f"{run.manifest['milestone']}: {spec.id}",
+                        pr_body(run, spec, report, related),
+                    )
+                    created = PullRequest.model_validate(created)
+                    if created.state != "open":
+                        raise DeliveryError("PR_UNCONFIRMED", "Created PR is not open")
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                if found is None:
+                    raise DeliveryError("PR_UNCONFIRMED", "PR creation outcome is unavailable")
+                outcome = observed.model_dump(mode="json")
+            else:
+                raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                if action == "create-pr":
+                    unit.pr_id = found.id
+                event(session, unit, "completed", outcome, identity)
+                unit.state = (
+                    "BRANCH_PREPARED"
+                    if action == "prepare"
+                    else "PR_PUBLISHED"
+                    if action == "create-pr"
+                    else "AWAITING_PUBLICATION"
+                )
+                release(session, identity)
+        except BaseException as exc:
+            # Every exception after intent is ambiguous. Preserve ownership for observation.
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                unit.state = "RECOVERY_REQUIRED"
+                event(
+                    session,
+                    unit,
+                    "uncertain",
+                    {"code": getattr(exc, "code", "OUTCOME_UNCERTAIN"), "action": action},
+                    identity,
+                )
+&gt;           raise DeliveryError(
+                "RECOVERY_REQUIRED", "Mutation outcome uncertain; use read-only reconciliation"
+            ) from None
+E           agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation
+
+src\agrosphere_orchestrator\delivery.py:520: DeliveryError</failure></testcase><testcase classname="tests.test_delivery" name="test_response_loss_restart_reconciles_without_replay[push]" time="8.542"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation">engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restart_rec0/test.db)
+delivery_fixture = namespace(repos={'agrosphere-architecture': WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/t...f5732da29f2d1a5f9c9d28252959e4e9a3e2e072cd9fb6df45f59', provider=&lt;test_delivery.Provider object at 0x000002A29315B110&gt;)
+action = 'push'
+
+    @pytest.mark.parametrize("action", ["push", "create-pr"])
+    def test_response_loss_restart_reconciles_without_replay(engine, delivery_fixture, action):
+        f = delivery_fixture
+&gt;       prepare(engine, f)
+
+tests\test_delivery.py:197: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_delivery.py:165: in prepare
+    execute(engine, f, "prepare")
+tests\test_delivery.py:159: in execute
+    return delivery.mutate(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restart_rec0/test.db)
+settings = Settings(database_url='sqlite:///C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restar...sPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restart_rec0/isolated-delivery'))
+run_id = '7baeaa6716bf5732da29f2d1a5f9c9d28252959e4e9a3e2e072cd9fb6df45f59'
+unit_id = 'estate', action = 'prepare'
+approval = '29200888-1f0a-4f56-9e91-102eae4acb2c'
+provider = &lt;test_delivery.Provider object at 0x000002A29315B110&gt;
+
+    def mutate(engine, settings, run_id, unit_id, action, approval, provider=None):
+        if action not in {"prepare", "push", "create-pr"}:
+            raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+        with Session(engine) as session:
+            _, unit, spec = load(session, run_id, unit_id)
+            persisted = unit.pr_id
+        provider = provider or GitHubCliAdapter(settings, spec.root)
+        observation = provider.observe(spec)
+        pr = matching_pr(spec, observation, persisted)
+        assert_preconditions(settings, spec, observation, action)
+        if action == "push" and observation.branch_sha == spec.head_sha:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and pr is not None:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and observation.branch_sha != spec.head_sha:
+            raise DeliveryError(
+                "PUSH_REQUIRED", "Exact approved branch must be present before PR creation"
+            )
+        target = worktree(settings, run_id, unit_id)
+        if action != "prepare":
+            verify_worktree(spec, target)
+        if action != "prepare":
+            with transaction(engine) as session:
+                run, _, _ = load(session, run_id, unit_id)
+                _, current, _ = authority(session, settings, run)
+                if current["repositories"][spec.repository]["tree"] != digest(
+                    tree_fingerprints(target, 100000000)
+                ):
+                    raise DeliveryError(
+                        "QUALITY_TREE", "Published worktree differs from the validated artifact tree"
+                    )
+        identity = begin_operation(engine, settings, run_id, unit_id, action, approval, observation)
+        try:
+            recheck_operation(engine, settings, run_id, unit_id, identity, observation)
+            if action == "prepare":
+                prepare_local(spec, target)
+                outcome = {"worktree": str(target), "branch": spec.branch, "head_sha": spec.head_sha}
+            elif action == "push":
+                provider.push(spec, target)
+                observed = provider.observe(spec)
+                if observed.branch_sha != spec.head_sha:
+                    raise DeliveryError("PUSH_UNCONFIRMED", "Push completion is not proven")
+                outcome = observed.model_dump(mode="json")
+            elif action == "create-pr":
+                # A second lookup inside the durable leased operation catches external races.
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                recheck_operation(engine, settings, run_id, unit_id, identity, observed)
+                if found is None:
+                    with transaction(engine) as session:
+                        run, _, spec = load(session, run_id, unit_id)
+                        _, _, report = authority(session, settings, run)
+                        related = related_prs(session, run_id)
+                    created = provider.create_pr(
+                        spec,
+                        f"{run.manifest['milestone']}: {spec.id}",
+                        pr_body(run, spec, report, related),
+                    )
+                    created = PullRequest.model_validate(created)
+                    if created.state != "open":
+                        raise DeliveryError("PR_UNCONFIRMED", "Created PR is not open")
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                if found is None:
+                    raise DeliveryError("PR_UNCONFIRMED", "PR creation outcome is unavailable")
+                outcome = observed.model_dump(mode="json")
+            else:
+                raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                if action == "create-pr":
+                    unit.pr_id = found.id
+                event(session, unit, "completed", outcome, identity)
+                unit.state = (
+                    "BRANCH_PREPARED"
+                    if action == "prepare"
+                    else "PR_PUBLISHED"
+                    if action == "create-pr"
+                    else "AWAITING_PUBLICATION"
+                )
+                release(session, identity)
+        except BaseException as exc:
+            # Every exception after intent is ambiguous. Preserve ownership for observation.
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                unit.state = "RECOVERY_REQUIRED"
+                event(
+                    session,
+                    unit,
+                    "uncertain",
+                    {"code": getattr(exc, "code", "OUTCOME_UNCERTAIN"), "action": action},
+                    identity,
+                )
+&gt;           raise DeliveryError(
+                "RECOVERY_REQUIRED", "Mutation outcome uncertain; use read-only reconciliation"
+            ) from None
+E           agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation
+
+src\agrosphere_orchestrator\delivery.py:520: DeliveryError</failure></testcase><testcase classname="tests.test_delivery" name="test_response_loss_restart_reconciles_without_replay[create-pr]" time="8.444"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation">engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restart_rec1/test.db)
+delivery_fixture = namespace(repos={'agrosphere-architecture': WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/t...b77316de52b04d688529345932b5b8e13f4e1df3a9503c0858df5', provider=&lt;test_delivery.Provider object at 0x000002A2932079D0&gt;)
+action = 'create-pr'
+
+    @pytest.mark.parametrize("action", ["push", "create-pr"])
+    def test_response_loss_restart_reconciles_without_replay(engine, delivery_fixture, action):
+        f = delivery_fixture
+&gt;       prepare(engine, f)
+
+tests\test_delivery.py:197: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_delivery.py:165: in prepare
+    execute(engine, f, "prepare")
+tests\test_delivery.py:159: in execute
+    return delivery.mutate(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restart_rec1/test.db)
+settings = Settings(database_url='sqlite:///C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restar...sPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_response_loss_restart_rec1/isolated-delivery'))
+run_id = '828471ef1d7b77316de52b04d688529345932b5b8e13f4e1df3a9503c0858df5'
+unit_id = 'estate', action = 'prepare'
+approval = 'ec63fdb2-acd6-4ce3-9448-08e362f7b27c'
+provider = &lt;test_delivery.Provider object at 0x000002A2932079D0&gt;
+
+    def mutate(engine, settings, run_id, unit_id, action, approval, provider=None):
+        if action not in {"prepare", "push", "create-pr"}:
+            raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+        with Session(engine) as session:
+            _, unit, spec = load(session, run_id, unit_id)
+            persisted = unit.pr_id
+        provider = provider or GitHubCliAdapter(settings, spec.root)
+        observation = provider.observe(spec)
+        pr = matching_pr(spec, observation, persisted)
+        assert_preconditions(settings, spec, observation, action)
+        if action == "push" and observation.branch_sha == spec.head_sha:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and pr is not None:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and observation.branch_sha != spec.head_sha:
+            raise DeliveryError(
+                "PUSH_REQUIRED", "Exact approved branch must be present before PR creation"
+            )
+        target = worktree(settings, run_id, unit_id)
+        if action != "prepare":
+            verify_worktree(spec, target)
+        if action != "prepare":
+            with transaction(engine) as session:
+                run, _, _ = load(session, run_id, unit_id)
+                _, current, _ = authority(session, settings, run)
+                if current["repositories"][spec.repository]["tree"] != digest(
+                    tree_fingerprints(target, 100000000)
+                ):
+                    raise DeliveryError(
+                        "QUALITY_TREE", "Published worktree differs from the validated artifact tree"
+                    )
+        identity = begin_operation(engine, settings, run_id, unit_id, action, approval, observation)
+        try:
+            recheck_operation(engine, settings, run_id, unit_id, identity, observation)
+            if action == "prepare":
+                prepare_local(spec, target)
+                outcome = {"worktree": str(target), "branch": spec.branch, "head_sha": spec.head_sha}
+            elif action == "push":
+                provider.push(spec, target)
+                observed = provider.observe(spec)
+                if observed.branch_sha != spec.head_sha:
+                    raise DeliveryError("PUSH_UNCONFIRMED", "Push completion is not proven")
+                outcome = observed.model_dump(mode="json")
+            elif action == "create-pr":
+                # A second lookup inside the durable leased operation catches external races.
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                recheck_operation(engine, settings, run_id, unit_id, identity, observed)
+                if found is None:
+                    with transaction(engine) as session:
+                        run, _, spec = load(session, run_id, unit_id)
+                        _, _, report = authority(session, settings, run)
+                        related = related_prs(session, run_id)
+                    created = provider.create_pr(
+                        spec,
+                        f"{run.manifest['milestone']}: {spec.id}",
+                        pr_body(run, spec, report, related),
+                    )
+                    created = PullRequest.model_validate(created)
+                    if created.state != "open":
+                        raise DeliveryError("PR_UNCONFIRMED", "Created PR is not open")
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                if found is None:
+                    raise DeliveryError("PR_UNCONFIRMED", "PR creation outcome is unavailable")
+                outcome = observed.model_dump(mode="json")
+            else:
+                raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                if action == "create-pr":
+                    unit.pr_id = found.id
+                event(session, unit, "completed", outcome, identity)
+                unit.state = (
+                    "BRANCH_PREPARED"
+                    if action == "prepare"
+                    else "PR_PUBLISHED"
+                    if action == "create-pr"
+                    else "AWAITING_PUBLICATION"
+                )
+                release(session, identity)
+        except BaseException as exc:
+            # Every exception after intent is ambiguous. Preserve ownership for observation.
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                unit.state = "RECOVERY_REQUIRED"
+                event(
+                    session,
+                    unit,
+                    "uncertain",
+                    {"code": getattr(exc, "code", "OUTCOME_UNCERTAIN"), "action": action},
+                    identity,
+                )
+&gt;           raise DeliveryError(
+                "RECOVERY_REQUIRED", "Mutation outcome uncertain; use read-only reconciliation"
+            ) from None
+E           agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation
+
+src\agrosphere_orchestrator\delivery.py:520: DeliveryError</failure></testcase><testcase classname="tests.test_delivery" name="test_uncertain_absence_retains_lease_and_blocks_blind_retry" time="8.107"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation">engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_uncertain_absence_retains0/test.db)
+delivery_fixture = namespace(repos={'agrosphere-architecture': WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/t...a9fa553031f646156296a1f19d0db6f5bd663a7365c81a7897d92', provider=&lt;test_delivery.Provider object at 0x000002A2931A6B10&gt;)
+
+    def test_uncertain_absence_retains_lease_and_blocks_blind_retry(engine, delivery_fixture):
+        f = delivery_fixture
+&gt;       prepare(engine, f)
+
+tests\test_delivery.py:220: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_delivery.py:165: in prepare
+    execute(engine, f, "prepare")
+tests\test_delivery.py:159: in execute
+    return delivery.mutate(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_uncertain_absence_retains0/test.db)
+settings = Settings(database_url='sqlite:///C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_uncertain_absence_re...sPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_uncertain_absence_retains0/isolated-delivery'))
+run_id = '8239460f6b7a9fa553031f646156296a1f19d0db6f5bd663a7365c81a7897d92'
+unit_id = 'estate', action = 'prepare'
+approval = '37ed3c25-cdde-4a98-aa7e-8966c77af1b6'
+provider = &lt;test_delivery.Provider object at 0x000002A2931A6B10&gt;
+
+    def mutate(engine, settings, run_id, unit_id, action, approval, provider=None):
+        if action not in {"prepare", "push", "create-pr"}:
+            raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+        with Session(engine) as session:
+            _, unit, spec = load(session, run_id, unit_id)
+            persisted = unit.pr_id
+        provider = provider or GitHubCliAdapter(settings, spec.root)
+        observation = provider.observe(spec)
+        pr = matching_pr(spec, observation, persisted)
+        assert_preconditions(settings, spec, observation, action)
+        if action == "push" and observation.branch_sha == spec.head_sha:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and pr is not None:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and observation.branch_sha != spec.head_sha:
+            raise DeliveryError(
+                "PUSH_REQUIRED", "Exact approved branch must be present before PR creation"
+            )
+        target = worktree(settings, run_id, unit_id)
+        if action != "prepare":
+            verify_worktree(spec, target)
+        if action != "prepare":
+            with transaction(engine) as session:
+                run, _, _ = load(session, run_id, unit_id)
+                _, current, _ = authority(session, settings, run)
+                if current["repositories"][spec.repository]["tree"] != digest(
+                    tree_fingerprints(target, 100000000)
+                ):
+                    raise DeliveryError(
+                        "QUALITY_TREE", "Published worktree differs from the validated artifact tree"
+                    )
+        identity = begin_operation(engine, settings, run_id, unit_id, action, approval, observation)
+        try:
+            recheck_operation(engine, settings, run_id, unit_id, identity, observation)
+            if action == "prepare":
+                prepare_local(spec, target)
+                outcome = {"worktree": str(target), "branch": spec.branch, "head_sha": spec.head_sha}
+            elif action == "push":
+                provider.push(spec, target)
+                observed = provider.observe(spec)
+                if observed.branch_sha != spec.head_sha:
+                    raise DeliveryError("PUSH_UNCONFIRMED", "Push completion is not proven")
+                outcome = observed.model_dump(mode="json")
+            elif action == "create-pr":
+                # A second lookup inside the durable leased operation catches external races.
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                recheck_operation(engine, settings, run_id, unit_id, identity, observed)
+                if found is None:
+                    with transaction(engine) as session:
+                        run, _, spec = load(session, run_id, unit_id)
+                        _, _, report = authority(session, settings, run)
+                        related = related_prs(session, run_id)
+                    created = provider.create_pr(
+                        spec,
+                        f"{run.manifest['milestone']}: {spec.id}",
+                        pr_body(run, spec, report, related),
+                    )
+                    created = PullRequest.model_validate(created)
+                    if created.state != "open":
+                        raise DeliveryError("PR_UNCONFIRMED", "Created PR is not open")
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                if found is None:
+                    raise DeliveryError("PR_UNCONFIRMED", "PR creation outcome is unavailable")
+                outcome = observed.model_dump(mode="json")
+            else:
+                raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                if action == "create-pr":
+                    unit.pr_id = found.id
+                event(session, unit, "completed", outcome, identity)
+                unit.state = (
+                    "BRANCH_PREPARED"
+                    if action == "prepare"
+                    else "PR_PUBLISHED"
+                    if action == "create-pr"
+                    else "AWAITING_PUBLICATION"
+                )
+                release(session, identity)
+        except BaseException as exc:
+            # Every exception after intent is ambiguous. Preserve ownership for observation.
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                unit.state = "RECOVERY_REQUIRED"
+                event(
+                    session,
+                    unit,
+                    "uncertain",
+                    {"code": getattr(exc, "code", "OUTCOME_UNCERTAIN"), "action": action},
+                    identity,
+                )
+&gt;           raise DeliveryError(
+                "RECOVERY_REQUIRED", "Mutation outcome uncertain; use read-only reconciliation"
+            ) from None
+E           agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation
+
+src\agrosphere_orchestrator\delivery.py:520: DeliveryError</failure></testcase><testcase classname="tests.test_delivery" name="test_missing_quality_policy_and_unauthorized_grant_never_write" time="6.909" /><testcase classname="tests.test_delivery" name="test_stale_or_revoked_authority_blocks_before_write[expired]" time="7.905"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation">engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit0/test.db)
+delivery_fixture = namespace(repos={'agrosphere-architecture': WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/t...140f80173a68f07d039075e18e5810024c9704f9a598d775c71ee', provider=&lt;test_delivery.Provider object at 0x000002A29354D370&gt;)
+change = 'expired'
+
+    @pytest.mark.parametrize(
+        "change", ["expired", "revoked", "base", "head", "remote", "policy", "quality", "disabled"]
+    )
+    def test_stale_or_revoked_authority_blocks_before_write(engine, delivery_fixture, change):
+        f = delivery_fixture
+&gt;       prepare(engine, f)
+
+tests\test_delivery.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_delivery.py:165: in prepare
+    execute(engine, f, "prepare")
+tests\test_delivery.py:159: in execute
+    return delivery.mutate(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit0/test.db)
+settings = Settings(database_url='sqlite:///C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_aut...sPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit0/isolated-delivery'))
+run_id = '7212b428e20140f80173a68f07d039075e18e5810024c9704f9a598d775c71ee'
+unit_id = 'estate', action = 'prepare'
+approval = 'b85049a2-f768-4a7e-b551-8b2739ffdfa4'
+provider = &lt;test_delivery.Provider object at 0x000002A29354D370&gt;
+
+    def mutate(engine, settings, run_id, unit_id, action, approval, provider=None):
+        if action not in {"prepare", "push", "create-pr"}:
+            raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+        with Session(engine) as session:
+            _, unit, spec = load(session, run_id, unit_id)
+            persisted = unit.pr_id
+        provider = provider or GitHubCliAdapter(settings, spec.root)
+        observation = provider.observe(spec)
+        pr = matching_pr(spec, observation, persisted)
+        assert_preconditions(settings, spec, observation, action)
+        if action == "push" and observation.branch_sha == spec.head_sha:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and pr is not None:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and observation.branch_sha != spec.head_sha:
+            raise DeliveryError(
+                "PUSH_REQUIRED", "Exact approved branch must be present before PR creation"
+            )
+        target = worktree(settings, run_id, unit_id)
+        if action != "prepare":
+            verify_worktree(spec, target)
+        if action != "prepare":
+            with transaction(engine) as session:
+                run, _, _ = load(session, run_id, unit_id)
+                _, current, _ = authority(session, settings, run)
+                if current["repositories"][spec.repository]["tree"] != digest(
+                    tree_fingerprints(target, 100000000)
+                ):
+                    raise DeliveryError(
+                        "QUALITY_TREE", "Published worktree differs from the validated artifact tree"
+                    )
+        identity = begin_operation(engine, settings, run_id, unit_id, action, approval, observation)
+        try:
+            recheck_operation(engine, settings, run_id, unit_id, identity, observation)
+            if action == "prepare":
+                prepare_local(spec, target)
+                outcome = {"worktree": str(target), "branch": spec.branch, "head_sha": spec.head_sha}
+            elif action == "push":
+                provider.push(spec, target)
+                observed = provider.observe(spec)
+                if observed.branch_sha != spec.head_sha:
+                    raise DeliveryError("PUSH_UNCONFIRMED", "Push completion is not proven")
+                outcome = observed.model_dump(mode="json")
+            elif action == "create-pr":
+                # A second lookup inside the durable leased operation catches external races.
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                recheck_operation(engine, settings, run_id, unit_id, identity, observed)
+                if found is None:
+                    with transaction(engine) as session:
+                        run, _, spec = load(session, run_id, unit_id)
+                        _, _, report = authority(session, settings, run)
+                        related = related_prs(session, run_id)
+                    created = provider.create_pr(
+                        spec,
+                        f"{run.manifest['milestone']}: {spec.id}",
+                        pr_body(run, spec, report, related),
+                    )
+                    created = PullRequest.model_validate(created)
+                    if created.state != "open":
+                        raise DeliveryError("PR_UNCONFIRMED", "Created PR is not open")
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                if found is None:
+                    raise DeliveryError("PR_UNCONFIRMED", "PR creation outcome is unavailable")
+                outcome = observed.model_dump(mode="json")
+            else:
+                raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                if action == "create-pr":
+                    unit.pr_id = found.id
+                event(session, unit, "completed", outcome, identity)
+                unit.state = (
+                    "BRANCH_PREPARED"
+                    if action == "prepare"
+                    else "PR_PUBLISHED"
+                    if action == "create-pr"
+                    else "AWAITING_PUBLICATION"
+                )
+                release(session, identity)
+        except BaseException as exc:
+            # Every exception after intent is ambiguous. Preserve ownership for observation.
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                unit.state = "RECOVERY_REQUIRED"
+                event(
+                    session,
+                    unit,
+                    "uncertain",
+                    {"code": getattr(exc, "code", "OUTCOME_UNCERTAIN"), "action": action},
+                    identity,
+                )
+&gt;           raise DeliveryError(
+                "RECOVERY_REQUIRED", "Mutation outcome uncertain; use read-only reconciliation"
+            ) from None
+E           agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation
+
+src\agrosphere_orchestrator\delivery.py:520: DeliveryError</failure></testcase><testcase classname="tests.test_delivery" name="test_stale_or_revoked_authority_blocks_before_write[revoked]" time="8.133"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation">engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit1/test.db)
+delivery_fixture = namespace(repos={'agrosphere-architecture': WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/t...c9a6e09547853b869aa9a12b3905a3436e22baa0eec65fecf3d78', provider=&lt;test_delivery.Provider object at 0x000002A292FEFDF0&gt;)
+change = 'revoked'
+
+    @pytest.mark.parametrize(
+        "change", ["expired", "revoked", "base", "head", "remote", "policy", "quality", "disabled"]
+    )
+    def test_stale_or_revoked_authority_blocks_before_write(engine, delivery_fixture, change):
+        f = delivery_fixture
+&gt;       prepare(engine, f)
+
+tests\test_delivery.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_delivery.py:165: in prepare
+    execute(engine, f, "prepare")
+tests\test_delivery.py:159: in execute
+    return delivery.mutate(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit1/test.db)
+settings = Settings(database_url='sqlite:///C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_aut...sPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit1/isolated-delivery'))
+run_id = '15adee7f2fdc9a6e09547853b869aa9a12b3905a3436e22baa0eec65fecf3d78'
+unit_id = 'estate', action = 'prepare'
+approval = '12c9c1bc-f0a9-4730-b562-fad1db9cd8dd'
+provider = &lt;test_delivery.Provider object at 0x000002A292FEFDF0&gt;
+
+    
+    
+    def mutate(engine, settings, run_id, unit_id, action, approval, provider=None):
+        if action not in {"prepare", "push", "create-pr"}:
+            raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+        with Session(engine) as session:
+            _, unit, spec = load(session, run_id, unit_id)
+            persisted = unit.pr_id
+        provider = provider or GitHubCliAdapter(settings, spec.root)
+        observation = provider.observe(spec)
+        pr = matching_pr(spec, observation, persisted)
+        assert_preconditions(settings, spec, observation, action)
+        if action == "push" and observation.branch_sha == spec.head_sha:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and pr is not None:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and observation.branch_sha != spec.head_sha:
+            raise DeliveryError(
+                "PUSH_REQUIRED", "Exact approved branch must be present before PR creation"
+            )
+        target = worktree(settings, run_id, unit_id)
+        if action != "prepare":
+            verify_worktree(spec, target)
+        if action != "prepare":
+            with transaction(engine) as session:
+                run, _, _ = load(session, run_id, unit_id)
+                _, current, _ = authority(session, settings, run)
+                if current["repositories"][spec.repository]["tree"] != digest(
+                    tree_fingerprints(target, 100000000)
+                ):
+                    raise DeliveryError(
+                        "QUALITY_TREE", "Published worktree differs from the validated artifact tree"
+                    )
+        identity = begin_operation(engine, settings, run_id, unit_id, action, approval, observation)
+        try:
+            recheck_operation(engine, settings, run_id, unit_id, identity, observation)
+            if action == "prepare":
+                prepare_local(spec, target)
+                outcome = {"worktree": str(target), "branch": spec.branch, "head_sha": spec.head_sha}
+            elif action == "push":
+                provider.push(spec, target)
+                observed = provider.observe(spec)
+                if observed.branch_sha != spec.head_sha:
+                    raise DeliveryError("PUSH_UNCONFIRMED", "Push completion is not proven")
+                outcome = observed.model_dump(mode="json")
+            elif action == "create-pr":
+                # A second lookup inside the durable leased operation catches external races.
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                recheck_operation(engine, settings, run_id, unit_id, identity, observed)
+                if found is None:
+                    with transaction(engine) as session:
+                        run, _, spec = load(session, run_id, unit_id)
+                        _, _, report = authority(session, settings, run)
+                        related = related_prs(session, run_id)
+                    created = provider.create_pr(
+                        spec,
+                        f"{run.manifest['milestone']}: {spec.id}",
+                        pr_body(run, spec, report, related),
+                    )
+                    created = PullRequest.model_validate(created)
+                    if created.state != "open":
+                        raise DeliveryError("PR_UNCONFIRMED", "Created PR is not open")
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                if found is None:
+                    raise DeliveryError("PR_UNCONFIRMED", "PR creation outcome is unavailable")
+                outcome = observed.model_dump(mode="json")
+            else:
+                raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                if action == "create-pr":
+                    unit.pr_id = found.id
+                event(session, unit, "completed", outcome, identity)
+                unit.state = (
+                    "BRANCH_PREPARED"
+                    if action == "prepare"
+                    else "PR_PUBLISHED"
+                    if action == "create-pr"
+                    else "AWAITING_PUBLICATION"
+                )
+                release(session, identity)
+        except BaseException as exc:
+            # Every exception after intent is ambiguous. Preserve ownership for observation.
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                unit.state = "RECOVERY_REQUIRED"
+                event(
+                    session,
+                    unit,
+                    "uncertain",
+                    {"code": getattr(exc, "code", "OUTCOME_UNCERTAIN"), "action": action},
+&gt;                   identity,
+                )
+E               agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation
+
+src\agrosphere_orchestrator\delivery.py:520: DeliveryError</failure></testcase><testcase classname="tests.test_delivery" name="test_stale_or_revoked_authority_blocks_before_write[base]" time="8.257"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation">engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit2/test.db)
+delivery_fixture = namespace(repos={'agrosphere-architecture': WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/t...d6981f268a272ce0f752f511f9f83be5d16f5404c42e4c5ee38cf', provider=&lt;test_delivery.Provider object at 0x000002A292FEEF10&gt;)
+change = 'base'
+
+    @pytest.mark.parametrize(
+        "change", ["expired", "revoked", "base", "head", "remote", "policy", "quality", "disabled"]
+    )
+    def test_stale_or_revoked_authority_blocks_before_write(engine, delivery_fixture, change):
+        f = delivery_fixture
+&gt;       prepare(engine, f)
+
+tests\test_delivery.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_delivery.py:165: in prepare
+    execute(engine, f, "prepare")
+tests\test_delivery.py:159: in execute
+    return delivery.mutate(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+engine = Engine(sqlite:///C%3A/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit2/test.db)
+settings = Settings(database_url='sqlite:///C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_aut...sPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-44/test_stale_or_revoked_authorit2/isolated-delivery'))
+run_id = 'aca1ef996dcd6981f268a272ce0f752f511f9f83be5d16f5404c42e4c5ee38cf'
+unit_id = 'estate', action = 'prepare'
+approval = '868f2dd0-9876-4109-bd95-ec66904a32db'
+provider = &lt;test_delivery.Provider object at 0x000002A292FEEF10&gt;
+
+    
+    
+    def mutate(engine, settings, run_id, unit_id, action, approval, provider=None):
+        if action not in {"prepare", "push", "create-pr"}:
+            raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+        with Session(engine) as session:
+            _, unit, spec = load(session, run_id, unit_id)
+            persisted = unit.pr_id
+        provider = provider or GitHubCliAdapter(settings, spec.root)
+        observation = provider.observe(spec)
+        pr = matching_pr(spec, observation, persisted)
+        assert_preconditions(settings, spec, observation, action)
+        if action == "push" and observation.branch_sha == spec.head_sha:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and pr is not None:
+            return reconcile(engine, settings, run_id, unit_id, provider)
+        if action == "create-pr" and observation.branch_sha != spec.head_sha:
+            raise DeliveryError(
+                "PUSH_REQUIRED", "Exact approved branch must be present before PR creation"
+            )
+        target = worktree(settings, run_id, unit_id)
+        if action != "prepare":
+            verify_worktree(spec, target)
+        if action != "prepare":
+            with transaction(engine) as session:
+                run, _, _ = load(session, run_id, unit_id)
+                _, current, _ = authority(session, settings, run)
+                if current["repositories"][spec.repository]["tree"] != digest(
+                    tree_fingerprints(target, 100000000)
+                ):
+                    raise DeliveryError(
+                        "QUALITY_TREE", "Published worktree differs from the validated artifact tree"
+                    )
+        identity = begin_operation(engine, settings, run_id, unit_id, action, approval, observation)
+        try:
+            recheck_operation(engine, settings, run_id, unit_id, identity, observation)
+            if action == "prepare":
+                prepare_local(spec, target)
+                outcome = {"worktree": str(target), "branch": spec.branch, "head_sha": spec.head_sha}
+            elif action == "push":
+                provider.push(spec, target)
+                observed = provider.observe(spec)
+                if observed.branch_sha != spec.head_sha:
+                    raise DeliveryError("PUSH_UNCONFIRMED", "Push completion is not proven")
+                outcome = observed.model_dump(mode="json")
+            elif action == "create-pr":
+                # A second lookup inside the durable leased operation catches external races.
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                recheck_operation(engine, settings, run_id, unit_id, identity, observed)
+                if found is None:
+                    with transaction(engine) as session:
+                        run, _, spec = load(session, run_id, unit_id)
+                        _, _, report = authority(session, settings, run)
+                        related = related_prs(session, run_id)
+                    created = provider.create_pr(
+                        spec,
+                        f"{run.manifest['milestone']}: {spec.id}",
+                        pr_body(run, spec, report, related),
+                    )
+                    created = PullRequest.model_validate(created)
+                    if created.state != "open":
+                        raise DeliveryError("PR_UNCONFIRMED", "Created PR is not open")
+                observed = provider.observe(spec)
+                found = matching_pr(spec, observed, persisted)
+                if found is None:
+                    raise DeliveryError("PR_UNCONFIRMED", "PR creation outcome is unavailable")
+                outcome = observed.model_dump(mode="json")
+            else:
+                raise DeliveryError("INVALID_ACTION", "Unsupported mutation")
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                if action == "create-pr":
+                    unit.pr_id = found.id
+                event(session, unit, "completed", outcome, identity)
+                unit.state = (
+                    "BRANCH_PREPARED"
+                    if action == "prepare"
+                    else "PR_PUBLISHED"
+                    if action == "create-pr"
+                    else "AWAITING_PUBLICATION"
+                )
+                release(session, identity)
+        except BaseException as exc:
+            # Every exception after intent is ambiguous. Preserve ownership for observation.
+            with transaction(engine) as session:
+                _, unit, _ = load(session, run_id, unit_id)
+                unit.state = "RECOVERY_REQUIRED"
+                event(
+                    session,
+                    unit,
+                    "uncertain",
+                    {"code": getattr(exc, "code", "OUTCOME_UNCERTAIN"), "action": action},
+&gt;                   identity,
+                )
+E               agrosphere_orchestrator.delivery_models.DeliveryError: Mutation outcome uncertain; use read-only reconciliation
+
+src\agrosphere_orchestrator\delivery.py:520: DeliveryError</failure></testcase><testcase time="5.511" /><testcase classname="pytest" name="internal" time="0.000"><error message="internal error">Traceback (most recent call last):
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\main.py", line 330, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+                         ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\main.py", line 384, in _main
+    config.hook.pytest_runtestloop(session=session)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+           ~~~~~~~~~~~~~~^
+        self.name, self._hookimpls.copy(), call_kwargs, firstresult
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 195, in _multicall
+    raise exception
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 167, in _multicall
+    teardown.throw(exception)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\logging.py", line 816, in pytest_runtestloop
+    return (yield)  # Run all the tests.
+            ^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 167, in _multicall
+    teardown.throw(exception)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\terminal.py", line 708, in pytest_runtestloop
+    result = yield
+             ^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\main.py", line 408, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+           ~~~~~~~~~~~~~~^
+        self.name, self._hookimpls.copy(), call_kwargs, firstresult
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 195, in _multicall
+    raise exception
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 167, in _multicall
+    teardown.throw(exception)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\warnings.py", line 90, in pytest_runtest_protocol
+    return (yield)
+            ^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 167, in _multicall
+    teardown.throw(exception)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\assertion\__init__.py", line 205, in pytest_runtest_protocol
+    return (yield)
+            ^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 167, in _multicall
+    teardown.throw(exception)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\unittest.py", line 612, in pytest_runtest_protocol
+    return (yield)
+            ^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 167, in _multicall
+    teardown.throw(exception)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\faulthandler.py", line 102, in pytest_runtest_protocol
+    return (yield)
+            ^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\runner.py", line 118, in pytest_runtest_protocol
+    runtestprotocol(item, nextitem=nextitem)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\runner.py", line 139, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\runner.py", line 256, in call_and_report
+    ihook.pytest_runtest_logreport(report=report)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_caller.py", line 197, in __call__
+    return self._hookexec(
+           ~~~~~~~~~~~~~~^
+        self.name, self._hookimpls.copy(), call_kwargs, firstresult
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_manager.py", line 183, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 195, in _multicall
+    raise exception
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\pluggy\_execution.py", line 147, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\terminal.py", line 699, in pytest_runtest_logreport
+    self.flush()
+    ~~~~~~~~~~^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\terminal.py", line 532, in flush
+    self._tw.flush()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Projects\agrosphere\agrosphere-orchestrator\.venv\Lib\site-packages\_pytest\_io\terminalwriter.py", line 187, in flush
+    self._file.flush()
+    ~~~~~~~~~~~~~~~~^^
+OSError: [Errno 22] Invalid argument</error></testcase></testsuite></testsuites>

@@ -1,0 +1,14 @@
+{
+  "repositories": [
+    {
+      "id": "agrosphere-orchestrator",
+      "path": "../../..",
+      "status": "confirmed"
+    },
+    {
+      "id": "agrosphere-architecture",
+      "path": "../../../../agrosphere-architecture",
+      "status": "confirmed"
+    }
+  ]
+}

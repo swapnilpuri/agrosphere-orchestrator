@@ -1,0 +1,28 @@
+@startuml
+title Existing scheduler owns multi-agent execution
+actor Operator
+participant Controller
+participant "AEO-3 Scheduler" as Scheduler
+participant "AEO-2 Codex" as Codex
+participant "Developer" as Dev
+participant "Independent QA / Security" as QA
+database SQLite
+Controller -> Scheduler: prepare approved dependency-aware plan
+Scheduler -> SQLite: verify plan, design, grants and leases
+Controller -> SQLite: reserve run budget and intent
+Controller -> Scheduler: dispatch bounded ready tasks
+par Independent repository A
+ Scheduler -> Codex: exact isolated execution A
+ Codex -> Dev: structured task and context
+ Dev --> Codex: artifacts and test evidence
+else Independent repository B
+ Scheduler -> Codex: exact isolated execution B
+ Codex -> Dev: structured task and context
+ Dev --> Codex: artifacts and test evidence
+end
+Scheduler -> SQLite: child results and handoffs
+Controller -> QA: invoke AEO-4 independent validators
+QA --> Controller: verified gates or bounded repair classification
+Controller -> SQLite: observed outcome and audit
+Controller --> Operator: report / exact pending authority
+@enduml

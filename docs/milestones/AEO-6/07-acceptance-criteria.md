@@ -1,0 +1,18 @@
+# AEO-6 acceptance criteria and test plan
+
+This is a planned verification contract, not passed acceptance.
+
+1. Preserve every existing AEO-1 through AEO-5 test ID (275-test accepted baseline, including original 163). Require full standard validation with actual exit codes; migration tests preserve all populated 0007 tables and audit history.
+2. Demonstrate implemented deterministic controller and real repository/history reconciliation; no milestone inferred complete from directory/document existence. Recovered 3A/3B remains a review candidate until dependencies, acceptance and authority are proved.
+3. Generate full readable explanations and nine appropriate design views using existing immutable revision workflow. Missing requirements/design approval blocks; valid unchanged approval resumes without new prompts; changed content/identity/policy blocks.
+4. Existing scheduler and Codex adapter execute structured task outputs with existing repository/worktree isolation. Independent tasks can overlap only within DAG, agent/repository limits and exact grants. Verify conflicts, duplicate resume calls and uncertain child outcomes.
+5. Independent AEO-4 QA/security/acceptance evidence gates task and delivery progress. Fail once, perform one permitted remediation, independently revalidate. Default max three repairs; write recovery still needs exact authorization; quality policy never weakened.
+6. Reuse AEO-5 manifests/provider/persistence. Require disabled remote writes by default, exact publication scope, current-SHA checks and genuine human review. Tests prohibit force push, protected writes, duplicate PRs, automatic merge/deploy and agent self-approval.
+7. Enforce all hard budgets before dispatch, including parallel agents, retries, polling and resumed runs. Unknown token/cost values remain unknown. Exhaustion persists a resumable paused state and clear reason.
+8. Inject all 16 interruption scenarios listed in 04-state-and-recovery-model.md. Reconcile actual child/Git/provider state before replay; retain prior/partial artifacts, claims, history and counts.
+9. Use at least three independent temporary Git repositories and a temporary database for full simulation: discovery -> draft -> validate -> approval checkpoint -> fixture-authenticated approval -> resume -> DAG -> mocked agents -> failed QA -> one repair -> pass -> delivery manifest -> publication gate -> mocked publication -> CI/review reconciliation -> report -> restart. Assert formally_completed remains false without separate policy-supported evidence.
+10. Default plan/status and simulation preserve real application Git status, HEAD, worktrees and files. No real application milestone starts during AEO-6 verification. No live Codex, GitHub, model quota or production-readiness claim is inferred from mocks.
+11. Reports expose run/milestone/state, stages, active agents, dependencies/checkpoints, artifacts/hashes, approvals, repo/commit identities, quality/security/delivery, recovery, usage/unknowns and next permitted action. Final acceptance contains all 15 requested inventory/evidence fields.
+12. Check Windows paths, path-length failures, PowerShell CLI invocation and all existing error/isolation safeguards. Produce JSON and Markdown evidence with actual return codes.
+
+Required new suites after approval: test_autonomous (transition/selection/budget), test_autonomous_integration (existing-service wiring), test_autonomous_recovery (16 interruption boundaries), test_autonomous_security (negative authority/mutation cases), test_autonomous_cli (read-only/default modes), test_autonomous_upgrade and isolated three-repository end-to-end simulation. Until run, each is NOT TESTED.

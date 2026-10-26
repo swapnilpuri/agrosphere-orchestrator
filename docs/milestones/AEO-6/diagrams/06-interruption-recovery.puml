@@ -1,0 +1,26 @@
+@startuml
+title Durable intent and interruption recovery
+start
+:Load run intent, child IDs, reservations and audit;
+if (Unfinished operation?) then (yes)
+ :Inspect existing task claims, execution records,
+ worktrees and delivery operations;
+ if (Verified completed child outcome?) then (yes)
+  :Independently validate artifacts and adopt once;
+ else (no)
+  if (Confirmed safe retry with authority?) then (yes)
+   :Reserve remaining attempt budget;
+   :Dispatch through existing child recovery service;
+  else (no)
+   :Persist RECOVERY_REQUIRED;
+   :Present precise human decision and evidence;
+   stop
+  endif
+ endif
+else (no)
+ :Recheck current approvals and repository facts;
+endif
+:Persist observed transition and audit;
+:Select one permitted next operation;
+stop
+@enduml

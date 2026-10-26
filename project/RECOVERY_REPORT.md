@@ -1,7 +1,7 @@
 <!-- BEGIN AEO RECOVERY -->
-Snapshot: a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4
+Snapshot: 49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113
 
-Observed at: 2026-10-24T20:50:19.636730+00:00
+Observed at: 2026-10-26T04:59:08.394116+00:00
 Workspace: C:\Projects\agrosphere
 
 | Milestone | Observed state | Confidence |
@@ -27,7 +27,7 @@ Discovered application repositories:
 - agrosphere-ai-service: C:\Projects\agrosphere\agrosphere-ai-service (branch main; HEAD cc92974049a50d64e6a5c1fb06868f01aa7f5def; dirty=False; error=None)
 - agrosphere-analytics-service: C:\Projects\agrosphere\agrosphere-analytics-service (branch main; HEAD 38725317675493237b2769ed38e1840b3991d69e; dirty=False; error=None)
 - agrosphere-api-gateway: C:\Projects\agrosphere\agrosphere-api-gateway (branch main; HEAD fcf7daf66fa0d9efaf2d1aa72f8cc88c600ab6c0; dirty=False; error=None)
-- agrosphere-architecture: C:\Projects\agrosphere\agrosphere-architecture (branch main; HEAD ab6289d42dcc0ba4a956c39ed55b34c2f0c49746; dirty=False; error=None)
+- agrosphere-architecture: C:\Projects\agrosphere\agrosphere-architecture (branch main; HEAD ab6289d42dcc0ba4a956c39ed55b34c2f0c49746; dirty=True; error=None)
 - agrosphere-contracts: C:\Projects\agrosphere\agrosphere-contracts (branch main; HEAD 7e962552421f15ad5d1492276817db1e1692b104; dirty=False; error=None)
 - agrosphere-estate-service: C:\Projects\agrosphere\agrosphere-estate-service (branch main; HEAD 7fdd691431a6962f5ac71fb08e9e3e09380bae00; dirty=False; error=None)
 - agrosphere-immersive: C:\Projects\agrosphere\agrosphere-immersive (branch main; HEAD 2bf7663e412f86956dbdb831184f2d0ab1a03c70; dirty=False; error=None)
@@ -35,7 +35,7 @@ Discovered application repositories:
 - agrosphere-operations-service: C:\Projects\agrosphere\agrosphere-operations-service (branch main; HEAD fbfda7e87dc0f650f013e6082d1f886df888b6c9; dirty=False; error=None)
 - agrosphere-spatial-service: C:\Projects\agrosphere\agrosphere-spatial-service (branch main; HEAD 2a7dbda842141fca041510ca79481ea0454eaaf8; dirty=False; error=None)
 - agrosphere-telemetry-service: C:\Projects\agrosphere\agrosphere-telemetry-service (branch main; HEAD 8a3c888dea3e1f3c7a94baf5c55a61285b5bcb7a; dirty=False; error=None)
-- agrosphere-web: C:\Projects\agrosphere\agrosphere-web (branch main; HEAD ea69d3534ee0020717b5bce0f83d4b5cb7965b7c; dirty=True; error=None)
+- agrosphere-web: C:\Projects\agrosphere\agrosphere-web (branch main; HEAD 2a56f819cc653425e4c58bd6306872e352ee5c7a; dirty=False; error=None)
 
 Missing manifest entries: none
 
@@ -51,11 +51,7 @@ Automated orchestrator validation: see docs/validation/commands.json and pytest.
 
 Unresolved information and limits:
 
-- Read-only observation; application tests/builds were not executed.
-- Historical test artifacts have no proven binding to current worktree or full acceptance criteria.
-- Git history limited to 200 recent subjects per repository; documents limited to 2 MB each.
-- Milestone references and completion reports are claims, never verified acceptance or approval.
-- Repository file inventories exclude generated dependencies and symlinks.
+- Manifest-bound read-only observation; claims are not acceptance or execution authority.
 
 
 

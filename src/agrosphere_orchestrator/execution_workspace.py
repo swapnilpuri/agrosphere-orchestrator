@@ -29,6 +29,8 @@ def git(repository: Path, *args: str) -> str:
             "-c",
             "core.fsmonitor=false",
             "-c",
+            "core.longpaths=true",
+            "-c",
             f"core.hooksPath={hooks}",
             "-C",
             str(repository),
@@ -66,11 +68,17 @@ def git(repository: Path, *args: str) -> str:
         return result.stdout.strip()
 
 
-def create_worktree(repository: Path, target: Path, execution_id: str, source_head: str):
+def create_worktree(
+    repository: Path,
+    target: Path,
+    execution_id: str,
+    source_head: str,
+    expected_source_head: str | None = None,
+):
     if target.exists():
         raise PermissionError("Worktree path already exists; explicit recovery is required")
     target.parent.mkdir(parents=True, exist_ok=True)
-    if git(repository, "rev-parse", "HEAD") != source_head:
+    if git(repository, "rev-parse", "HEAD") != (expected_source_head or source_head):
         raise PermissionError("Source HEAD changed after execution approval")
     branch = "aeo/" + execution_id
     git(repository, "worktree", "add", "-b", branch, str(target), source_head)
@@ -80,9 +88,23 @@ def create_worktree(repository: Path, target: Path, execution_id: str, source_he
 
 
 def tree_fingerprints(root: Path, max_bytes: int) -> dict[str, str]:
+    # Git can create Windows paths longer than MAX_PATH. Traverse the same complete
+    # tree using the extended path namespace; never silently skip unreadable directories.
+    traversal_root = root.resolve()
+    if os.name == "nt" and not str(traversal_root).startswith("\\\\?\\"):
+        name = str(traversal_root)
+        traversal_root = Path(
+            "\\\\?\\UNC\\" + name[2:] if name.startswith("\\\\") else "\\\\?\\" + name
+        )
+
+    def traversal_error(error):
+        raise error
+
     hashes = {}
     total = 0
-    for directory, dirs, files in os.walk(root, followlinks=False):
+    for directory, dirs, files in os.walk(
+        traversal_root, followlinks=False, onerror=traversal_error
+    ):
         for name in dirs:
             p = Path(directory) / name
             if p.is_symlink() or p.is_junction():
@@ -102,7 +124,7 @@ def tree_fingerprints(root: Path, max_bytes: int) -> dict[str, str]:
                 raise ValueError(
                     "Artifact preservation budget exceeded; workspace retained, cleanup refused"
                 )
-            hashes[p.relative_to(root).as_posix()] = hashlib.sha256(raw).hexdigest()
+            hashes[p.relative_to(traversal_root).as_posix()] = hashlib.sha256(raw).hexdigest()
     return hashes
 
 

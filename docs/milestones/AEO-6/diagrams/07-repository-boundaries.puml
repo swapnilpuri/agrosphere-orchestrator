@@ -1,0 +1,21 @@
+@startuml
+title Repository execution and delivery boundaries
+rectangle "Original independent repositories (read-only to model)" as Original
+rectangle "Existing worktree manager / repository leases" as Isolation
+rectangle "Exact granted Codex worktree" as Worktree
+rectangle "Independent AEO-4 validation" as QA
+rectangle "AEO-5 delivery coordinator" as Delivery
+rectangle "Exact approved publication grant" as Grant
+cloud "GitHub branch / PR / CI / human reviews" as GitHub
+Original --> Isolation : verify source/base and dirty preservation
+Isolation --> Worktree : narrow authorized paths
+Worktree --> QA : actual artifacts and child execution evidence
+QA --> Delivery : current accepted evidence
+Grant --> Delivery : action/scope/expiry checked
+Delivery --> GitHub : writes disabled unless separately authorized
+GitHub --> Delivery : observed current SHA and policy
+note bottom of GitHub
+No force push, protected writes,
+merge or deployment capability
+end note
+@enduml

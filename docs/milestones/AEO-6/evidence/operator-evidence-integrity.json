@@ -1,0 +1,168 @@
+{
+  "artifacts_checked": 51,
+  "artifact_mismatches": [],
+  "source_inventory": [
+    {
+      "path": "src/agrosphere_orchestrator/autonomous.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous_models.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous_store.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous_services.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous_cli.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous_simulation.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/orchestration.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/quality.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/config/settings.py",
+      "match": true
+    },
+    {
+      "path": "src/agrosphere_orchestrator/cli.py",
+      "match": true
+    },
+    {
+      "path": "migrations/env.py",
+      "match": true
+    },
+    {
+      "path": "migrations/versions/0008_autonomous.py",
+      "match": true
+    },
+    {
+      "path": "scripts/validate.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous_cli.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous_integration.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous_quality.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous_recovery.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous_scheduler.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous_security.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_autonomous_upgrade.py",
+      "match": true
+    },
+    {
+      "path": "tests/test_delivery_upgrade.py",
+      "match": true
+    }
+  ],
+  "application_roots": [
+    {
+      "repository": "agrosphere-ai-service",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-analytics-service",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-api-gateway",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-architecture",
+      "headMatches": true,
+      "statusMatches": false,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-contracts",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-estate-service",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-immersive",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-infrastructure",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-operations-service",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-spatial-service",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-telemetry-service",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    },
+    {
+      "repository": "agrosphere-web",
+      "headMatches": true,
+      "statusMatches": true,
+      "changedFingerprints": []
+    }
+  ]
+}

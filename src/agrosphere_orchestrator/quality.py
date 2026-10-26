@@ -948,7 +948,9 @@ def markdown_report(report):
     return "\n".join(lines).replace("\u0060", chr(96))
 
 
-def prepare_remediation(engine, settings, external_id, project="agrosphere"):
+def prepare_remediation(
+    engine, settings, external_id, project="agrosphere", reservation_guard=None
+):
     """Feed failed deterministic gates into AEO-3 repair accounting. Never grants write replay."""
     with transaction(engine) as session:
         milestone = milestone_record(session, external_id, project)
@@ -978,6 +980,8 @@ def prepare_remediation(engine, settings, external_id, project="agrosphere"):
                     r.payload["validation"] == report["validation"] for r in previous
                 ):
                     continue
+                if reservation_guard is not None:
+                    reservation_guard(session, task)
                 task.state = "failed"
                 quality_state(session, task, "IMPLEMENTED", report["validation"])
                 original = session.scalar(

@@ -1,7 +1,7 @@
 # BEGIN AEO RECOVERY
 recovered_observations:
-  snapshot_id: a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4
-  observed_at: '2026-10-24T20:50:19.636730+00:00'
+  snapshot_id: 49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113
+  observed_at: '2026-10-26T04:59:08.394116+00:00'
   repositories:
   - id: agrosphere-ai-service
     path: C:\Projects\agrosphere\agrosphere-ai-service
@@ -242,9 +242,9 @@ recovered_observations:
     is_git: true
     branch: main
     head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
-    status: ''
+    status: ?? docs/milestones/reconciliation-1a-3a/
     error: null
-    dirty: false
+    dirty: true
     main_language: Python
     languages:
     - Python
@@ -277,6 +277,7 @@ recovered_observations:
     - docs/milestones/milestone-3a-completion.md
     - docs/milestones/milestone-3a-development.md
     - docs/milestones/milestone-3a-discovery.md
+    - docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
     - docs/requirements/FUNCTIONAL_REQUIREMENTS.md
     - docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md
     - docs/requirements/POC_SCOPE.md
@@ -309,6 +310,7 @@ recovered_observations:
     - docs/milestones/milestone-3a-completion.md
     - docs/milestones/milestone-3a-development.md
     - docs/milestones/milestone-3a-discovery.md
+    - docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
     - docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md
     - docs/requirements/POC_SCOPE.md
     - docs/roadmap/IMPLEMENTATION_BACKLOG.md
@@ -342,6 +344,8 @@ recovered_observations:
       docs/milestones/milestone-3a-completion.md: ff43513d59585b92ad082372fda96d83b7dc4901dd94f6d53cd135a70f027737
       docs/milestones/milestone-3a-development.md: e255be96d885b3e28a7faed84e589495c2f861ff20101097a9eeaa4ee165223c
       docs/milestones/milestone-3a-discovery.md: 6fe5611322d04ce1454c4eb70a69d4f5dc74511f1481eba4ad803de82308c98c
+      docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      docs/milestones/reconciliation-1a-3a/evidence-index.json: 33adaee27870e5446f5435d80b766cefc37aee2a4792dff23e88bda2c7b1dcb1
       docs/requirements/FUNCTIONAL_REQUIREMENTS.md: 920e2b46397a04b2602063217c3d293e94ed17809a99c1e575230f9f91885126
       docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md: 274dfc985fc55e545ec66215a12b6b6683eba153984d050596df66906f34c995
       docs/requirements/POC_SCOPE.md: a898a2067e57f85d05433c019aeb8ad5831de290c0e9d5b14fc725671cdb6319
@@ -1346,172 +1350,10 @@ recovered_observations:
     exists: true
     is_git: true
     branch: main
-    head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
-    status: 'A  .dockerignore
-
-      M  .github/workflows/ci.yml
-
-      M  .gitignore
-
-      A  .prettierignore
-
-      A  .prettierrc.json
-
-      M  AGENTS.md
-
-      M  CHANGELOG.md
-
-      A  Dockerfile
-
-      M  README.md
-
-      M  VERSION
-
-      M  angular.json
-
-      A  contracts/estate.openapi.json
-
-      A  contracts/spatial.openapi.json
-
-      A  docs/ARCHITECTURE.md
-
-      A  docs/INTEGRATION.md
-
-      A  docs/MILESTONE_2_REPORT.md
-
-      A  e2e/fixtures.ts
-
-      A  e2e/graphics.spec.ts
-
-      A  e2e/live.spec.ts
-
-      A  e2e/ui.spec.ts
-
-      A  eslint.config.mjs
-
-      A  nginx.conf
-
-      M  package-lock.json
-
-      M  package.json
-
-      A  playwright.config.ts
-
-      A  proxy.conf.json
-
-      A  public/config.json
-
-      A  public/silent-check-sso.html
-
-      A  public/silent-check-sso.js
-
-      A  scripts/check-api.mjs
-
-      A  scripts/preview.mjs
-
-      A  src/api/estate.generated.ts
-
-      A  src/api/spatial.generated.ts
-
-      A  src/app/api/clients.spec.ts
-
-      A  src/app/api/estate/estate.api.ts
-
-      A  src/app/api/spatial/spatial.api.ts
-
-      M  src/app/app.component.spec.ts
-
-      M  src/app/app.component.ts
-
-      A  src/app/app.routes.ts
-
-      M  src/app/core/api/api-client.ts
-
-      A  src/app/core/auth/auth.guard.spec.ts
-
-      A  src/app/core/auth/auth.guard.ts
-
-      A  src/app/core/auth/auth.service.spec.ts
-
-      A  src/app/core/auth/auth.service.ts
-
-      A  src/app/core/auth/login.component.html
-
-      A  src/app/core/auth/login.component.ts
-
-      A  src/app/core/config.ts
-
-      A  src/app/core/errors.spec.ts
-
-      A  src/app/core/errors.ts
-
-      A  src/app/core/interceptors/gateway.interceptor.spec.ts
-
-      A  src/app/core/interceptors/gateway.interceptor.ts
-
-      A  src/app/features/blocks/block-detail.component.html
-
-      A  src/app/features/blocks/block-detail.component.spec.ts
-
-      A  src/app/features/blocks/block-detail.component.ts
-
-      A  src/app/features/dashboard/dashboard.component.html
-
-      A  src/app/features/dashboard/dashboard.component.spec.ts
-
-      A  src/app/features/dashboard/dashboard.component.ts
-
-      M  src/app/features/digital-twin/README.md
-
-      A  src/app/features/digital-twin/cesium-viewer.component.html
-
-      A  src/app/features/digital-twin/cesium-viewer.component.spec.ts
-
-      A  src/app/features/digital-twin/cesium-viewer.component.ts
-
-      A  src/app/features/digital-twin/cesium-viewer.service.ts
-
-      A  src/app/features/digital-twin/digital-twin.component.html
-
-      A  src/app/features/digital-twin/digital-twin.component.ts
-
-      M  src/app/features/estate/README.md
-
-      A  src/app/features/estates/estate.store.spec.ts
-
-      A  src/app/features/estates/estate.store.ts
-
-      A  src/app/features/spatial-layers/layer-manager.component.html
-
-      A  src/app/features/spatial-layers/layer-manager.component.spec.ts
-
-      A  src/app/features/spatial-layers/layer-manager.component.ts
-
-      A  src/app/layout/shell.component.html
-
-      A  src/app/layout/shell.component.ts
-
-      A  src/app/shared/models.spec.ts
-
-      A  src/app/shared/models.ts
-
-      M  src/environments/environment.production.ts
-
-      M  src/environments/environment.ts
-
-      M  src/index.html
-
-      M  src/main.ts
-
-      M  src/styles.css
-
-      M  tsconfig.app.json
-
-      M  tsconfig.json
-
-      M  tsconfig.spec.json'
+    head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
+    status: ''
     error: null
-    dirty: true
+    dirty: false
     main_language: TypeScript/JavaScript
     languages:
     - TypeScript/JavaScript
@@ -1671,6 +1513,9 @@ recovered_observations:
     - src/app/shared/models.spec.ts
     test_results: []
     recent_commits:
+    - commit: 2a56f819cc653425e4c58bd6306872e352ee5c7a
+      date: '2026-10-24T15:50:25-05:00'
+      subject: 'feat: add digital twin component and estate store with tests'
     - commit: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
       date: '2026-10-24T01:11:20-05:00'
       subject: 'feat: initialize AgroSphere web application with Angular and Vitest'

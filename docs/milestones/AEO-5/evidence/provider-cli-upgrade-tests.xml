@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="45" time="3.911" timestamp="2026-10-25T17:47:09.801764-05:00" hostname="DESKTOP-O332NJC"><testcase classname="tests.test_github" name="test_canonical_remotes[https://github.com/acme/estate.git]" time="0.002" /><testcase classname="tests.test_github" name="test_canonical_remotes[git@github.com:acme/estate.git]" time="0.002" /><testcase classname="tests.test_github" name="test_canonical_remotes[https://github.com/acme/estate]" time="0.001" /><testcase classname="tests.test_github" name="test_untrusted_remotes_rejected[https://token@github.com/acme/estate]" time="0.001" /><testcase classname="tests.test_github" name="test_untrusted_remotes_rejected[https://evil.example/acme/estate]" time="0.001" /><testcase classname="tests.test_github" name="test_untrusted_remotes_rejected[-evil]" time="0.001" /><testcase classname="tests.test_github" name="test_untrusted_remotes_rejected[https://github.com/acme/../estate]" time="0.001" /><testcase classname="tests.test_github" name="test_untrusted_remotes_rejected[ssh://evil/acme/estate]" time="0.001" /><testcase classname="tests.test_github" name="test_untrusted_remotes_rejected[https://github.com/acme/estate?token=secret]" time="0.001" /><testcase classname="tests.test_github" name="test_provider_error_classification_never_exposes_secrets[HTTP 401 secret-token-AUTHENTICATION]" time="0.005" /><testcase classname="tests.test_github" name="test_provider_error_classification_never_exposes_secrets[403 ghp_secret-AUTHENTICATION]" time="0.002" /><testcase classname="tests.test_github" name="test_provider_error_classification_never_exposes_secrets[rate limit 429 secret-RATE_LIMIT]" time="0.004" /><testcase classname="tests.test_github" name="test_provider_error_classification_never_exposes_secrets[404 secret-NOT_FOUND]" time="0.004" /><testcase classname="tests.test_github" name="test_provider_error_classification_never_exposes_secrets[network secret-PROVIDER_UNAVAILABLE]" time="0.004" /><testcase classname="tests.test_github" name="test_write_timeout_is_not_retried" time="0.002" /><testcase classname="tests.test_github" name="test_invalid_or_oversized_provider_output_blocks[not-json]" time="0.002" /><testcase classname="tests.test_github" name="test_invalid_or_oversized_provider_output_blocks[{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}]" time="0.003" /><testcase classname="tests.test_github" name="test_pagination_is_complete_and_bounded" time="0.002" /><testcase classname="tests.test_github" name="test_rules_and_classic_protection_are_combined" time="0.003" /><testcase classname="tests.test_github" name="test_policy_lookup_failure_does_not_mean_unprotected" time="0.003" /><testcase classname="tests.test_github" name="test_no_merge_deployment_or_review_write_port" time="0.000" /><testcase classname="tests.test_github" name="test_create_pr_uses_literal_json_and_disabled_writes" time="0.003" /><testcase classname="tests.test_github" name="test_no_generic_api_mutation_bypass[repos/acme/estate/merges-payload0]" time="0.004" /><testcase classname="tests.test_github" name="test_no_generic_api_mutation_bypass[repos/acme/estate/actions/workflows/1/dispatches-payload1]" time="0.002" /><testcase classname="tests.test_github" name="test_no_generic_api_mutation_bypass[graphql-payload2]" time="0.003" /><testcase classname="tests.test_github" name="test_observe_maps_actual_head_check_review_and_permission_contracts" time="0.003"><failure message="agrosphere_orchestrator.delivery_models.DeliveryError: Expected a GitHub list">tmp_path = WindowsPath('C:/Users/Owner/AppData/Local/Temp/pytest-of-Owner/pytest-51/test_observe_maps_actual_head_0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001A5B98FDFD0&gt;
+
+    def test_observe_maps_actual_head_check_review_and_permission_contracts(tmp_path, monkeypatch):
+        import agrosphere_orchestrator.github_provider as module
+    
+        unit, _ = ready_observation(tmp_path)
+        monkeypatch.setattr(module, "check_remote", lambda *a: None)
+    
+        def response(argv, **kwargs):
+            endpoint = argv[-3] if "--input" in argv else argv[-1]
+            if endpoint == "user":
+                data = {"login": "publisher"}
+            elif endpoint == "repos/acme/estate":
+                data = {
+                    "id": 1,
+                    "owner": {"login": "acme"},
+                    "name": "estate",
+                    "permissions": {"push": True},
+                }
+            elif "/branches/main/protection" in endpoint:
+                data = {"required_status_checks": {"checks": [{"context": "build", "app_id": 42}]}}
+            elif "/branches/main" in endpoint:
+                data = {"protected": True, "commit": {"sha": unit.base_sha}}
+            elif "/git/ref/heads/" in endpoint:
+                data = {"object": {"sha": unit.head_sha}}
+            elif "/rules/branches/" in endpoint:
+                data = []
+            elif "/check-runs" in endpoint:
+                data = {
+                    "check_runs": [
+                        {
+                            "name": "build",
+                            "head_sha": unit.head_sha,
+                            "status": "completed",
+                            "conclusion": "success",
+                            "app": {"id": 42},
+                        }
+                    ]
+                }
+            elif "/statuses" in endpoint:
+                data = [{"context": "optional", "state": "pending"}]
+            elif "/reviews" in endpoint:
+                data = [
+                    {
+                        "id": 20,
+                        "user": {"login": "human", "type": "User"},
+                        "commit_id": unit.head_sha,
+                        "state": "APPROVED",
+                        "submitted_at": "2026-01-01T00:00:00Z",
+                    }
+                ]
+            elif endpoint == "graphql":
+                data = {
+                    "data": {
+                        "repository": {
+                            "pullRequest": {
+                                "reviewDecision": "APPROVED",
+                                "headRefOid": unit.head_sha,
+                                "baseRefOid": unit.base_sha,
+                            }
+                        }
+                    }
+                }
+            else:
+                pr = {
+                    "id": 10,
+                    "number": 1,
+                    "html_url": "https://github.com/acme/estate/pull/1",
+                    "base": {"repo": {"id": 1}, "ref": "main", "sha": unit.base_sha},
+                    "head": {"repo": {"id": 1}, "ref": "aeo/a", "sha": unit.head_sha},
+                    "state": "open",
+                    "user": {"login": "author"},
+                    "mergeable": True,
+                }
+                data = [pr] if "/pulls?" in endpoint else pr
+            return SimpleNamespace(returncode=0, stdout=json.dumps(data), stderr="")
+    
+        adapter = GitHubCliAdapter(Settings(_env_file=None), tmp_path, response)
+&gt;       observed = adapter.observe(unit)
+                   ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_github.py:296: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\agrosphere_orchestrator\github_provider.py:336: in observe
+    policy = self.policy(unit, branch)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+src\agrosphere_orchestrator\github_provider.py:184: in policy
+    rules = self.pages(prefix + "/rules/branches/" + quote(unit.base, safe=""))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;agrosphere_orchestrator.github_provider.GitHubCliAdapter object at 0x000001A5B990DCD0&gt;
+endpoint = 'repos/acme/estate/rules/branches/main', field = None
+
+    def pages(self, endpoint, field=None):
+        output = []
+        size = 0
+        for page in range(1, self.settings.github_max_pages + 1):
+            data = self.api(
+                endpoint + ("&amp;" if "?" in endpoint else "?") + f"per_page=100&amp;page={page}"
+            )
+            values = data[field] if field else data
+            if not isinstance(values, list):
+&gt;               raise DeliveryError("INVALID_RESPONSE", "Expected a GitHub list")
+E               agrosphere_orchestrator.delivery_models.DeliveryError: Expected a GitHub list
+
+src\agrosphere_orchestrator\github_provider.py:171: DeliveryError</failure></testcase><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[plan]" time="0.097" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[prepare]" time="0.009" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[publish]" time="0.013" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[status]" time="0.009" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[checks]" time="0.012" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[reviews]" time="0.010" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[reconcile]" time="0.010" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[recover]" time="0.009" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[report]" time="0.009" /><testcase classname="tests.test_delivery_cli" name="test_delivery_commands_discoverable[request-approval]" time="0.011" /><testcase classname="tests.test_delivery_cli" name="test_observation_commands_never_mutate[status]" time="0.359" /><testcase classname="tests.test_delivery_cli" name="test_observation_commands_never_mutate[checks]" time="0.299" /><testcase classname="tests.test_delivery_cli" name="test_observation_commands_never_mutate[reviews]" time="0.328" /><testcase classname="tests.test_delivery_cli" name="test_observation_commands_never_mutate[reconcile]" time="0.314" /><testcase classname="tests.test_delivery_cli" name="test_observation_commands_never_mutate[recover]" time="0.283" /><testcase classname="tests.test_delivery_cli" name="test_observation_commands_never_mutate[report]" time="0.345" /><testcase classname="tests.test_delivery_cli" name="test_invalid_manifest_is_structured_and_does_not_disclose_input" time="0.342" /><testcase classname="tests.test_delivery_cli" name="test_publication_disabled_exit_code" time="0.488" /><testcase classname="tests.test_delivery_upgrade" name="test_0007_preserves_0006_records_and_rejects_destructive_downgrade" time="0.540" /></testsuite></testsuites>

@@ -1,0 +1,56 @@
+{
+  "commands": [
+    {
+      "command": "python -m agrosphere_orchestrator.cli milestone design AEO-6",
+      "exit_code": 0,
+      "revision_id": "9320bceed9a65e79e7ff3232c61b5e297869938908d397ad31777d5e103edf88"
+    },
+    {
+      "command": "python -m agrosphere_orchestrator.cli milestone validate-design AEO-6",
+      "exit_code": 1,
+      "validation_id": "a9a2b1ff61fd1bf17dd4766764f8b18fc84934e475ece227af69eb7fa8aa3ad5"
+    },
+    {
+      "command": "python -m pytest tests/test_design.py -q --basetemp=C:/Windows/Temp/aeo6-design-regression-20261025",
+      "exit_code": 0,
+      "tests": 65,
+      "duration_seconds": 67.57
+    },
+    {
+      "command": "python -m ruff check src/agrosphere_orchestrator/design_agents.py tests/test_design.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff format --check src/agrosphere_orchestrator/design_agents.py tests/test_design.py",
+      "exit_code": 1,
+      "result": "Formatting required; subsequent ruff format reformatted both files."
+    },
+    {
+      "command": "python -m ruff format src/agrosphere_orchestrator/design_agents.py tests/test_design.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m agrosphere_orchestrator.cli milestone design AEO-6",
+      "exit_code": 0,
+      "revision_id": "e93d7e7f28163d47d871faed1a5f4ad16d99662a1cf0955400a2a87b163535fe"
+    },
+    {
+      "command": "python -m agrosphere_orchestrator.cli milestone validate-design AEO-6",
+      "exit_code": 0,
+      "validation_id": "e3c6d54b3da94cbd8c5a2805838e5915e4128050bb7021017a7c393d62879bab"
+    },
+    {
+      "command": "python -m agrosphere_orchestrator.cli milestone export-docs AEO-6",
+      "exit_code": 0
+    },
+    {
+      "command": "python docs/milestones/AEO-6/evidence/verify_design_checkpoint.py --export-package",
+      "exit_code": 0
+    },
+    {
+      "command": "python docs/milestones/AEO-6/evidence/verify_design_checkpoint.py --require-approval",
+      "exit_code": 1,
+      "expected_failure": "Authorized human design approval is required"
+    }
+  ]
+}

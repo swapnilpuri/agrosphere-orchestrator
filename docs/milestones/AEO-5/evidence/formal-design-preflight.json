@@ -1,0 +1,114 @@
+{
+  "executed_at": "2026-10-25T18:20:08.430094+00:00",
+  "diagrams": [
+    {
+      "id": "01-components",
+      "kind": "component",
+      "declared_owner": "agrosphere-orchestrator",
+      "allowed_owners": [],
+      "ownership_valid": false,
+      "generation_error": null
+    },
+    {
+      "id": "02-github-delivery",
+      "kind": "sequence",
+      "declared_owner": "agrosphere-orchestrator",
+      "allowed_owners": [
+        "agrosphere-architecture"
+      ],
+      "ownership_valid": false,
+      "generation_error": null
+    },
+    {
+      "id": "03-multirepository",
+      "kind": "component",
+      "declared_owner": "agrosphere-orchestrator",
+      "allowed_owners": [],
+      "ownership_valid": false,
+      "generation_error": null
+    },
+    {
+      "id": "04-delivery-state",
+      "kind": "state",
+      "declared_owner": "agrosphere-orchestrator",
+      "allowed_owners": [],
+      "ownership_valid": false,
+      "generation_error": null
+    },
+    {
+      "id": "05-durable-recovery",
+      "kind": "activity",
+      "declared_owner": "agrosphere-orchestrator",
+      "allowed_owners": [
+        "agrosphere-architecture"
+      ],
+      "ownership_valid": false,
+      "generation_error": "Activity adapter supports explicit linear workflows only; branching needs a reviewed adapter"
+    },
+    {
+      "id": "06-approval-quality",
+      "kind": "activity",
+      "declared_owner": "agrosphere-orchestrator",
+      "allowed_owners": [
+        "agrosphere-architecture"
+      ],
+      "ownership_valid": false,
+      "generation_error": "Activity adapter supports explicit linear workflows only; branching needs a reviewed adapter"
+    }
+  ],
+  "manual_source_rendering": [
+    {
+      "path": "docs/milestones/AEO-5/diagrams/01-components.puml",
+      "sha256": "a1803e9396bf5338c3259e2a9b028edd72022c8b53d1d4d64b7d92345da37888",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "path": "docs/milestones/AEO-5/diagrams/02-github-delivery.puml",
+      "sha256": "bea3f65f01eed6997110ee7b42ef81f45c08161c2ccd65bfb4c88c302f1cd83e",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "path": "docs/milestones/AEO-5/diagrams/03-multirepository.puml",
+      "sha256": "b42cd2978aa3c883193f1188e1e9fbfca34375d7ca030a68f3ad81d2c71cdd9a",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "path": "docs/milestones/AEO-5/diagrams/04-delivery-state.puml",
+      "sha256": "3033afa2c62c1c173a1361128fa14c1a3eb3f4fcc7dad165971b4b83284c0064",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "path": "docs/milestones/AEO-5/diagrams/05-durable-recovery.puml",
+      "sha256": "bfb903b03610299bb162d929d230dcaccbb8470e0dbb367d080d29ab763b894d",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "path": "docs/milestones/AEO-5/diagrams/06-approval-quality.puml",
+      "sha256": "e70ad9d03aca75401fdc657c318d79281718e94ccd31e4a038a1882601ed6fb5",
+      "rendered": true,
+      "findings": []
+    }
+  ],
+  "document_owners": {
+    "business": [
+      "agrosphere-architecture"
+    ],
+    "architecture": [
+      "agrosphere-architecture"
+    ],
+    "overview": [
+      "agrosphere-architecture"
+    ],
+    "service": []
+  },
+  "state": "DESIGN_IN_PROGRESS",
+  "scope_id": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+  "revision_id": null,
+  "validation": null,
+  "implementation_authorized": false
+}

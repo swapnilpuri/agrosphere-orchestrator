@@ -1,0 +1,16 @@
+{
+  "scope_id": "48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143",
+  "state": "DISCOVERED",
+  "checkpoint": "AWAITING_REQUIREMENTS_APPROVAL",
+  "requirements": 12,
+  "proposed_tasks": 6,
+  "context_hashes_verified": 28,
+  "diagram_sources_checked": 9,
+  "design_revision": null,
+  "approval_decisions": 0,
+  "generation_guard": "Authorized human requirements approval is required",
+  "source_implementation_started": false,
+  "repositories": {
+    "agrosphere-orchestrator": "C:\\Projects\\agrosphere\\agrosphere-orchestrator"
+  }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\01-components.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\02-lifecycle.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\03-multi-agent-sequence.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\04-human-approval.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\05-durable-state.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\06-interruption-recovery.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\07-repository-boundaries.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\08-end-to-end.puml",
+    "passed": true,
+    "findings": []
+  },
+  {
+    "path": "docs\\milestones\\AEO-6\\diagrams\\09-cross-repository-dependencies.puml",
+    "passed": true,
+    "findings": []
+  }
+]

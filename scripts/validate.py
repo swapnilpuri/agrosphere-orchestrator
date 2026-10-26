@@ -7,6 +7,9 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
+from agrosphere_orchestrator.autonomous_models import AutonomousRequest, RunLimits
+from agrosphere_orchestrator.delivery_models import Manifest as DeliveryManifest
+from agrosphere_orchestrator.delivery_models import Observation
 from agrosphere_orchestrator.design_models import AsBuiltInput, DesignInput
 from agrosphere_orchestrator.execution_models import (
     AgentOutput,
@@ -31,6 +34,10 @@ def main() -> int:
     schema_dir = ROOT / "docs/schemas"
     schema_dir.mkdir(parents=True, exist_ok=True)
     for name, model in (
+        ("autonomous-request", AutonomousRequest),
+        ("autonomous-limits", RunLimits),
+        ("delivery-manifest", DeliveryManifest),
+        ("github-observation", Observation),
         ("quality-policy", QualityPolicy),
         ("quality-gate-result", GateResult),
         ("orchestration-plan", ExecutionPlan),
@@ -83,7 +90,26 @@ def main() -> int:
     ]
     results = []
     for argv in commands:
-        completed = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True, timeout=600)
+        timeout = 1800 if argv[1:3] == ["-m", "pytest"] else 600
+        try:
+            completed = subprocess.run(
+                argv, cwd=ROOT, capture_output=True, text=True, timeout=timeout
+            )
+        except subprocess.TimeoutExpired as exc:
+
+            def output_text(value):
+                return (
+                    value.decode("utf-8", errors="replace")
+                    if isinstance(value, bytes)
+                    else value or ""
+                )
+
+            completed = subprocess.CompletedProcess(
+                argv,
+                124,
+                output_text(exc.stdout),
+                output_text(exc.stderr) + f"\nValidation timed out after {timeout} seconds",
+            )
         result = {
             "argv": argv,
             "cwd": str(ROOT),

@@ -1,0 +1,10 @@
+{
+  "milestone": "agrosphere:AEO-6",
+  "state": "DISCOVERED",
+  "findings": [
+    {
+      "code": "missing-requirements",
+      "message": "No approved requirements; implementation is blocked"
+    }
+  ]
+}

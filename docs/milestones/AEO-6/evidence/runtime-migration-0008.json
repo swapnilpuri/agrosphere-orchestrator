@@ -1,0 +1,12 @@
+{
+  "database": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\aeo.db",
+  "backup": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.aeo\\backups\\aeo-before-0008-20261026T040729643580Z.db",
+  "before_migration": "0007",
+  "after_migration": "0008",
+  "before_tables": 29,
+  "after_tables": 32,
+  "all_preexisting_table_records_preserved": true,
+  "new_runtime_autonomous_records": 0,
+  "approval_records_changed": false,
+  "source_inventory_verified": true
+}

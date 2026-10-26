@@ -194,6 +194,20 @@
           "minLength": 1,
           "title": "Rationale",
           "type": "string"
+        },
+        "approved_source": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approved Source"
         }
       },
       "required": [

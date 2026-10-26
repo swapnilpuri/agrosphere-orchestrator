@@ -1,0 +1,13 @@
+{
+  "executed_at": "2026-10-26T04:06:33.398141+00:00",
+  "argv": [
+    "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+    "scripts/validate.py"
+  ],
+  "fixture_root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a6-20261026T035452Z",
+  "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+  "exit_code": 0,
+  "stdout": "exit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m pytest -v --junitxml=docs/validation/pytest.xml\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m ruff check .\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m ruff format --check .\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m pip check\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m alembic upgrade head\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m alembic check\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli project-status\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli repository-inspect\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli milestone-validate examples/aeo-1.yaml\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli milestone design-status AEO-1C\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe scripts/verify_design_tools.py\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli agents list\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli agents describe developer\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe scripts/verify_aeo2_docs.py\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe scripts/verify_aeo3_docs.py\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe scripts/verify_aeo4_docs.py\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli quality policies\nexit=0: C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe -m pip freeze\n",
+  "stderr": "",
+  "database": "Disposable SQLite backup; authoritative database not migrated or modified by validation."
+}

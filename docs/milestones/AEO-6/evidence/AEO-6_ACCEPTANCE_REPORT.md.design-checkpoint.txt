@@ -1,0 +1,7 @@
+# AEO-6 acceptance report — design approval checkpoint
+
+Status: **NOT LOCALLY ACCEPTED — AWAITING AUTHENTICATED DESIGN APPROVAL**.
+
+Requirements approval has been independently verified. Formal design generation, persistence, export and validation passed. All 28 approved context hashes match; 22 artifacts include nine unchanged diagram sources and nine rendered SVGs. Human design approval remains pending. AEO-6B–6G implementation and end-to-end validation have not started.
+
+The complete identities, validation history, adapter repairs, registered plan and exact human commands are in [TECHNICAL_DESIGN_APPROVAL_PACKAGE.md](TECHNICAL_DESIGN_APPROVAL_PACKAGE.md). The previous requirements-checkpoint report is retained under evidence.

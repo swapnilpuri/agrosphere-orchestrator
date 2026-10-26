@@ -1,0 +1,637 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-26T05:03:11.595Z",
+  "timezone": "America/Chicago",
+  "status": "BLOCKED_DISCOVERY_CONFLICT",
+  "current_application_milestone": "2",
+  "autonomous_run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+  "execution_mode": "local",
+  "aeo6": {
+    "local_acceptance": "ACCEPTED_WITH_EXPLICIT_LIVE_VALIDATION_LIMITS",
+    "runtime_state": "IMPLEMENTING",
+    "formal_completion": false,
+    "approval_verifier_exit_code": 0,
+    "approved_artifacts_verified": 22,
+    "source_inventory_checked": 22,
+    "source_inventory_mismatches": [],
+    "migration": "0008",
+    "historical_standard_validation": {
+      "checks": 18,
+      "tests": 354,
+      "exit_code": 0
+    },
+    "fresh_readiness_tests": {
+      "tests": 36,
+      "failures": 0,
+      "exit_code": 0,
+      "seconds": 14.68,
+      "evidence": "operator-readiness-tests.xml"
+    }
+  },
+  "recovery": {
+    "snapshot_id": "49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113",
+    "confirmed_roots": 12,
+    "persisted_through": "agrosphere_orchestrator.recovery.reconcile and export_reports",
+    "input": "operator-milestone-2-dry-run.json",
+    "legacy_project_reconcile": "Interrupted with Ctrl-C (exit 1) after source inspection revealed recursive nested-root discovery. No legacy discovery result was accepted. Current recovery head was subsequently set by the manifest-bound existing service.",
+    "statuses": [
+      {
+        "id": "0",
+        "classification": "UNVERIFIED",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      },
+      {
+        "id": "1",
+        "classification": "UNVERIFIED",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      },
+      {
+        "id": "1A",
+        "classification": "PARTIAL",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      },
+      {
+        "id": "1B",
+        "classification": "PARTIAL",
+        "verified_acceptance_criteria": [],
+        "conflicts": [
+          "Both completion/implementation and not-started claims occur; inspect dates and scope."
+        ]
+      },
+      {
+        "id": "1C",
+        "classification": "PARTIAL",
+        "verified_acceptance_criteria": [],
+        "conflicts": [
+          "Both completion/implementation and not-started claims occur; inspect dates and scope."
+        ]
+      },
+      {
+        "id": "2",
+        "classification": "PARTIAL",
+        "verified_acceptance_criteria": [],
+        "conflicts": [
+          "Both completion/implementation and not-started claims occur; inspect dates and scope."
+        ]
+      },
+      {
+        "id": "3",
+        "classification": "UNVERIFIED",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      },
+      {
+        "id": "3A",
+        "classification": "PARTIAL",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      },
+      {
+        "id": "3B",
+        "classification": "UNVERIFIED",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      },
+      {
+        "id": "4",
+        "classification": "UNVERIFIED",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      },
+      {
+        "id": "5",
+        "classification": "UNVERIFIED",
+        "verified_acceptance_criteria": [],
+        "conflicts": []
+      }
+    ],
+    "recommendation": {
+      "milestone": "1A",
+      "action": "Verify and reconcile acceptance criteria before authorizing application development.",
+      "development_candidate": "3B",
+      "approval_granted": false,
+      "aeo_2_started": false
+    },
+    "evidence_index_artifacts_checked": 51,
+    "evidence_index_artifact_mismatches": []
+  },
+  "commands": [
+    {
+      "command": ".\\.venv\\Scripts\\python.exe docs\\milestones\\AEO-6\\evidence\\verify_implementation_checkpoint.py",
+      "exit_code": 0
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous plan --milestone 3B",
+      "exit_code": 0
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous start --milestone 2 --mode dry-run",
+      "exit_code": 0
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe docs\\milestones\\AEO-6\\evidence\\operator-reconcile-manifest-snapshot.py",
+      "exit_code": 0
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli project status",
+      "exit_code": 0
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli codex doctor",
+      "exit_code": 0
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous start --milestone 2 --mode local",
+      "execution": "NOT_EXECUTED",
+      "reason": "Automatic approval review rejected the action as requiring separate application-execution authorization."
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous simulate --output-directory docs/milestones/AEO-6/evidence/operator-activation-simulation",
+      "exit_code": 0
+    }
+  ],
+  "milestone_2": {
+    "state": "PARTIAL / AWAITING_VALIDATION",
+    "components": [
+      "agrosphere-web Angular estate loading and Cesium viewer",
+      "Gateway/Estate/Spatial integration paths used by representative estate view"
+    ],
+    "sources": [
+      "agrosphere-architecture/docs/roadmap/MILESTONES.md",
+      "agrosphere-architecture/docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md",
+      "agrosphere-web/docs/MILESTONE_2_REPORT.md"
+    ],
+    "fps_target": "Proposed 30 FPS minimum on a named reference desktop. Approved device/workload/methodology not recovered.",
+    "initial_view_target": "Original approved numeric threshold not recovered. Report mentions 10 seconds only while disclaiming a production target; do not use as an approved threshold.",
+    "benchmark_instrumentation": "No benchmark npm script. Existing graphics/live projects use SwiftShader. graphics.spec.ts logs combined navigation/remount time, not initial useful estate view or interactive FPS.",
+    "required_inputs": [
+      "Authoritative approved timing threshold",
+      "Named reference CPU/GPU/device and browser version",
+      "Representative estate geometry/asset budget and provider configuration",
+      "Sampling, cold/warm cache and interactive measurement methodology",
+      "Approved exact validation task and quality evidence binding"
+    ],
+    "fresh_measurements": false,
+    "formal_acceptance": false
+  },
+  "milestone_3B": {
+    "state": "UNVERIFIED / AWAITING_SCOPE_AND_APPROVAL",
+    "dependency_finding": "No explicit M2 GPU-performance prerequisite recovered for backend-only planning; no approved machine-readable dependency graph is configured, so controller eligibility is not established.",
+    "proposed_scope": "Latex collection and DRC/dry-rubber calculation are a proposal from recovered FR-04 context, not an approved 3B specification.",
+    "requirements_registered": false,
+    "design_generated": false,
+    "diagrams_generated": [],
+    "implementation_authorized": false,
+    "planning_blocker": "Global discovery-conflict checkpoint precedes controller design preparation; no registered 3B DesignInput or approved application roadmap."
+  },
+  "bounded_plan": [
+    {
+      "priority": 1,
+      "work": "Resolve acceptance-evidence conflicts and bind M2 validation scope to authoritative targets; collect measurements only after current gates permit it."
+    },
+    {
+      "priority": 2,
+      "work": "Prepare 3B requirements and technical design through AEO-1C when authoritative scope/dependencies permit; obtain exact authenticated approvals before source implementation."
+    },
+    {
+      "priority": 3,
+      "work": "Reconcile remaining approved roadmap scopes (Operations/IoT, AI, Immersive) after each milestone; no automatic numeric advancement."
+    }
+  ],
+  "limits": {
+    "max_milestones": 1,
+    "max_tasks": 20,
+    "max_concurrency": 2,
+    "max_invocations": 30,
+    "max_attempts": 30,
+    "max_repairs": 3,
+    "max_seconds": 3600,
+    "max_poll_seconds": 60,
+    "max_steps": 50,
+    "max_model_cost": null
+  },
+  "dependency_graph": {
+    "status": "NOT_AVAILABLE",
+    "reason": "No registered application design/plan or approved machine-readable roadmap; do not fabricate a DAG."
+  },
+  "agents": {
+    "candidate_contracts": [
+      "program-manager",
+      "project-manager",
+      "business-analyst",
+      "solution-architect",
+      "developer",
+      "qa-engineer",
+      "security-engineer",
+      "devops-engineer",
+      "technical-writer"
+    ],
+    "active": [],
+    "completed": [],
+    "dispatches": 0
+  },
+  "tasks": {
+    "completed": [
+      "AEO-6 acceptance/approval/source/migration inspection",
+      "Manifest-bound dry-run and persisted recovery",
+      "Evidence-index integrity verification",
+      "Fresh focused AEO readiness tests",
+      "Native Codex no-model capability probe"
+    ],
+    "pending": [
+      "M2 performance scope/measurement",
+      "3B requirements/design preparation and approval",
+      "Application implementation, quality and delivery"
+    ]
+  },
+  "configuration": {
+    "github_remote_writes": false,
+    "autonomous_roadmap": null,
+    "live_enabled": false,
+    "design_approvers_count": 1,
+    "execution_approvers_count": 0,
+    "governance_approvers_count": 0
+  },
+  "identity": {
+    "codex_cli_authenticated": true,
+    "operator": "Existing AEO-6 human decisions remain valid; no fresh interactive human verification was performed and Codex authentication does not grant application execution authority."
+  },
+  "quality_security": {
+    "fresh_tests": "36 AEO readiness tests passed",
+    "fresh_application_tests": false,
+    "fresh_application_security_validation": false,
+    "policies_changed": false
+  },
+  "delivery": {
+    "aeo5_state": "IMPLEMENTING",
+    "github_remote_writes": false,
+    "publication": "NOT_STARTED",
+    "pr": null,
+    "ci": "NOT_RUN",
+    "review": "NOT_REQUESTED",
+    "formal_delivery": false
+  },
+  "resource_usage": {
+    "real_model_invocations": 0,
+    "application_agent_dispatches": 0,
+    "real_model_tokens": null,
+    "real_model_cost": null
+  },
+  "production_source_edits": [],
+  "application_repository_edits": [],
+  "approval_commands": {
+    "current_checkpoint": null,
+    "reason": "The real controller emitted command:null for discovery-conflict. This is an evidence/eligibility checkpoint, not a human approval request; no valid approval command can be supplied to clear it.",
+    "read_only_report": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous report ba0851d4-66bc-417a-851b-f08176bd8061 --markdown"
+  },
+  "simulation": {
+    "simulation": true,
+    "repositories": 3,
+    "real_codex": false,
+    "live_github": false,
+    "formal_completion": false,
+    "mock_transport_calls": 4,
+    "failed_quality_then_repaired": true,
+    "validation": {
+      "valid": true,
+      "run_id": "e8cb2db1-bed1-477a-bb66-5e89fbeb3612",
+      "state": "REPORTED",
+      "formally_completed": false
+    },
+    "provider_pushes": 3,
+    "provider_prs": 3,
+    "exit_code": 0
+  },
+  "changed_artifacts": [
+    "aeo.db (recovery snapshot/head and audit through AEO-1B)",
+    "project/CURRENT_STATE.md",
+    "project/MILESTONE_HISTORY.md",
+    "project/RECOVERY_REPORT.md",
+    "project/REPOSITORY_INVENTORY.yaml",
+    "project/ROADMAP.yaml",
+    "docs/milestones/AEO-6/evidence/implementation-approval-linkage.json",
+    "docs/milestones/AEO-6/evidence/operator-*"
+  ],
+  "latest_controlled_run": {
+    "observed_at": "2026-10-26T05:29:56.983976+00:00",
+    "timezone": "America/Chicago",
+    "command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous start --milestone 2 --mode local",
+    "exit_code": 0,
+    "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+    "mode": "local",
+    "milestone": "2",
+    "state_transitions": [
+      "PLANNED",
+      "RECONCILING",
+      "BLOCKED"
+    ],
+    "events": [
+      "created",
+      "operation.intended",
+      "operation.dispatched",
+      "operation.committed"
+    ],
+    "checkpoint": {
+      "category": "discovery-conflict",
+      "reason": "Conflicting recovered milestone evidence blocks eligibility",
+      "command": null
+    },
+    "authorization": {
+      "operator_start_authorization": "Explicit user authorization for exactly one bounded local Milestone 2 controller attempt verified from this request.",
+      "separate_authenticated_start_decision": "Not required or exposed by the installed start/reconciliation implementation.",
+      "aeo6_requirements_design_approval_verifier_exit": 0,
+      "privileged_application_execution_grant_verified": false,
+      "privileged_application_execution_grant_required_for_work_performed": false,
+      "privileged_execution_performed": false,
+      "application_requirements_design_plan_approvals": "Absent; not bypassed. Later-stage prerequisites, not authority to dispatch."
+    },
+    "preflight": {
+      "migration": [
+        "0008"
+      ],
+      "tables": [
+        "alembic_version",
+        "approvals",
+        "audit_events",
+        "autonomous_events",
+        "autonomous_operations",
+        "autonomous_runs",
+        "delivery_events",
+        "delivery_operations",
+        "delivery_runs",
+        "delivery_units",
+        "design_cases",
+        "design_decisions",
+        "design_revisions",
+        "design_scopes",
+        "design_validations",
+        "execution_attempts",
+        "execution_grants",
+        "executions",
+        "governance_records",
+        "milestones",
+        "orchestration_controls",
+        "orchestration_evidence",
+        "orchestration_plans",
+        "projects",
+        "recovery_heads",
+        "recovery_snapshots",
+        "resource_leases",
+        "runs",
+        "task_claims",
+        "task_quality_states",
+        "tasks",
+        "validation_evidence"
+      ],
+      "runs": [],
+      "design_cases": [
+        {
+          "id": "agrosphere:AEO-5",
+          "state": "IMPLEMENTING",
+          "scope_id": "22e7ab696621e4f7b779cf49ac2cd04bbfe5eeb58864ca9a372d69df755b0edd",
+          "revision_id": "9824ee231f67b694234e192084fadfdfcacd3b4e5c35937e2730753098c8d507"
+        },
+        {
+          "id": "agrosphere:AEO-6",
+          "state": "IMPLEMENTING",
+          "scope_id": "48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143",
+          "revision_id": "e93d7e7f28163d47d871faed1a5f4ad16d99662a1cf0955400a2a87b163535fe"
+        }
+      ],
+      "configuration": {
+        "github_remote_writes": false,
+        "autonomous_roadmap": null,
+        "live_enabled": false,
+        "design_approvers_count": 1,
+        "execution_approvers_count": 0,
+        "governance_approvers_count": 0
+      }
+    },
+    "limits": {
+      "max_milestones": 1,
+      "max_tasks": 20,
+      "max_concurrency": 2,
+      "max_invocations": 30,
+      "max_attempts": 30,
+      "max_repairs": 3,
+      "max_seconds": 3600,
+      "max_poll_seconds": 60,
+      "max_steps": 50,
+      "max_model_cost": null
+    },
+    "usage": {
+      "steps": 1,
+      "invocations": 0,
+      "attempts": 0,
+      "repairs": 0,
+      "polls": 0,
+      "poll_seconds": 0.0,
+      "tasks": [],
+      "tokens": null,
+      "model_cost": null,
+      "elapsed_seconds": 1.7707184000173584,
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "usage_observations": 0
+    },
+    "completed_operations": [
+      "Fresh AEO-6 approval linkage and source hash verification",
+      "Current database, exact manifest roots, persisted recovery and budget inspection",
+      "One real local start and one read-only RECONCILING operation",
+      "Native persisted run validation (valid true, exit 0)",
+      "Native immutable JSON/Markdown report export (exit 0)",
+      "Read-only diagnosis of exact historical conflicts"
+    ],
+    "tasks_dispatched": [],
+    "agents_invoked": [],
+    "fresh_tests": "No unit/integration suite rerun in this turn. Fresh runtime preflight, supported start, status and native validate commands executed successfully. Earlier 36 readiness tests are prior-operation evidence.",
+    "fresh_performance_measurements": [],
+    "milestone_2_acceptance": "PARTIAL; functional evidence remains historical, reference-device FPS and initial useful estate view unverified; no formal acceptance.",
+    "performance_criteria": {
+      "fps": "30 FPS is proposed in NONFUNCTIONAL_REQUIREMENTS; an approved named reference device/workload/method was not recovered.",
+      "initial_view": "Approved numeric threshold not recovered; do not treat the report's disclaimed 10-second reference as an approved requirement.",
+      "benchmarks": "No performance npm script; graphics/live projects use SwiftShader and the graphics test logs combined navigation/remount duration, not an acceptance benchmark."
+    },
+    "conflicts": [
+      {
+        "milestone": "1B",
+        "conflicts": [
+          "Both completion/implementation and not-started claims occur; inspect dates and scope."
+        ],
+        "negative_claims": [
+          {
+            "repository": "agrosphere-architecture",
+            "path": "docs/roadmap/NEXT_CODEX_PROMPT.md",
+            "line": 1,
+            "claim": "# Recommended Milestone 1B prompt (not executed)"
+          },
+          {
+            "repository": "agrosphere-estate-service",
+            "path": "docs/MILESTONE_1A_REPORT.md",
+            "line": 7,
+            "claim": "No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started."
+          },
+          {
+            "repository": "agrosphere-spatial-service",
+            "path": "docs/MILESTONE_1B_REPORT.md",
+            "line": 50,
+            "claim": "GeoJSON import is a bounded JSON FeatureCollection wrapper, atomically validated/persisted in the calling request with a durable job/report No partial features/events survive failed imports Export preserves feature/reference identifiers, geometry versions, provenance, bbox, centroid and calculated hectares 3D Tiles metadata is supported through layers no renderer, client or terrain engine is implemented."
+          },
+          {
+            "repository": "agrosphere-spatial-service",
+            "path": "docs/MILESTONE_1B_REPORT.md",
+            "line": 89,
+            "claim": "| Compose overlay config --quiet | PASS using placeholder configuration shared services were not started |"
+          }
+        ]
+      },
+      {
+        "milestone": "1C",
+        "conflicts": [
+          "Both completion/implementation and not-started claims occur; inspect dates and scope."
+        ],
+        "negative_claims": [
+          {
+            "repository": "agrosphere-spatial-service",
+            "path": "docs/MILESTONE_1B_REPORT.md",
+            "line": 126,
+            "claim": "Recommended Milestone 1C integration tasks (not started)"
+          }
+        ]
+      },
+      {
+        "milestone": "2",
+        "conflicts": [
+          "Both completion/implementation and not-started claims occur; inspect dates and scope."
+        ],
+        "negative_claims": [
+          {
+            "repository": "agrosphere-infrastructure",
+            "path": "docs/MILESTONE_1C_REPORT.md",
+            "line": 200,
+            "claim": "Recommended Milestone 2 sequence (not started)"
+          }
+        ]
+      }
+    ],
+    "remaining_prerequisites": [
+      "Resolve chronological/scope conflicts for 1B, 1C and 2; the current CLI has no authenticated conflict-adjudication command or override.",
+      "Prepare authoritative application scope and approved context-bound roadmap before later-stage eligibility.",
+      "Exact requirements/design/plan and privileged task grants remain required before their protected operations.",
+      "Execution/governance approvers are unconfigured, live execution disabled, and application quality criteria/validators absent.",
+      "M2 approved reference device, timing criterion and measurement protocol remain unresolved."
+    ],
+    "next_operator_action": "Review the exact historical claims in controlled-first-conflict-diagnosis.json and resolve the evidence-adjudication limitation through a separately reviewed documentation or orchestrator change. Do not alter approvals or delete historical evidence merely to clear the heuristic. Keep this run BLOCKED until the actual checkpoint is resolved.",
+    "checkpoint_approval_command": null,
+    "checkpoint_approval_explanation": "The real controller emitted command:null for discovery-conflict. This is an evidence/eligibility checkpoint, not a human approval request; no valid approval command can be supplied to clear it.",
+    "read_only_operator_command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous report ba0851d4-66bc-417a-851b-f08176bd8061 --markdown",
+    "conditional_continuation_command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli autonomous resume ba0851d4-66bc-417a-851b-f08176bd8061",
+    "continuation_conditions": "Not executed or currently ready. Only after the discovery checkpoint is genuinely resolved and the unchanged run budget/authorization still permits continuation. Do not start a second run or reset budgets.",
+    "local_autonomy": "Real controller orchestration, persistence, fail-closed checkpoint and reporting functioned for the one reconciliation step. Agent execution and performance acceptance were not reached or validated.",
+    "repository_preservation": [
+      {
+        "repository": "agrosphere-ai-service",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-analytics-service",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-api-gateway",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-architecture",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-contracts",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-estate-service",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-immersive",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-infrastructure",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-operations-service",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-spatial-service",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-telemetry-service",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      },
+      {
+        "repository": "agrosphere-web",
+        "head_unchanged": true,
+        "status_unchanged": true,
+        "inventoried_fingerprints_unchanged": true
+      }
+    ],
+    "previous_recovery_head": "49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113",
+    "recovery_note": "Fresh discovery persisted in the committed autonomous operation. Existing AEO-1B recovery head retained: conflict stops the controller before its recovery.reconcile call.",
+    "native_report_hash": "7c52f3743063ffefaa36d65fd819c1613b755bdb84681b8e8e4d1077fd7e71db",
+    "native_report_files": [
+      "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.aeo\\autonomous\\0c22b4cd3076c5b5c21a5fc53f088199ea03725a201d7cea3df7a08fd48cae92\\7c52f3743063ffefaa36d65fd819c1613b755bdb84681b8e8e4d1077fd7e71db.json",
+      "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.aeo\\autonomous\\0c22b4cd3076c5b5c21a5fc53f088199ea03725a201d7cea3df7a08fd48cae92\\7c52f3743063ffefaa36d65fd819c1613b755bdb84681b8e8e4d1077fd7e71db.md"
+    ],
+    "policy_changes": [],
+    "source_edits": [],
+    "publication": "None; remote writes remain disabled. No PR, merge or deployment.",
+    "milestone_3B": "No run started, scope registered, design generated or implementation performed. No M2 GPU prerequisite for backend-only planning recovered, but exact 3B scope and approved roadmap dependencies remain unresolved."
+  },
+  "historical_blockers_before_explicit_start_authorization": [
+    "AUTOMATIC_APPROVAL_REVIEW: local controller start rejected; no application run ID created.",
+    "DISCOVERY_CONFLICT: 1B, 1C and 2 contain historical completion/not-started claims; heuristic discovery does not adjudicate the acceptance matrix.",
+    "GOVERNANCE: no approved application roadmap configured, no registered M2/3B design scope, execution/governance approver lists empty, live_enabled false.",
+    "QUALITY: current policy is an orchestrator template with no application criteria and execution validation command allowlist empty.",
+    "M2_REFERENCE_MEASUREMENT: required device/workload/method and approved initial-view threshold unavailable."
+  ],
+  "blockers": [
+    "Resolve chronological/scope conflicts for 1B, 1C and 2; the current CLI has no authenticated conflict-adjudication command or override.",
+    "Prepare authoritative application scope and approved context-bound roadmap before later-stage eligibility.",
+    "Exact requirements/design/plan and privileged task grants remain required before their protected operations.",
+    "Execution/governance approvers are unconfigured, live execution disabled, and application quality criteria/validators absent.",
+    "M2 approved reference device, timing criterion and measurement protocol remain unresolved."
+  ],
+  "historical_next_action_before_explicit_start_authorization": "Inspect current persisted recovery and dry-run evidence. A separate explicit authorization is required by automatic approval review before attempting the local controller start; all AEO approval/configuration/quality checkpoints still apply.",
+  "next_authorized_action": "Review the exact historical claims in controlled-first-conflict-diagnosis.json and resolve the evidence-adjudication limitation through a separately reviewed documentation or orchestrator change. Do not alter approvals or delete historical evidence merely to clear the heuristic. Keep this run BLOCKED until the actual checkpoint is resolved.",
+  "historical_start_authorization_request": "Authorize one bounded local Milestone 2 controller start using the existing limits and unchanged gates; no source-write grants, remote writes or future milestone advancement are implied."
+}

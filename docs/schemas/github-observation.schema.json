@@ -1,0 +1,412 @@
+{
+  "$defs": {
+    "Check": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "sha": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Sha",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "raw_status": {
+          "title": "Raw Status",
+          "type": "string"
+        },
+        "raw_conclusion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw Conclusion"
+        },
+        "app_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "App Id"
+        }
+      },
+      "required": [
+        "name",
+        "sha",
+        "state",
+        "raw_status"
+      ],
+      "title": "Check",
+      "type": "object"
+    },
+    "Policy": {
+      "additionalProperties": false,
+      "properties": {
+        "known": {
+          "default": false,
+          "title": "Known",
+          "type": "boolean"
+        },
+        "checks": {
+          "items": {
+            "$ref": "#/$defs/RequiredCheck"
+          },
+          "title": "Checks",
+          "type": "array"
+        },
+        "approvals": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Approvals",
+          "type": "integer"
+        },
+        "codeowners": {
+          "default": false,
+          "title": "Codeowners",
+          "type": "boolean"
+        },
+        "strict": {
+          "default": false,
+          "title": "Strict",
+          "type": "boolean"
+        },
+        "unsupported": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unsupported",
+          "type": "array"
+        },
+        "raw_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw Hash"
+        }
+      },
+      "title": "Policy",
+      "type": "object"
+    },
+    "PullRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "exclusiveMinimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "number": {
+          "exclusiveMinimum": 0,
+          "title": "Number",
+          "type": "integer"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "repository_id": {
+          "exclusiveMinimum": 0,
+          "title": "Repository Id",
+          "type": "integer"
+        },
+        "head_repository_id": {
+          "exclusiveMinimum": 0,
+          "title": "Head Repository Id",
+          "type": "integer"
+        },
+        "base": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Base",
+          "type": "string"
+        },
+        "branch": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Branch",
+          "type": "string"
+        },
+        "base_sha": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Base Sha",
+          "type": "string"
+        },
+        "head_sha": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Head Sha",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "open",
+            "closed",
+            "merged"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "author": {
+          "title": "Author",
+          "type": "string"
+        },
+        "draft": {
+          "default": false,
+          "title": "Draft",
+          "type": "boolean"
+        },
+        "mergeable": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mergeable"
+        },
+        "review_decision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Decision"
+        },
+        "merge_sha": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{40}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Merge Sha"
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "url",
+        "repository_id",
+        "head_repository_id",
+        "base",
+        "branch",
+        "base_sha",
+        "head_sha",
+        "state",
+        "author"
+      ],
+      "title": "PullRequest",
+      "type": "object"
+    },
+    "Remote": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "exclusiveMinimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "owner": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,99}$",
+          "title": "Owner",
+          "type": "string"
+        },
+        "name": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "owner",
+        "name"
+      ],
+      "title": "Remote",
+      "type": "object"
+    },
+    "RequiredCheck": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "app_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "App Id"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "RequiredCheck",
+      "type": "object"
+    },
+    "Review": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "actor": {
+          "title": "Actor",
+          "type": "string"
+        },
+        "actor_type": {
+          "title": "Actor Type",
+          "type": "string"
+        },
+        "sha": {
+          "pattern": "^[a-f0-9]{40}$",
+          "title": "Sha",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "submitted_at": {
+          "title": "Submitted At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "actor",
+        "actor_type",
+        "sha",
+        "state",
+        "submitted_at"
+      ],
+      "title": "Review",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "remote": {
+      "$ref": "#/$defs/Remote"
+    },
+    "principal": {
+      "title": "Principal",
+      "type": "string"
+    },
+    "can_push": {
+      "title": "Can Push",
+      "type": "boolean"
+    },
+    "branch_sha": {
+      "anyOf": [
+        {
+          "pattern": "^[a-f0-9]{40}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Branch Sha"
+    },
+    "base_sha": {
+      "pattern": "^[a-f0-9]{40}$",
+      "title": "Base Sha",
+      "type": "string"
+    },
+    "prs": {
+      "items": {
+        "$ref": "#/$defs/PullRequest"
+      },
+      "title": "Prs",
+      "type": "array"
+    },
+    "policy": {
+      "$ref": "#/$defs/Policy"
+    },
+    "checks": {
+      "items": {
+        "$ref": "#/$defs/Check"
+      },
+      "title": "Checks",
+      "type": "array"
+    },
+    "reviews": {
+      "items": {
+        "$ref": "#/$defs/Review"
+      },
+      "title": "Reviews",
+      "type": "array"
+    },
+    "base_in_head": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Base In Head"
+    },
+    "dependencies_available": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "title": "Dependencies Available",
+      "type": "object"
+    }
+  },
+  "required": [
+    "remote",
+    "principal",
+    "can_push",
+    "base_sha",
+    "policy"
+  ],
+  "title": "Observation",
+  "type": "object"
+}

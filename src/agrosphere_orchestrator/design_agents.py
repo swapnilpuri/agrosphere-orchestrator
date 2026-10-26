@@ -1,9 +1,11 @@
 """Serial documentation-role adapters. No live models, Codex calls or code execution."""
 
+import re
 from typing import Protocol
 
 from .design_artifacts import digest, plantuml
 from .design_models import AgentResult, Artifact, DesignInput, DocumentationTask, Finding
+from .design_policy import architecture_owner, service_owners
 
 SECTIONS = {
     "business": (
@@ -75,35 +77,41 @@ class ArchitectureReviewer(Protocol):
 class TemplateDocumentationAgents:
     """Render approved narratives verbatim. Missing knowledge is an explicit blocker."""
 
-    version = "approved-input-templates-v1"
+    version = "approved-input-templates-v3-internal-narrative"
 
     def generate(self, task: DocumentationTask, inputs: DesignInput) -> AgentResult:
         result = AgentResult()
         refs = [r.id for r in inputs.requirements]
-        services = sorted(
-            {t.repository for t in inputs.plan.tasks}
-            - {"agrosphere-architecture", "agrosphere-contracts", "agrosphere-orchestrator"}
-        )
+        services = sorted(service_owners(inputs))
+        owner = architecture_owner(inputs)
         documents = []
         if task.phase == "design":
             if task.role == "business-analyst":
-                documents.append(("business", "agrosphere-architecture", "business"))
+                documents.append(("business", owner, "business"))
             if task.role == "solution-architect":
-                documents.append(("architecture", "agrosphere-architecture", "architecture"))
+                documents.append(("architecture", owner, "architecture"))
                 documents.extend(("service", repo, "service:" + repo) for repo in services)
                 if inputs.contract_impact:
                     documents.append(("contracts", "agrosphere-contracts", "contracts"))
             if task.role == "technical-writer":
-                documents.append(("overview", "agrosphere-architecture", "overview"))
+                documents.append(("overview", owner, "overview"))
         elif task.role == "solution-architect":
-            documents.append(("as-built", "agrosphere-architecture", "as-built"))
+            documents.append(("as-built", owner, "as-built"))
             documents.extend(("service", repo, "service:" + repo) for repo in services)
             if inputs.contract_impact:
                 documents.append(("contracts", "agrosphere-contracts", "contracts"))
         elif task.role == "technical-writer":
-            documents.append(("overview", "agrosphere-architecture", "overview"))
+            documents.append(("overview", owner, "overview"))
         for kind, repo, key in documents:
             supplied = inputs.narratives.get(key, {})
+            # Internal scope has exactly one service owner. Reuse its approved generic
+            # narrative only when no repository-specific narrative was supplied.
+            if (
+                kind == "service"
+                and inputs.documentation_scope == "internal-orchestrator"
+                and key not in inputs.narratives
+            ):
+                supplied = inputs.narratives.get("service", {})
             content = (
                 f"# {inputs.plan.id}: {kind} ({task.phase})\n\n"
                 f"Scope: {task.scope_digest}\nRequirements: {', '.join(refs)}\n"
@@ -145,7 +153,9 @@ class TemplateDocumentationAgents:
             )
         if task.role == "solution-architect":
             for spec in inputs.diagrams:
-                source = plantuml(spec)
+                source = (
+                    spec.approved_source if spec.approved_source is not None else plantuml(spec)
+                )
                 result.artifacts.append(
                     Artifact(
                         type="diagram:" + spec.kind,
@@ -175,7 +185,7 @@ class TemplateDocumentationAgents:
 class RuleBasedArchitectureReviewer:
     """Independent role task with deliberately limited conceptual checks, not an LLM opinion."""
 
-    version = "independent-rule-review-v1"
+    version = "independent-rule-review-v2-approved-source"
 
     def review(self, inputs: DesignInput, artifacts: list[Artifact]) -> list[Finding]:
         findings = [
@@ -195,7 +205,14 @@ class RuleBasedArchitectureReviewer:
                 )
             )
         for diagram in inputs.diagrams:
-            if diagram.kind in {"sequence", "data-flow"} and not diagram.edges:
+            if diagram.kind not in {"sequence", "data-flow"}:
+                continue
+            # The approved source replaces generated nodes/edges. Inspect that same
+            # representation, retaining the mandatory interaction check.
+            has_interactions = bool(diagram.edges)
+            if diagram.approved_source is not None:
+                has_interactions = source_has_interactions(diagram.approved_source)
+            if not has_interactions:
                 findings.append(
                     Finding(
                         code="review-interactions",
@@ -203,3 +220,32 @@ class RuleBasedArchitectureReviewer:
                     )
                 )
         return findings
+
+
+def source_has_interactions(source: str) -> bool:
+    """Recognize explicit labelled PlantUML messages, excluding comments and notes."""
+    endpoint = r'(?:[A-Za-z_][A-Za-z0-9_]*|"[^"\n]+")'
+    message = re.compile(rf"^\s*{endpoint}\s+(?:-+>|<-+|\.+>|<\.+)\s+{endpoint}\s*:\s*\S")
+    in_comment = False
+    in_note = False
+    for line in source.splitlines():
+        stripped = line.strip()
+        if in_comment:
+            if "'/" in stripped:
+                in_comment = False
+            continue
+        if stripped.startswith("/'"):
+            in_comment = "'/" not in stripped[2:]
+            continue
+        if stripped.startswith("'"):
+            continue
+        if in_note:
+            if stripped.lower() in {"end note", "end rnote", "end hnote"}:
+                in_note = False
+            continue
+        if re.match(r"^(?:note|rnote|hnote)\b", stripped, re.I):
+            in_note = ":" not in stripped
+            continue
+        if message.match(line):
+            return True
+    return False

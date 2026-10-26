@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-10-25T23:36:21.739101+00:00",
+  "source_files": [
+    {
+      "file": "src/agrosphere_orchestrator/delivery_models.py",
+      "sha256": "ed343fd91134096975865e83b1e7ea2f72b6885259cd84664a22a2437f7aac41"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/delivery_store.py",
+      "sha256": "398012b94d3fcd582adabf5239ce68c2ce55274346e31f21f4703720a59323f2"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/delivery.py",
+      "sha256": "c8ce75a43c69ad91eb0343c78821f01d7da22e32a578ff09459d77a6c46635a2"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/delivery_cli.py",
+      "sha256": "440b56e7090d7ea72e807fa0222d0fe1ae37879b20759e58ca4a6426af1274ae"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/github_provider.py",
+      "sha256": "1bb41fd823f2ffb052b9ec2c805dab4f55688bb691dd321444f0e57c8bd6a79f"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/config/settings.py",
+      "sha256": "a0e438c4053e33eab027bf40a0548b50b830fb7a2dc898bb695bbf208f6cb7a4"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/cli.py",
+      "sha256": "c76fbb562242b318adf5d08535a8768d5a4b4c8e1f36569cdc314e96a46a624b"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/execution_workspace.py",
+      "sha256": "9648b67bf7e00870abfb6c7dcdcb898f4b13800bf4847151268b6be66c997f00"
+    },
+    {
+      "file": "migrations/versions/0007_delivery.py",
+      "sha256": "811569a45d81378fc641766aa65e4e035963cf8af1ed3ca55614c2d0b5f8e993"
+    },
+    {
+      "file": "migrations/env.py",
+      "sha256": "726cd204d9d2d496acf6aebcdd0318939e1729b3c210cee9b9411f3093a62b95"
+    },
+    {
+      "file": "scripts/validate.py",
+      "sha256": "1373890916e3bd5125ecaf69d847846190ddf3802a73e71e52b3d357054c0c20"
+    },
+    {
+      "file": "tests/test_delivery.py",
+      "sha256": "ffb4c4227dfd07ba68560790ba3c58bda3d903953708312b5a8b110f3db7da9d"
+    },
+    {
+      "file": "tests/test_github.py",
+      "sha256": "633d69d54b856512942e4e5ec7e843a4f5cdfd33910de444227252543472c030"
+    },
+    {
+      "file": "tests/test_delivery_cli.py",
+      "sha256": "7e2d3e6d0abe3c6b0928ee89bad29c7d6a71b0ea801d256e1bdca08e723521cf"
+    },
+    {
+      "file": "tests/test_delivery_upgrade.py",
+      "sha256": "b3d6e8c52d89c4f5c97917c787a8dff80cd89efb9f5df1e7a24f9acee59ada37"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_models.py",
+      "sha256": "3adb56172c5692902c4631437fc72e1851a026595b26e91e9ac15ff441c619f4"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_policy.py",
+      "sha256": "c404512136f75955cdb8d856861bbd2299b76c053f6d1301e7d13b9b785bca91"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_agents.py",
+      "sha256": "0e02407ef3ddecd43cc3527416eaf2c1eb415a3163157f2b182f59e3ab599f8a"
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_validation.py",
+      "sha256": "a71e64be787535a1e4721e8c1b87c21b8d4a4cf43dab29a621520f9f620bcbf5"
+    },
+    {
+      "file": "tests/test_design.py",
+      "sha256": "f49f24760f4db5a5651291c5d24905309c1b37f35dce7b01bafd326d1f004fac"
+    }
+  ],
+  "design_revision": "9824ee231f67b694234e192084fadfdfcacd3b4e5c35937e2730753098c8d507",
+  "authenticated_design_decision": "65ab1a0a-66b3-4397-8696-b84a28d689e1",
+  "authoritative_database": "C:/Projects/agrosphere/agrosphere-orchestrator/aeo.db",
+  "migration": "0007",
+  "remote_writes_executed": false,
+  "aeo6_started": false
+}

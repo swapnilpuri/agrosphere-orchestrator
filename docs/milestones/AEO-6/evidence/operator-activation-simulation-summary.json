@@ -1,0 +1,18 @@
+{
+  "simulation": true,
+  "repositories": 3,
+  "real_codex": false,
+  "live_github": false,
+  "formal_completion": false,
+  "mock_transport_calls": 4,
+  "failed_quality_then_repaired": true,
+  "validation": {
+    "valid": true,
+    "run_id": "e8cb2db1-bed1-477a-bb66-5e89fbeb3612",
+    "state": "REPORTED",
+    "formally_completed": false
+  },
+  "provider_pushes": 3,
+  "provider_prs": 3,
+  "exit_code": 0
+}

@@ -1,0 +1,85 @@
+{
+  "files": [
+    {
+      "file": "src/agrosphere_orchestrator/delivery_models.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/delivery_store.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/delivery.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/delivery_cli.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/github_provider.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/config/settings.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/cli.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/execution_workspace.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "migrations/versions/0007_delivery.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "migrations/env.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "scripts/validate.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "tests/test_delivery.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "tests/test_github.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "tests/test_delivery_cli.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "tests/test_delivery_upgrade.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_models.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_policy.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_agents.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "src/agrosphere_orchestrator/design_validation.py",
+      "matches_accepted_sha256": true
+    },
+    {
+      "file": "tests/test_design.py",
+      "matches_accepted_sha256": true
+    }
+  ],
+  "all_match": true
+}

@@ -1,0 +1,37 @@
+# Current supported CLI and proposed autonomous operations
+
+Run from C:/Projects/agrosphere/agrosphere-orchestrator in an interactive Windows PowerShell terminal. These are existing commands verified from cli.py. Do not paste Windows credentials into chat or scripts.
+
+Review the registered scope:
+
+~~~powershell
+.\.venv\Scripts\python.exe -m agrosphere_orchestrator.cli milestone docs AEO-6
+~~~
+
+The next operator decision is requirements approval for scope 48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143:
+
+~~~powershell
+.\.venv\Scripts\python.exe -m agrosphere_orchestrator.cli milestone approve-requirements AEO-6
+~~~
+
+The existing verifier displays the exact decision phrase and authenticates the human account. A design approver is already configured; no allowlist or credential changes are requested. Registration and chat messages do not approve this scope.
+
+After approval is recorded, preparation can resume using the existing workflow:
+
+~~~powershell
+$env:AEO_REPOSITORY_MANIFEST = 'docs/milestones/AEO-6/design-repositories.json'
+$env:AEO_PLANTUML_JAR = (Resolve-Path '.aeo/tools/plantuml-1.2026.9.jar').Path
+.\.venv\Scripts\python.exe -m agrosphere_orchestrator.cli milestone design AEO-6
+.\.venv\Scripts\python.exe -m agrosphere_orchestrator.cli milestone validate-design AEO-6
+.\.venv\Scripts\python.exe -m agrosphere_orchestrator.cli milestone docs AEO-6
+~~~
+
+The manifest override is process-local and uses the same orchestrator-only internal documentation convention as AEO-5. Default config/repositories.yaml does not declare the orchestrator itself; do not weaken ownership checks or edit .env to work around this. The PlantUML jar is already installed; default Settings does not configure its path. Neither override enables model execution or remote writes.
+
+Only after successful generation/validation and review of the exact resulting revision is the later design decision applicable:
+
+~~~powershell
+.\.venv\Scripts\python.exe -m agrosphere_orchestrator.cli milestone approve-design AEO-6
+~~~
+
+Do not run approve-design before a validated revision exists. After this separate approval, the implementation stage may proceed and must verify the approved revision before edits. No autonomous CLI is implemented at this checkpoint. Safe dry-run, simulation and approved-local command patterns will be verified and documented after the design gate; presenting them now as working commands would be inaccurate.

@@ -1,0 +1,28 @@
+[
+  {
+    "operation": "initial-requirements-registration",
+    "exit_code": 1,
+    "result": "Default manifest does not declare agrosphere-orchestrator. No requirements written."
+  },
+  {
+    "operation": "internal-requirements-registration",
+    "exit_code": 0,
+    "scope_id": "48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143",
+    "result": "Existing internal-orchestrator documentation scope and orchestrator-only manifest; no approval granted."
+  },
+  {
+    "operation": "initial-diagram-render",
+    "exit_code": 1,
+    "result": "Settings plantuml_jar unset; all nine correctly reported unavailable."
+  },
+  {
+    "operation": "configured-local-diagram-render",
+    "exit_code": 0,
+    "result": "Process-local installed pinned jar override; nine rendered successfully."
+  },
+  {
+    "operation": "checkpoint-verification",
+    "exit_code": 0,
+    "result": "28 context hashes verified; no decisions/revision; existing generation gate rejects missing authenticated approval."
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "verified_at": "2026-10-25T18:10:18.942490+00:00",
+  "expected_scope": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+  "current_scope_matches": true,
+  "stored_scope_hash_matches": true,
+  "requirements_approval": {
+    "id": "f898cccc-e533-4257-a48c-2e8803bc0ae4",
+    "decision": "approved",
+    "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+    "subject": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+    "payload_scope_matches": true,
+    "created_at": "2026-10-25T18:08:18.932104+00:00",
+    "actor_currently_authorized": true,
+    "audit_event_ids": [
+      12
+    ]
+  },
+  "stored_context_valid": true,
+  "context_error": null,
+  "requirements_file_matches_registered_input": true,
+  "review_package_changed_files": [],
+  "state": "DISCOVERED",
+  "active_revision_id": null,
+  "design_revision_count": 0,
+  "design_decision_count": 0,
+  "validation_id": null,
+  "implementation_authorized": false,
+  "blocker": "No design revision, design validation or authenticated design approval exists. Requirements approval alone does not satisfy the AEO-1C implementation gate.",
+  "authorization_assurance": "Normal AEO-1C decision handler authenticates the Windows identity and enforces the allowlist before persistence. Current membership and matching audit event verified; no separate historical allowlist snapshot exists."
+}

@@ -1,0 +1,41 @@
+{
+  "executed_at": "2026-10-25T17:24:32.124668+00:00",
+  "diagrams": [
+    {
+      "source": "docs\\aeo-3\\diagrams\\agent-handoff.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-3\\diagrams\\approved-execution.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-3\\diagrams\\components.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-3\\diagrams\\failure-repair.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-3\\diagrams\\lifecycle.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-3\\diagrams\\recovery.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-3\\diagrams\\scheduling.puml",
+      "rendered": true,
+      "findings": []
+    }
+  ],
+  "approval_granted": false
+}

@@ -1,0 +1,28 @@
+# Actual AEO-6A baseline verification
+
+Pytest: 275 tests, 0 failures, 0 errors, 0 skipped, 503.825 seconds. All 275 accepted AEO-5 IDs preserved: True. Original 163 IDs preserved: True. No new AEO-6 controller tests exist before approval.
+
+Validator exit: 0. Tests and migrations used a disposable SQLite backup and temporary Git repositories. Exact stdout/stderr and argv are retained in evidence/baseline-validation/commands.json; runner.json and pytest.xml accompany it.
+
+| Executed command arguments | Exit code |
+|---|---|
+| -m pytest -v --junitxml=docs/validation/pytest.xml | 0 |
+| -m ruff check . | 0 |
+| -m ruff format --check . | 0 |
+| -m pip check | 0 |
+| -m alembic upgrade head | 0 |
+| -m alembic check | 0 |
+| -m agrosphere_orchestrator.cli project-status | 0 |
+| -m agrosphere_orchestrator.cli repository-inspect | 0 |
+| -m agrosphere_orchestrator.cli milestone-validate examples/aeo-1.yaml | 0 |
+| -m agrosphere_orchestrator.cli milestone design-status AEO-1C | 0 |
+| scripts/verify_design_tools.py | 0 |
+| -m agrosphere_orchestrator.cli agents list | 0 |
+| -m agrosphere_orchestrator.cli agents describe developer | 0 |
+| scripts/verify_aeo2_docs.py | 0 |
+| scripts/verify_aeo3_docs.py | 0 |
+| scripts/verify_aeo4_docs.py | 0 |
+| -m agrosphere_orchestrator.cli quality policies | 0 |
+| -m pip freeze | 0 |
+
+Nine draft diagrams passed existing LocalPlantUML safety, syntax and rendering checks. Initial missing jar configuration and default internal-manifest mismatch were resolved with process-local overrides; failed attempts remain in evidence/preparation-attempts.json. Checkpoint verification confirms 28 context hashes, zero AEO-6 decisions and an enforced requirements approval gate. Formal design validation cannot run until requirements approval permits revision generation. No application test/build, real Codex, AEO-6 end-to-end simulation or live GitHub validation was executed.

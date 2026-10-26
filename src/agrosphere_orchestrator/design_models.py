@@ -67,6 +67,9 @@ class DiagramSpec(StrictModel):
     nodes: list[DiagramNode] = Field(min_length=1)
     edges: list[DiagramEdge] = Field(default_factory=list)
     rationale: str = Field(min_length=1)
+    # Exact approved source takes precedence over the graph template. It is rendered and
+    # checked by the same safe local renderer, and included in the requirements digest.
+    approved_source: str | None = Field(default=None, min_length=1, max_length=200_000)
 
     @model_validator(mode="after")
     def graph(self) -> Self:
@@ -87,6 +90,7 @@ class ContractProposal(StrictModel):
 
 
 class DesignInput(StrictModel):
+    documentation_scope: Literal["application", "internal-orchestrator"] = "application"
     plan: MilestoneSpec
     requirements: list[Requirement] = Field(min_length=1)
     context: list[ContextReference] = Field(min_length=1)
@@ -98,6 +102,14 @@ class DesignInput(StrictModel):
 
     @model_validator(mode="after")
     def references(self) -> Self:
+        if self.documentation_scope == "internal-orchestrator":
+            owners = {t.repository for t in self.plan.tasks}
+            owners |= {c.repository for c in self.context}
+            owners |= {d.repository for d in self.diagrams}
+            if owners != {"agrosphere-orchestrator"} or self.contract_impact or self.contracts:
+                raise ValueError(
+                    "Internal documentation requires orchestrator-only scope without contracts"
+                )
         ids = {r.id for r in self.requirements}
         if len(ids) != len(self.requirements):
             raise ValueError("duplicate requirement IDs")

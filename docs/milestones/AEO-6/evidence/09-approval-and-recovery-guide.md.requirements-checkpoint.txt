@@ -1,0 +1,11 @@
+# AEO-6 preparation checkpoint and continuation
+
+Checkpoint: AWAITING_REQUIREMENTS_APPROVAL. This is a review-package checkpoint backed by the existing DesignCase/DesignScope, not an invented autonomous run record. The controller does not exist yet. Runtime design state remains DISCOVERED until generation after requirements approval. Scope: 48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143.
+
+Review 00-original-specification.md, the seven preparation documents, nine diagrams and requirements-input.json. The immutable input binds 12 requirements, six proposed dependency-aware implementation tasks, complete existing-template narratives, 28 context hashes and nine exact PlantUML sources. All changes are internal to the orchestrator. The task plan is registered documentation input, not permission to execute source-writing tasks.
+
+The explicit user instruction says: "If authenticated requirements or design approval is required, stop at that precise approval checkpoint." Existing design.generate_design enforces requirements approval before its first generation step. Stop here; use the exact command in 08-cli-operation-guide.md. Do not emulate the verifier, manufacture a decision or substitute a different scope. No skill instruction caused this pause.
+
+On continuation read current Settings and milestone docs again; verify current scope, latest authenticated requirements decision and its authorized identity. If the exact scope is already approved do not request it again. Generate and validate with existing services using the internal manifest and installed renderer. Then stop at the independent design approval checkpoint. Implementation begins only after that validated revision is approved. Never restore an old requirements-input file or change a hashed document to avoid reapproval.
+
+Keep AEO-5 runtime IMPLEMENTING. Its missing local quality/runtime delivery evidence and privileged publication grants are separate unfinished work. AEO-6 preparation neither advances its state nor authorizes live publication. Keep real application roots unchanged; 3B is a review candidate, not an authorized development instruction.

@@ -1,0 +1,648 @@
+{
+  "documentation_scope": "internal-orchestrator",
+  "plan": {
+    "id": "AEO-6",
+    "project": "agrosphere",
+    "title": "Autonomous Milestone Execution and End-to-End Engineering Orchestration",
+    "tasks": [
+      {
+        "id": "controller",
+        "title": "Deterministic controller and additive run persistence",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [],
+        "acceptance_criteria": [
+          "Persist intent before dispatch; unknown/conflicting state blocks; no second scheduler, GitHub adapter or process launcher.",
+          "Additive migration preserves existing data/audit; reconcile all 16 interruption cases without blindly replaying uncertain execution.",
+          "Reserve before parallel dispatch; resume retains counts; unknown cost stays unknown and unenforceable monetary caps block; exhaustion pauses durably."
+        ]
+      },
+      {
+        "id": "lifecycle",
+        "title": "Discovery, design-first generation and exact approval continuation",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "controller"
+        ],
+        "acceptance_criteria": [
+          "Reject fixture roots, duplicate IDs, unknown dependencies and unverified completion; never infer numeric advancement.",
+          "Register immutable scope/revisions; correct repository ownership; requirements and validated design approvals precede implementation.",
+          "Reuse valid unchanged approvals; missing, rejected, expired, revoked or changed authority blocks; no direct approval inserts or self-approval."
+        ]
+      },
+      {
+        "id": "agents",
+        "title": "Existing scheduler/Codex integration and budget reservations",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "lifecycle"
+        ],
+        "acceptance_criteria": [
+          "Existing task IDs/results/claims/leases remain authoritative; concurrent work obeys dependency and repository isolation.",
+          "Reserve before parallel dispatch; resume retains counts; unknown cost stays unknown and unenforceable monetary caps block; exhaustion pauses durably."
+        ]
+      },
+      {
+        "id": "quality-delivery",
+        "title": "Independent quality, bounded remediation and AEO-5 integration",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "agents"
+        ],
+        "acceptance_criteria": [
+          "AEO-4 QA/security/acceptance gates must pass; at most configured repairs (default three); design changes reapprove.",
+          "Remote writes default disabled; exact grants required; no duplicate PR/force push/protected writes/merge/deploy; formal completion separately verified."
+        ]
+      },
+      {
+        "id": "cli-report",
+        "title": "Autonomous CLI, lifecycle reports and operational guides",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "quality-delivery"
+        ],
+        "acceptance_criteria": [
+          "Default read-only dry-run; simulation isolated; local mode is not a grant; explicit run/milestone and JSON/Markdown reports.",
+          "Separate unit/integration/simulation/real Codex/live GitHub/unavailable/pending evidence and next permitted action."
+        ]
+      },
+      {
+        "id": "verification",
+        "title": "Three-repository simulation, all recovery cases, regression and acceptance",
+        "repository": "agrosphere-orchestrator",
+        "role": "qa-engineer",
+        "operation": "validate",
+        "depends_on": [
+          "cli-report"
+        ],
+        "acceptance_criteria": [
+          "Additive migration preserves existing data/audit; reconcile all 16 interruption cases without blindly replaying uncertain execution.",
+          "All 275 baseline tests and original IDs preserved; three-repository fixture end-to-end, negative security and Windows recovery tests; no automatic application launch."
+        ]
+      }
+    ]
+  },
+  "requirements": [
+    {
+      "id": "AEO6-DISCOVERY",
+      "text": "Reconcile actual confirmed repositories, roadmap and persisted history before eligibility.",
+      "acceptance_criteria": [
+        "Reject fixture roots, duplicate IDs, unknown dependencies and unverified completion; never infer numeric advancement."
+      ]
+    },
+    {
+      "id": "AEO6-CONTROLLER",
+      "text": "Implement deterministic bounded autonomous application controller delegating existing services.",
+      "acceptance_criteria": [
+        "Persist intent before dispatch; unknown/conflicting state blocks; no second scheduler, GitHub adapter or process launcher."
+      ]
+    },
+    {
+      "id": "AEO6-DESIGN",
+      "text": "Automatically prepare complete business/technical milestone narratives and appropriate diagrams.",
+      "acceptance_criteria": [
+        "Register immutable scope/revisions; correct repository ownership; requirements and validated design approvals precede implementation."
+      ]
+    },
+    {
+      "id": "AEO6-APPROVAL",
+      "text": "Pause and resume exact authenticated approval checkpoints without redundant decisions.",
+      "acceptance_criteria": [
+        "Reuse valid unchanged approvals; missing, rejected, expired, revoked or changed authority blocks; no direct approval inserts or self-approval."
+      ]
+    },
+    {
+      "id": "AEO6-DAG",
+      "text": "Integrate existing role registry, DAG scheduler, Codex context and structured handoffs.",
+      "acceptance_criteria": [
+        "Existing task IDs/results/claims/leases remain authoritative; concurrent work obeys dependency and repository isolation."
+      ]
+    },
+    {
+      "id": "AEO6-QUALITY",
+      "text": "Independently verify implementation and perform bounded policy-permitted remediation.",
+      "acceptance_criteria": [
+        "AEO-4 QA/security/acceptance gates must pass; at most configured repairs (default three); design changes reapprove."
+      ]
+    },
+    {
+      "id": "AEO6-DELIVERY",
+      "text": "Integrate AEO-5 manifest, authorized publication, CI/review observation and evidence.",
+      "acceptance_criteria": [
+        "Remote writes default disabled; exact grants required; no duplicate PR/force push/protected writes/merge/deploy; formal completion separately verified."
+      ]
+    },
+    {
+      "id": "AEO6-DURABLE",
+      "text": "Persist run, operation, approval, artifact, repository, child and recovery references transactionally.",
+      "acceptance_criteria": [
+        "Additive migration preserves existing data/audit; reconcile all 16 interruption cases without blindly replaying uncertain execution."
+      ]
+    },
+    {
+      "id": "AEO6-BUDGET",
+      "text": "Enforce centralized hard execution, concurrency, duration, repair, milestone and provider limits.",
+      "acceptance_criteria": [
+        "Reserve before parallel dispatch; resume retains counts; unknown cost stays unknown and unenforceable monetary caps block; exhaustion pauses durably."
+      ]
+    },
+    {
+      "id": "AEO6-CLI",
+      "text": "Provide autonomous plan/start/status/pause/resume/recover/report/validate through existing Typer conventions.",
+      "acceptance_criteria": [
+        "Default read-only dry-run; simulation isolated; local mode is not a grant; explicit run/milestone and JSON/Markdown reports."
+      ]
+    },
+    {
+      "id": "AEO6-EVIDENCE",
+      "text": "Generate traceable milestone/run reports and acceptance inventory.",
+      "acceptance_criteria": [
+        "Separate unit/integration/simulation/real Codex/live GitHub/unavailable/pending evidence and next permitted action."
+      ]
+    },
+    {
+      "id": "AEO6-SAFETY",
+      "text": "Preserve AEO-1 through AEO-5 and real application state during implementation/testing.",
+      "acceptance_criteria": [
+        "All 275 baseline tests and original IDs preserved; three-repository fixture end-to-end, negative security and Windows recovery tests; no automatic application launch."
+      ]
+    }
+  ],
+  "context": [
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/design.py",
+      "sha256": "1330049444195c4f2ca64cc7f0f28e76a386251200ffb05104f374ddcdfe5900",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/design_models.py",
+      "sha256": "3adb56172c5692902c4631437fc72e1851a026595b26e91e9ac15ff441c619f4",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/design_policy.py",
+      "sha256": "c404512136f75955cdb8d856861bbd2299b76c053f6d1301e7d13b9b785bca91",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/orchestration.py",
+      "sha256": "b68cd8be78948cb6d34305d9b14f12bae43ee1fbf2a6aac6b44fde62cabb13c7",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/orchestration_store.py",
+      "sha256": "e7ad91941648bb7d805db0bc73b98613dfc6d410bcad09a72063ba200c5d5f06",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/quality.py",
+      "sha256": "0ca64bfa4952654f10904a227ccf6b5b3dc570f69bfd242528a92e2b3194dd53",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/delivery.py",
+      "sha256": "c8ce75a43c69ad91eb0343c78821f01d7da22e32a578ff09459d77a6c46635a2",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/recovery.py",
+      "sha256": "e36d107b314190a33d5a85f3f721d91c5c3efe7636b4cb51de0c2e401d2d54d2",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/recovery_discovery.py",
+      "sha256": "fc26cf7771581cc18a624f34fe193e75ab86ea063d1ea3a22f91263621e611b4",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/config/settings.py",
+      "sha256": "a0e438c4053e33eab027bf40a0548b50b830fb7a2dc898bb695bbf208f6cb7a4",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/cli.py",
+      "sha256": "c76fbb562242b318adf5d08535a8768d5a4b4c8e1f36569cdc314e96a46a624b",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/00-original-specification.md",
+      "sha256": "2d984a562d990287f9f5c1d5d4bcf9296eac6de50faa37a8be208fc32e824743",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/01-existing-capability-assessment.md",
+      "sha256": "002a182aee5c5d3f29c06e1488228f937e923a25b2d31f44f8b21b0fe565944d",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/02-architecture.md",
+      "sha256": "8e450006c5b1d77500322274d8542c614390444e702a4f57160a4b030c43028f",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/03-autonomous-lifecycle.md",
+      "sha256": "a622724937e81d5344f914139183af8fe2929b3fc300ade8b8a6e9e83503ff30",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/04-state-and-recovery-model.md",
+      "sha256": "4158e9488e88230f37926ccdd1dd3aca0b404458cfaef0883d356e80a3860687",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/05-governance-and-authorization.md",
+      "sha256": "09c03747c81662d39cc7cc5de3f9fb910bc5ff57fc48d601730664935c6cf58d",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/06-implementation-plan.md",
+      "sha256": "6ceb4a66e50f52c0a42b2f401ad0289b03df5fd258bde49d3e08e13fe14efe53",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/07-acceptance-criteria.md",
+      "sha256": "58833528b916e7890c25abbfa561b2b73ea0a7d4d5d034c2764ef30b824c90db",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/01-components.puml",
+      "sha256": "24e0202af3c852a53064fbc46ba2bb86738ea39cbd9bbf2974a6bd02a0bb14ff",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/02-lifecycle.puml",
+      "sha256": "20ef664ab5a3178385be26ac1d39699f2c2664e0712d6b4362aa3e6fa41698af",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/03-multi-agent-sequence.puml",
+      "sha256": "0df808e28b50a95316c5fb6ec823056b93f20eefd227f2abf8ad82cb3a7fb72a",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/04-human-approval.puml",
+      "sha256": "5097e2b138b6b135c3d597579b0af3e11a2e98eebead170c33a68db934a5e2a0",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/05-durable-state.puml",
+      "sha256": "31685e6970403d09daaca79242f15f18567e16ff7c936eb93c951cf7a874aaa8",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/06-interruption-recovery.puml",
+      "sha256": "0f3b7dacaab0591372c1bf452e1f1ca98c2d120cfb4181de71786dae976f5af6",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/07-repository-boundaries.puml",
+      "sha256": "ec8a4c3814ef73694ba1572d47133e6312f9fa28b788859f9d1e75617e8c4292",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/08-end-to-end.puml",
+      "sha256": "7e74b11d5fd2ba5e96a2bcb44b7416802040deb6258cb9a83f39987df1a4a465",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/09-cross-repository-dependencies.puml",
+      "sha256": "6280903dfeace28172cec2508da1dfecc427783f0dfc4a25a64d2e164a5a5444",
+      "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+    }
+  ],
+  "narratives": {
+    "business": {
+      "Business context": "Connect existing AgroSphere engineering services into a bounded, resumable, policy-governed milestone workflow.",
+      "Problem statement": "Operators currently connect independent recovery, design, scheduler, quality and delivery stages manually.",
+      "Objectives": "Implement AEO-6 completely after formal requirements and design approval. Preserve all existing governance and actual evidence.",
+      "User stories": "An operator reviews a proposed milestone explanation, authenticates precise decisions, resumes the durable run and inspects verified outcomes.",
+      "Functional requirements": "AEO6-DISCOVERY: Reconcile actual confirmed repositories, roadmap and persisted history before eligibility.\nAEO6-CONTROLLER: Implement deterministic bounded autonomous application controller delegating existing services.\nAEO6-DESIGN: Automatically prepare complete business/technical milestone narratives and appropriate diagrams.\nAEO6-APPROVAL: Pause and resume exact authenticated approval checkpoints without redundant decisions.\nAEO6-DAG: Integrate existing role registry, DAG scheduler, Codex context and structured handoffs.\nAEO6-QUALITY: Independently verify implementation and perform bounded policy-permitted remediation.\nAEO6-DELIVERY: Integrate AEO-5 manifest, authorized publication, CI/review observation and evidence.\nAEO6-DURABLE: Persist run, operation, approval, artifact, repository, child and recovery references transactionally.\nAEO6-BUDGET: Enforce centralized hard execution, concurrency, duration, repair, milestone and provider limits.\nAEO6-CLI: Provide autonomous plan/start/status/pause/resume/recover/report/validate through existing Typer conventions.\nAEO6-EVIDENCE: Generate traceable milestone/run reports and acceptance inventory.\nAEO6-SAFETY: Preserve AEO-1 through AEO-5 and real application state during implementation/testing.",
+      "Nonfunctional requirements": "Deterministic transitions, transactional state/audit, Windows compatibility, strict budgets, no new service infrastructure, isolated tests and secret-safe reporting.",
+      "Acceptance criteria": "# AEO-6 acceptance criteria and test plan\n\nThis is a planned verification contract, not passed acceptance.\n\n1. Preserve every existing AEO-1 through AEO-5 test ID (275-test accepted baseline, including original 163). Require full standard validation with actual exit codes; migration tests preserve all populated 0007 tables and audit history.\n2. Demonstrate implemented deterministic controller and real repository/history reconciliation; no milestone inferred complete from directory/document existence. Recovered 3A/3B remains a review candidate until dependencies, acceptance and authority are proved.\n3. Generate full readable explanations and nine appropriate design views using existing immutable revision workflow. Missing requirements/design approval blocks; valid unchanged approval resumes without new prompts; changed content/identity/policy blocks.\n4. Existing scheduler and Codex adapter execute structured task outputs with existing repository/worktree isolation. Independent tasks can overlap only within DAG, agent/repository limits and exact grants. Verify conflicts, duplicate resume calls and uncertain child outcomes.\n5. Independent AEO-4 QA/security/acceptance evidence gates task and delivery progress. Fail once, perform one permitted remediation, independently revalidate. Default max three repairs; write recovery still needs exact authorization; quality policy never weakened.\n6. Reuse AEO-5 manifests/provider/persistence. Require disabled remote writes by default, exact publication scope, current-SHA checks and genuine human review. Tests prohibit force push, protected writes, duplicate PRs, automatic merge/deploy and agent self-approval.\n7. Enforce all hard budgets before dispatch, including parallel agents, retries, polling and resumed runs. Unknown token/cost values remain unknown. Exhaustion persists a resumable paused state and clear reason.\n8. Inject all 16 interruption scenarios listed in 04-state-and-recovery-model.md. Reconcile actual child/Git/provider state before replay; retain prior/partial artifacts, claims, history and counts.\n9. Use at least three independent temporary Git repositories and a temporary database for full simulation: discovery -> draft -> validate -> approval checkpoint -> fixture-authenticated approval -> resume -> DAG -> mocked agents -> failed QA -> one repair -> pass -> delivery manifest -> publication gate -> mocked publication -> CI/review reconciliation -> report -> restart. Assert formally_completed remains false without separate policy-supported evidence.\n10. Default plan/status and simulation preserve real application Git status, HEAD, worktrees and files. No real application milestone starts during AEO-6 verification. No live Codex, GitHub, model quota or production-readiness claim is inferred from mocks.\n11. Reports expose run/milestone/state, stages, active agents, dependencies/checkpoints, artifacts/hashes, approvals, repo/commit identities, quality/security/delivery, recovery, usage/unknowns and next permitted action. Final acceptance contains all 15 requested inventory/evidence fields.\n12. Check Windows paths, path-length failures, PowerShell CLI invocation and all existing error/isolation safeguards. Produce JSON and Markdown evidence with actual return codes.\n\nRequired new suites after approval: test_autonomous (transition/selection/budget), test_autonomous_integration (existing-service wiring), test_autonomous_recovery (16 interruption boundaries), test_autonomous_security (negative authority/mutation cases), test_autonomous_cli (read-only/default modes), test_autonomous_upgrade and isolated three-repository end-to-end simulation. Until run, each is NOT TESTED.\n"
+    },
+    "architecture": {
+      "Architecture overview": "# AEO-6 architecture proposal\n\n## Business context and objective\n\nAgroSphere engineering currently requires an operator to connect recovery, approved designs, execution, independent quality and delivery. The controller will connect those services in bounded, auditable runs while retaining the readable milestone explanations and diagrams used during manual development. Implementation is internal to agrosphere-orchestrator. No application capability, external API, event schema, UI or infrastructure service is added.\n\n## Components and dependency direction\n\nAutonomousMilestoneController is an application service in proposed autonomous.py. autonomous_models.py contains strict run modes, transition/checkpoint models, operation identities and limits; autonomous_store.py contains durable projections and append-only events. autonomous_cli.py exposes the Typer group. Names are proposed until approved. The controller depends on existing recovery, design, orchestration, quality and delivery services; those services do not depend on controller decisions for authorization. Use injected service boundaries for tests; production uses the existing Codex/GitHub implementations.\n\nSelection is a deterministic function of approved roadmap/dependencies, recovered evidence and persisted task/design/delivery state. The existing recovery.next_milestone numeric heuristic may suggest a review candidate; it cannot authorize work. Unknown or conflicting evidence blocks. Explicit milestone selection does not bypass eligibility.\n\n## Operation protocol\n\nBefore external I/O, atomically claim a run operation, reserve hard budgets, persist exact input identities and append audit evidence. Release the database transaction for service calls. Persist result and evidence references in another transaction only after independent observation. Unique run/step/scope operation identities prevent duplicate dispatch. Concurrent resume calls serialize through the existing transaction/lease mechanism. Source services retain their existing task and delivery intent records.\n\nA completed child operation with an interrupted parent result write is adopted only after verifying child identity and actual outcomes. Missing or uncertain outcomes enter RECOVERY_REQUIRED; they are never silently replayed. No network or Codex process runs while holding a SQLite write transaction.\n\n## Data and artifact ownership\n\nProposed additive migration 0008 adds AutonomousRun, AutonomousOperation and AutonomousEvent; reuse existing Base/engine and audit in the configured database. A run references existing milestone/design/task/execution/quality/delivery identifiers. Store small manifests, hashes, limits, reservations, usage and transition evidence; large artifacts remain on disk. Preserve existing tables, audit history and independent service records. Upgrade tests populate 0007 and prove preservation.\n\nInternal AEO-6 design uses the existing internal-orchestrator scope with only orchestrator-owned artifacts. Future application cross-service narratives/diagrams belong in discovered agrosphere-architecture, contracts in agrosphere-contracts, and service designs in the relevant service repository according to existing design_policy. Revisions include hashes and never overwrite approved artifacts.\n\n## Milestone explanation generation\n\nBuild complete business context, objectives, scope/features, functional/nonfunctional requirements, architectural dependencies, proposed components/interactions, database and API/event impact, security, testing, phases, risks/assumptions and acceptance criteria into typed approved narratives. Persist C4 and PlantUML sources/rendered outputs with requirement links. Missing authoritative requirements cause a proposed review scope, never invented business acceptance. Use the existing documentation-role adapter, renderer and reviewer. No source implementation before requirements and validated design gates pass.\n\n## Architectural decisions\n\nADR-6-01: one deterministic application controller; existing scheduler remains sole task dispatcher.\nADR-6-02: same SQLite database, additive projections, transactional audit and durable child references; no queue/daemon/web application.\nADR-6-03: explicit CLI continuation after approvals; no continuous polling infrastructure.\nADR-6-04: default dry-run, one milestone, fail-closed governance; local mode alone grants nothing.\nADR-6-05: simulated services run in temporary independent repositories/databases; never promote simulations to live evidence.\n\n## Risks and trade-offs\n\nExisting interfaces cover most services but not an atomic run-wide budget across scheduler batches. Add a narrow reservation seam under the approved design, retaining scheduler semantics and tests. Exact model cost may be unknown; unknown usage is reported and a configured monetary cap that cannot be enforced blocks execution. Local administrators remain trusted; hash manifests are integrity evidence, not tamper-proof remote storage.\n",
+      "Impacted microservices": "Only agrosphere-orchestrator source/schema/CLI changes; application repositories remain read-only during AEO-6 development.",
+      "DDD boundaries": "Run coordination references existing design/task/quality/delivery domains without duplicating their authority.",
+      "APIs and event interactions": "Internal Python application services and Typer commands. No new application API/event contract.",
+      "Database changes": "# Durable state and recovery model proposal\n\nRun projection: ID, milestone, mode, workflow step, state, approved scope/revision, current operation, checkpoint subject/category, limits and reservations, usage, child execution/plan/delivery IDs, repository/base/head identities, artifact hashes, quality references, retries, failure classification, next permitted transition and timestamps. Append an immutable event and audit record for every projection mutation in the same transaction.\n\nRun states: PLANNED -> RECONCILING -> PREPARING_DESIGN -> AWAITING_APPROVAL -> PLANNING_TASKS -> EXECUTING -> VERIFYING -> PREPARING_DELIVERY -> OBSERVING_DELIVERY -> REPORTED. PAUSED, BLOCKED and RECOVERY_REQUIRED are explicit resumable branches. REPORTED is an outcome, not formal milestone completion. Checkpoints name requirements/design/plan/execution/security/publication/recovery authority separately.\n\nOperation states: INTENDED -> DISPATCHED -> OBSERVED -> COMMITTED; an interrupted DISPATCHED becomes UNCERTAIN pending child reconciliation. Atomically reserve maximum Codex invocations/attempts/task slots before dispatch, including concurrent batches and remediation. No post-hoc counter may permit an overrun. Keep reserved capacity for ambiguous operations until reconciled. A paused run retains cumulative counts; resume cannot reset its budget. Monotonic runtime enforcement plus persisted UTC elapsed accounting bounds execution across restarts. Child subprocess deadlines must fit the remaining run deadline; delivery polling is separately capped.\n\n| Crash or restart boundary | Required reconciliation before continuation |\n|---|---|\n| Discovery | Repeat read-only observation; retain prior snapshot |\n| Documentation generated | Compare immutable artifacts and stored child generation outcome; preserve partial files |\n| Before design approval | Re-present exact stored subject without starting tasks |\n| After approval | Verify latest decision, authorized identity and unchanged scope before adopting |\n| Task decomposition | Adopt exact PlanRevision if it exists; otherwise resolve uncertain operation |\n| During agent execution | Existing scheduler/execution recovery owns task claims; do not relaunch |\n| Agent finished before parent persistence | Inspect durable child result, independently verify artifacts and adopt once |\n| Parallel scheduling | Reconcile each claim/lease and reservation; block uncertain writers |\n| Quality checks | Reconcile existing evidence; rerun only bounded read-only validation if safe |\n| Remediation | Preserve attempt count, changed artifacts, design gate and exact write authority |\n| Before publication | Revalidate all AEO-5 preconditions; no remote write without grant |\n| Remote operation succeeded, response lost | delivery.reconcile observes exact PR/branch; no blind retry |\n| PR/CI changed externally | Observe exact current SHA/policy/reviews; invalidate stale readiness |\n| Approved artifacts modified | Existing design gate blocks; create revision and reapprove |\n| Approval expired/revoked | Block the exact affected action; retain completed history |\n| Repository/worktree conflict | Existing locks/isolation reject dispatch; require safe recovery decision |\n\nUse atomic file writing for reports and retain content-addressed historical reports. Never overwrite partial approved designs or release uncertain writer ownership merely because a lease expired.\n",
+      "Security considerations": "# Governance and authorization proposal\n\nThe user explicitly requires AEO-1C requirements and technical-design approval. Existing design.generate_design calls require_approval for the exact scope before generation. design.decide uses WindowsConsoleHumanVerifier; chat instructions cannot substitute for its authenticated decision. Therefore the first checkpoint for this request is requirements approval. Draft documentation, diagram preparation, registration and baseline tests are allowed before that checkpoint. Production controller implementation and schema changes wait for design approval.\n\nMaintain separate authorities: registered requirements; validated immutable technical design; scheduling plan; exact local execution requests; activated AEO-4 quality/security policy and decisions; action-specific AEO-5 publication grants; human recovery decisions; explicit milestone advancement. An approval for AEO-5 is never approval for AEO-6. A selected mode, model response or role label grants nothing.\n\nAt every boundary finish authorized preparation, persist its exact review subject, produce the existing CLI decision command, and stop only dependent execution. Resume re-evaluates existing decisions, allowlists and artifact hashes. Do not repeatedly ask when the latest decision is valid for the same scope. Changed artifacts/context or rejected/revoked/expired authority fail closed. Never insert decisions directly into SQLite, add an approver automatically, emulate a human verifier against runtime, or consume an unrelated grant.\n\nNo automatic remote-write enablement, protected branch modification, force push, duplicate PR, merge, deployment or application milestone launch. Original dirty worktrees remain untouched. Simulated approvals exist only in fixture databases using established authenticated fixture mechanisms. Do not log passwords, tokens, environment files or credential material. Ordinary plans/status never mutate application repositories.\n",
+      "Technology decisions": "Python 3.12+, existing Pydantic v2, SQLAlchemy/Alembic, SQLite and Typer; safe local PlantUML; existing injected adapters.",
+      "Architectural trade-offs": "Additional small durable projections in the existing database; narrow scheduler budget hook if needed; no second scheduler or continuous daemon.",
+      "Risks and assumptions": "Raw recursive discovery includes test fixtures; confirmed manifest identities and roots must constrain selection. Unknown model cost cannot establish monetary affordability. AEO-5 runtime delivery remains pending.",
+      "Architectural decisions": "# AEO-6 architecture proposal\n\n## Business context and objective\n\nAgroSphere engineering currently requires an operator to connect recovery, approved designs, execution, independent quality and delivery. The controller will connect those services in bounded, auditable runs while retaining the readable milestone explanations and diagrams used during manual development. Implementation is internal to agrosphere-orchestrator. No application capability, external API, event schema, UI or infrastructure service is added.\n\n## Components and dependency direction\n\nAutonomousMilestoneController is an application service in proposed autonomous.py. autonomous_models.py contains strict run modes, transition/checkpoint models, operation identities and limits; autonomous_store.py contains durable projections and append-only events. autonomous_cli.py exposes the Typer group. Names are proposed until approved. The controller depends on existing recovery, design, orchestration, quality and delivery services; those services do not depend on controller decisions for authorization. Use injected service boundaries for tests; production uses the existing Codex/GitHub implementations.\n\nSelection is a deterministic function of approved roadmap/dependencies, recovered evidence and persisted task/design/delivery state. The existing recovery.next_milestone numeric heuristic may suggest a review candidate; it cannot authorize work. Unknown or conflicting evidence blocks. Explicit milestone selection does not bypass eligibility.\n\n## Operation protocol\n\nBefore external I/O, atomically claim a run operation, reserve hard budgets, persist exact input identities and append audit evidence. Release the database transaction for service calls. Persist result and evidence references in another transaction only after independent observation. Unique run/step/scope operation identities prevent duplicate dispatch. Concurrent resume calls serialize through the existing transaction/lease mechanism. Source services retain their existing task and delivery intent records.\n\nA completed child operation with an interrupted parent result write is adopted only after verifying child identity and actual outcomes. Missing or uncertain outcomes enter RECOVERY_REQUIRED; they are never silently replayed. No network or Codex process runs while holding a SQLite write transaction.\n\n## Data and artifact ownership\n\nProposed additive migration 0008 adds AutonomousRun, AutonomousOperation and AutonomousEvent; reuse existing Base/engine and audit in the configured database. A run references existing milestone/design/task/execution/quality/delivery identifiers. Store small manifests, hashes, limits, reservations, usage and transition evidence; large artifacts remain on disk. Preserve existing tables, audit history and independent service records. Upgrade tests populate 0007 and prove preservation.\n\nInternal AEO-6 design uses the existing internal-orchestrator scope with only orchestrator-owned artifacts. Future application cross-service narratives/diagrams belong in discovered agrosphere-architecture, contracts in agrosphere-contracts, and service designs in the relevant service repository according to existing design_policy. Revisions include hashes and never overwrite approved artifacts.\n\n## Milestone explanation generation\n\nBuild complete business context, objectives, scope/features, functional/nonfunctional requirements, architectural dependencies, proposed components/interactions, database and API/event impact, security, testing, phases, risks/assumptions and acceptance criteria into typed approved narratives. Persist C4 and PlantUML sources/rendered outputs with requirement links. Missing authoritative requirements cause a proposed review scope, never invented business acceptance. Use the existing documentation-role adapter, renderer and reviewer. No source implementation before requirements and validated design gates pass.\n\n## Architectural decisions\n\nADR-6-01: one deterministic application controller; existing scheduler remains sole task dispatcher.\nADR-6-02: same SQLite database, additive projections, transactional audit and durable child references; no queue/daemon/web application.\nADR-6-03: explicit CLI continuation after approvals; no continuous polling infrastructure.\nADR-6-04: default dry-run, one milestone, fail-closed governance; local mode alone grants nothing.\nADR-6-05: simulated services run in temporary independent repositories/databases; never promote simulations to live evidence.\n\n## Risks and trade-offs\n\nExisting interfaces cover most services but not an atomic run-wide budget across scheduler batches. Add a narrow reservation seam under the approved design, retaining scheduler semantics and tests. Exact model cost may be unknown; unknown usage is reported and a configured monetary cap that cannot be enforced blocks execution. Local administrators remain trusted; hash manifests are integrity evidence, not tamper-proof remote storage.\n",
+      "Integration design": "# Autonomous lifecycle proposal\n\n1. Load run or construct a read-only plan. Discover actual repositories and reconcile child task/delivery operations before new work.\n2. Select an eligible milestone from approved scope and dependencies; support proposed, partial, blocked, completed, interrupted and pending-delivery states. Completed tasks are adopted only with verified evidence, never restarted.\n3. Prepare requirement narratives and diagrams in correct repository ownership. Register exact requirements; pause for authenticated requirements decision when missing.\n4. Generate immutable design revision using existing design services; validate hashes, repository context, completeness and independent architecture review. Persist design checkpoint and stop until approved.\n5. Produce DAG using orchestration.propose_plan and existing roles. Preserve plan approval, activated quality policy, exact per-execution grants and worktree isolation; missing gates are separate checkpoints.\n6. Dispatch independent tasks only through TaskScheduler. Concurrency is the minimum of run limits and existing repository/agent scheduler limits. Every structured output references task, role, repository, inputs, actions, artifacts, file/commit identities, tests, blockers and next action; validate before transition.\n7. Independently verify through AEO-4. Classify failures and prepare only policy-permitted remediation. Reserve repair budget first; default at most three repairs. Any changed design or write scope returns to its proper approval gate.\n8. Build AEO-5 manifest from verified task outputs and exact repository identities. Prepare publication review scope. Require quality/security evidence and separate privileged approval; remote-write configuration remains off unless separately authorized.\n9. Observe CI, required reviews, dependencies and external acceptance with bounded delivery polling. Retain implementation complete, local quality accepted, ready for publication, PR published, awaiting CI/review, ready for authorized merge, externally accepted and formal completion as distinct facts. Never merge or deploy.\n10. Generate evidence-backed JSON/Markdown report. Advance only after formally verified completion and an explicit advance authorization within remaining milestone budget. Default one milestone; ambiguity blocks.\n\nLLM outputs are untrusted reasoning/artifacts, never governance decisions. Stop-on-gate is mandatory for missing authority. Resume rechecks immutable scope, current allowlists, decisions, expiry/revocation, policy, artifacts and repository facts; valid unchanged approvals are reused.\n"
+    },
+    "overview": {
+      "Milestone overview": "AEO-6 Autonomous Milestone Execution; internal development only.",
+      "What will be built": "# AEO-6 architecture proposal\n\n## Business context and objective\n\nAgroSphere engineering currently requires an operator to connect recovery, approved designs, execution, independent quality and delivery. The controller will connect those services in bounded, auditable runs while retaining the readable milestone explanations and diagrams used during manual development. Implementation is internal to agrosphere-orchestrator. No application capability, external API, event schema, UI or infrastructure service is added.\n\n## Components and dependency direction\n\nAutonomousMilestoneController is an application service in proposed autonomous.py. autonomous_models.py contains strict run modes, transition/checkpoint models, operation identities and limits; autonomous_store.py contains durable projections and append-only events. autonomous_cli.py exposes the Typer group. Names are proposed until approved. The controller depends on existing recovery, design, orchestration, quality and delivery services; those services do not depend on controller decisions for authorization. Use injected service boundaries for tests; production uses the existing Codex/GitHub implementations.\n\nSelection is a deterministic function of approved roadmap/dependencies, recovered evidence and persisted task/design/delivery state. The existing recovery.next_milestone numeric heuristic may suggest a review candidate; it cannot authorize work. Unknown or conflicting evidence blocks. Explicit milestone selection does not bypass eligibility.\n\n## Operation protocol\n\nBefore external I/O, atomically claim a run operation, reserve hard budgets, persist exact input identities and append audit evidence. Release the database transaction for service calls. Persist result and evidence references in another transaction only after independent observation. Unique run/step/scope operation identities prevent duplicate dispatch. Concurrent resume calls serialize through the existing transaction/lease mechanism. Source services retain their existing task and delivery intent records.\n\nA completed child operation with an interrupted parent result write is adopted only after verifying child identity and actual outcomes. Missing or uncertain outcomes enter RECOVERY_REQUIRED; they are never silently replayed. No network or Codex process runs while holding a SQLite write transaction.\n\n## Data and artifact ownership\n\nProposed additive migration 0008 adds AutonomousRun, AutonomousOperation and AutonomousEvent; reuse existing Base/engine and audit in the configured database. A run references existing milestone/design/task/execution/quality/delivery identifiers. Store small manifests, hashes, limits, reservations, usage and transition evidence; large artifacts remain on disk. Preserve existing tables, audit history and independent service records. Upgrade tests populate 0007 and prove preservation.\n\nInternal AEO-6 design uses the existing internal-orchestrator scope with only orchestrator-owned artifacts. Future application cross-service narratives/diagrams belong in discovered agrosphere-architecture, contracts in agrosphere-contracts, and service designs in the relevant service repository according to existing design_policy. Revisions include hashes and never overwrite approved artifacts.\n\n## Milestone explanation generation\n\nBuild complete business context, objectives, scope/features, functional/nonfunctional requirements, architectural dependencies, proposed components/interactions, database and API/event impact, security, testing, phases, risks/assumptions and acceptance criteria into typed approved narratives. Persist C4 and PlantUML sources/rendered outputs with requirement links. Missing authoritative requirements cause a proposed review scope, never invented business acceptance. Use the existing documentation-role adapter, renderer and reviewer. No source implementation before requirements and validated design gates pass.\n\n## Architectural decisions\n\nADR-6-01: one deterministic application controller; existing scheduler remains sole task dispatcher.\nADR-6-02: same SQLite database, additive projections, transactional audit and durable child references; no queue/daemon/web application.\nADR-6-03: explicit CLI continuation after approvals; no continuous polling infrastructure.\nADR-6-04: default dry-run, one milestone, fail-closed governance; local mode alone grants nothing.\nADR-6-05: simulated services run in temporary independent repositories/databases; never promote simulations to live evidence.\n\n## Risks and trade-offs\n\nExisting interfaces cover most services but not an atomic run-wide budget across scheduler batches. Add a narrow reservation seam under the approved design, retaining scheduler semantics and tests. Exact model cost may be unknown; unknown usage is reported and a configured monetary cap that cannot be enforced blocks execution. Local administrators remain trusted; hash manifests are integrity evidence, not tamper-proof remote storage.\n",
+      "Why it is needed": "Preserve milestone explanations and diagrams while making existing approved engineering workflows resumable and auditable.",
+      "Platform fit": "Single AgroSphere project using existing adapters, state, policies and infrastructure.",
+      "Component responsibilities": "# Autonomous lifecycle proposal\n\n1. Load run or construct a read-only plan. Discover actual repositories and reconcile child task/delivery operations before new work.\n2. Select an eligible milestone from approved scope and dependencies; support proposed, partial, blocked, completed, interrupted and pending-delivery states. Completed tasks are adopted only with verified evidence, never restarted.\n3. Prepare requirement narratives and diagrams in correct repository ownership. Register exact requirements; pause for authenticated requirements decision when missing.\n4. Generate immutable design revision using existing design services; validate hashes, repository context, completeness and independent architecture review. Persist design checkpoint and stop until approved.\n5. Produce DAG using orchestration.propose_plan and existing roles. Preserve plan approval, activated quality policy, exact per-execution grants and worktree isolation; missing gates are separate checkpoints.\n6. Dispatch independent tasks only through TaskScheduler. Concurrency is the minimum of run limits and existing repository/agent scheduler limits. Every structured output references task, role, repository, inputs, actions, artifacts, file/commit identities, tests, blockers and next action; validate before transition.\n7. Independently verify through AEO-4. Classify failures and prepare only policy-permitted remediation. Reserve repair budget first; default at most three repairs. Any changed design or write scope returns to its proper approval gate.\n8. Build AEO-5 manifest from verified task outputs and exact repository identities. Prepare publication review scope. Require quality/security evidence and separate privileged approval; remote-write configuration remains off unless separately authorized.\n9. Observe CI, required reviews, dependencies and external acceptance with bounded delivery polling. Retain implementation complete, local quality accepted, ready for publication, PR published, awaiting CI/review, ready for authorized merge, externally accepted and formal completion as distinct facts. Never merge or deploy.\n10. Generate evidence-backed JSON/Markdown report. Advance only after formally verified completion and an explicit advance authorization within remaining milestone budget. Default one milestone; ambiguity blocks.\n\nLLM outputs are untrusted reasoning/artifacts, never governance decisions. Stop-on-gate is mandatory for missing authority. Resume rechecks immutable scope, current allowlists, decisions, expiry/revocation, policy, artifacts and repository facts; valid unchanged approvals are reused.\n",
+      "Implementation sequence": "# AEO-6 implementation plan awaiting approval\n\n| Phase | Proposed implementation | Dependencies and verification |\n|---|---|---|\n| 6A | Existing interface inventory, fresh recovery, baseline validation, draft narratives and nine diagrams, requirement registration | Stop at requirements approval; then existing generate/validate/design approval |\n| 6B | autonomous_models.py, autonomous_store.py, additive 0008, autonomous.py deterministic lifecycle | Unit tests for selection, transitions, idempotency, transaction rollback and migration preservation |\n| 6C | Existing discovery/design preparation adapters and checkpoint continuation | Complete narratives/ownership, scope invalidation, repeated approval reuse, restart tests |\n| 6D | Existing DAG/Codex integration; narrow scheduler budget reservation seam; structured handoffs | Existing worktree/lease guards, concurrency budget races, no duplicate/replayed execution |\n| 6E | Existing independent QA/security/remediation and AEO-5 manifest/observation adapter | Missing/failing gates block; exact publication authority; bounded repairs/polling |\n| 6F | autonomous_cli.py and realistic three-repository simulation; fault injection at all 16 boundaries | Authenticated fixture approval, failed gate/repair/revalidation, delivery response loss/restart, external CI changes |\n| 6G | Safe isolated proof of concept and acceptance package | Actual Codex requires separate explicit operator authorization; no live PR without separate grant |\n\nCentral Settings additions will cap milestones (default 1), tasks, active tasks, concurrency, Codex invocations, attempts, repairs (default 3 bounded by current policy), duration, estimated resource/model budget and delivery polling. All must be positive/finite where applicable. Missing cost telemetry is unknown, never zero; monetary enforcement unavailable means block a monetary-capped execution. Parent pre-dispatch reservations cover scheduler batches and concurrent resumes.\n\nProposed CLI group: autonomous plan/start/status/pause/resume/recover/report/validate. Plan/status read-only; dry-run is default; simulation exclusively temporary fixture roots/databases; local/controlled-delivery require existing authority. Explicit milestone and eligible selection, limits, run ID, JSON/Markdown output and stop-on-gate are supported. No command exists yet; do not present these proposals as executable commands.\n\nDo not import this proposed task DAG for execution before the design gate. Preserve baseline test IDs and all existing work. Add meaningful unit/integration/security/recovery tests; run scripts/validate.py from .venv using a disposable runtime backup and isolated Git fixtures. Final report must separate local implementation acceptance from runtime/formal completion and list exact modules, migrations, commands, test evidence, limitations and next operator action.\n",
+      "Expected outcomes": "# AEO-6 acceptance criteria and test plan\n\nThis is a planned verification contract, not passed acceptance.\n\n1. Preserve every existing AEO-1 through AEO-5 test ID (275-test accepted baseline, including original 163). Require full standard validation with actual exit codes; migration tests preserve all populated 0007 tables and audit history.\n2. Demonstrate implemented deterministic controller and real repository/history reconciliation; no milestone inferred complete from directory/document existence. Recovered 3A/3B remains a review candidate until dependencies, acceptance and authority are proved.\n3. Generate full readable explanations and nine appropriate design views using existing immutable revision workflow. Missing requirements/design approval blocks; valid unchanged approval resumes without new prompts; changed content/identity/policy blocks.\n4. Existing scheduler and Codex adapter execute structured task outputs with existing repository/worktree isolation. Independent tasks can overlap only within DAG, agent/repository limits and exact grants. Verify conflicts, duplicate resume calls and uncertain child outcomes.\n5. Independent AEO-4 QA/security/acceptance evidence gates task and delivery progress. Fail once, perform one permitted remediation, independently revalidate. Default max three repairs; write recovery still needs exact authorization; quality policy never weakened.\n6. Reuse AEO-5 manifests/provider/persistence. Require disabled remote writes by default, exact publication scope, current-SHA checks and genuine human review. Tests prohibit force push, protected writes, duplicate PRs, automatic merge/deploy and agent self-approval.\n7. Enforce all hard budgets before dispatch, including parallel agents, retries, polling and resumed runs. Unknown token/cost values remain unknown. Exhaustion persists a resumable paused state and clear reason.\n8. Inject all 16 interruption scenarios listed in 04-state-and-recovery-model.md. Reconcile actual child/Git/provider state before replay; retain prior/partial artifacts, claims, history and counts.\n9. Use at least three independent temporary Git repositories and a temporary database for full simulation: discovery -> draft -> validate -> approval checkpoint -> fixture-authenticated approval -> resume -> DAG -> mocked agents -> failed QA -> one repair -> pass -> delivery manifest -> publication gate -> mocked publication -> CI/review reconciliation -> report -> restart. Assert formally_completed remains false without separate policy-supported evidence.\n10. Default plan/status and simulation preserve real application Git status, HEAD, worktrees and files. No real application milestone starts during AEO-6 verification. No live Codex, GitHub, model quota or production-readiness claim is inferred from mocks.\n11. Reports expose run/milestone/state, stages, active agents, dependencies/checkpoints, artifacts/hashes, approvals, repo/commit identities, quality/security/delivery, recovery, usage/unknowns and next permitted action. Final acceptance contains all 15 requested inventory/evidence fields.\n12. Check Windows paths, path-length failures, PowerShell CLI invocation and all existing error/isolation safeguards. Produce JSON and Markdown evidence with actual return codes.\n\nRequired new suites after approval: test_autonomous (transition/selection/budget), test_autonomous_integration (existing-service wiring), test_autonomous_recovery (16 interruption boundaries), test_autonomous_security (negative authority/mutation cases), test_autonomous_cli (read-only/default modes), test_autonomous_upgrade and isolated three-repository end-to-end simulation. Until run, each is NOT TESTED.\n",
+      "User-facing documentation": "CLI operation, autonomous lifecycle, approval/recovery guides, evidence and final acceptance. No Control Center UI."
+    },
+    "service": {
+      "Technical design": "# AEO-6 architecture proposal\n\n## Business context and objective\n\nAgroSphere engineering currently requires an operator to connect recovery, approved designs, execution, independent quality and delivery. The controller will connect those services in bounded, auditable runs while retaining the readable milestone explanations and diagrams used during manual development. Implementation is internal to agrosphere-orchestrator. No application capability, external API, event schema, UI or infrastructure service is added.\n\n## Components and dependency direction\n\nAutonomousMilestoneController is an application service in proposed autonomous.py. autonomous_models.py contains strict run modes, transition/checkpoint models, operation identities and limits; autonomous_store.py contains durable projections and append-only events. autonomous_cli.py exposes the Typer group. Names are proposed until approved. The controller depends on existing recovery, design, orchestration, quality and delivery services; those services do not depend on controller decisions for authorization. Use injected service boundaries for tests; production uses the existing Codex/GitHub implementations.\n\nSelection is a deterministic function of approved roadmap/dependencies, recovered evidence and persisted task/design/delivery state. The existing recovery.next_milestone numeric heuristic may suggest a review candidate; it cannot authorize work. Unknown or conflicting evidence blocks. Explicit milestone selection does not bypass eligibility.\n\n## Operation protocol\n\nBefore external I/O, atomically claim a run operation, reserve hard budgets, persist exact input identities and append audit evidence. Release the database transaction for service calls. Persist result and evidence references in another transaction only after independent observation. Unique run/step/scope operation identities prevent duplicate dispatch. Concurrent resume calls serialize through the existing transaction/lease mechanism. Source services retain their existing task and delivery intent records.\n\nA completed child operation with an interrupted parent result write is adopted only after verifying child identity and actual outcomes. Missing or uncertain outcomes enter RECOVERY_REQUIRED; they are never silently replayed. No network or Codex process runs while holding a SQLite write transaction.\n\n## Data and artifact ownership\n\nProposed additive migration 0008 adds AutonomousRun, AutonomousOperation and AutonomousEvent; reuse existing Base/engine and audit in the configured database. A run references existing milestone/design/task/execution/quality/delivery identifiers. Store small manifests, hashes, limits, reservations, usage and transition evidence; large artifacts remain on disk. Preserve existing tables, audit history and independent service records. Upgrade tests populate 0007 and prove preservation.\n\nInternal AEO-6 design uses the existing internal-orchestrator scope with only orchestrator-owned artifacts. Future application cross-service narratives/diagrams belong in discovered agrosphere-architecture, contracts in agrosphere-contracts, and service designs in the relevant service repository according to existing design_policy. Revisions include hashes and never overwrite approved artifacts.\n\n## Milestone explanation generation\n\nBuild complete business context, objectives, scope/features, functional/nonfunctional requirements, architectural dependencies, proposed components/interactions, database and API/event impact, security, testing, phases, risks/assumptions and acceptance criteria into typed approved narratives. Persist C4 and PlantUML sources/rendered outputs with requirement links. Missing authoritative requirements cause a proposed review scope, never invented business acceptance. Use the existing documentation-role adapter, renderer and reviewer. No source implementation before requirements and validated design gates pass.\n\n## Architectural decisions\n\nADR-6-01: one deterministic application controller; existing scheduler remains sole task dispatcher.\nADR-6-02: same SQLite database, additive projections, transactional audit and durable child references; no queue/daemon/web application.\nADR-6-03: explicit CLI continuation after approvals; no continuous polling infrastructure.\nADR-6-04: default dry-run, one milestone, fail-closed governance; local mode alone grants nothing.\nADR-6-05: simulated services run in temporary independent repositories/databases; never promote simulations to live evidence.\n\n## Risks and trade-offs\n\nExisting interfaces cover most services but not an atomic run-wide budget across scheduler batches. Add a narrow reservation seam under the approved design, retaining scheduler semantics and tests. Exact model cost may be unknown; unknown usage is reported and a configured monetary cap that cannot be enforced blocks execution. Local administrators remain trusted; hash manifests are integrity evidence, not tamper-proof remote storage.\n",
+      "Domain model": "# Durable state and recovery model proposal\n\nRun projection: ID, milestone, mode, workflow step, state, approved scope/revision, current operation, checkpoint subject/category, limits and reservations, usage, child execution/plan/delivery IDs, repository/base/head identities, artifact hashes, quality references, retries, failure classification, next permitted transition and timestamps. Append an immutable event and audit record for every projection mutation in the same transaction.\n\nRun states: PLANNED -> RECONCILING -> PREPARING_DESIGN -> AWAITING_APPROVAL -> PLANNING_TASKS -> EXECUTING -> VERIFYING -> PREPARING_DELIVERY -> OBSERVING_DELIVERY -> REPORTED. PAUSED, BLOCKED and RECOVERY_REQUIRED are explicit resumable branches. REPORTED is an outcome, not formal milestone completion. Checkpoints name requirements/design/plan/execution/security/publication/recovery authority separately.\n\nOperation states: INTENDED -> DISPATCHED -> OBSERVED -> COMMITTED; an interrupted DISPATCHED becomes UNCERTAIN pending child reconciliation. Atomically reserve maximum Codex invocations/attempts/task slots before dispatch, including concurrent batches and remediation. No post-hoc counter may permit an overrun. Keep reserved capacity for ambiguous operations until reconciled. A paused run retains cumulative counts; resume cannot reset its budget. Monotonic runtime enforcement plus persisted UTC elapsed accounting bounds execution across restarts. Child subprocess deadlines must fit the remaining run deadline; delivery polling is separately capped.\n\n| Crash or restart boundary | Required reconciliation before continuation |\n|---|---|\n| Discovery | Repeat read-only observation; retain prior snapshot |\n| Documentation generated | Compare immutable artifacts and stored child generation outcome; preserve partial files |\n| Before design approval | Re-present exact stored subject without starting tasks |\n| After approval | Verify latest decision, authorized identity and unchanged scope before adopting |\n| Task decomposition | Adopt exact PlanRevision if it exists; otherwise resolve uncertain operation |\n| During agent execution | Existing scheduler/execution recovery owns task claims; do not relaunch |\n| Agent finished before parent persistence | Inspect durable child result, independently verify artifacts and adopt once |\n| Parallel scheduling | Reconcile each claim/lease and reservation; block uncertain writers |\n| Quality checks | Reconcile existing evidence; rerun only bounded read-only validation if safe |\n| Remediation | Preserve attempt count, changed artifacts, design gate and exact write authority |\n| Before publication | Revalidate all AEO-5 preconditions; no remote write without grant |\n| Remote operation succeeded, response lost | delivery.reconcile observes exact PR/branch; no blind retry |\n| PR/CI changed externally | Observe exact current SHA/policy/reviews; invalidate stale readiness |\n| Approved artifacts modified | Existing design gate blocks; create revision and reapprove |\n| Approval expired/revoked | Block the exact affected action; retain completed history |\n| Repository/worktree conflict | Existing locks/isolation reject dispatch; require safe recovery decision |\n\nUse atomic file writing for reports and retain content-addressed historical reports. Never overwrite partial approved designs or release uncertain writer ownership merely because a lease expired.\n",
+      "Interfaces": "# AEO-6 implementation plan awaiting approval\n\n| Phase | Proposed implementation | Dependencies and verification |\n|---|---|---|\n| 6A | Existing interface inventory, fresh recovery, baseline validation, draft narratives and nine diagrams, requirement registration | Stop at requirements approval; then existing generate/validate/design approval |\n| 6B | autonomous_models.py, autonomous_store.py, additive 0008, autonomous.py deterministic lifecycle | Unit tests for selection, transitions, idempotency, transaction rollback and migration preservation |\n| 6C | Existing discovery/design preparation adapters and checkpoint continuation | Complete narratives/ownership, scope invalidation, repeated approval reuse, restart tests |\n| 6D | Existing DAG/Codex integration; narrow scheduler budget reservation seam; structured handoffs | Existing worktree/lease guards, concurrency budget races, no duplicate/replayed execution |\n| 6E | Existing independent QA/security/remediation and AEO-5 manifest/observation adapter | Missing/failing gates block; exact publication authority; bounded repairs/polling |\n| 6F | autonomous_cli.py and realistic three-repository simulation; fault injection at all 16 boundaries | Authenticated fixture approval, failed gate/repair/revalidation, delivery response loss/restart, external CI changes |\n| 6G | Safe isolated proof of concept and acceptance package | Actual Codex requires separate explicit operator authorization; no live PR without separate grant |\n\nCentral Settings additions will cap milestones (default 1), tasks, active tasks, concurrency, Codex invocations, attempts, repairs (default 3 bounded by current policy), duration, estimated resource/model budget and delivery polling. All must be positive/finite where applicable. Missing cost telemetry is unknown, never zero; monetary enforcement unavailable means block a monetary-capped execution. Parent pre-dispatch reservations cover scheduler batches and concurrent resumes.\n\nProposed CLI group: autonomous plan/start/status/pause/resume/recover/report/validate. Plan/status read-only; dry-run is default; simulation exclusively temporary fixture roots/databases; local/controlled-delivery require existing authority. Explicit milestone and eligible selection, limits, run ID, JSON/Markdown output and stop-on-gate are supported. No command exists yet; do not present these proposals as executable commands.\n\nDo not import this proposed task DAG for execution before the design gate. Preserve baseline test IDs and all existing work. Add meaningful unit/integration/security/recovery tests; run scripts/validate.py from .venv using a disposable runtime backup and isolated Git fixtures. Final report must separate local implementation acceptance from runtime/formal completion and list exact modules, migrations, commands, test evidence, limitations and next operator action.\n",
+      "Persistence": "# Durable state and recovery model proposal\n\nRun projection: ID, milestone, mode, workflow step, state, approved scope/revision, current operation, checkpoint subject/category, limits and reservations, usage, child execution/plan/delivery IDs, repository/base/head identities, artifact hashes, quality references, retries, failure classification, next permitted transition and timestamps. Append an immutable event and audit record for every projection mutation in the same transaction.\n\nRun states: PLANNED -> RECONCILING -> PREPARING_DESIGN -> AWAITING_APPROVAL -> PLANNING_TASKS -> EXECUTING -> VERIFYING -> PREPARING_DELIVERY -> OBSERVING_DELIVERY -> REPORTED. PAUSED, BLOCKED and RECOVERY_REQUIRED are explicit resumable branches. REPORTED is an outcome, not formal milestone completion. Checkpoints name requirements/design/plan/execution/security/publication/recovery authority separately.\n\nOperation states: INTENDED -> DISPATCHED -> OBSERVED -> COMMITTED; an interrupted DISPATCHED becomes UNCERTAIN pending child reconciliation. Atomically reserve maximum Codex invocations/attempts/task slots before dispatch, including concurrent batches and remediation. No post-hoc counter may permit an overrun. Keep reserved capacity for ambiguous operations until reconciled. A paused run retains cumulative counts; resume cannot reset its budget. Monotonic runtime enforcement plus persisted UTC elapsed accounting bounds execution across restarts. Child subprocess deadlines must fit the remaining run deadline; delivery polling is separately capped.\n\n| Crash or restart boundary | Required reconciliation before continuation |\n|---|---|\n| Discovery | Repeat read-only observation; retain prior snapshot |\n| Documentation generated | Compare immutable artifacts and stored child generation outcome; preserve partial files |\n| Before design approval | Re-present exact stored subject without starting tasks |\n| After approval | Verify latest decision, authorized identity and unchanged scope before adopting |\n| Task decomposition | Adopt exact PlanRevision if it exists; otherwise resolve uncertain operation |\n| During agent execution | Existing scheduler/execution recovery owns task claims; do not relaunch |\n| Agent finished before parent persistence | Inspect durable child result, independently verify artifacts and adopt once |\n| Parallel scheduling | Reconcile each claim/lease and reservation; block uncertain writers |\n| Quality checks | Reconcile existing evidence; rerun only bounded read-only validation if safe |\n| Remediation | Preserve attempt count, changed artifacts, design gate and exact write authority |\n| Before publication | Revalidate all AEO-5 preconditions; no remote write without grant |\n| Remote operation succeeded, response lost | delivery.reconcile observes exact PR/branch; no blind retry |\n| PR/CI changed externally | Observe exact current SHA/policy/reviews; invalidate stale readiness |\n| Approved artifacts modified | Existing design gate blocks; create revision and reapprove |\n| Approval expired/revoked | Block the exact affected action; retain completed history |\n| Repository/worktree conflict | Existing locks/isolation reject dispatch; require safe recovery decision |\n\nUse atomic file writing for reports and retain content-addressed historical reports. Never overwrite partial approved designs or release uncertain writer ownership merely because a lease expired.\n",
+      "Security": "# Governance and authorization proposal\n\nThe user explicitly requires AEO-1C requirements and technical-design approval. Existing design.generate_design calls require_approval for the exact scope before generation. design.decide uses WindowsConsoleHumanVerifier; chat instructions cannot substitute for its authenticated decision. Therefore the first checkpoint for this request is requirements approval. Draft documentation, diagram preparation, registration and baseline tests are allowed before that checkpoint. Production controller implementation and schema changes wait for design approval.\n\nMaintain separate authorities: registered requirements; validated immutable technical design; scheduling plan; exact local execution requests; activated AEO-4 quality/security policy and decisions; action-specific AEO-5 publication grants; human recovery decisions; explicit milestone advancement. An approval for AEO-5 is never approval for AEO-6. A selected mode, model response or role label grants nothing.\n\nAt every boundary finish authorized preparation, persist its exact review subject, produce the existing CLI decision command, and stop only dependent execution. Resume re-evaluates existing decisions, allowlists and artifact hashes. Do not repeatedly ask when the latest decision is valid for the same scope. Changed artifacts/context or rejected/revoked/expired authority fail closed. Never insert decisions directly into SQLite, add an approver automatically, emulate a human verifier against runtime, or consume an unrelated grant.\n\nNo automatic remote-write enablement, protected branch modification, force push, duplicate PR, merge, deployment or application milestone launch. Original dirty worktrees remain untouched. Simulated approvals exist only in fixture databases using established authenticated fixture mechanisms. Do not log passwords, tokens, environment files or credential material. Ordinary plans/status never mutate application repositories.\n",
+      "Developer documentation": "# AEO-6 implementation plan awaiting approval\n\n| Phase | Proposed implementation | Dependencies and verification |\n|---|---|---|\n| 6A | Existing interface inventory, fresh recovery, baseline validation, draft narratives and nine diagrams, requirement registration | Stop at requirements approval; then existing generate/validate/design approval |\n| 6B | autonomous_models.py, autonomous_store.py, additive 0008, autonomous.py deterministic lifecycle | Unit tests for selection, transitions, idempotency, transaction rollback and migration preservation |\n| 6C | Existing discovery/design preparation adapters and checkpoint continuation | Complete narratives/ownership, scope invalidation, repeated approval reuse, restart tests |\n| 6D | Existing DAG/Codex integration; narrow scheduler budget reservation seam; structured handoffs | Existing worktree/lease guards, concurrency budget races, no duplicate/replayed execution |\n| 6E | Existing independent QA/security/remediation and AEO-5 manifest/observation adapter | Missing/failing gates block; exact publication authority; bounded repairs/polling |\n| 6F | autonomous_cli.py and realistic three-repository simulation; fault injection at all 16 boundaries | Authenticated fixture approval, failed gate/repair/revalidation, delivery response loss/restart, external CI changes |\n| 6G | Safe isolated proof of concept and acceptance package | Actual Codex requires separate explicit operator authorization; no live PR without separate grant |\n\nCentral Settings additions will cap milestones (default 1), tasks, active tasks, concurrency, Codex invocations, attempts, repairs (default 3 bounded by current policy), duration, estimated resource/model budget and delivery polling. All must be positive/finite where applicable. Missing cost telemetry is unknown, never zero; monetary enforcement unavailable means block a monetary-capped execution. Parent pre-dispatch reservations cover scheduler batches and concurrent resumes.\n\nProposed CLI group: autonomous plan/start/status/pause/resume/recover/report/validate. Plan/status read-only; dry-run is default; simulation exclusively temporary fixture roots/databases; local/controlled-delivery require existing authority. Explicit milestone and eligible selection, limits, run ID, JSON/Markdown output and stop-on-gate are supported. No command exists yet; do not present these proposals as executable commands.\n\nDo not import this proposed task DAG for execution before the design gate. Preserve baseline test IDs and all existing work. Add meaningful unit/integration/security/recovery tests; run scripts/validate.py from .venv using a disposable runtime backup and isolated Git fixtures. Final report must separate local implementation acceptance from runtime/formal completion and list exact modules, migrations, commands, test evidence, limitations and next operator action.\n\n# AEO-6 acceptance criteria and test plan\n\nThis is a planned verification contract, not passed acceptance.\n\n1. Preserve every existing AEO-1 through AEO-5 test ID (275-test accepted baseline, including original 163). Require full standard validation with actual exit codes; migration tests preserve all populated 0007 tables and audit history.\n2. Demonstrate implemented deterministic controller and real repository/history reconciliation; no milestone inferred complete from directory/document existence. Recovered 3A/3B remains a review candidate until dependencies, acceptance and authority are proved.\n3. Generate full readable explanations and nine appropriate design views using existing immutable revision workflow. Missing requirements/design approval blocks; valid unchanged approval resumes without new prompts; changed content/identity/policy blocks.\n4. Existing scheduler and Codex adapter execute structured task outputs with existing repository/worktree isolation. Independent tasks can overlap only within DAG, agent/repository limits and exact grants. Verify conflicts, duplicate resume calls and uncertain child outcomes.\n5. Independent AEO-4 QA/security/acceptance evidence gates task and delivery progress. Fail once, perform one permitted remediation, independently revalidate. Default max three repairs; write recovery still needs exact authorization; quality policy never weakened.\n6. Reuse AEO-5 manifests/provider/persistence. Require disabled remote writes by default, exact publication scope, current-SHA checks and genuine human review. Tests prohibit force push, protected writes, duplicate PRs, automatic merge/deploy and agent self-approval.\n7. Enforce all hard budgets before dispatch, including parallel agents, retries, polling and resumed runs. Unknown token/cost values remain unknown. Exhaustion persists a resumable paused state and clear reason.\n8. Inject all 16 interruption scenarios listed in 04-state-and-recovery-model.md. Reconcile actual child/Git/provider state before replay; retain prior/partial artifacts, claims, history and counts.\n9. Use at least three independent temporary Git repositories and a temporary database for full simulation: discovery -> draft -> validate -> approval checkpoint -> fixture-authenticated approval -> resume -> DAG -> mocked agents -> failed QA -> one repair -> pass -> delivery manifest -> publication gate -> mocked publication -> CI/review reconciliation -> report -> restart. Assert formally_completed remains false without separate policy-supported evidence.\n10. Default plan/status and simulation preserve real application Git status, HEAD, worktrees and files. No real application milestone starts during AEO-6 verification. No live Codex, GitHub, model quota or production-readiness claim is inferred from mocks.\n11. Reports expose run/milestone/state, stages, active agents, dependencies/checkpoints, artifacts/hashes, approvals, repo/commit identities, quality/security/delivery, recovery, usage/unknowns and next permitted action. Final acceptance contains all 15 requested inventory/evidence fields.\n12. Check Windows paths, path-length failures, PowerShell CLI invocation and all existing error/isolation safeguards. Produce JSON and Markdown evidence with actual return codes.\n\nRequired new suites after approval: test_autonomous (transition/selection/budget), test_autonomous_integration (existing-service wiring), test_autonomous_recovery (16 interruption boundaries), test_autonomous_security (negative authority/mutation cases), test_autonomous_cli (read-only/default modes), test_autonomous_upgrade and isolated three-repository end-to-end simulation. Until run, each is NOT TESTED.\n"
+    }
+  },
+  "diagrams": [
+    {
+      "id": "01-components",
+      "kind": "component",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 01-components diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\n!include <C4/C4_Component>\ntitle AEO-6 internal components (proposed)\nPerson(operator, \"Authenticated operator\")\nContainer_Boundary(aeo, \"AgroSphere Orchestrator\") {\nComponent(cli, \"Autonomous CLI\", \"Typer\", \"Bounded continuation and read-only reports\")\nComponent(controller, \"AutonomousMilestoneController\", \"Python\", \"Deterministic guarded transitions\")\nComponent(recovery, \"AEO-1B Recovery\", \"Existing service\", \"Actual repository facts\")\nComponent(design, \"AEO-1C Design\", \"Existing service\", \"Immutable design and authenticated gates\")\nComponent(scheduler, \"AEO-3 Scheduler / AEO-2 Execution\", \"Existing services\", \"DAG, grants, leases, isolated Codex\")\nComponent(quality, \"AEO-4 Quality\", \"Existing service\", \"Independent validation and governance\")\nComponent(delivery, \"AEO-5 Delivery\", \"Existing service\", \"Exact publication grants and observations\")\nContainerDb(db, \"Configured SQLite\", \"SQLAlchemy / Alembic\", \"Existing state plus additive run projections\")\n}\nRel(operator, cli, \"Inspect / approve through existing commands / continue\")\nRel(cli, controller, \"Bounded run operation\")\nRel(controller, recovery, \"Reconcile\")\nRel(controller, design, \"Prepare / verify gates\")\nRel(controller, scheduler, \"Dispatch with budget reservation\")\nRel(controller, quality, \"Validate / remediate\")\nRel(controller, delivery, \"Plan / observe / authorized actions\")\nRel(controller, db, \"Atomic intent, result and audit\")\n@enduml\n"
+    },
+    {
+      "id": "02-lifecycle",
+      "kind": "activity",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 02-lifecycle diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Autonomous milestone lifecycle (proposed)\nstart\n:Load persistent run and repository facts;\n:Reconcile uncertain child operations;\nif (Eligible approved scope?) then (yes)\n :Prepare explanation and diagrams;\n :Register requirements;\n if (Requirements approved?) then (yes)\n  :Generate and validate design;\n  if (Validated design approved?) then (yes)\n   :Prepare approved DAG and exact execution requests;\n   :Run existing scheduler within budgets;\n   :Independent AEO-4 verification;\n   if (Quality accepted?) then (yes)\n    :Prepare AEO-5 manifest and publication gate;\n    :Observe permitted delivery and generate report;\n   else (no)\n    :Bounded permitted remediation or checkpoint;\n   endif\n  else (no)\n   :Persist design checkpoint;\n  endif\n else (no)\n  :Persist requirements checkpoint;\n endif\nelse (no)\n :Persist blocked report;\nendif\nstop\n@enduml\n"
+    },
+    {
+      "id": "03-multi-agent-sequence",
+      "kind": "sequence",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 03-multi-agent-sequence diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Existing scheduler owns multi-agent execution\nactor Operator\nparticipant Controller\nparticipant \"AEO-3 Scheduler\" as Scheduler\nparticipant \"AEO-2 Codex\" as Codex\nparticipant \"Developer\" as Dev\nparticipant \"Independent QA / Security\" as QA\ndatabase SQLite\nController -> Scheduler: prepare approved dependency-aware plan\nScheduler -> SQLite: verify plan, design, grants and leases\nController -> SQLite: reserve run budget and intent\nController -> Scheduler: dispatch bounded ready tasks\npar Independent repository A\n Scheduler -> Codex: exact isolated execution A\n Codex -> Dev: structured task and context\n Dev --> Codex: artifacts and test evidence\nelse Independent repository B\n Scheduler -> Codex: exact isolated execution B\n Codex -> Dev: structured task and context\n Dev --> Codex: artifacts and test evidence\nend\nScheduler -> SQLite: child results and handoffs\nController -> QA: invoke AEO-4 independent validators\nQA --> Controller: verified gates or bounded repair classification\nController -> SQLite: observed outcome and audit\nController --> Operator: report / exact pending authority\n@enduml\n"
+    },
+    {
+      "id": "04-human-approval",
+      "kind": "sequence",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 04-human-approval diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Authenticated approval and explicit continuation\nactor Human\nparticipant Controller\nparticipant \"Existing AEO-1C CLI\" as CLI\nparticipant \"WindowsConsoleHumanVerifier\" as Verifier\ndatabase SQLite\nController -> SQLite: persist exact scope and checkpoint\nController --> Human: review package and supported approval command\nHuman -> CLI: approve-requirements / approve-design\nCLI -> Verifier: confirm exact subject and authenticate\nVerifier --> CLI: canonical authorized identity\nCLI -> SQLite: decision and audit in one transaction\nHuman -> Controller: explicit resume by run ID\nController -> SQLite: reload latest decision and scope\nController -> Controller: verify identity, hashes, policy and limits\nalt Valid unchanged authority\n Controller -> Controller: next permitted transition\nelse Missing / changed / revoked authority\n Controller -> SQLite: retain checkpoint and reason\nend\n@enduml\n"
+    },
+    {
+      "id": "05-durable-state",
+      "kind": "state",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 05-durable-state diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Proposed run states; child milestone completion remains separate\n[*] --> PLANNED\nPLANNED --> RECONCILING\nRECONCILING --> PREPARING_DESIGN : consistent eligible scope\nRECONCILING --> RECOVERY_REQUIRED : uncertain child operation\nPREPARING_DESIGN --> AWAITING_APPROVAL\nAWAITING_APPROVAL --> PLANNING_TASKS : requirements and validated design approved\nPLANNING_TASKS --> AWAITING_APPROVAL : plan / execution authority missing\nPLANNING_TASKS --> EXECUTING : all exact gates pass\nEXECUTING --> VERIFYING : observed child results\nVERIFYING --> EXECUTING : bounded permitted repair\nVERIFYING --> PREPARING_DELIVERY : independent quality accepted\nPREPARING_DELIVERY --> AWAITING_APPROVAL : privileged grant missing\nPREPARING_DELIVERY --> OBSERVING_DELIVERY : authorized child operation\nOBSERVING_DELIVERY --> REPORTED : bounded observation/report\nEXECUTING --> PAUSED : budget / operator pause\nOBSERVING_DELIVERY --> PAUSED : polling budget\nPAUSED --> RECONCILING : explicit resume\nRECOVERY_REQUIRED --> RECONCILING : verified recovery\nRECONCILING --> BLOCKED : conflict / unknown authority\nBLOCKED --> RECONCILING : evidence changed\nREPORTED --> [*]\n@enduml\n"
+    },
+    {
+      "id": "06-interruption-recovery",
+      "kind": "activity",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 06-interruption-recovery diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Durable intent and interruption recovery\nstart\n:Load run intent, child IDs, reservations and audit;\nif (Unfinished operation?) then (yes)\n :Inspect existing task claims, execution records,\n worktrees and delivery operations;\n if (Verified completed child outcome?) then (yes)\n  :Independently validate artifacts and adopt once;\n else (no)\n  if (Confirmed safe retry with authority?) then (yes)\n   :Reserve remaining attempt budget;\n   :Dispatch through existing child recovery service;\n  else (no)\n   :Persist RECOVERY_REQUIRED;\n   :Present precise human decision and evidence;\n   stop\n  endif\n endif\nelse (no)\n :Recheck current approvals and repository facts;\nendif\n:Persist observed transition and audit;\n:Select one permitted next operation;\nstop\n@enduml\n"
+    },
+    {
+      "id": "07-repository-boundaries",
+      "kind": "deployment",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 07-repository-boundaries diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Repository execution and delivery boundaries\nrectangle \"Original independent repositories (read-only to model)\" as Original\nrectangle \"Existing worktree manager / repository leases\" as Isolation\nrectangle \"Exact granted Codex worktree\" as Worktree\nrectangle \"Independent AEO-4 validation\" as QA\nrectangle \"AEO-5 delivery coordinator\" as Delivery\nrectangle \"Exact approved publication grant\" as Grant\ncloud \"GitHub branch / PR / CI / human reviews\" as GitHub\nOriginal --> Isolation : verify source/base and dirty preservation\nIsolation --> Worktree : narrow authorized paths\nWorktree --> QA : actual artifacts and child execution evidence\nQA --> Delivery : current accepted evidence\nGrant --> Delivery : action/scope/expiry checked\nDelivery --> GitHub : writes disabled unless separately authorized\nGitHub --> Delivery : observed current SHA and policy\nnote bottom of GitHub\nNo force push, protected writes,\nmerge or deployment capability\nend note\n@enduml\n"
+    },
+    {
+      "id": "08-end-to-end",
+      "kind": "sequence",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 08-end-to-end diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Bounded end-to-end engineering orchestration\nactor Operator\nparticipant Controller\nparticipant \"Recovery / Design\" as Design\nparticipant \"Existing Scheduler\" as Scheduler\nparticipant \"Quality\" as QA\nparticipant \"Delivery\" as Delivery\nOperator -> Controller: plan (default dry-run)\nController -> Design: inspect facts and eligible scope\nDesign --> Controller: explanation, diagrams, approval subjects\nController --> Operator: exact checkpoint\nOperator -> Design: authenticated requirement/design decisions\nOperator -> Controller: continue exact persisted run\nController -> Scheduler: approved plan and granted bounded executions\nScheduler --> Controller: structured verified child evidence\nController -> QA: independent validation\nalt Permitted repair and remaining budget\n QA --> Controller: failure classification\n Controller -> QA: prepare remediation\n Controller -> Scheduler: granted repair task\n Controller -> QA: revalidate\nend\nController -> Delivery: manifest from accepted output identities\nDelivery --> Operator: separate publication checkpoint\nOperator -> Delivery: authenticated privileged authorization if desired\nController -> Delivery: bounded authorized observation/operation\nDelivery --> Controller: PR / CI / review facts and blockers\nController --> Operator: report with formal completion separately verified\n@enduml\n"
+    },
+    {
+      "id": "09-cross-repository-dependencies",
+      "kind": "component",
+      "repository": "agrosphere-orchestrator",
+      "requirement_ids": [
+        "AEO6-DISCOVERY",
+        "AEO6-CONTROLLER",
+        "AEO6-DESIGN",
+        "AEO6-APPROVAL",
+        "AEO6-DAG",
+        "AEO6-QUALITY",
+        "AEO6-DELIVERY",
+        "AEO6-DURABLE",
+        "AEO6-BUDGET",
+        "AEO6-CLI",
+        "AEO6-EVIDENCE",
+        "AEO6-SAFETY"
+      ],
+      "nodes": [
+        {
+          "id": "Controller",
+          "label": "AutonomousMilestoneController"
+        }
+      ],
+      "edges": [],
+      "rationale": "Reviewable AEO-6 09-cross-repository-dependencies diagram; existing governance services retain authority.",
+      "approved_source": "@startuml\ntitle Future application design and delivery dependency boundaries\npackage \"agrosphere-architecture\" {\n rectangle \"Approved cross-service design\" as Arch\n}\npackage \"agrosphere-contracts\" {\n rectangle \"Versioned API / event contracts\" as Contracts\n}\npackage \"Discovered service repository A\" {\n rectangle \"Service design and task A\" as ServiceA\n}\npackage \"Discovered service repository B\" {\n rectangle \"Service design and task B\" as ServiceB\n}\npackage \"agrosphere-orchestrator\" {\n rectangle \"Run manifest / task DAG / artifact hashes\" as Run\n rectangle \"AEO-5 unit dependency state\" as Units\n}\nArch --> Contracts : approved impact only\nArch --> ServiceA : design requirement references\nArch --> ServiceB : design requirement references\nContracts --> ServiceA : pinned compatible version\nContracts --> ServiceB : pinned compatible version\nRun --> ServiceA : exact isolated execution authority\nRun --> ServiceB : only when prerequisites available\nServiceA --> Units : verified commits and QA\nServiceB --> Units : verified commits and QA\nnote bottom of Units\nA PR existing does not make dependency content available.\nNo sibling source dependency or cross-service SQL.\nend note\n@enduml\n"
+    }
+  ],
+  "contracts": [],
+  "contract_impact": false
+}

@@ -1,0 +1,18 @@
+{
+  "milestone": "agrosphere:AEO-6",
+  "scope_id": "48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143",
+  "decision_id": "c003c8e6-7477-4c5d-a226-194a5995539e",
+  "decision": "approved",
+  "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+  "created_at": "2026-10-26T02:12:16.900199+00:00",
+  "authorized_currently": true,
+  "authentication_evidence": "Persisted authorized SID decision and matching transactional design.human-decision audit event; existing CLI uses WindowsConsoleHumanVerifier/LogonUserW before decide persists. No credential or independent cryptographic authentication receipt is stored by this workflow.",
+  "audit_event_id": 38,
+  "registered_scope_digest_verified": true,
+  "requirements_input_matches_persisted_scope": true,
+  "context_hashes_verified": 28,
+  "diagram_sources": 9,
+  "requirements": 12,
+  "implementation_tasks": 6,
+  "state": "AWAITING_DESIGN_APPROVAL"
+}

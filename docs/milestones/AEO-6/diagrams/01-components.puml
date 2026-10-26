@@ -1,0 +1,23 @@
+@startuml
+!include <C4/C4_Component>
+title AEO-6 internal components (proposed)
+Person(operator, "Authenticated operator")
+Container_Boundary(aeo, "AgroSphere Orchestrator") {
+Component(cli, "Autonomous CLI", "Typer", "Bounded continuation and read-only reports")
+Component(controller, "AutonomousMilestoneController", "Python", "Deterministic guarded transitions")
+Component(recovery, "AEO-1B Recovery", "Existing service", "Actual repository facts")
+Component(design, "AEO-1C Design", "Existing service", "Immutable design and authenticated gates")
+Component(scheduler, "AEO-3 Scheduler / AEO-2 Execution", "Existing services", "DAG, grants, leases, isolated Codex")
+Component(quality, "AEO-4 Quality", "Existing service", "Independent validation and governance")
+Component(delivery, "AEO-5 Delivery", "Existing service", "Exact publication grants and observations")
+ContainerDb(db, "Configured SQLite", "SQLAlchemy / Alembic", "Existing state plus additive run projections")
+}
+Rel(operator, cli, "Inspect / approve through existing commands / continue")
+Rel(cli, controller, "Bounded run operation")
+Rel(controller, recovery, "Reconcile")
+Rel(controller, design, "Prepare / verify gates")
+Rel(controller, scheduler, "Dispatch with budget reservation")
+Rel(controller, quality, "Validate / remediate")
+Rel(controller, delivery, "Plan / observe / authorized actions")
+Rel(controller, db, "Atomic intent, result and audit")
+@enduml

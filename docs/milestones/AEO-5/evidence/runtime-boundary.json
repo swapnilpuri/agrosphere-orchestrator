@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-10-25T23:36:22.128063+00:00",
+  "database_access": "read-only",
+  "schema": "0007",
+  "state": "IMPLEMENTING",
+  "runtime_task_states": {
+    "cli": "pending",
+    "durable": "pending",
+    "github": "pending",
+    "governance": "pending",
+    "publication": "pending",
+    "recovery": "pending",
+    "validation": "pending"
+  },
+  "remote_writes_enabled": false,
+  "repository_allowlist": [],
+  "activated_aeo4_policy_count": 0,
+  "publishing_approval_request_count": 0,
+  "real_delivery_run_count": 0,
+  "remote_mutations_performed": false,
+  "merge_or_deployment_performed": false,
+  "aeo6_started": false
+}

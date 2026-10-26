@@ -1,0 +1,5 @@
+{
+  "status": "INTERRUPTED_FOR_SOURCE_UPDATE",
+  "reason": "Per-task remediation reservation and checkpoint-state corrections required restarting the full validator against final source.",
+  "passing_result_claimed": false
+}

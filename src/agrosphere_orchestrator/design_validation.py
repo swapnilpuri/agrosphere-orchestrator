@@ -10,6 +10,7 @@ from .configuration import Repository, RepositoryManifest, RoleRegistry, load_ya
 from .design_agents import ROLES, SECTIONS
 from .design_artifacts import check_files, digest, source_findings
 from .design_models import Artifact, DesignInput, Finding
+from .design_policy import architecture_owner, service_owners
 from .repositories import inspect_repository
 
 
@@ -26,7 +27,7 @@ def verify_context(inputs: DesignInput, manifest_path: Path, registry_path: Path
         r.id: r for r in load_yaml(manifest_path, RepositoryManifest).resolve(manifest_path)
     }
     needed = {t.repository for t in inputs.plan.tasks} | {c.repository for c in inputs.context}
-    needed |= {"agrosphere-architecture"} | {d.repository for d in inputs.diagrams}
+    needed |= {architecture_owner(inputs)} | {d.repository for d in inputs.diagrams}
     if inputs.contract_impact or inputs.contracts:
         needed.add("agrosphere-contracts")
     repositories = {}
@@ -76,13 +77,10 @@ def verify_context(inputs: DesignInput, manifest_path: Path, registry_path: Path
 
 
 def expected_owners(kind: str, inputs: DesignInput) -> set[str]:
-    services = {t.repository for t in inputs.plan.tasks} - {
-        "agrosphere-architecture",
-        "agrosphere-contracts",
-        "agrosphere-orchestrator",
-    }
+    services = service_owners(inputs)
+    owner = architecture_owner(inputs)
     if kind in {"business", "architecture", "overview", "as-built"}:
-        return {"agrosphere-architecture"}
+        return {owner}
     if kind == "contracts" or kind.startswith("proposal:"):
         return {"agrosphere-contracts"}
     if kind == "service":
@@ -90,10 +88,10 @@ def expected_owners(kind: str, inputs: DesignInput) -> set[str]:
     if kind.startswith("diagram:"):
         diagram = kind.split(":", 1)[1]
         if diagram in {"context", "container", "data-flow", "deployment", "activity"}:
-            return {"agrosphere-architecture"}
+            return {owner}
         if diagram in {"component", "domain", "state"}:
             return services
-        return services | {"agrosphere-architecture"}
+        return services | {owner}
     if kind.startswith("render:"):
         return expected_owners("diagram:" + kind.split(":", 1)[1], inputs)
     return set()
@@ -111,14 +109,15 @@ def deterministic_findings(
     requirement_ids = {r.id for r in inputs.requirements}
     if not requirement_ids:
         findings.append(Finding(code="requirements", message="Approved requirements are missing"))
+    owner = architecture_owner(inputs)
     required = (
         [
-            ("architecture", "agrosphere-architecture"),
-            ("business", "agrosphere-architecture"),
-            ("overview", "agrosphere-architecture"),
+            ("architecture", owner),
+            ("business", owner),
+            ("overview", owner),
         ]
         if phase == "design"
-        else [("as-built", "agrosphere-architecture"), ("overview", "agrosphere-architecture")]
+        else [("as-built", owner), ("overview", owner)]
     )
     required += [("service", repo) for repo in expected_owners("service", inputs)]
     if inputs.contract_impact:
@@ -210,6 +209,16 @@ def deterministic_findings(
             if (owner, linked) not in paths:
                 problem("cross-reference", f"Broken cross-document reference: {owner}/{linked}")
     for spec in inputs.diagrams:
+        if spec.approved_source is not None and not any(
+            a.type == "diagram:" + spec.kind
+            and a.repository == spec.repository
+            and a.path.endswith(f"/diagrams/{spec.id}.puml")
+            and a.content == spec.approved_source
+            for a in artifacts
+        ):
+            findings.append(
+                Finding(code="diagram-source", message=f"Approved source changed: {spec.id}")
+            )
         if not any(
             a.path.endswith(f"/diagrams/{spec.id}.puml")
             and a.repository == spec.repository

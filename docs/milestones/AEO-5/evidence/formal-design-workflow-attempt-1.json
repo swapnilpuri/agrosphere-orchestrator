@@ -1,0 +1,415 @@
+{
+  "executed_at": "2026-10-25T18:18:12.513365+00:00",
+  "scope_verified_before_generation": true,
+  "commands": [
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "milestone",
+        "design",
+        "AEO-5"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "{\"timestamp\": \"2026-10-25T18:18:12.018305+00:00\", \"level\": \"ERROR\", \"logger\": \"__main__\", \"message\": \"Activity adapter supports explicit linear workflows only; branching needs a reviewed adapter\"}\n"
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "milestone",
+        "validate-design",
+        "AEO-5"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "{\"timestamp\": \"2026-10-25T18:18:12.439865+00:00\", \"level\": \"ERROR\", \"logger\": \"__main__\", \"message\": \"No design artifacts; approved requirements and generation are required\"}\n"
+    }
+  ],
+  "status": {
+    "milestone": "agrosphere:AEO-5",
+    "state": "DESIGN_IN_PROGRESS",
+    "scope_id": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+    "revision_id": null,
+    "summary": "GitHub integration, durable delivery recovery and evidence",
+    "functional_scope": [
+      {
+        "id": "AEO5-AUTH",
+        "text": "GitHub authentication and typed repository discovery",
+        "acceptance_criteria": [
+          "Authentication/permission failures block writes; repository and branch identities are validated."
+        ]
+      },
+      {
+        "id": "AEO5-BRANCH",
+        "text": "Safe branch preparation and publication",
+        "acceptance_criteria": [
+          "Isolated branch creation/reuse preserves dirty source; exact authorized push never force-pushes."
+        ]
+      },
+      {
+        "id": "AEO5-PR",
+        "text": "Verified PR creation and idempotent reconciliation",
+        "acceptance_criteria": [
+          "Repeated or ambiguous publication reuses an exact matching PR; duplicates and closed/merged matches block."
+        ]
+      },
+      {
+        "id": "AEO5-COORD",
+        "text": "Multi-repository manifest coordination",
+        "acceptance_criteria": [
+          "Existing tasks and resource leases bind each unit; unavailable dependencies block milestone readiness."
+        ]
+      },
+      {
+        "id": "AEO5-CI",
+        "text": "Exact-head required CI and repository policy",
+        "acceptance_criteria": [
+          "Required checks are current-SHA bound; missing, stale and unavailable policy/checks block."
+        ]
+      },
+      {
+        "id": "AEO5-REVIEW",
+        "text": "Required human GitHub review",
+        "acceptance_criteria": [
+          "Human review, CODEOWNERS and dismissals are respected; agents do not self-approve."
+        ]
+      },
+      {
+        "id": "AEO5-APPROVAL",
+        "text": "Existing AEO-4 approvals remain mandatory",
+        "acceptance_criteria": [
+          "Fresh activated quality/security and exact human publishing approval are required before mutation."
+        ]
+      },
+      {
+        "id": "AEO5-DURABLE",
+        "text": "Transactional durable delivery state",
+        "acceptance_criteria": [
+          "Intent survives restart and migrations preserve existing records; evidence/audit are append-only."
+        ]
+      },
+      {
+        "id": "AEO5-RECOVERY",
+        "text": "Observe ambiguous remote outcomes before retry",
+        "acceptance_criteria": [
+          "Lost push/PR responses, provider failures and partial completion reconcile without blind replay."
+        ]
+      },
+      {
+        "id": "AEO5-EVIDENCE",
+        "text": "Actual delivery evidence and reports",
+        "acceptance_criteria": [
+          "Reports include actual SHA, PR, CI, reviews, approval/quality hashes, blockers and recovery history."
+        ]
+      },
+      {
+        "id": "AEO5-CLI",
+        "text": "Safe discoverable delivery CLI",
+        "acceptance_criteria": [
+          "All nine commands expose structured output; observation and default recovery never write remotely."
+        ]
+      },
+      {
+        "id": "AEO5-BOUNDARY",
+        "text": "Preserve regression and scope boundaries",
+        "acceptance_criteria": [
+          "All 163 baseline and new tests pass; no unauthorized remote writes, merges, deployment or AEO-6."
+        ]
+      }
+    ],
+    "architecture_overview": {
+      "Architecture overview": "# AEO-5 architecture proposal\n\nThis is a reviewable design, not an implementation claim. The user specifications in 00-original-specification.md and 00-recovery-request.md are authoritative scope inputs. Only agrosphere-orchestrator changes. Shared service APIs/events and application runtime behavior are unaffected.\n\n## Ports and configuration\n\nProposed github_models.py holds strict Pydantic repository identity, principal, branch, PR, check, review, policy and error models. github_provider.py defines a typed protocol and GitHubCliAdapter with an injected subprocess runner for tests. Commands use fixed argument arrays, explicit cwd, explicit API method, bounded timeouts, bounded response size and sanitized errors. Validate github.com remote owner/name, IDs, SHA lengths and Git refs before use. Reject URL userinfo, arbitrary hosts, option-like branch names, traversal and untrusted executable selection. Confirm fetch and push remote identity agree with the configured allowlist.\n\nSettings gains centralized provider, gh executable, operation timeout, bounded read retries/poll interval/duration, repository/base allowlists, branch prefix, redaction and remote writes disabled by default. Credentials remain with existing gh authentication. User/API identity and access are observed before writes; authentication never grants publishing approval. No merge/deploy/write-workflow capability is present in the port.\n\n## Delivery domain\n\nProposed delivery_models.py defines a milestone manifest with uniquely named units, one repository/task per unit, DAG dependencies, expected base and head SHA, target/head branches and remote identity. Planned units reference existing milestone/task records. Validate duplicate IDs, cycles, missing tasks, repository mismatches and allowed target branches before persistence. Unit policy/CI/review snapshots evolve independently from operational state.\n\nProposed delivery_store.py adds DeliveryRun, DeliveryUnit and DeliveryOperation projections with stable IDs and uniqueness constraints on milestone/unit and operation reconciliation identity. Append immutable snapshots/events and raw result hashes through quality_store rather than retaining mutable-only audit evidence. Event/state updates and audit records share orchestration_store.transaction. Alembic 0007 adds tables/triggers/indexes without dropping old tables. Reject destructive downgrade. Existing DesignDecision and governance authority remain authoritative.\n\nProposed delivery.py coordinates branch preparation, publishing, observation, readiness and reports. Reuse execution_workspace's isolated worktree/preservation checks and orchestration_store resource leases for repository write exclusion. Each unit holds the same repository:<id> write resource as execution scheduling. No remote network call holds a SQLite write transaction. In-progress operation and ownership persist before releasing the transaction for I/O; uncertain completion retains a reconciliation block rather than freeing a conflicting write.\n\n## Mutation protocol\n\nRecheck exact source revision, baseline, remote, policy, authorization and AEO-4 quality before each step. Persist operation intent and preconditions transactionally before local branch preparation, push or PR creation. Use a stable key bound to unit, action, remote, branches and head SHA. After I/O reconcile observed external identity and persist append-only evidence/outcome. A process restart cannot infer completion from attempted intent. Do not create commits automatically; prepared commits require separate existing authorization. Push only an explicitly approved isolated branch without force or protected-target writes.\n\nPR creation uses a structured body built from stored actual validation/quality/security/design references; include milestone/task IDs, design, purpose, tests, limitations and related PRs. Before creation inspect persisted identity and all relevant remote PR states for exact owner/head/base/remote identity. Multiple matches or closed/merged outcomes block for a human decision. A timeout after creation triggers lookup, never another blind create. Serialize lookups and creates with the repository lease and durable operation state. External actors may race: detect and block duplicates after observation; do not promise a GitHub cross-process atomic PR transaction.\n\n## Policy and readiness\n\nRead active branch rules and classic protection. A failed/ambiguous policy lookup does not mean no restrictions. Preserve provider values when mapping queued/pending/running/success/failed/cancelled/skipped/timed-out/unavailable/unknown. Query checks and statuses for the exact PR head; reject evidence for any older SHA. Keep required and optional checks distinct. Successful optional checks cannot satisfy missing required ones. Poll within configured budgets and classify authentication, rate-limit and network failures without printing secrets.\n\nReview state must combine current GitHub merge/review decision, applicable required counts, changes-requested/dismissals, CODEOWNERS and current head. Agent/bot review never counts as human approval. If requirements cannot be proved by available metadata, block instead of approximating them from a review count. Recompute on every changed head/base/policy/review state. Existing AEO-4 activated policy, quality/security readiness and exact publishing authorization are mandatory for every delivery milestone, including legacy milestones.\n\nMilestone readiness requires all unit guards and dependencies. A dependency PR existing is distinct from its changes being available to downstream units; unmerged/unavailable dependency content blocks the latter condition. AEO-5 may declare READY_FOR_AUTHORIZED_MERGE but never performs the merge.\n\n## Evidence and reports\n\nPersist unit and operation identity, authenticated principal, preconditions, policy/approval references, base/head SHA, branches, immutable PR ID/number/URL, exact-head CI and review snapshots, quality and security evidence hashes, documentation hashes, dependency state, recovery observations and blocker codes. Preserve prior observations when state changes. Report JSON and Markdown read stored evidence and display unavailable fields as unknown. Content hashes and SQLite append-only guards do not establish tamper-resistant remote audit storage.\n\n## Documentation ownership prerequisite\n\nThe existing AEO-1C generator assumes cross-service architecture ownership. Introduce an explicit typed internal-orchestrator scope only after requirements approval; bind it into the scope digest. Restrict it to the single orchestrator task/context root and orchestrator-owned docs. Preserve current application ownership defaults and negative tests. Never silently remap an existing approved revision. This compatibility change is part of the review scope and is not already implemented.\n\n## Official provider references\n\nRequest construction: [GitHub CLI API manual](https://cli.github.com/manual/gh_api). Policy reads: [classic protection](https://docs.github.com/en/rest/branches/branch-protection) and [active branch rules](https://docs.github.com/en/rest/repos/rules). Review data: [pull request reviews](https://docs.github.com/en/rest/pulls/reviews). These references inform the proposed adapter; they do not prove a live integration was implemented or tested.\n",
+      "Impacted microservices": "Only agrosphere-orchestrator implementation is changed. Sibling application repositories are read-only during development.",
+      "DDD boundaries": "Internal delivery domain references existing milestone/task identities; no cross-service contract or database ownership changes.",
+      "APIs and event interactions": "Internal typed provider/CLI interfaces only; GitHub CLI API calls, no new HTTP adapter or event infrastructure.",
+      "Database changes": "Proposed additive Alembic 0007; delivery run/unit/operation projections and immutable evidence reusing existing transactions.",
+      "Security considerations": "# Security and approvals proposal\n\nRemote writes default off. GitHub authentication, repository push permission, AEO design approval, activated quality/security policy and artifact-bound publishing authorization are separate checks. Required review is a human decision; neither an AI response nor an agent identity can supply it. Agent outputs and all GitHub/repository content are untrusted data.\n\n## Mandatory existing workflow\n\nThe original AEO-5 specification section 3 says: \"Use the existing AEO-1C documentation approval workflow\" and \"Do not proceed to implementation if a required approval is pending or denied.\" The AEO-5R request section 4 says: \"After discovery and any required design approval\" and permits stopping only approval-dependent activities while independent work continues.\n\nThe actual implementation enforces requirements approval in design.generate_design and authenticated decisions in design.decide. The current approver list is empty. No generated fixture identity, direct SQL insertion, automatic allowlist update, claimed actor or chat approval will be substituted for the configured Windows human verification. The review package is draft/unapproved; requirements registration is not approval. See APPROVAL_REQUIRED.md for the exact next action and scope digest.\n\n## Publication authority\n\nBind a publishing authorization to milestone, delivery unit, existing task, action, repository ID/root, remote immutable identity, target/head branches, base/head commits, design revision, manifest/policy digest, quality evidence, expiration and approving human. Recheck scope and revocation inside the transaction immediately before intent. Persist consumption/operation identity atomically so recovery observes a previous attempt without granting a new mutation. Any changed scope needs fresh authorization. Reconciliation is read-only and does not consume a new publishing grant.\n\nNo generic legacy milestone/operation approval is treated as remote publishing authority. Every delivered milestone must adopt AEO-4. Missing/expired/stale/incomplete quality or security evidence blocks publication. Draft PR policy must be explicitly declared; it never bypasses required pre-publication security/design approval.\n\n## Provider boundaries\n\nUse gh with validated argv, bounded timeouts and fixed host/API methods. Do not support arbitrary shell, force push, reset, rebase, branch deletion, protected-base commits, merge, deploy, workflow dispatch/cancel/rerun, token creation or self-approval. Never log tokens, environment secrets, authentication headers or large raw PR body/log data. Redact provider errors and hash evidence. Validate JSON fields and bound output before persistence/command use. A provider permission failure does not trigger broader credentials.\n\nRequired CI policy includes active rulesets and classic protection; unreadable policy means blocked. Preserve raw status values, exact tested SHA, required/optional distinction and missing checks. Human review must satisfy current GitHub requirements including CODEOWNERS, dismissals, author/self restrictions and outstanding changes-requested. Unsupported rules and unverified review constraints block automated readiness. Recompute after any head/base/policy change.\n\n## Test boundary\n\nAll new tests must use temporary repositories/databases and mocked gh subprocess responses. Real branch pushes and PR creation are excluded from ordinary validation. Live tests require a separately identified authorized sandbox. Local administrator control of config, Python and SQLite remains a trusted boundary; no stronger audit/storage assurance is claimed. There are no implemented AEO-5 security capabilities yet.\n",
+      "Technology decisions": "Python 3.12+, existing Pydantic v2, SQLAlchemy 2.x, Alembic, Typer, pytest, Ruff, SQLite and installed gh.",
+      "Architectural trade-offs": "Durable intent plus read-only reconciliation instead of cross-repository atomicity; block unsupported policy rather than approximate approval.",
+      "Risks and assumptions": "Current requirements/design approval and internal documentation ownership compatibility must be resolved before delivery implementation. Live writes are not authorized.",
+      "Architectural decisions": "Reuse existing leases, authority and evidence; disabled remote-write defaults; internal orchestrator-only documentation.",
+      "Integration design": "# Delivery workflows proposal\n\nAll flows below are planned behavior, not currently available commands. Six locally rendered diagram sources accompany this package.\n\n## Commands and side effects\n\n| Command | Intended behavior | Real repository/GitHub writes |\n| --- | --- | --- |\n| delivery plan | Validate and persist an immutable manifest linked to existing approved tasks | None |\n| delivery prepare | Validate baseline and create/reuse an isolated local branch/worktree under an exact grant | Authorized local isolated Git operations only |\n| delivery publish | Recheck quality/approvals/remote identity, persist intent, push, reconcile, create/reuse PR | Explicitly authorized push/PR creation only |\n| delivery status | Present persisted operational/policy state | None |\n| delivery checks | Observe and optionally bounded-poll exact-head CI | None |\n| delivery reviews | Observe current human-review requirements and decisions | None |\n| delivery reconcile | Compare durable intent/PR/ref identities with current remote state | None |\n| delivery recover | Reconcile read-only by default; separately grant any mutation | None by default |\n| delivery report | Render the aggregate evidence and every blocker | None |\n\nLocal recording of observations is transactional and append-only. Status/report never invoke publication. Stable failure codes distinguish invalid input, authorization denial, blocked requirements, provider failure and ambiguous recovery; CLI errors must be structured and tested.\n\n## Branch preparation\n\nInspect original and isolated worktrees, exact baseline/head and repository identity. Reject protected base writes, branch naming conflicts, unexpected source modifications, unsafe hooks and missing grants. Reuse only an exact matching safe AEO branch. Preserve dirty original worktrees. Never reset, rebase, delete branches, overwrite files or force push. Validate ref syntax through Git as well as application policy.\n\n## Publication and duplicate prevention\n\nAcquire the existing repository write resource. Re-evaluate activated AEO-4 evidence, design and exact publishing approval. Persist intent before each remote mutation. Inspect remote branch/head and matching open/closed/merged PRs; reconcile existing durable PR identity. Push only if separately authorized and needed. Recheck after push, then create/reuse exactly one matching PR. Unexpected competing/closed/merged matches block. Persist immutable identity, SHA, URL and complete history. No network exception causes blind create/push replay.\n\n## Recovery decisions\n\n| Interruption / external change | Observation and safe default |\n| --- | --- |\n| Before local branch creation | Inspect operation, branch and worktree; no mutation without current grant |\n| Branch created before local outcome saved | Verify exact repository/branch/base and record observed result |\n| Before push / push response lost | Query remote branch SHA; record completion if exact, block mismatch, do not repush blindly |\n| Before PR create / PR response lost | Query all matching PR states and reconcile exact identity; no second create |\n| CI unavailable / rate limit / network loss | Record unavailable evidence; bounded safe read retries, readiness blocked |\n| Expired authentication / insufficient permission | Block writes; no credential provisioning or escalation |\n| Head/base changed | Invalidate readiness and prior material authorization; retain old evidence |\n| PR closed/merged externally | Record terminal observation; no reopen, replacement or merge action |\n| Required checks changed / reviews dismissed | Recompute blockers for current policy/head |\n| Partial multi-repository completion | Reconcile units independently; keep incomplete dependency/milestone blocked |\n| Local transaction fails after remote success | Durable intent survives; external lookup precedes another action |\n\nRecovery reports show previous local state, actual observed state, discrepancies, recommended safe observations and separately authorized actions. Deterministic policy controls the decisions.\n\n## Operational state\n\nPLANNED -> AWAITING_APPROVAL -> AUTHORIZED -> BRANCH_PREPARED -> AWAITING_PUBLICATION -> PR_PUBLISHED. From publication use CHECKS_PENDING, REVIEW_PENDING, BLOCKED or READY_FOR_AUTHORIZED_MERGE. Any ambiguous in-progress mutation enters RECOVERY_REQUIRED. Known failures enter FAILED with classification and preserved intent. Transitions are deterministic and tested; READINESS is recomputed from independent policy, CI, review and dependency snapshots. PR_PUBLISHED is not delivery success. READY_FOR_AUTHORIZED_MERGE is observational, never an executed merge.\n"
+    },
+    "technical_decisions": "Python 3.12+, existing Pydantic v2, SQLAlchemy 2.x, Alembic, Typer, pytest, Ruff, SQLite and installed gh.",
+    "risks_and_assumptions": "Current requirements/design approval and internal documentation ownership compatibility must be resolved before delivery implementation. Live writes are not authorized.",
+    "affected_repositories": [
+      "agrosphere-architecture",
+      "agrosphere-orchestrator"
+    ],
+    "verified_context": [
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/design.py",
+        "sha256": "1330049444195c4f2ca64cc7f0f28e76a386251200ffb05104f374ddcdfe5900",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/design_validation.py",
+        "sha256": "9fc9568b3d60d57c4e4486150c4e7b9740754a9cf27a4ad4f6f2be2e39d97ea4",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/design_agents.py",
+        "sha256": "874a105f52de935c27f7e97f238790754d8fdbfb41507b5cef0ddcf5022def90",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/quality.py",
+        "sha256": "0ca64bfa4952654f10904a227ccf6b5b3dc570f69bfd242528a92e2b3194dd53",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/orchestration_store.py",
+        "sha256": "e7ad91941648bb7d805db0bc73b98613dfc6d410bcad09a72063ba200c5d5f06",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/execution_workspace.py",
+        "sha256": "8591774fa41faadb017f01c37ff473ef39816728a54eec839d74aac51da490a2",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/cli.py",
+        "sha256": "9e2763a447c227ff06161aa4c2ef360c1086393ea5fd24d1a30eba59f3807adc",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "src/agrosphere_orchestrator/config/settings.py",
+        "sha256": "5a19693519f0d620164ef1a5bcc0a7841a2d3156faef3d61affb840149292bd6",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/IMPLEMENTATION_RECOVERY.md",
+        "sha256": "df8c6041e9a3f4f4eaed25b55c17da854e107352cf08d8bda5c55d1c263b6f43",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/01-existing-capability-assessment.md",
+        "sha256": "01b12703723c6a099eae0439ae9766cba08b501aee67e7c414e3696f60524883",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/02-architecture.md",
+        "sha256": "a56f20f8a7584e0ef61ae90edb6841e0eec99d77ec72230ce4f29aa0bdeb5e9a",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/03-workflows.md",
+        "sha256": "1de5f9f61a0e2cec72ea23ebd568823a5510420d31e9567d985cceed5ca63db1",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/04-security-and-approvals.md",
+        "sha256": "03d7ae028b54850147b0cdd2ff51d0c03b57b0b6a604586e8542f1afb6fe8375",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/05-implementation-plan.md",
+        "sha256": "cf175d058f112d34b664926a8429b56c182cde53a3a660ac14d2ef9d9b4812b1",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/06-acceptance-criteria.md",
+        "sha256": "6aa4f440a99b0a43b38d815a21852434ef58e55c1ae25ab633264538d238546d",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/00-original-specification.md",
+        "sha256": "7aba6a8b6f3a305073544b71fb912bb719461b0e869831798dc91ad0547b490f",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/00-recovery-request.md",
+        "sha256": "7546988cc2ed5132b1e2e2e37a4d90127ef97488627c400614e2ba6da71ffac1",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/design-repositories.json",
+        "sha256": "dab365fe0c5e05b75467099d31e9a93cc155ee3b48883b99a44b7f5a6532558a",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/diagrams/01-components.puml",
+        "sha256": "a1803e9396bf5338c3259e2a9b028edd72022c8b53d1d4d64b7d92345da37888",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/diagrams/02-github-delivery.puml",
+        "sha256": "bea3f65f01eed6997110ee7b42ef81f45c08161c2ccd65bfb4c88c302f1cd83e",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/diagrams/03-multirepository.puml",
+        "sha256": "b42cd2978aa3c883193f1188e1e9fbfca34375d7ca030a68f3ad81d2c71cdd9a",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/diagrams/04-delivery-state.puml",
+        "sha256": "3033afa2c62c1c173a1361128fa14c1a3eb3f4fcc7dad165971b4b83284c0064",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/diagrams/05-durable-recovery.puml",
+        "sha256": "bfb903b03610299bb162d929d230dcaccbb8470e0dbb367d080d29ab763b894d",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      },
+      {
+        "repository": "agrosphere-orchestrator",
+        "path": "docs/milestones/AEO-5/diagrams/06-approval-quality.puml",
+        "sha256": "e70ad9d03aca75401fdc657c318d79281718e94ccd31e4a038a1882601ed6fb5",
+        "head": "e2a080f8c83339f20a3cb3e26506859da100c402"
+      }
+    ],
+    "implementation_tasks": [
+      {
+        "id": "github",
+        "title": "Typed provider and CLI adapter",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [],
+        "acceptance_criteria": [
+          "Authentication/permission failures block writes; repository and branch identities are validated."
+        ]
+      },
+      {
+        "id": "durable",
+        "title": "Additive delivery persistence and migration",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "github"
+        ],
+        "acceptance_criteria": [
+          "Intent survives restart and migrations preserve existing records; evidence/audit are append-only."
+        ]
+      },
+      {
+        "id": "publication",
+        "title": "Safe branch and idempotent PR workflows",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "durable"
+        ],
+        "acceptance_criteria": [
+          "Isolated branch creation/reuse preserves dirty source; exact authorized push never force-pushes.",
+          "Repeated or ambiguous publication reuses an exact matching PR; duplicates and closed/merged matches block."
+        ]
+      },
+      {
+        "id": "governance",
+        "title": "Coordination, exact-head CI and human approval",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "publication"
+        ],
+        "acceptance_criteria": [
+          "Existing tasks and resource leases bind each unit; unavailable dependencies block milestone readiness.",
+          "Required checks are current-SHA bound; missing, stale and unavailable policy/checks block.",
+          "Human review, CODEOWNERS and dismissals are respected; agents do not self-approve.",
+          "Fresh activated quality/security and exact human publishing approval are required before mutation."
+        ]
+      },
+      {
+        "id": "recovery",
+        "title": "Remote recovery and evidence reporting",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "governance"
+        ],
+        "acceptance_criteria": [
+          "Lost push/PR responses, provider failures and partial completion reconcile without blind replay.",
+          "Reports include actual SHA, PR, CI, reviews, approval/quality hashes, blockers and recovery history."
+        ]
+      },
+      {
+        "id": "cli",
+        "title": "Delivery CLI and fault-injection integration tests",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [
+          "recovery"
+        ],
+        "acceptance_criteria": [
+          "All nine commands expose structured output; observation and default recovery never write remotely."
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Regression, diagrams, migration and acceptance validation",
+        "repository": "agrosphere-orchestrator",
+        "role": "qa-engineer",
+        "operation": "validate",
+        "depends_on": [
+          "cli"
+        ],
+        "acceptance_criteria": [
+          "All 163 baseline and new tests pass; no unauthorized remote writes, merges, deployment or AEO-6."
+        ]
+      }
+    ],
+    "artifacts": [],
+    "validation": null,
+    "file_findings": [],
+    "decisions": [
+      {
+        "kind": "requirements",
+        "subject": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+        "decision": "approved",
+        "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+        "created_at": "2026-10-25T17:48:01.005512+00:00"
+      },
+      {
+        "kind": "requirements",
+        "subject": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+        "decision": "approved",
+        "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+        "created_at": "2026-10-25T18:03:42.066587+00:00"
+      },
+      {
+        "kind": "requirements",
+        "subject": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+        "decision": "approved",
+        "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+        "created_at": "2026-10-25T18:08:18.932104+00:00"
+      }
+    ],
+    "implementation_authorized": false,
+    "authorization_findings": [],
+    "revision_history": []
+  }
+}

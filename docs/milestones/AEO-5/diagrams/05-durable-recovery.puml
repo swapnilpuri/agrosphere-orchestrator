@@ -1,0 +1,20 @@
+@startuml
+title Proposed read-only durable recovery
+start
+:Load persisted unit, operation intent and preconditions;
+:Observe Git refs, matching PRs, head, base and policies;
+if (Identity and result match exactly?) then (yes)
+:Persist observed completion and append evidence;
+else (no)
+if (Outcome remains ambiguous or conflicting?) then (yes)
+:Retain recovery block and repository write exclusion;
+:Report discrepancies and human decision needed;
+else (known not performed)
+:Record observed absence;
+:Require fresh scoped authorization for any mutation;
+endif
+endif
+:Recompute CI, human review, quality and dependency readiness;
+:Emit reconciliation report without remote writes;
+stop
+@enduml

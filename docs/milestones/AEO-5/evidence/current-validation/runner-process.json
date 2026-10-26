@@ -1,0 +1,12 @@
+{
+  "process_exit_code": 1,
+  "validator_exit_code": 0,
+  "all_18_commands_exit_zero": true,
+  "failure": "Wrapper temporary-directory cleanup failed with WinError 32 because SQLite context managers had not closed their connections.",
+  "correction": "Explicitly close source and destination backup connections before running validation; no production code/test failure occurred.",
+  "full_validator_rerun": false,
+  "reason_not_repeated": "All required validator commands already passed; independently verify wrapper backup/cleanup instead.",
+  "cleanup_verification_exit_code": 0,
+  "cleanup_verification_stdout": "SQLite backup connection closure and temporary cleanup passed",
+  "disposable_backup_removed": true
+}

@@ -1,0 +1,306 @@
+{
+  "executed_at": "2026-10-25T17:17:04.144200+00:00",
+  "classification": "Not found",
+  "scope": [
+    "current workspace",
+    "local and remote refs",
+    "reflogs",
+    "all reachable commit trees",
+    "unreachable blob marker inspection",
+    "C:/Projects/agrosphere-backup candidate filename search"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "e2a080f8c83339f20a3cb3e26506859da100c402\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "-a",
+        "-vv"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "* master                e2a080f [origin/master] feat(validation): update validation scripts and enhance error handling\n  remotes/origin/master e2a080f feat(validation): update validation scripts and enhance error handling\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "worktree",
+        "list",
+        "--porcelain"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "worktree C:/Projects/agrosphere/agrosphere-orchestrator\nHEAD e2a080f8c83339f20a3cb3e26506859da100c402\nbranch refs/heads/master\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "log",
+        "--all",
+        "--oneline"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "e2a080f feat(validation): update validation scripts and enhance error handling\nadd37a8 Implement governance framework with quality adapters, models, and storage\nc431dcc Add orchestration models and store with SQLite support\n85ea95c Update validation tools and enhance redaction functionality\n87accdf feat: enhance validation and execution processes\n1512d81 Add comprehensive tests for execution and persistence state\n32ea388 Add final AEO-1B execution results and update validation reports\nb5b66b7 Implement recovery models, repository inspection, and state management\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "reflog",
+        "--all"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "e2a080f refs/remotes/origin/master@{0}: update by push\ne2a080f refs/heads/master@{0}: commit: feat(validation): update validation scripts and enhance error handling\ne2a080f HEAD@{0}: commit: feat(validation): update validation scripts and enhance error handling\nadd37a8 refs/heads/master@{1}: commit: Implement governance framework with quality adapters, models, and storage\nadd37a8 HEAD@{1}: commit: Implement governance framework with quality adapters, models, and storage\nc431dcc refs/remotes/origin/master@{1}: update by push\nc431dcc refs/heads/master@{2}: commit: Add orchestration models and store with SQLite support\nc431dcc HEAD@{2}: commit: Add orchestration models and store with SQLite support\n85ea95c refs/remotes/origin/master@{2}: update by push\n85ea95c refs/heads/master@{3}: commit: Update validation tools and enhance redaction functionality\n85ea95c HEAD@{3}: commit: Update validation tools and enhance redaction functionality\n87accdf refs/heads/master@{4}: commit: feat: enhance validation and execution processes\n87accdf HEAD@{4}: commit: feat: enhance validation and execution processes\n1512d81 refs/remotes/origin/master@{3}: update by push\n1512d81 refs/heads/master@{5}: commit: Add comprehensive tests for execution and persistence state\n1512d81 HEAD@{5}: commit: Add comprehensive tests for execution and persistence state\n32ea388 refs/remotes/origin/master@{4}: update by push\n32ea388 refs/heads/master@{6}: commit: Add final AEO-1B execution results and update validation reports\n32ea388 HEAD@{6}: commit: Add final AEO-1B execution results and update validation reports\nb5b66b7 refs/heads/master@{7}: commit (initial): Implement recovery models, repository inspection, and state management\nb5b66b7 HEAD@{7}: commit (initial): Implement recovery models, repository inspection, and state management\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "?? docs/validation/AEO-5_REPORT.md\n?? docs/validation/aeo5-commands.json\n?? docs/validation/aeo5-pytest.xml\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "--tags",
+        "origin"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "e2a080f8c83339f20a3cb3e26506859da100c402\trefs/heads/master\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "fsck",
+        "--no-reflogs",
+        "--unreachable"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "unreachable blob 1bf06a6413333fa2189f98f340b0a359aee75e29\nunreachable blob cd3014dd289c9d2decf90d1e6a3daae6a72e46dd\nunreachable blob 2872831692fc7bdb4d2282213c82342816b3b708\nunreachable blob 415a79b5ed1870360a62e551e9333989bbd19b57\nunreachable blob e422755a0c8157b271050080958303350dfebdcc\nunreachable blob 336f16b5165569327bd23724104f783e0144f87f\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "rg",
+        "--files",
+        "C:/Projects/agrosphere-backup",
+        "-g",
+        "*aeo*",
+        "-g",
+        "*AEO*",
+        "-g",
+        "*orchestrator*",
+        "-g",
+        "*delivery*"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-list",
+        "--all"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "e2a080f8c83339f20a3cb3e26506859da100c402\nadd37a8eb6cd63289e79ff7a81d911db90b4590d\nc431dccef8660430370797a476c489686b3444be\n85ea95cc94d24b23c01f667916acbfcd3f770222\n87accdf8ee105d2cd348050557f5e300769eef84\n1512d8116f109ce22409e21c663f74a96f09e229\n32ea388c4e98eb2be790b8f12c1f93edf5d269ee\nb5b66b781a5decd64ad213bcebb51518fa9cbefc\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "e2a080f8c83339f20a3cb3e26506859da100c402"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "add37a8eb6cd63289e79ff7a81d911db90b4590d"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "c431dccef8660430370797a476c489686b3444be"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "85ea95cc94d24b23c01f667916acbfcd3f770222"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "87accdf8ee105d2cd348050557f5e300769eef84"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "1512d8116f109ce22409e21c663f74a96f09e229"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "32ea388c4e98eb2be790b8f12c1f93edf5d269ee"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "b5b66b781a5decd64ad213bcebb51518fa9cbefc"
+      ],
+      "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "output_note": "Filtered to AEO-5/GitHub/delivery candidate paths; no matching source implementation."
+    }
+  ],
+  "unreachable_blobs": [
+    {
+      "oid": "1bf06a6413333fa2189f98f340b0a359aee75e29",
+      "bytes": 2320,
+      "aeo5_markers": []
+    },
+    {
+      "oid": "cd3014dd289c9d2decf90d1e6a3daae6a72e46dd",
+      "bytes": 37688,
+      "aeo5_markers": []
+    },
+    {
+      "oid": "2872831692fc7bdb4d2282213c82342816b3b708",
+      "bytes": 10861,
+      "aeo5_markers": []
+    },
+    {
+      "oid": "415a79b5ed1870360a62e551e9333989bbd19b57",
+      "bytes": 42070,
+      "aeo5_markers": []
+    },
+    {
+      "oid": "e422755a0c8157b271050080958303350dfebdcc",
+      "bytes": 2468,
+      "aeo5_markers": []
+    },
+    {
+      "oid": "336f16b5165569327bd23724104f783e0144f87f",
+      "bytes": 22323,
+      "aeo5_markers": []
+    }
+  ],
+  "limitations": [
+    "No entire-disk or inaccessible/private-ref search.",
+    "Backup search used candidate filenames, not an assertion about every file body."
+  ],
+  "backup_top_level": [
+    ".gitattributes",
+    ".github",
+    ".gitignore",
+    "AGENTS.md",
+    "apps",
+    "artifacts",
+    "contracts",
+    "docs",
+    "geo",
+    "GOALS.md",
+    "infrastructure",
+    "PLANS.md",
+    "README.md",
+    "scripts",
+    "services",
+    "simulator",
+    "toolchain.json"
+  ]
+}

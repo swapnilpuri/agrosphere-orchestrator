@@ -1,6 +1,8 @@
 from alembic import context
 
 from agrosphere_orchestrator import (
+    autonomous_store,  # noqa: F401
+    delivery_store,  # noqa: F401
     orchestration_store,  # noqa: F401
     quality_store,  # noqa: F401
 )

@@ -1,0 +1,289 @@
+{
+  "artifacts": [
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/00-original-specification.md",
+      "sha256": "2d984a562d990287f9f5c1d5d4bcf9296eac6de50faa37a8be208fc32e824743"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/01-existing-capability-assessment.md",
+      "sha256": "002a182aee5c5d3f29c06e1488228f937e923a25b2d31f44f8b21b0fe565944d"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/02-architecture.md",
+      "sha256": "8e450006c5b1d77500322274d8542c614390444e702a4f57160a4b030c43028f"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/03-autonomous-lifecycle.md",
+      "sha256": "a622724937e81d5344f914139183af8fe2929b3fc300ade8b8a6e9e83503ff30"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/04-state-and-recovery-model.md",
+      "sha256": "4158e9488e88230f37926ccdd1dd3aca0b404458cfaef0883d356e80a3860687"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/05-governance-and-authorization.md",
+      "sha256": "09c03747c81662d39cc7cc5de3f9fb910bc5ff57fc48d601730664935c6cf58d"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/06-implementation-plan.md",
+      "sha256": "6ceb4a66e50f52c0a42b2f401ad0289b03df5fd258bde49d3e08e13fe14efe53"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/07-acceptance-criteria.md",
+      "sha256": "58833528b916e7890c25abbfa561b2b73ea0a7d4d5d034c2764ef30b824c90db"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/08-cli-operation-guide.md",
+      "sha256": "728ee94115b6e6d48031b17c58027d26a27fb96532e4594d5324196909c9eaed"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/09-approval-and-recovery-guide.md",
+      "sha256": "1e8a564d64290d851b9115e29879108d258c819453b329fca3020aff822dce11"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/10-test-results.md",
+      "sha256": "45d2e1513abe5173014de5218281b0c63278a5ff81c85fa2996ec7601e5d5c64"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/AEO-6_ACCEPTANCE_REPORT.md",
+      "sha256": "7a582a28166013942aaf19ad022d5f377617b3946eef5a2eeeb5ed9c3c845faf"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/design-repositories.json",
+      "sha256": "93213d1a23579814a941960c989b0e32967362f2b45a813732fa352aad4cf784"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/01-components.puml",
+      "sha256": "24e0202af3c852a53064fbc46ba2bb86738ea39cbd9bbf2974a6bd02a0bb14ff"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/01-components.svg",
+      "sha256": "f3afdc1e347d153652cdaa191e7182e1cbca49b0ea6f703e6737d1d2236d5e6a"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/02-lifecycle.puml",
+      "sha256": "20ef664ab5a3178385be26ac1d39699f2c2664e0712d6b4362aa3e6fa41698af"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/02-lifecycle.svg",
+      "sha256": "6b30b30a0166540b0868e45fea0e5f784cf557e056a9d19617206090200bf9d9"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/03-multi-agent-sequence.puml",
+      "sha256": "0df808e28b50a95316c5fb6ec823056b93f20eefd227f2abf8ad82cb3a7fb72a"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/03-multi-agent-sequence.svg",
+      "sha256": "a1f50e832c48fc14d7c221dca20db1875e95967de2ae6a6d928c78ed44eabda5"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/04-human-approval.puml",
+      "sha256": "5097e2b138b6b135c3d597579b0af3e11a2e98eebead170c33a68db934a5e2a0"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/04-human-approval.svg",
+      "sha256": "d047b0fdd438dfe040901927c9d1b7755c0fe19556eef1e47519d7b74e0c64df"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/05-durable-state.puml",
+      "sha256": "31685e6970403d09daaca79242f15f18567e16ff7c936eb93c951cf7a874aaa8"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/05-durable-state.svg",
+      "sha256": "bb29755b4c54f0f1d0b92d8f9da5674d17d532a55aa00e17a06cd6b10ec3b49e"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/06-interruption-recovery.puml",
+      "sha256": "0f3b7dacaab0591372c1bf452e1f1ca98c2d120cfb4181de71786dae976f5af6"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/06-interruption-recovery.svg",
+      "sha256": "036e2403eef0413f24f97563ff92edfeff27d5501529f616b1feac1a4a3e125c"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/07-repository-boundaries.puml",
+      "sha256": "ec8a4c3814ef73694ba1572d47133e6312f9fa28b788859f9d1e75617e8c4292"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/07-repository-boundaries.svg",
+      "sha256": "79581fc372a22cdaf574d3cab0cdf0bf01c14dbc377666d7be8a28322e1899c9"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/08-end-to-end.puml",
+      "sha256": "7e74b11d5fd2ba5e96a2bcb44b7416802040deb6258cb9a83f39987df1a4a465"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/08-end-to-end.svg",
+      "sha256": "9b9424aba0ed302c6db6a8d6c5265ef03d4b1e20c6c4ee7dda66629d5807ac00"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/09-cross-repository-dependencies.puml",
+      "sha256": "6280903dfeace28172cec2508da1dfecc427783f0dfc4a25a64d2e164a5a5444"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/diagrams/09-cross-repository-dependencies.svg",
+      "sha256": "954e65de2750615384da564950ea34c43336e58ce450fabf41cd5f180ca0b9d1"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/END_TO_END_STATUS.md",
+      "sha256": "376014457ca0f8370bc23e80d8971fbcf1893967573a884a0a1f5449a29c0146"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/AEO-5-design-status-before.json",
+      "sha256": "7fe7a575e223084a5241f45a0986c9816942f1532f339d6aa115433344837372"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/AEO-6-design-status-before.json",
+      "sha256": "a263b4d1fecfea6c69983e470c39cfeb5c9fe4882c56a973cb7a7b42265beb74"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/aeo5-source-verification.json",
+      "sha256": "3847b9afe763ce65cdc80aad8b3a2061a2516b6c287458763e82ea0613f2c8d2"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/application-discovery.json",
+      "sha256": "ca31c79f0bd4b8119df6ec1f52d529c14a3cac008fd953ca8ce0fe16575e34e7"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/application-summary.json",
+      "sha256": "7b4f9b07adef0c0b57b804925eb41015316198ba7f60bdcd6495524463cd680b"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/baseline-state.json",
+      "sha256": "0b1f13d47fd1697be9799d7ec3541a7695c82727ba5dc4eee994739d99230ed1"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/baseline-validation/commands.json",
+      "sha256": "eeed51837e42ed7ddd579571c751a72101166980cb39c84658d70c77c90b8b1c"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/baseline-validation/prior-commands.json",
+      "sha256": "d8e517b4f30b57dab105b110b13b30f43ad110bfbdba806aa2c675ec62e58902"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/baseline-validation/prior-pytest.xml",
+      "sha256": "654fba463a4cfc39746d27def06279ae9fcfac9bbe467229f75d19bb3be3810f"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/baseline-validation/pytest.xml",
+      "sha256": "c9b4ccf76d8ab175404d055cfd754ef4be09207dc54e076782cc30badb3f2572"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/baseline-validation/runner.json",
+      "sha256": "fba736a1740bd99bc091e7a427d35627651c6a43e6caf659425545c17236113a"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/checkpoint-verification.json",
+      "sha256": "dcb5fd8562c54818118600fac8cc01ea842933abef8d2f45a1e90d9bc9e27cd6"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/diagram-validation.json",
+      "sha256": "aca3057cdae59c0d9f97294a48d4cf73c74eb712fb17f51d74394515a5a4110a"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discover_application.py",
+      "sha256": "e57358fa1572d3b4458ea22a8f63d24732a6863c239a39a133adad1e99343675"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discover_baseline.py",
+      "sha256": "d2a0bba2adb8180ddfdadd83a69e6313e713f1dac07154210c19e4c402b5a94d"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/finalize_preparation.py",
+      "sha256": "69b81e79886903b2542ea2a29af924cac2de1077ae5546d4be80b6d0bea3e44d"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/fresh-discovery.json",
+      "sha256": "cd1b83b008e9c42674a040c322af93f7d9e01d05e654a37874b30984c98540e6"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/preparation-attempts.json",
+      "sha256": "cbd867cd65f63dbb4269d864da8e7c9ebaa8f3aad0ae8a25870f9e35bf3f0ff5"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/preparation-summary.json",
+      "sha256": "3bee244dd36118f3dae177025fb15ce20eb6602159d24f75aca7829e9de0dd54"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/render_diagrams.py",
+      "sha256": "de37f22f775965d6392df093c2957bc9b71414382becb251e293901bd1956150"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/run_baseline_validation.py",
+      "sha256": "f1158ea4e09e222a954e4945b498c149042cce7c49d3e4936096c1bf0aac17f3"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/verify_checkpoint.py",
+      "sha256": "528891262c490ae4b245a53729cd9938571f2ebfdc02520d336ae5e0ce9eb634"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/IMPLEMENTATION_INVENTORY.json",
+      "sha256": "80ccc33b33872e0ad2a35e2527016193077f4455e3036bb018118e146539b81c"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/requirements-input.json",
+      "sha256": "2ba1ac526d441f0dca00279bcb2cd590b1ca3abbd8903dd301c7f5e918c9f90a"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/REVIEW_PACKAGE.json",
+      "sha256": "ad5b3cb9a3f7e99f30c18ad13e5e1df0fbab68cdf2346d942f1ddc7714151972"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# Governance and authorization proposal
+
+The user explicitly requires AEO-1C requirements and technical-design approval. Existing design.generate_design calls require_approval for the exact scope before generation. design.decide uses WindowsConsoleHumanVerifier; chat instructions cannot substitute for its authenticated decision. Therefore the first checkpoint for this request is requirements approval. Draft documentation, diagram preparation, registration and baseline tests are allowed before that checkpoint. Production controller implementation and schema changes wait for design approval.
+
+Maintain separate authorities: registered requirements; validated immutable technical design; scheduling plan; exact local execution requests; activated AEO-4 quality/security policy and decisions; action-specific AEO-5 publication grants; human recovery decisions; explicit milestone advancement. An approval for AEO-5 is never approval for AEO-6. A selected mode, model response or role label grants nothing.
+
+At every boundary finish authorized preparation, persist its exact review subject, produce the existing CLI decision command, and stop only dependent execution. Resume re-evaluates existing decisions, allowlists and artifact hashes. Do not repeatedly ask when the latest decision is valid for the same scope. Changed artifacts/context or rejected/revoked/expired authority fail closed. Never insert decisions directly into SQLite, add an approver automatically, emulate a human verifier against runtime, or consume an unrelated grant.
+
+No automatic remote-write enablement, protected branch modification, force push, duplicate PR, merge, deployment or application milestone launch. Original dirty worktrees remain untouched. Simulated approvals exist only in fixture databases using established authenticated fixture mechanisms. Do not log passwords, tokens, environment files or credential material. Ordinary plans/status never mutate application repositories.

@@ -1,0 +1,128 @@
+{
+  "milestone_id": "AEO-5",
+  "registered_scope_id": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+  "approval_granted": false,
+  "formal_design_revision": null,
+  "files": [
+    {
+      "path": "IMPLEMENTATION_RECOVERY.md",
+      "sha256": "df8c6041e9a3f4f4eaed25b55c17da854e107352cf08d8bda5c55d1c263b6f43",
+      "bytes": 3394
+    },
+    {
+      "path": "01-existing-capability-assessment.md",
+      "sha256": "01b12703723c6a099eae0439ae9766cba08b501aee67e7c414e3696f60524883",
+      "bytes": 3619
+    },
+    {
+      "path": "02-architecture.md",
+      "sha256": "a56f20f8a7584e0ef61ae90edb6841e0eec99d77ec72230ce4f29aa0bdeb5e9a",
+      "bytes": 7350
+    },
+    {
+      "path": "03-workflows.md",
+      "sha256": "1de5f9f61a0e2cec72ea23ebd568823a5510420d31e9567d985cceed5ca63db1",
+      "bytes": 4645
+    },
+    {
+      "path": "04-security-and-approvals.md",
+      "sha256": "03d7ae028b54850147b0cdd2ff51d0c03b57b0b6a604586e8542f1afb6fe8375",
+      "bytes": 3696
+    },
+    {
+      "path": "05-implementation-plan.md",
+      "sha256": "cf175d058f112d34b664926a8429b56c182cde53a3a660ac14d2ef9d9b4812b1",
+      "bytes": 2794
+    },
+    {
+      "path": "06-acceptance-criteria.md",
+      "sha256": "6aa4f440a99b0a43b38d815a21852434ef58e55c1ae25ab633264538d238546d",
+      "bytes": 2806
+    },
+    {
+      "path": "00-original-specification.md",
+      "sha256": "7aba6a8b6f3a305073544b71fb912bb719461b0e869831798dc91ad0547b490f",
+      "bytes": 28063
+    },
+    {
+      "path": "00-recovery-request.md",
+      "sha256": "7546988cc2ed5132b1e2e2e37a4d90127ef97488627c400614e2ba6da71ffac1",
+      "bytes": 9188
+    },
+    {
+      "path": "requirements-input.json",
+      "sha256": "defc2ede17b1693e5b6d2eb186b4cad9fc8e322aa9cb68faf46858592d7f199c",
+      "bytes": 60474
+    },
+    {
+      "path": "design-repositories.json",
+      "sha256": "dab365fe0c5e05b75467099d31e9a93cc155ee3b48883b99a44b7f5a6532558a",
+      "bytes": 266
+    },
+    {
+      "path": "APPROVAL_REQUIRED.md",
+      "sha256": "4c7586fe0a35f885cc29bc3d63b72dbee5423dddd21e1cd558eeaddf6ba74730",
+      "bytes": 3230
+    },
+    {
+      "path": "diagrams/01-components.puml",
+      "sha256": "a1803e9396bf5338c3259e2a9b028edd72022c8b53d1d4d64b7d92345da37888",
+      "bytes": 1133
+    },
+    {
+      "path": "diagrams/01-components.svg",
+      "sha256": "af09270e8a416d7b38a694e04da5cb39fb44ebbca4fba3f89dd637eb633d1764",
+      "bytes": 18534
+    },
+    {
+      "path": "diagrams/02-github-delivery.puml",
+      "sha256": "bea3f65f01eed6997110ee7b42ef81f45c08161c2ccd65bfb4c88c302f1cd83e",
+      "bytes": 1202
+    },
+    {
+      "path": "diagrams/02-github-delivery.svg",
+      "sha256": "39f3dce65547f64fb2ced6e71bdec2dbbf6a9d5be37e3553f9e0b1cd031b6d79",
+      "bytes": 19686
+    },
+    {
+      "path": "diagrams/03-multirepository.puml",
+      "sha256": "b42cd2978aa3c883193f1188e1e9fbfca34375d7ca030a68f3ad81d2c71cdd9a",
+      "bytes": 960
+    },
+    {
+      "path": "diagrams/03-multirepository.svg",
+      "sha256": "78c1a8f8ad8f711d1c755cdb1c08a16ec141a7973214c438466e14378d46425f",
+      "bytes": 9463
+    },
+    {
+      "path": "diagrams/04-delivery-state.puml",
+      "sha256": "3033afa2c62c1c173a1361128fa14c1a3eb3f4fcc7dad165971b4b83284c0064",
+      "bytes": 1230
+    },
+    {
+      "path": "diagrams/04-delivery-state.svg",
+      "sha256": "092ea1ea57bb55888ebc093a8d38d380c24e9254e3e2c88c31f1f49f64aa8ddc",
+      "bytes": 19470
+    },
+    {
+      "path": "diagrams/05-durable-recovery.puml",
+      "sha256": "bfb903b03610299bb162d929d230dcaccbb8470e0dbb367d080d29ab763b894d",
+      "bytes": 693
+    },
+    {
+      "path": "diagrams/05-durable-recovery.svg",
+      "sha256": "4882e19c985005f7641ed8748a6e98992e54248fef8cc92a1985ae0ad0826cae",
+      "bytes": 10526
+    },
+    {
+      "path": "diagrams/06-approval-quality.puml",
+      "sha256": "e70ad9d03aca75401fdc657c318d79281718e94ccd31e4a038a1882601ed6fb5",
+      "bytes": 756
+    },
+    {
+      "path": "diagrams/06-approval-quality.svg",
+      "sha256": "49d9646ab1c8fa8545fc56b1acd6f71eb0bee9dabe2122c8779642f0e46f12a8",
+      "bytes": 13853
+    }
+  ]
+}

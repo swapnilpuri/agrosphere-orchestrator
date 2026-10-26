@@ -393,7 +393,9 @@ class TaskScheduler:
             prepared.append(identity)
         return prepared
 
-    async def execute_ready_tasks(self, milestone_id, project="agrosphere"):
+    async def execute_ready_tasks(
+        self, milestone_id, project="agrosphere", dispatch_guard=None, max_batch_size=None
+    ):
         owner = str(uuid4())
         selected = []
         with transaction(self.engine) as session:
@@ -404,6 +406,8 @@ class TaskScheduler:
             role_counts = Counter(t.spec["role"] for t in active_tasks)
             repo_counts = Counter(t.spec["repository"] for t in active_tasks)
             capacity = max(0, self.settings.scheduler_max_concurrency - len(claims))
+            if max_batch_size is not None:
+                capacity = min(capacity, max_batch_size)
             for task_id in ready:
                 if len(selected) >= capacity:
                     break
@@ -450,6 +454,8 @@ class TaskScheduler:
                 ):
                     blocked[task.external_id] = "resource conflict or stale lease"
                     continue
+                if dispatch_guard is not None:
+                    dispatch_guard(session, execution, request, options)
                 session.add(
                     TaskClaim(
                         task_id=task_id,

@@ -1,0 +1,92 @@
+{
+  "id": "AEO-6",
+  "project": "agrosphere",
+  "title": "Autonomous Milestone Execution and End-to-End Engineering Orchestration",
+  "version": 1,
+  "tasks": [
+    {
+      "id": "controller",
+      "title": "Deterministic controller and additive run persistence",
+      "repository": "agrosphere-orchestrator",
+      "role": "developer",
+      "operation": "code-write",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Persist intent before dispatch; unknown/conflicting state blocks; no second scheduler, GitHub adapter or process launcher.",
+        "Additive migration preserves existing data/audit; reconcile all 16 interruption cases without blindly replaying uncertain execution.",
+        "Reserve before parallel dispatch; resume retains counts; unknown cost stays unknown and unenforceable monetary caps block; exhaustion pauses durably."
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "title": "Discovery, design-first generation and exact approval continuation",
+      "repository": "agrosphere-orchestrator",
+      "role": "developer",
+      "operation": "code-write",
+      "depends_on": [
+        "controller"
+      ],
+      "acceptance_criteria": [
+        "Reject fixture roots, duplicate IDs, unknown dependencies and unverified completion; never infer numeric advancement.",
+        "Register immutable scope/revisions; correct repository ownership; requirements and validated design approvals precede implementation.",
+        "Reuse valid unchanged approvals; missing, rejected, expired, revoked or changed authority blocks; no direct approval inserts or self-approval."
+      ]
+    },
+    {
+      "id": "agents",
+      "title": "Existing scheduler/Codex integration and budget reservations",
+      "repository": "agrosphere-orchestrator",
+      "role": "developer",
+      "operation": "code-write",
+      "depends_on": [
+        "lifecycle"
+      ],
+      "acceptance_criteria": [
+        "Existing task IDs/results/claims/leases remain authoritative; concurrent work obeys dependency and repository isolation.",
+        "Reserve before parallel dispatch; resume retains counts; unknown cost stays unknown and unenforceable monetary caps block; exhaustion pauses durably."
+      ]
+    },
+    {
+      "id": "quality-delivery",
+      "title": "Independent quality, bounded remediation and AEO-5 integration",
+      "repository": "agrosphere-orchestrator",
+      "role": "developer",
+      "operation": "code-write",
+      "depends_on": [
+        "agents"
+      ],
+      "acceptance_criteria": [
+        "AEO-4 QA/security/acceptance gates must pass; at most configured repairs (default three); design changes reapprove.",
+        "Remote writes default disabled; exact grants required; no duplicate PR/force push/protected writes/merge/deploy; formal completion separately verified."
+      ]
+    },
+    {
+      "id": "cli-report",
+      "title": "Autonomous CLI, lifecycle reports and operational guides",
+      "repository": "agrosphere-orchestrator",
+      "role": "developer",
+      "operation": "code-write",
+      "depends_on": [
+        "quality-delivery"
+      ],
+      "acceptance_criteria": [
+        "Default read-only dry-run; simulation isolated; local mode is not a grant; explicit run/milestone and JSON/Markdown reports.",
+        "Separate unit/integration/simulation/real Codex/live GitHub/unavailable/pending evidence and next permitted action."
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Three-repository simulation, all recovery cases, regression and acceptance",
+      "repository": "agrosphere-orchestrator",
+      "role": "qa-engineer",
+      "operation": "validate",
+      "depends_on": [
+        "cli-report"
+      ],
+      "acceptance_criteria": [
+        "Additive migration preserves existing data/audit; reconcile all 16 interruption cases without blindly replaying uncertain execution.",
+        "All 275 baseline tests and original IDs preserved; three-repository fixture end-to-end, negative security and Windows recovery tests; no automatic application launch."
+      ]
+    }
+  ]
+}

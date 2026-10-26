@@ -1,0 +1,1196 @@
+{
+  "simulation": true,
+  "provider": "stateful fake GitHub",
+  "push_count": 1,
+  "pr_create_count": 1,
+  "pr_body": "## FIXTURE-1: estate\n\nTask: 25481e2e-6cc2-43a3-a78d-78d24c54fd02\nDesign: 0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912\nPurpose: authorized delivery of stored milestone FIXTURE-1.\n\nValidation and security evidence: [\"f5477d5f3d9c8c13257ff593f53bbb4b20246da040a5bb05f8f783c25d674d9c\", \"321504836074f56b3be9b3b0f3be21129f00e05bea22a5abed328d36f16e92d6\", \"ed447ac2010ea4b18b45953d22d12ad394b650d8e8746d5afef5b88c721cb9ae\", \"0e15c3eed24901f8db6c4b3b2f1dc8b05cf5a97c4636cef8830c6c9386b843c8\", \"1750af2909b52e2d462e85b3d1963089c0c1e0b7676a2177596b91de0a8e9259\", \"47bd87803f630396e447aab03f129e08c79d1e9005999f8c06edf824e2ed7d1e\"]\nQuality validation: ba2076e4-0fc6-4408-b47f-7d5aff9fffc7\nRelated PRs: []\n\nLimitations: readiness requires current required CI, human reviews and dependency availability. No automatic merge or deployment.\n",
+  "report": {
+    "run": "c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f",
+    "manifest": {
+      "project": "fixture",
+      "milestone": "FIXTURE-1",
+      "units": [
+        {
+          "id": "estate",
+          "task": "25481e2e-6cc2-43a3-a78d-78d24c54fd02",
+          "repository": "estate",
+          "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+          "remote": {
+            "id": 10,
+            "owner": "acme",
+            "name": "estate"
+          },
+          "base": "main",
+          "branch": "aeo/fixture-delivery",
+          "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+          "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+          "depends_on": [],
+          "draft": false
+        }
+      ]
+    },
+    "units": [
+      {
+        "id": "estate",
+        "state": "READY_FOR_AUTHORIZED_MERGE",
+        "pr_id": 11,
+        "latest": {
+          "observed_at": "2026-10-25T23:27:06.348162+00:00",
+          "previous_state": "PR_PUBLISHED",
+          "observation": {
+            "remote": {
+              "id": 10,
+              "owner": "acme",
+              "name": "estate"
+            },
+            "principal": "publisher",
+            "can_push": true,
+            "branch_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+            "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+            "prs": [
+              {
+                "id": 11,
+                "number": 1,
+                "url": "https://github.com/acme/estate/pull/1",
+                "repository_id": 10,
+                "head_repository_id": 10,
+                "base": "main",
+                "branch": "aeo/fixture-delivery",
+                "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                "state": "open",
+                "author": "author",
+                "draft": false,
+                "mergeable": true,
+                "review_decision": null,
+                "merge_sha": null
+              }
+            ],
+            "policy": {
+              "known": true,
+              "checks": [],
+              "approvals": 0,
+              "codeowners": false,
+              "strict": false,
+              "unsupported": [],
+              "raw_hash": null
+            },
+            "checks": [],
+            "reviews": [],
+            "base_in_head": null,
+            "dependencies_available": {}
+          },
+          "blockers": [],
+          "quality": {
+            "milestone": "FIXTURE-1",
+            "summary": "Documentation workflow fixture",
+            "approved_scope": "08b072c2a67967248646a891548be81815eb5afdbe01eea534896e5ee2d1747f",
+            "repository_revisions": {
+              "estate": {
+                "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                "head": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                "tree": "37fb554f57e49e5d544c055567419249fe7fab1e930c3bc3e2fba7076a7780b7"
+              }
+            },
+            "build_results": [
+              {
+                "gate_id": "build",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "build"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.184763+00:00",
+                "ended_at": "2026-10-25T23:26:55.190404+00:00",
+                "findings": [],
+                "evidence": [
+                  "9d492ac25637d1da58498ad49146b5800ebd05798b31240c2b62f7811bdeb2b7"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              }
+            ],
+            "test_results": [
+              {
+                "gate_id": "test",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "test"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.196407+00:00",
+                "ended_at": "2026-10-25T23:26:55.201353+00:00",
+                "findings": [],
+                "evidence": [
+                  "ad7c9a15a6482bdba09ca129e7f3abc6c72f53646eb6965a690bd6c068ed3d38"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {
+                  "business.test": "passed"
+                },
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              }
+            ],
+            "coverage_results": [],
+            "security_findings": [],
+            "architecture_compliance": [
+              {
+                "gate_id": "architecture",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "architecture"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.216995+00:00",
+                "ended_at": "2026-10-25T23:26:55.222229+00:00",
+                "findings": [],
+                "evidence": [
+                  "5830b49ccc9b0678c16477a9d1d888a283120866c1149ab27e0aecb44448ebd6"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              }
+            ],
+            "contract_compatibility": [
+              {
+                "gate_id": "contract",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "contract"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.227008+00:00",
+                "ended_at": "2026-10-25T23:26:55.232029+00:00",
+                "findings": [],
+                "evidence": [
+                  "b6e544bea89760116a0763fb3d52e9b11bc29ab641540caf8a007615f0ed9ebc"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              }
+            ],
+            "documentation_validation": [
+              {
+                "gate_id": "documentation",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "documentation"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.237041+00:00",
+                "ended_at": "2026-10-25T23:26:55.242161+00:00",
+                "findings": [],
+                "evidence": [
+                  "6d3fbb62b14d605d0842211f89462bf2eb6246ca21b6dd565970d380b48984c6"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              }
+            ],
+            "exceptions_and_waivers": [],
+            "pending_approvals": [
+              {
+                "approval": "8056f875-fc14-4e5b-86aa-a4dfe8aee7f2",
+                "reason": "Missing, rejected, revoked or unauthorized human approval"
+              }
+            ],
+            "outstanding_blockers": [],
+            "acceptance_criteria": [
+              {
+                "requirement_id": "REQ-1",
+                "criterion_id": "AC-1",
+                "text": "The design gate blocks unapproved implementation",
+                "task": "implement",
+                "test_case": "business.test",
+                "result": "VERIFIED",
+                "evidence": [
+                  "ad7c9a15a6482bdba09ca129e7f3abc6c72f53646eb6965a690bd6c068ed3d38"
+                ]
+              }
+            ],
+            "gate_results": [
+              {
+                "gate_id": "build",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "build"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.184763+00:00",
+                "ended_at": "2026-10-25T23:26:55.190404+00:00",
+                "findings": [],
+                "evidence": [
+                  "9d492ac25637d1da58498ad49146b5800ebd05798b31240c2b62f7811bdeb2b7"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              },
+              {
+                "gate_id": "test",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "test"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.196407+00:00",
+                "ended_at": "2026-10-25T23:26:55.201353+00:00",
+                "findings": [],
+                "evidence": [
+                  "ad7c9a15a6482bdba09ca129e7f3abc6c72f53646eb6965a690bd6c068ed3d38"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {
+                  "business.test": "passed"
+                },
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              },
+              {
+                "gate_id": "security",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "security"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.206410+00:00",
+                "ended_at": "2026-10-25T23:26:55.211811+00:00",
+                "findings": [],
+                "evidence": [
+                  "fe693745e7f70b1bbe3abfdcadd6107d8ddfa30a6836684aa2b563e69befe82b"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {
+                  "business.test": "passed"
+                },
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              },
+              {
+                "gate_id": "architecture",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "architecture"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.216995+00:00",
+                "ended_at": "2026-10-25T23:26:55.222229+00:00",
+                "findings": [],
+                "evidence": [
+                  "5830b49ccc9b0678c16477a9d1d888a283120866c1149ab27e0aecb44448ebd6"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              },
+              {
+                "gate_id": "contract",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "contract"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.227008+00:00",
+                "ended_at": "2026-10-25T23:26:55.232029+00:00",
+                "findings": [],
+                "evidence": [
+                  "b6e544bea89760116a0763fb3d52e9b11bc29ab641540caf8a007615f0ed9ebc"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              },
+              {
+                "gate_id": "documentation",
+                "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                "repository": "estate",
+                "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                "validator_version": "fixture-v1",
+                "command": [
+                  "fixture-validator",
+                  "documentation"
+                ],
+                "exit_code": 0,
+                "started_at": "2026-10-25T23:26:55.237041+00:00",
+                "ended_at": "2026-10-25T23:26:55.242161+00:00",
+                "findings": [],
+                "evidence": [
+                  "6d3fbb62b14d605d0842211f89462bf2eb6246ca21b6dd565970d380b48984c6"
+                ],
+                "state": "PASSED",
+                "policy_version": 1,
+                "test_cases": {},
+                "coverage": null,
+                "details": {
+                  "configuration": {}
+                }
+              }
+            ],
+            "decision": "READY_FOR_APPROVAL",
+            "evidence": [
+              "f5477d5f3d9c8c13257ff593f53bbb4b20246da040a5bb05f8f783c25d674d9c",
+              "321504836074f56b3be9b3b0f3be21129f00e05bea22a5abed328d36f16e92d6",
+              "ed447ac2010ea4b18b45953d22d12ad394b650d8e8746d5afef5b88c721cb9ae",
+              "0e15c3eed24901f8db6c4b3b2f1dc8b05cf5a97c4636cef8830c6c9386b843c8",
+              "1750af2909b52e2d462e85b3d1963089c0c1e0b7676a2177596b91de0a8e9259",
+              "47bd87803f630396e447aab03f129e08c79d1e9005999f8c06edf824e2ed7d1e"
+            ],
+            "context": {
+              "project": "fixture",
+              "milestone": "FIXTURE-1",
+              "scope": "08b072c2a67967248646a891548be81815eb5afdbe01eea534896e5ee2d1747f",
+              "design": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+              "as_built": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+              "policy": "c8a3e4a5a26f3e0e1916063bea8485c994079617046882e6d8158990600d8691",
+              "repositories": {
+                "estate": {
+                  "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                  "head": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "tree": "37fb554f57e49e5d544c055567419249fe7fab1e930c3bc3e2fba7076a7780b7"
+                }
+              },
+              "execution_policy": "6016d14ab0884613aa8cfa4909d5da27936accd9af2242910c898a8ff92e86bb",
+              "repository_manifest": "f90bb35bd7f4ecf8f5beec1e1b1ba765626581f875eb0d8a8e564f5d6eb430ee"
+            },
+            "validation": "ba2076e4-0fc6-4408-b47f-7d5aff9fffc7"
+          }
+        },
+        "history": [
+          {
+            "sequence": 1,
+            "operation": "794a7369e06db6305d7215bbfa674c85a43e2d93437cb1b66daefbd7bd3f42bc",
+            "kind": "intent",
+            "evidence_hash": "eccea90fc38213037a99afaccb31290101b131b5fe0e886a7b94a6a443a5c0f6",
+            "created_at": "2026-10-25T23:26:57.563936+00:00",
+            "evidence": {
+              "scope": {
+                "run": "c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f",
+                "manifest": "c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f",
+                "worktree": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\isolated-delivery\\c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f\\estate\\worktree",
+                "delivery_policy": {
+                  "repositories": [
+                    "acme/estate"
+                  ],
+                  "bases": [
+                    "main",
+                    "master"
+                  ],
+                  "remote_writes": true
+                },
+                "unit": {
+                  "id": "estate",
+                  "task": "25481e2e-6cc2-43a3-a78d-78d24c54fd02",
+                  "repository": "estate",
+                  "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                  "remote": {
+                    "id": 10,
+                    "owner": "acme",
+                    "name": "estate"
+                  },
+                  "base": "main",
+                  "branch": "aeo/fixture-delivery",
+                  "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "depends_on": [],
+                  "draft": false
+                },
+                "action": "prepare",
+                "recovery": null,
+                "remote_policy": {
+                  "known": true,
+                  "checks": [],
+                  "approvals": 0,
+                  "codeowners": false,
+                  "strict": false,
+                  "unsupported": [],
+                  "raw_hash": null
+                },
+                "principal": "publisher",
+                "context": {
+                  "project": "fixture",
+                  "milestone": "FIXTURE-1",
+                  "scope": "08b072c2a67967248646a891548be81815eb5afdbe01eea534896e5ee2d1747f",
+                  "design": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "as_built": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "policy": "c8a3e4a5a26f3e0e1916063bea8485c994079617046882e6d8158990600d8691",
+                  "repositories": {
+                    "estate": {
+                      "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                      "head": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                      "tree": "37fb554f57e49e5d544c055567419249fe7fab1e930c3bc3e2fba7076a7780b7"
+                    }
+                  },
+                  "execution_policy": "6016d14ab0884613aa8cfa4909d5da27936accd9af2242910c898a8ff92e86bb",
+                  "repository_manifest": "f90bb35bd7f4ecf8f5beec1e1b1ba765626581f875eb0d8a8e564f5d6eb430ee"
+                },
+                "quality_validation": "ba2076e4-0fc6-4408-b47f-7d5aff9fffc7",
+                "quality_evidence": [
+                  "f5477d5f3d9c8c13257ff593f53bbb4b20246da040a5bb05f8f783c25d674d9c",
+                  "321504836074f56b3be9b3b0f3be21129f00e05bea22a5abed328d36f16e92d6",
+                  "ed447ac2010ea4b18b45953d22d12ad394b650d8e8746d5afef5b88c721cb9ae",
+                  "0e15c3eed24901f8db6c4b3b2f1dc8b05cf5a97c4636cef8830c6c9386b843c8",
+                  "1750af2909b52e2d462e85b3d1963089c0c1e0b7676a2177596b91de0a8e9259",
+                  "47bd87803f630396e447aab03f129e08c79d1e9005999f8c06edf824e2ed7d1e"
+                ]
+              },
+              "approval": "0afac735-b305-4585-800e-78375b60d394",
+              "approver": "sid:fixture-human"
+            }
+          },
+          {
+            "sequence": 2,
+            "operation": "794a7369e06db6305d7215bbfa674c85a43e2d93437cb1b66daefbd7bd3f42bc",
+            "kind": "completed",
+            "evidence_hash": "3b2fa989bd089ebcfda287fa6c6432fa1c9a0cb1857d5c965c21c83b7cda0437",
+            "created_at": "2026-10-25T23:26:58.937352+00:00",
+            "evidence": {
+              "worktree": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\isolated-delivery\\c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f\\estate\\worktree",
+              "branch": "aeo/fixture-delivery",
+              "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc"
+            }
+          },
+          {
+            "sequence": 3,
+            "operation": "453975b7269a6b6dcd7be0dc1e2732b35c4876d4a182b25c1d54530c296e0816",
+            "kind": "intent",
+            "evidence_hash": "fee9d7d0bc8ee9fdfe3c0c0519a7c16aeba2b5b905540ee5b3c384f72e4c0167",
+            "created_at": "2026-10-25T23:27:01.292839+00:00",
+            "evidence": {
+              "scope": {
+                "run": "c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f",
+                "manifest": "c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f",
+                "worktree": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\isolated-delivery\\c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f\\estate\\worktree",
+                "delivery_policy": {
+                  "repositories": [
+                    "acme/estate"
+                  ],
+                  "bases": [
+                    "main",
+                    "master"
+                  ],
+                  "remote_writes": true
+                },
+                "unit": {
+                  "id": "estate",
+                  "task": "25481e2e-6cc2-43a3-a78d-78d24c54fd02",
+                  "repository": "estate",
+                  "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                  "remote": {
+                    "id": 10,
+                    "owner": "acme",
+                    "name": "estate"
+                  },
+                  "base": "main",
+                  "branch": "aeo/fixture-delivery",
+                  "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "depends_on": [],
+                  "draft": false
+                },
+                "action": "push",
+                "recovery": null,
+                "remote_policy": {
+                  "known": true,
+                  "checks": [],
+                  "approvals": 0,
+                  "codeowners": false,
+                  "strict": false,
+                  "unsupported": [],
+                  "raw_hash": null
+                },
+                "principal": "publisher",
+                "context": {
+                  "project": "fixture",
+                  "milestone": "FIXTURE-1",
+                  "scope": "08b072c2a67967248646a891548be81815eb5afdbe01eea534896e5ee2d1747f",
+                  "design": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "as_built": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "policy": "c8a3e4a5a26f3e0e1916063bea8485c994079617046882e6d8158990600d8691",
+                  "repositories": {
+                    "estate": {
+                      "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                      "head": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                      "tree": "37fb554f57e49e5d544c055567419249fe7fab1e930c3bc3e2fba7076a7780b7"
+                    }
+                  },
+                  "execution_policy": "6016d14ab0884613aa8cfa4909d5da27936accd9af2242910c898a8ff92e86bb",
+                  "repository_manifest": "f90bb35bd7f4ecf8f5beec1e1b1ba765626581f875eb0d8a8e564f5d6eb430ee"
+                },
+                "quality_validation": "ba2076e4-0fc6-4408-b47f-7d5aff9fffc7",
+                "quality_evidence": [
+                  "f5477d5f3d9c8c13257ff593f53bbb4b20246da040a5bb05f8f783c25d674d9c",
+                  "321504836074f56b3be9b3b0f3be21129f00e05bea22a5abed328d36f16e92d6",
+                  "ed447ac2010ea4b18b45953d22d12ad394b650d8e8746d5afef5b88c721cb9ae",
+                  "0e15c3eed24901f8db6c4b3b2f1dc8b05cf5a97c4636cef8830c6c9386b843c8",
+                  "1750af2909b52e2d462e85b3d1963089c0c1e0b7676a2177596b91de0a8e9259",
+                  "47bd87803f630396e447aab03f129e08c79d1e9005999f8c06edf824e2ed7d1e"
+                ]
+              },
+              "approval": "51d7a612-c9a5-4a78-88ae-81027c7d57c7",
+              "approver": "sid:fixture-human"
+            }
+          },
+          {
+            "sequence": 4,
+            "operation": "453975b7269a6b6dcd7be0dc1e2732b35c4876d4a182b25c1d54530c296e0816",
+            "kind": "completed",
+            "evidence_hash": "8c82d09de39caf508cbbf8605505b3a73015ed3e1c1a981ad2318b3702ec9bdf",
+            "created_at": "2026-10-25T23:27:01.910306+00:00",
+            "evidence": {
+              "remote": {
+                "id": 10,
+                "owner": "acme",
+                "name": "estate"
+              },
+              "principal": "publisher",
+              "can_push": true,
+              "branch_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+              "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+              "prs": [],
+              "policy": {
+                "known": true,
+                "checks": [],
+                "approvals": 0,
+                "codeowners": false,
+                "strict": false,
+                "unsupported": [],
+                "raw_hash": null
+              },
+              "checks": [],
+              "reviews": [],
+              "base_in_head": null,
+              "dependencies_available": {}
+            }
+          },
+          {
+            "sequence": 5,
+            "operation": "361dc2e9baa1c3d7c393509c861190afcbd30faa95052024024549f9f149f73f",
+            "kind": "intent",
+            "evidence_hash": "491e0a82ac355179d37e16773ea88efec680b878714f0654fc4ec0349d84459d",
+            "created_at": "2026-10-25T23:27:04.322048+00:00",
+            "evidence": {
+              "scope": {
+                "run": "c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f",
+                "manifest": "c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f",
+                "worktree": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\isolated-delivery\\c2d17441618b82759d8c9744124dee6a6c63433e53680e7b412729f80a59ec6f\\estate\\worktree",
+                "delivery_policy": {
+                  "repositories": [
+                    "acme/estate"
+                  ],
+                  "bases": [
+                    "main",
+                    "master"
+                  ],
+                  "remote_writes": true
+                },
+                "unit": {
+                  "id": "estate",
+                  "task": "25481e2e-6cc2-43a3-a78d-78d24c54fd02",
+                  "repository": "estate",
+                  "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                  "remote": {
+                    "id": 10,
+                    "owner": "acme",
+                    "name": "estate"
+                  },
+                  "base": "main",
+                  "branch": "aeo/fixture-delivery",
+                  "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "depends_on": [],
+                  "draft": false
+                },
+                "action": "create-pr",
+                "recovery": null,
+                "remote_policy": {
+                  "known": true,
+                  "checks": [],
+                  "approvals": 0,
+                  "codeowners": false,
+                  "strict": false,
+                  "unsupported": [],
+                  "raw_hash": null
+                },
+                "principal": "publisher",
+                "context": {
+                  "project": "fixture",
+                  "milestone": "FIXTURE-1",
+                  "scope": "08b072c2a67967248646a891548be81815eb5afdbe01eea534896e5ee2d1747f",
+                  "design": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "as_built": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "policy": "c8a3e4a5a26f3e0e1916063bea8485c994079617046882e6d8158990600d8691",
+                  "repositories": {
+                    "estate": {
+                      "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                      "head": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                      "tree": "37fb554f57e49e5d544c055567419249fe7fab1e930c3bc3e2fba7076a7780b7"
+                    }
+                  },
+                  "execution_policy": "6016d14ab0884613aa8cfa4909d5da27936accd9af2242910c898a8ff92e86bb",
+                  "repository_manifest": "f90bb35bd7f4ecf8f5beec1e1b1ba765626581f875eb0d8a8e564f5d6eb430ee"
+                },
+                "quality_validation": "ba2076e4-0fc6-4408-b47f-7d5aff9fffc7",
+                "quality_evidence": [
+                  "f5477d5f3d9c8c13257ff593f53bbb4b20246da040a5bb05f8f783c25d674d9c",
+                  "321504836074f56b3be9b3b0f3be21129f00e05bea22a5abed328d36f16e92d6",
+                  "ed447ac2010ea4b18b45953d22d12ad394b650d8e8746d5afef5b88c721cb9ae",
+                  "0e15c3eed24901f8db6c4b3b2f1dc8b05cf5a97c4636cef8830c6c9386b843c8",
+                  "1750af2909b52e2d462e85b3d1963089c0c1e0b7676a2177596b91de0a8e9259",
+                  "47bd87803f630396e447aab03f129e08c79d1e9005999f8c06edf824e2ed7d1e"
+                ]
+              },
+              "approval": "eb811a87-2b2f-4df1-8cc6-426ce4b621ba",
+              "approver": "sid:fixture-human"
+            }
+          },
+          {
+            "sequence": 6,
+            "operation": "361dc2e9baa1c3d7c393509c861190afcbd30faa95052024024549f9f149f73f",
+            "kind": "completed",
+            "evidence_hash": "225eb9feae79f704924d4d4f9cac1dd8892e58e2796ff929e5eec2da8c6b7cb6",
+            "created_at": "2026-10-25T23:27:05.699606+00:00",
+            "evidence": {
+              "remote": {
+                "id": 10,
+                "owner": "acme",
+                "name": "estate"
+              },
+              "principal": "publisher",
+              "can_push": true,
+              "branch_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+              "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+              "prs": [
+                {
+                  "id": 11,
+                  "number": 1,
+                  "url": "https://github.com/acme/estate/pull/1",
+                  "repository_id": 10,
+                  "head_repository_id": 10,
+                  "base": "main",
+                  "branch": "aeo/fixture-delivery",
+                  "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                  "state": "open",
+                  "author": "author",
+                  "draft": false,
+                  "mergeable": true,
+                  "review_decision": null,
+                  "merge_sha": null
+                }
+              ],
+              "policy": {
+                "known": true,
+                "checks": [],
+                "approvals": 0,
+                "codeowners": false,
+                "strict": false,
+                "unsupported": [],
+                "raw_hash": null
+              },
+              "checks": [],
+              "reviews": [],
+              "base_in_head": null,
+              "dependencies_available": {}
+            }
+          },
+          {
+            "sequence": 7,
+            "operation": null,
+            "kind": "observation",
+            "evidence_hash": "16be6a57e0fd3e422370cb0d94d70c2fa6407dae1575a9f821c2488f6a8e69a4",
+            "created_at": "2026-10-25T23:27:06.352587+00:00",
+            "evidence": {
+              "observed_at": "2026-10-25T23:27:06.348162+00:00",
+              "previous_state": "PR_PUBLISHED",
+              "observation": {
+                "remote": {
+                  "id": 10,
+                  "owner": "acme",
+                  "name": "estate"
+                },
+                "principal": "publisher",
+                "can_push": true,
+                "branch_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                "prs": [
+                  {
+                    "id": 11,
+                    "number": 1,
+                    "url": "https://github.com/acme/estate/pull/1",
+                    "repository_id": 10,
+                    "head_repository_id": 10,
+                    "base": "main",
+                    "branch": "aeo/fixture-delivery",
+                    "base_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                    "head_sha": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                    "state": "open",
+                    "author": "author",
+                    "draft": false,
+                    "mergeable": true,
+                    "review_decision": null,
+                    "merge_sha": null
+                  }
+                ],
+                "policy": {
+                  "known": true,
+                  "checks": [],
+                  "approvals": 0,
+                  "codeowners": false,
+                  "strict": false,
+                  "unsupported": [],
+                  "raw_hash": null
+                },
+                "checks": [],
+                "reviews": [],
+                "base_in_head": null,
+                "dependencies_available": {}
+              },
+              "blockers": [],
+              "quality": {
+                "milestone": "FIXTURE-1",
+                "summary": "Documentation workflow fixture",
+                "approved_scope": "08b072c2a67967248646a891548be81815eb5afdbe01eea534896e5ee2d1747f",
+                "repository_revisions": {
+                  "estate": {
+                    "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                    "head": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                    "tree": "37fb554f57e49e5d544c055567419249fe7fab1e930c3bc3e2fba7076a7780b7"
+                  }
+                },
+                "build_results": [
+                  {
+                    "gate_id": "build",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "build"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.184763+00:00",
+                    "ended_at": "2026-10-25T23:26:55.190404+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "9d492ac25637d1da58498ad49146b5800ebd05798b31240c2b62f7811bdeb2b7"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  }
+                ],
+                "test_results": [
+                  {
+                    "gate_id": "test",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "test"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.196407+00:00",
+                    "ended_at": "2026-10-25T23:26:55.201353+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "ad7c9a15a6482bdba09ca129e7f3abc6c72f53646eb6965a690bd6c068ed3d38"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {
+                      "business.test": "passed"
+                    },
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  }
+                ],
+                "coverage_results": [],
+                "security_findings": [],
+                "architecture_compliance": [
+                  {
+                    "gate_id": "architecture",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "architecture"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.216995+00:00",
+                    "ended_at": "2026-10-25T23:26:55.222229+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "5830b49ccc9b0678c16477a9d1d888a283120866c1149ab27e0aecb44448ebd6"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  }
+                ],
+                "contract_compatibility": [
+                  {
+                    "gate_id": "contract",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "contract"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.227008+00:00",
+                    "ended_at": "2026-10-25T23:26:55.232029+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "b6e544bea89760116a0763fb3d52e9b11bc29ab641540caf8a007615f0ed9ebc"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  }
+                ],
+                "documentation_validation": [
+                  {
+                    "gate_id": "documentation",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "documentation"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.237041+00:00",
+                    "ended_at": "2026-10-25T23:26:55.242161+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "6d3fbb62b14d605d0842211f89462bf2eb6246ca21b6dd565970d380b48984c6"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  }
+                ],
+                "exceptions_and_waivers": [],
+                "pending_approvals": [
+                  {
+                    "approval": "8056f875-fc14-4e5b-86aa-a4dfe8aee7f2",
+                    "reason": "Missing, rejected, revoked or unauthorized human approval"
+                  }
+                ],
+                "outstanding_blockers": [],
+                "acceptance_criteria": [
+                  {
+                    "requirement_id": "REQ-1",
+                    "criterion_id": "AC-1",
+                    "text": "The design gate blocks unapproved implementation",
+                    "task": "implement",
+                    "test_case": "business.test",
+                    "result": "VERIFIED",
+                    "evidence": [
+                      "ad7c9a15a6482bdba09ca129e7f3abc6c72f53646eb6965a690bd6c068ed3d38"
+                    ]
+                  }
+                ],
+                "gate_results": [
+                  {
+                    "gate_id": "build",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "build"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.184763+00:00",
+                    "ended_at": "2026-10-25T23:26:55.190404+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "9d492ac25637d1da58498ad49146b5800ebd05798b31240c2b62f7811bdeb2b7"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  },
+                  {
+                    "gate_id": "test",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "test"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.196407+00:00",
+                    "ended_at": "2026-10-25T23:26:55.201353+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "ad7c9a15a6482bdba09ca129e7f3abc6c72f53646eb6965a690bd6c068ed3d38"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {
+                      "business.test": "passed"
+                    },
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  },
+                  {
+                    "gate_id": "security",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "security"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.206410+00:00",
+                    "ended_at": "2026-10-25T23:26:55.211811+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "fe693745e7f70b1bbe3abfdcadd6107d8ddfa30a6836684aa2b563e69befe82b"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {
+                      "business.test": "passed"
+                    },
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  },
+                  {
+                    "gate_id": "architecture",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "architecture"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.216995+00:00",
+                    "ended_at": "2026-10-25T23:26:55.222229+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "5830b49ccc9b0678c16477a9d1d888a283120866c1149ab27e0aecb44448ebd6"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  },
+                  {
+                    "gate_id": "contract",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "contract"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.227008+00:00",
+                    "ended_at": "2026-10-25T23:26:55.232029+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "b6e544bea89760116a0763fb3d52e9b11bc29ab641540caf8a007615f0ed9ebc"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  },
+                  {
+                    "gate_id": "documentation",
+                    "execution_id": "6b500c50-1668-42c9-a38b-3b335a30a18d",
+                    "repository": "estate",
+                    "artifact_hash": "5543c28314fd9967582d66f456e1affd9ce220ed769ac9a7a1137a34c10f7f8f",
+                    "validator_version": "fixture-v1",
+                    "command": [
+                      "fixture-validator",
+                      "documentation"
+                    ],
+                    "exit_code": 0,
+                    "started_at": "2026-10-25T23:26:55.237041+00:00",
+                    "ended_at": "2026-10-25T23:26:55.242161+00:00",
+                    "findings": [],
+                    "evidence": [
+                      "6d3fbb62b14d605d0842211f89462bf2eb6246ca21b6dd565970d380b48984c6"
+                    ],
+                    "state": "PASSED",
+                    "policy_version": 1,
+                    "test_cases": {},
+                    "coverage": null,
+                    "details": {
+                      "configuration": {}
+                    }
+                  }
+                ],
+                "decision": "READY_FOR_APPROVAL",
+                "evidence": [
+                  "f5477d5f3d9c8c13257ff593f53bbb4b20246da040a5bb05f8f783c25d674d9c",
+                  "321504836074f56b3be9b3b0f3be21129f00e05bea22a5abed328d36f16e92d6",
+                  "ed447ac2010ea4b18b45953d22d12ad394b650d8e8746d5afef5b88c721cb9ae",
+                  "0e15c3eed24901f8db6c4b3b2f1dc8b05cf5a97c4636cef8830c6c9386b843c8",
+                  "1750af2909b52e2d462e85b3d1963089c0c1e0b7676a2177596b91de0a8e9259",
+                  "47bd87803f630396e447aab03f129e08c79d1e9005999f8c06edf824e2ed7d1e"
+                ],
+                "context": {
+                  "project": "fixture",
+                  "milestone": "FIXTURE-1",
+                  "scope": "08b072c2a67967248646a891548be81815eb5afdbe01eea534896e5ee2d1747f",
+                  "design": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "as_built": "0ed6e95d61eb08e2641dc1c22367ce036086c3d5390597b2f11348de38c92912",
+                  "policy": "c8a3e4a5a26f3e0e1916063bea8485c994079617046882e6d8158990600d8691",
+                  "repositories": {
+                    "estate": {
+                      "root": "C:\\Users\\Owner\\AppData\\Local\\Temp\\a5r-20261025T232650Z\\test_end_to_end_exact_authorit0\\estate",
+                      "head": "7ca57e5f7284e2c6c6f87cc2844e491afadf85fc",
+                      "tree": "37fb554f57e49e5d544c055567419249fe7fab1e930c3bc3e2fba7076a7780b7"
+                    }
+                  },
+                  "execution_policy": "6016d14ab0884613aa8cfa4909d5da27936accd9af2242910c898a8ff92e86bb",
+                  "repository_manifest": "f90bb35bd7f4ecf8f5beec1e1b1ba765626581f875eb0d8a8e564f5d6eb430ee"
+                },
+                "validation": "ba2076e4-0fc6-4408-b47f-7d5aff9fffc7"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "readiness": "READY_FOR_AUTHORIZED_MERGE",
+    "freshness": "Stored observations only; reconcile each unit before relying on readiness",
+    "merge_executed": false,
+    "report_hash": "91db8d1345b93fc904be886aeb05ff51c5ee5412d1aa8a7e4f4e0914571decf9"
+  }
+}

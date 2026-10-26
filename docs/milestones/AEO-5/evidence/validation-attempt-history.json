@@ -1,0 +1,35 @@
+{
+  "attempts": [
+    {
+      "operation": "initial delivery/provider suite",
+      "exit_code": 1,
+      "result": "70 passed, 2 failed",
+      "evidence": "delivery-provider-tests.xml",
+      "corrections": [
+        "Expiry fixture clock isolated from quality TTL",
+        "Append-only test now creates an intent before deletion assertion"
+      ]
+    },
+    {
+      "operation": "initial full validator with 600-second pytest bound",
+      "exit_code": 1,
+      "result": "pytest timed out; not a passing regression result",
+      "evidence": "aeo5r-validation/runner.json",
+      "correction": "Expanded bounded pytest timeout to 1800 seconds and retain timeout output/exit 124 in standard validation evidence"
+    },
+    {
+      "operation": "final delivery/provider/CLI/migration suite",
+      "exit_code": 0,
+      "result": "101 passed in 989.18 seconds",
+      "evidence": "final-delivery-validation.xml"
+    },
+    {
+      "operation": "expanded full validator with project-local fixture root",
+      "exit_code": 1,
+      "result": "273 passed, 1 failed in 540.21 seconds; other 17 commands passed",
+      "evidence": "aeo5r-final-validation/commands.json",
+      "failure": "Existing contracts design test temporary filename exceeded Windows MAX_PATH because the custom fixture root was unnecessarily long.",
+      "correction": "Use a fresh short system-temporary fixture root; no test or production gate is weakened."
+    }
+  ]
+}

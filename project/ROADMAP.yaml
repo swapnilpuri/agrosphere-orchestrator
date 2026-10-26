@@ -1,6 +1,6 @@
 # BEGIN AEO RECOVERY
 recovered_observations:
-  snapshot_id: a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4
+  snapshot_id: 49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113
   observations:
   - id: '0'
     classification: UNVERIFIED
@@ -23,6 +23,13 @@ recovered_observations:
       PlantUML uses Smetana; Graphviz installation is unnecessary. The jar and rendered
       artifacts are ignored. Diagrams describe target architecture; M0 does not implement
       the depicted domain flows.'
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:49:
+      4. **Scope documents contain stale statements.** Foundation FR text still says
+      all endpoints are future work; NEXT_CODEX_PROMPT still recommends already-delivered
+      1B; Operations AGENTS still says M0 and several other AGENTS scopes stop at
+      1C despite recorded 3A implementation. Treat them as stale planning/boundary
+      metadata, not proof that source is absent or fresh authorization to proceed.
+      No source instruction or roadmap file was rewritten during this review.'
     - 'agrosphere-immersive/AGENTS.md:5: Current scope: Milestone 0 foundation only.
       Do not add business APIs, GIS functionality, AI models or Unreal gameplay/assets
       without a new milestone request.'
@@ -337,6 +344,21 @@ recovered_observations:
         No plugin binaries, assets or gameplay are generated.
       outcome: null
     - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 49
+      excerpt: 4. **Scope documents contain stale statements.** Foundation FR text
+        still says all endpoints are future work; NEXT_CODEX_PROMPT still recommends
+        already-delivered 1B; Operations AGENTS still says M0 and several other AGENTS
+        scopes stop at 1C despite recorded 3A implementation. Treat them as stale
+        planning/boundary metadata, not proof that source is absent or fresh authorization
+        to proceed. No source instruction or roadmap file was rewritten during this
+        review.
+      outcome: null
+    - repository: agrosphere-architecture
       path: docs/requirements/POC_SCOPE.md
       kind: document
       sha256: a898a2067e57f85d05433c019aeb8ad5831de290c0e9d5b14fc725671cdb6319
@@ -538,7 +560,7 @@ recovered_observations:
       path: CHANGELOG.md
       kind: document
       sha256: 929a7e89464ed13be2161989442ea1c735a83d48386e6c1275b79ef807412b24
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:13:11.983675+00:00'
       line: 14
       excerpt: Independent Milestone 0 foundation.
@@ -547,7 +569,7 @@ recovered_observations:
       path: docs/INTEGRATION.md
       kind: document
       sha256: 6fdc336d51c97f633de309ef504d594f2fd779b7345c315abc14ca1e11328b81
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:15:22.563227+00:00'
       line: 27
       excerpt: '- The web scaffold''s AGENTS scope was Milestone 0; the explicit Milestone
@@ -557,7 +579,7 @@ recovered_observations:
       path: src/app/features/analytics/README.md
       kind: document
       sha256: 9183a321e2979d1cc2a8a0df9b5ed98983bd696e2cc1306b2b189dfff3674d73
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-23T05:34:42.957104+00:00'
       line: 1
       excerpt: Reserved feature boundary. No business functionality in Milestone 0.
@@ -567,7 +589,7 @@ recovered_observations:
       path: src/app/features/operations/README.md
       kind: document
       sha256: 9183a321e2979d1cc2a8a0df9b5ed98983bd696e2cc1306b2b189dfff3674d73
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-23T05:34:42.957104+00:00'
       line: 1
       excerpt: Reserved feature boundary. No business functionality in Milestone 0.
@@ -584,6 +606,15 @@ recovered_observations:
     classification: UNVERIFIED
     confidence: low
     objectives:
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:50:\
+      \ 5. **Broad requirements remain open.** Company identity in FR-01 is not implemented\
+      \ by the narrowed 1A scope. Authoritative division lifecycle is absent. The\
+      \ proposed metadata p95 <500 ms at 20 concurrent users has no recovered benchmark;\
+      \ NONFUNCTIONAL_REQUIREMENTS calls these hypotheses, not achieved SLAs. Record\
+      \ this as M1-wide nonfunctional debt, not a fabricated pass or an automatic\
+      \ retroactive failure of every specific 1A\u20131C local exit gate. Reference-device\
+      \ visualization performance is an explicit M2 exit gate and does block full\
+      \ M2 acceptance."
     - 'agrosphere-architecture/docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md:8:
       | API performance | Proposed POC p95 <500 ms for indexed block metadata queries,
       20 concurrent local-demo users; benchmark in M1, not measured yet |'
@@ -639,6 +670,22 @@ recovered_observations:
         Before M1 integration testing, choose a documented JUnit baseline exception/upgrade
         or maintain and verify explicit-context JUnit 5 tests. No silent upgrade to
         JUnit 6 is made.
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 50
+      excerpt: "5. **Broad requirements remain open.** Company identity in FR-01 is\
+        \ not implemented by the narrowed 1A scope. Authoritative division lifecycle\
+        \ is absent. The proposed metadata p95 <500 ms at 20 concurrent users has\
+        \ no recovered benchmark; NONFUNCTIONAL_REQUIREMENTS calls these hypotheses,\
+        \ not achieved SLAs. Record this as M1-wide nonfunctional debt, not a fabricated\
+        \ pass or an automatic retroactive failure of every specific 1A\u20131C local\
+        \ exit gate. Reference-device visualization performance is an explicit M2\
+        \ exit gate and does block full M2 acceptance."
       outcome: null
     - repository: agrosphere-architecture
       path: docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md
@@ -801,6 +848,22 @@ recovered_observations:
       retains explicit provenance and UUID identities. Retry budgets, retained FAILED
       records, replay and disabled-publication operation are documented in Estate
       Service README.'
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:13:\
+      \ Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+      \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+      \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+      \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+      \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md). Original\
+      \ user-request transcripts and a separately approved 3B specification were not\
+      \ recovered. Milestone 2's retained completion report documents functional DoD\
+      \ items 1\u201317 but does not reproduce the original full numbered specification;\
+      \ assessment uses the recoverable roadmap gate, implementation and report."
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:33:
+      | 1A compatible contracts and packaging | Estate v2 namespace preserves incompatible
+      v1; independent Maven/Docker | [1A report](../../../../agrosphere-estate-service/docs/MILESTONE_1A_REPORT.md)
+      records actual serialized-event and all-16-operation validation, Java 21/container
+      image execution; later Java 25 evidence supersedes any assumption of a single
+      universal Java target |'
     - 'agrosphere-architecture/docs/roadmap/MILESTONE_1A.md:3: Implementation resides
       only in agrosphere-estate-service, with coordinated contracts 0.2.0 and ADR-0008.
       No Milestone 1B implementation is included.'
@@ -886,19 +949,6 @@ recovered_observations:
       consumer_name/eventId transactionally, ACK after commit and reject stale revisions.
       No exactly-once delivery is claimed. The implementation follows the [Spring
       AMQP confirm/return API](https://docs.spring.io/spring-amqp/reference/amqp/template.html).'
-    - 'agrosphere-estate-service/docs/MILESTONE_1A_REPORT.md:42: Business routes are
-      authenticated by default. Nimbus validates RS256 signatures, configured issuer,
-      lifetime and estate-service audience. Trusted Keycloak-style realm_access.roles
-      supplies PLATFORM_ADMIN, ESTATE_ADMIN, ESTATE_MANAGER and VIEWER. Signed, administrator-managed
-      estate_ids scopes reads/writes. Client headers or user-editable attributes are
-      not treated as grants. PLATFORM_ADMIN alone creates estates/clones and has global
-      scope; estate admins/managers write assigned estates; viewers read assigned
-      estates. Lists apply scope in SQL before counting/pagination. Only health routes
-      are public. No production credentials are hardcoded. See [Spring Security JWT
-      validation](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
-      and the service runbook.'
-    - 'agrosphere-estate-service/docs/MILESTONE_1A_REPORT.md:48: | Suite/check | Result
-      |'
     implementation:
     - 'agrosphere-estate-service: 41 source files observed; see inventory'
     repositories:
@@ -989,6 +1039,36 @@ recovered_observations:
         V2 requires occurredAt/sourceService and retains explicit provenance and UUID
         identities. Retry budgets, retained FAILED records, replay and disabled-publication
         operation are documented in Estate Service README.'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 13
+      excerpt: "Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+        \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+        \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+        \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+        \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md).\
+        \ Original user-request transcripts and a separately approved 3B specification\
+        \ were not recovered. Milestone 2's retained completion report documents functional\
+        \ DoD items 1\u201317 but does not reproduce the original full numbered specification;\
+        \ assessment uses the recoverable roadmap gate, implementation and report."
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 33
+      excerpt: '| 1A compatible contracts and packaging | Estate v2 namespace preserves
+        incompatible v1; independent Maven/Docker | [1A report](../../../../agrosphere-estate-service/docs/MILESTONE_1A_REPORT.md)
+        records actual serialized-event and all-16-operation validation, Java 21/container
+        image execution; later Java 25 evidence supersedes any assumption of a single
+        universal Java target |'
       outcome: null
     - repository: agrosphere-architecture
       path: docs/roadmap/MILESTONES.md
@@ -3204,6 +3284,21 @@ recovered_observations:
       retains explicit provenance and UUID identities. Retry budgets, retained FAILED
       records, replay and disabled-publication operation are documented in Estate
       Service README.'
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:13:\
+      \ Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+      \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+      \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+      \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+      \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md). Original\
+      \ user-request transcripts and a separately approved 3B specification were not\
+      \ recovered. Milestone 2's retained completion report documents functional DoD\
+      \ items 1\u201317 but does not reproduce the original full numbered specification;\
+      \ assessment uses the recoverable roadmap gate, implementation and report."
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:35:
+      | 1B event idempotency and ordering | [EstateProjection.java](../../../../agrosphere-spatial-service/src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java)
+      inserts consumer/event marker and updates only newer revisions within one transaction
+      | Spatial IT + 1C duplicate/out-of-order/late-parent acceptance group; [1B report](../../../../agrosphere-spatial-service/docs/MILESTONE_1B_REPORT.md)
+      records real broker, DLQ and schema checks |'
     - 'agrosphere-architecture/docs/roadmap/MILESTONES.md:15: Milestone 1B is authorized
       by its separate request and implemented in Spatial Service; see MILESTONE_1B.md
       and ADR-0009. This does not authorize Milestone 1C.'
@@ -3299,11 +3394,6 @@ recovered_observations:
       |'
     - 'agrosphere-spatial-service/docs/MILESTONE_1B_REPORT.md:35: | Blocks | GET /blocks/{blockId}/geometry;
       GET /blocks/{blockId}/history |'
-    - 'agrosphere-spatial-service/docs/MILESTONE_1B_REPORT.md:36: | Queries | POST
-      /query/point; POST /query/intersects; POST /query/within; GET /estates/{estateId}/bbox
-      |'
-    - 'agrosphere-spatial-service/docs/MILESTONE_1B_REPORT.md:37: | Layers | POST
-      /layers; GET/PUT /layers/{id}; GET /estates/{estateId}/layers |'
     implementation:
     - 'agrosphere-spatial-service: 33 source files observed; see inventory'
     repositories:
@@ -3409,6 +3499,36 @@ recovered_observations:
         V2 requires occurredAt/sourceService and retains explicit provenance and UUID
         identities. Retry budgets, retained FAILED records, replay and disabled-publication
         operation are documented in Estate Service README.'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 13
+      excerpt: "Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+        \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+        \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+        \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+        \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md).\
+        \ Original user-request transcripts and a separately approved 3B specification\
+        \ were not recovered. Milestone 2's retained completion report documents functional\
+        \ DoD items 1\u201317 but does not reproduce the original full numbered specification;\
+        \ assessment uses the recoverable roadmap gate, implementation and report."
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 35
+      excerpt: '| 1B event idempotency and ordering | [EstateProjection.java](../../../../agrosphere-spatial-service/src/main/java/com/agrosphere/spatial/adapter/in/messaging/EstateProjection.java)
+        inserts consumer/event marker and updates only newer revisions within one
+        transaction | Spatial IT + 1C duplicate/out-of-order/late-parent acceptance
+        group; [1B report](../../../../agrosphere-spatial-service/docs/MILESTONE_1B_REPORT.md)
+        records real broker, DLQ and schema checks |'
       outcome: null
     - repository: agrosphere-architecture
       path: docs/roadmap/MILESTONES.md
@@ -6142,6 +6262,27 @@ recovered_observations:
       retains explicit provenance and UUID identities. Retry budgets, retained FAILED
       records, replay and disabled-publication operation are documented in Estate
       Service README.'
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:13:\
+      \ Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+      \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+      \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+      \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+      \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md). Original\
+      \ user-request transcripts and a separately approved 3B specification were not\
+      \ recovered. Milestone 2's retained completion report documents functional DoD\
+      \ items 1\u201317 but does not reproduce the original full numbered specification;\
+      \ assessment uses the recoverable roadmap gate, implementation and report."
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:36:
+      | 1C identity, isolation, data flow and fault recovery | [smoke_platform.py](../../../../agrosphere-infrastructure/scripts/smoke_platform.py);
+      service-owned DBs; signed trusted roles/scopes; Gateway | [platform-smoke.json](../../../../agrosphere-infrastructure/target/platform-smoke.json)
+      and [full-smoke log](../../../../agrosphere-infrastructure/milestone-1c-full-smoke.log)
+      retain 12 groups, including direct backend denial, cross-DB denial, service
+      outage and broker recovery |'
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:37:\
+      \ | 1C trace propagation and local packaging | Persisted trace transport, Collector/Jaeger,\
+      \ health-gated Compose | Same platform artifacts explicitly record HTTP\u2192\
+      outbox\u2192Rabbit\u2192consumer spans; [1C report](../../../../agrosphere-infrastructure/docs/MILESTONE_1C_REPORT.md)\
+      \ records independent builds and contract validation |"
     - 'agrosphere-architecture/docs/roadmap/MILESTONES.md:15: Milestone 1B is authorized
       by its separate request and implemented in Spatial Service; see MILESTONE_1B.md
       and ADR-0009. This does not authorize Milestone 1C.'
@@ -6232,14 +6373,6 @@ recovered_observations:
       bootstrap inspected |'
     - 'agrosphere-infrastructure/docs/MILESTONE_1C_REPORT.md:22: | Gateway | Maven
       verify: 4 security tests passed |'
-    - 'agrosphere-infrastructure/docs/MILESTONE_1C_REPORT.md:23: | Estate | Maven
-      verify: 38 unit/security tests; actual Java 25 integration: 9 PostgreSQL/RabbitMQ/HTTP/JWT
-      cases passed |'
-    - 'agrosphere-infrastructure/docs/MILESTONE_1C_REPORT.md:24: | Spatial | Maven
-      verify: 19 tests; actual Java 21 container integration: 12 PostGIS/RabbitMQ/HTTP/JWT
-      cases passed |'
-    - 'agrosphere-infrastructure/docs/MILESTONE_1C_REPORT.md:25: | Contracts | v1/v2/spatial
-      schemas/examples/negative cases and OpenAPI validation passed |'
     implementation:
     - 'agrosphere-api-gateway: 9 source files observed; see inventory'
     repositories:
@@ -6414,6 +6547,48 @@ recovered_observations:
         V2 requires occurredAt/sourceService and retains explicit provenance and UUID
         identities. Retry budgets, retained FAILED records, replay and disabled-publication
         operation are documented in Estate Service README.'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 13
+      excerpt: "Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+        \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+        \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+        \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+        \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md).\
+        \ Original user-request transcripts and a separately approved 3B specification\
+        \ were not recovered. Milestone 2's retained completion report documents functional\
+        \ DoD items 1\u201317 but does not reproduce the original full numbered specification;\
+        \ assessment uses the recoverable roadmap gate, implementation and report."
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 36
+      excerpt: '| 1C identity, isolation, data flow and fault recovery | [smoke_platform.py](../../../../agrosphere-infrastructure/scripts/smoke_platform.py);
+        service-owned DBs; signed trusted roles/scopes; Gateway | [platform-smoke.json](../../../../agrosphere-infrastructure/target/platform-smoke.json)
+        and [full-smoke log](../../../../agrosphere-infrastructure/milestone-1c-full-smoke.log)
+        retain 12 groups, including direct backend denial, cross-DB denial, service
+        outage and broker recovery |'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 37
+      excerpt: "| 1C trace propagation and local packaging | Persisted trace transport,\
+        \ Collector/Jaeger, health-gated Compose | Same platform artifacts explicitly\
+        \ record HTTP\u2192outbox\u2192Rabbit\u2192consumer spans; [1C report](../../../../agrosphere-infrastructure/docs/MILESTONE_1C_REPORT.md)\
+        \ records independent builds and contract validation |"
       outcome: null
     - repository: agrosphere-architecture
       path: docs/roadmap/MILESTONES.md
@@ -8906,6 +9081,57 @@ recovered_observations:
       RabbitMQ topic exchange agrosphere.domain, Keycloak trusted estate_ids and realm_access.roles,
       apps profile and OTLP. Web is Angular/Cesium Milestone 2; remaining services
       are foundation scaffolds. Each repository retains independent build/deploy configuration.'
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:5:
+      **Result:** local delivery of 1A, 1B, 1C and the tapping-only 3A scope is supported
+      by code and historical execution evidence. **Milestone 2 remains PARTIAL because
+      its performance exit gate is open. The next eligible acceptance work is Milestone
+      2 performance closure. 3B is the next feature-planning candidate, not an authorized
+      implementation.** No documented dependency requires Milestone 2 rendering performance
+      for backend-only 3B planning; a strict sequential declaration of all prior gates
+      complete must wait for that closure.'
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:13:\
+      \ Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+      \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+      \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+      \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+      \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md). Original\
+      \ user-request transcripts and a separately approved 3B specification were not\
+      \ recovered. Milestone 2's retained completion report documents functional DoD\
+      \ items 1\u201317 but does not reproduce the original full numbered specification;\
+      \ assessment uses the recoverable roadmap gate, implementation and report."
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:39:
+      | 2 performance | requestRenderMode is an optimization, not measured acceptance
+      | [Milestone 2 acceptance limits](../../../../agrosphere-web/docs/MILESTONE_2_REPORT.md)
+      explicitly leaves reference-device FPS and initial useful estate view unmeasured.
+      Roadmap requires verified frame budget |'
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:50:\
+      \ 5. **Broad requirements remain open.** Company identity in FR-01 is not implemented\
+      \ by the narrowed 1A scope. Authoritative division lifecycle is absent. The\
+      \ proposed metadata p95 <500 ms at 20 concurrent users has no recovered benchmark;\
+      \ NONFUNCTIONAL_REQUIREMENTS calls these hypotheses, not achieved SLAs. Record\
+      \ this as M1-wide nonfunctional debt, not a fabricated pass or an automatic\
+      \ retroactive failure of every specific 1A\u20131C local exit gate. Reference-device\
+      \ visualization performance is an explicit M2 exit gate and does block full\
+      \ M2 acceptance."
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:56:
+      **First: close Milestone 2 acceptance.** Agree a named reference desktop/GPU,
+      browser/version, representative estate and geometry/asset budget. Record repeatable
+      cold/warm useful-estate-view times and interactive frame measurements during
+      navigation, selection and layer toggles; retain browser/provider/configuration
+      details, sample count and results against the agreed minimum 30 FPS target.
+      The web report mentions a 10-second initial-view target; the original approved
+      timing criterion was not recovered, so confirm that budget before treating it
+      as a hard acceptance threshold. Choose a representative permitted terrain/imagery
+      configuration and state which provider/fallback paths were exercised. Attach
+      evidence and rerun the relevant functional checks before declaring full M2 acceptance.
+      This audit does not implement or perform that work.'
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:60:
+      There is no recovered explicit dependency making M2 GPU performance a prerequisite
+      for backend-only 3B planning. Accordingly, 3B planning can be eligible while
+      M2 remains partial; advancing a strict sequential acceptance baseline or claiming
+      all milestones through 3A fully accepted cannot. Fresh current-revision validation
+      is still needed for a new formal acceptance/implementation checkpoint. This
+      report leaves the existing 1A review candidate and approval state untouched.'
     - 'agrosphere-architecture/docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md:9:
       | Visualization | Proposed 30 fps minimum on a named reference desktop; streaming/LOD
       and assets budget set in M2/M5 |'
@@ -8973,18 +9199,6 @@ recovered_observations:
       31 tests passed in 12 files                                    |'
     - 'agrosphere-web/docs/MILESTONE_2_REPORT.md:57: | npm run build                                    |
       Passed; upstream Cesium CommonJS optimization warnings remain  |'
-    - 'agrosphere-web/docs/MILESTONE_2_REPORT.md:58: | npm run e2e                                      |
-      2 deterministic UI tests passed                                |'
-    - 'agrosphere-web/docs/MILESTONE_2_REPORT.md:59: | npm run e2e:graphics                             |
-      Software-WebGL graphics workflow passed                        |'
-    - 'agrosphere-web/docs/MILESTONE_2_REPORT.md:60: | npm run e2e:live                                 |
-      Real Keycloak/Gateway seeded-estate workflow passed            |'
-    - 'agrosphere-web/docs/MILESTONE_2_REPORT.md:61: | docker build -t agrosphere-web:0.2.0
-      .           | Passed                                                         |'
-    - 'agrosphere-web/docs/MILESTONE_2_REPORT.md:62: | Container nginx -t, SPA route,
-      headers, /healthz | Passed                                                         |'
-    - 'agrosphere-web/docs/MILESTONE_2_REPORT.md:63: | npm audit                                        |
-      Zero reported vulnerabilities after compatible tooling patches |'
     implementation:
     - 'agrosphere-web: 37 source files observed; see inventory'
     repositories:
@@ -9042,6 +9256,100 @@ recovered_observations:
         Each repository retains independent build/deploy configuration.
       outcome: null
     - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 5
+      excerpt: '**Result:** local delivery of 1A, 1B, 1C and the tapping-only 3A scope
+        is supported by code and historical execution evidence. **Milestone 2 remains
+        PARTIAL because its performance exit gate is open. The next eligible acceptance
+        work is Milestone 2 performance closure. 3B is the next feature-planning candidate,
+        not an authorized implementation.** No documented dependency requires Milestone
+        2 rendering performance for backend-only 3B planning; a strict sequential
+        declaration of all prior gates complete must wait for that closure.'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 13
+      excerpt: "Requirement sources: [milestone exit gates](../../roadmap/MILESTONES.md),\
+        \ [1A scope](../../roadmap/MILESTONE_1A.md), [1B scope](../../roadmap/MILESTONE_1B.md),\
+        \ [1C scope](../../roadmap/MILESTONE_1C.md), [functional requirements](../../requirements/FUNCTIONAL_REQUIREMENTS.md),\
+        \ [nonfunctional requirements](../../requirements/NONFUNCTIONAL_REQUIREMENTS.md),\
+        \ and [ADR 0012 / 3A scope](../../adr/0012-rubber-tapping-operations.md).\
+        \ Original user-request transcripts and a separately approved 3B specification\
+        \ were not recovered. Milestone 2's retained completion report documents functional\
+        \ DoD items 1\u201317 but does not reproduce the original full numbered specification;\
+        \ assessment uses the recoverable roadmap gate, implementation and report."
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 39
+      excerpt: '| 2 performance | requestRenderMode is an optimization, not measured
+        acceptance | [Milestone 2 acceptance limits](../../../../agrosphere-web/docs/MILESTONE_2_REPORT.md)
+        explicitly leaves reference-device FPS and initial useful estate view unmeasured.
+        Roadmap requires verified frame budget |'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 50
+      excerpt: "5. **Broad requirements remain open.** Company identity in FR-01 is\
+        \ not implemented by the narrowed 1A scope. Authoritative division lifecycle\
+        \ is absent. The proposed metadata p95 <500 ms at 20 concurrent users has\
+        \ no recovered benchmark; NONFUNCTIONAL_REQUIREMENTS calls these hypotheses,\
+        \ not achieved SLAs. Record this as M1-wide nonfunctional debt, not a fabricated\
+        \ pass or an automatic retroactive failure of every specific 1A\u20131C local\
+        \ exit gate. Reference-device visualization performance is an explicit M2\
+        \ exit gate and does block full M2 acceptance."
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 56
+      excerpt: '**First: close Milestone 2 acceptance.** Agree a named reference desktop/GPU,
+        browser/version, representative estate and geometry/asset budget. Record repeatable
+        cold/warm useful-estate-view times and interactive frame measurements during
+        navigation, selection and layer toggles; retain browser/provider/configuration
+        details, sample count and results against the agreed minimum 30 FPS target.
+        The web report mentions a 10-second initial-view target; the original approved
+        timing criterion was not recovered, so confirm that budget before treating
+        it as a hard acceptance threshold. Choose a representative permitted terrain/imagery
+        configuration and state which provider/fallback paths were exercised. Attach
+        evidence and rerun the relevant functional checks before declaring full M2
+        acceptance. This audit does not implement or perform that work.'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 60
+      excerpt: There is no recovered explicit dependency making M2 GPU performance
+        a prerequisite for backend-only 3B planning. Accordingly, 3B planning can
+        be eligible while M2 remains partial; advancing a strict sequential acceptance
+        baseline or claiming all milestones through 3A fully accepted cannot. Fresh
+        current-revision validation is still needed for a new formal acceptance/implementation
+        checkpoint. This report leaves the existing 1A review candidate and approval
+        state untouched.
+      outcome: null
+    - repository: agrosphere-architecture
       path: docs/requirements/NONFUNCTIONAL_REQUIREMENTS.md
       kind: document
       sha256: 274dfc985fc55e545ec66215a12b6b6683eba153984d050596df66906f34c995
@@ -9089,7 +9397,7 @@ recovered_observations:
       path: AGENTS.md
       kind: document
       sha256: 4e9c308513f6c9b630c898b733d0ee8101134d3b37f4941d0e6c943fac2527ec
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:13:11.982122+00:00'
       line: 3
       excerpt: 'This independent Git repository implements Milestone 2: Angular/CesiumJS
@@ -9101,7 +9409,7 @@ recovered_observations:
       path: CHANGELOG.md
       kind: document
       sha256: 929a7e89464ed13be2161989442ea1c735a83d48386e6c1275b79ef807412b24
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:13:11.983675+00:00'
       line: 5
       excerpt: '- Implement Angular Milestone 2 shell, guarded routing, Keycloak Code/PKCE
@@ -9111,7 +9419,7 @@ recovered_observations:
       path: README.md
       kind: document
       sha256: 970dc01fb94537fbb22469e8132cd9509569442fd7dadcaaf89f1c6fb429a745
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:15:22.933273+00:00'
       line: 1
       excerpt: "# AgroSphere web \u2014 Milestone 2"
@@ -9120,7 +9428,7 @@ recovered_observations:
       path: README.md
       kind: document
       sha256: 970dc01fb94537fbb22469e8132cd9509569442fd7dadcaaf89f1c6fb429a745
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:15:22.933273+00:00'
       line: 108
       excerpt: See [component architecture and Cesium notes](docs/ARCHITECTURE.md),
@@ -9133,7 +9441,7 @@ recovered_observations:
       path: docs/INTEGRATION.md
       kind: document
       sha256: 6fdc336d51c97f633de309ef504d594f2fd779b7345c315abc14ca1e11328b81
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:15:22.563227+00:00'
       line: 27
       excerpt: '- The web scaffold''s AGENTS scope was Milestone 0; the explicit Milestone
@@ -9143,7 +9451,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 1
       excerpt: '# Milestone 2 completion report'
@@ -9152,7 +9460,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 2
       excerpt: ''
@@ -9161,7 +9469,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 3
       excerpt: 'Date: October 24, 2026 (America/Chicago). Web release: 0.2.0. Work
@@ -9174,7 +9482,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 4
       excerpt: ''
@@ -9183,7 +9491,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 5
       excerpt: '## A. Implementation summary'
@@ -9192,7 +9500,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 6
       excerpt: ''
@@ -9201,7 +9509,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 7
       excerpt: Implemented a standalone Angular enterprise shell with responsive/collapsible
@@ -9213,7 +9521,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 8
       excerpt: ''
@@ -9222,7 +9530,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 9
       excerpt: The dashboard aggregates every accessible Estate page, division and
@@ -9234,7 +9542,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 10
       excerpt: ''
@@ -9243,7 +9551,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 11
       excerpt: The digital twin combines an estate explorer, division navigation,
@@ -9257,7 +9565,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 12
       excerpt: ''
@@ -9266,7 +9574,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 13
       excerpt: 'Key components: ShellComponent, DashboardComponent, DigitalTwinComponent,
@@ -9277,7 +9585,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 14
       excerpt: ''
@@ -9286,7 +9594,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 15
       excerpt: 'Decisions follow the existing architecture: direct Cesium integration,
@@ -9297,7 +9605,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 16
       excerpt: ''
@@ -9306,7 +9614,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 17
       excerpt: '## B. API integration'
@@ -9315,7 +9623,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 18
       excerpt: ''
@@ -9324,7 +9632,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 19
       excerpt: 'Business requests use the existing Gateway, normally http://localhost:8080,
@@ -9334,7 +9642,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 20
       excerpt: ''
@@ -9343,7 +9651,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 21
       excerpt: '- Estate GET /estates; /estates/{estateId}/divisions; /estates/{estateId}/blocks;
@@ -9353,7 +9661,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 22
       excerpt: '- Spatial GET /spatial/estates/{estateId}/features; /layers; /assets.'
@@ -9362,7 +9670,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 23
       excerpt: '- Typed adapters also expose current block geometry and POST point
@@ -9372,7 +9680,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 24
       excerpt: ''
@@ -9381,7 +9689,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 25
       excerpt: Collection adapters fetch every page with size=100 using actual page/size/totalElements
@@ -9393,7 +9701,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 26
       excerpt: ''
@@ -9402,7 +9710,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 27
       excerpt: 'Discrepancies are documented in INTEGRATION.md: service server URLs
@@ -9415,7 +9723,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 28
       excerpt: ''
@@ -9424,7 +9732,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 29
       excerpt: '## C. GIS and 3D'
@@ -9433,7 +9741,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 30
       excerpt: ''
@@ -9442,7 +9750,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 31
       excerpt: Default terrain is the offline ellipsoid; imagery defaults to none.
@@ -9455,7 +9763,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 32
       excerpt: ''
@@ -9464,7 +9772,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 33
       excerpt: Authoritative Polygon/MultiPolygon/Point/LineString geometry stays
@@ -9477,7 +9785,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 34
       excerpt: ''
@@ -9486,7 +9794,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 35
       excerpt: Positioned road/facility/sensor/other asset markers are categorized
@@ -9499,7 +9807,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 36
       excerpt: ''
@@ -9508,7 +9816,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 37
       excerpt: Viewer instances and event handlers are destroyed on teardown. Async
@@ -9520,7 +9828,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 38
       excerpt: ''
@@ -9529,7 +9837,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 39
       excerpt: '## D. Authentication'
@@ -9538,7 +9846,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 40
       excerpt: ''
@@ -9547,7 +9855,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 41
       excerpt: The existing agrosphere realm / agrosphere-web public client uses Authorization
@@ -9560,7 +9868,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 42
       excerpt: ''
@@ -9569,7 +9877,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 43
       excerpt: Only configured Gateway business routes receive tokens. A 401 clears
@@ -9582,7 +9890,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 44
       excerpt: ''
@@ -9591,7 +9899,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 45
       excerpt: '## E. Testing and evidence'
@@ -9600,7 +9908,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 46
       excerpt: ''
@@ -9609,7 +9917,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 47
       excerpt: 'Executed locally:'
@@ -9618,7 +9926,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 48
       excerpt: ''
@@ -9627,7 +9935,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 49
       excerpt: '| Check                                            | Result                                                         |'
@@ -9636,7 +9944,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 50
       excerpt: '| ------------------------------------------------ | --------------------------------------------------------------
@@ -9646,7 +9954,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 51
       excerpt: '| npm dependency installation and lockfile         | Passed; Docker
@@ -9656,7 +9964,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 52
       excerpt: '| npm run lint                                     | Passed                                                         |'
@@ -9665,7 +9973,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 53
       excerpt: '| npm run format:check                             | Passed                                                         |'
@@ -9674,7 +9982,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 54
       excerpt: '| npm run typecheck                                | Passed                                                         |'
@@ -9683,7 +9991,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 55
       excerpt: '| npm run api:check                                | Passed                                                         |'
@@ -9692,7 +10000,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 56
       excerpt: '| npm test                                         | 31 tests passed
@@ -9702,7 +10010,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 57
       excerpt: '| npm run build                                    | Passed; upstream
@@ -9712,7 +10020,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 58
       excerpt: '| npm run e2e                                      | 2 deterministic
@@ -9722,7 +10030,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 59
       excerpt: '| npm run e2e:graphics                             | Software-WebGL
@@ -9732,7 +10040,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 60
       excerpt: '| npm run e2e:live                                 | Real Keycloak/Gateway
@@ -9742,7 +10050,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 61
       excerpt: '| docker build -t agrosphere-web:0.2.0 .           | Passed                                                         |'
@@ -9751,7 +10059,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 62
       excerpt: '| Container nginx -t, SPA route, headers, /healthz | Passed                                                         |'
@@ -9760,7 +10068,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 63
       excerpt: '| npm audit                                        | Zero reported
@@ -9770,7 +10078,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 64
       excerpt: '| git diff --check                                 | Passed                                                         |'
@@ -9779,7 +10087,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 65
       excerpt: ''
@@ -9788,7 +10096,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 66
       excerpt: Tests cover paginated API paths, errors, UUID joins, duplicate-name
@@ -9804,7 +10112,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 67
       excerpt: ''
@@ -9813,7 +10121,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 68
       excerpt: Live browser validation used existing private development credentials
@@ -9827,7 +10135,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 69
       excerpt: ''
@@ -9836,7 +10144,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 70
       excerpt: Early validation found and fixed Cesium API typing issues, a missing
@@ -9852,7 +10160,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 71
       excerpt: ''
@@ -9861,7 +10169,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 72
       excerpt: "A fixture viewer navigation/remount observation was approximately\
@@ -9873,7 +10181,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 73
       excerpt: ''
@@ -9882,7 +10190,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 74
       excerpt: '## F. Exact PowerShell execution'
@@ -9891,7 +10199,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 75
       excerpt: ''
@@ -9900,7 +10208,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 76
       excerpt: 'Existing backend integration environment:'
@@ -9909,7 +10217,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 77
       excerpt: ''
@@ -9918,7 +10226,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 78
       excerpt: '```powershell'
@@ -9927,7 +10235,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 79
       excerpt: Set-Location C:\Projects\agrosphere\agrosphere-infrastructure
@@ -9936,7 +10244,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 80
       excerpt: docker compose --profile apps up -d --wait --wait-timeout 240
@@ -9945,7 +10253,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 81
       excerpt: '```'
@@ -9954,7 +10262,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 82
       excerpt: ''
@@ -9963,7 +10271,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 83
       excerpt: New backend setup additionally requires the infrastructure README's
@@ -9975,7 +10283,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 84
       excerpt: ''
@@ -9984,7 +10292,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 85
       excerpt: 'Frontend:'
@@ -9993,7 +10301,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 86
       excerpt: ''
@@ -10002,7 +10310,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 87
       excerpt: '```powershell'
@@ -10011,7 +10319,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 88
       excerpt: Set-Location C:\Projects\agrosphere\agrosphere-web
@@ -10020,7 +10328,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 89
       excerpt: npm.cmd ci
@@ -10029,7 +10337,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 90
       excerpt: npm.cmd start
@@ -10038,7 +10346,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 91
       excerpt: '```'
@@ -10047,7 +10355,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 92
       excerpt: ''
@@ -10056,7 +10364,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 93
       excerpt: 'Build and automated checks:'
@@ -10065,7 +10373,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 94
       excerpt: ''
@@ -10074,7 +10382,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 95
       excerpt: '```powershell'
@@ -10083,7 +10391,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 96
       excerpt: npm.cmd run lint
@@ -10092,7 +10400,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 97
       excerpt: npm.cmd run format:check
@@ -10101,7 +10409,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 98
       excerpt: npm.cmd run typecheck
@@ -10110,7 +10418,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 99
       excerpt: npm.cmd run api:check
@@ -10119,7 +10427,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 100
       excerpt: npm.cmd test
@@ -10128,7 +10436,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 101
       excerpt: npm.cmd run build
@@ -10137,7 +10445,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 102
       excerpt: npx.cmd playwright install chromium
@@ -10146,7 +10454,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 103
       excerpt: npm.cmd run e2e
@@ -10155,7 +10463,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 104
       excerpt: npm.cmd run e2e:graphics
@@ -10164,7 +10472,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 105
       excerpt: '# Set private E2E_USERNAME/E2E_PASSWORD and optional E2E_ESTATE_ID/E2E_BLOCK_CODE:'
@@ -10173,7 +10481,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 106
       excerpt: npm.cmd run e2e:live
@@ -10182,7 +10490,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 107
       excerpt: docker build -t agrosphere-web:0.2.0 .
@@ -10191,7 +10499,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 108
       excerpt: docker run --rm -p 127.0.0.1:4200:8080 agrosphere-web:0.2.0
@@ -10200,7 +10508,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 109
       excerpt: '```'
@@ -10209,7 +10517,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 110
       excerpt: ''
@@ -10218,7 +10526,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 111
       excerpt: The existing backend stack was started and remains running. Temporary
@@ -10229,7 +10537,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 112
       excerpt: ''
@@ -10238,7 +10546,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 113
       excerpt: '## Acceptance limits'
@@ -10247,7 +10555,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 114
       excerpt: ''
@@ -10256,7 +10564,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 115
       excerpt: "Functional Definition of Done items 1\u201317 were exercised through\
@@ -10269,7 +10577,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 116
       excerpt: ''
@@ -10278,7 +10586,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 117
       excerpt: Optional licensed online imagery/world terrain, external 3D Tiles/GeoJSON
@@ -10291,7 +10599,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 118
       excerpt: ''
@@ -10300,7 +10608,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 119
       excerpt: CI is implemented but has not been executed on GitHub because code
@@ -10312,7 +10620,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 120
       excerpt: ''
@@ -10321,7 +10629,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 121
       excerpt: '## G. Milestone 3 recommendation'
@@ -10330,7 +10638,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 122
       excerpt: ''
@@ -10339,7 +10647,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 123
       excerpt: 1. Define independently versioned Operations contracts for tapping
@@ -10351,7 +10659,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 124
       excerpt: 2. Define authenticated MQTT telemetry ingestion in Telemetry with
@@ -10362,7 +10670,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 125
       excerpt: 3. Build Analytics-owned projections from versioned domain/telemetry
@@ -10373,7 +10681,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 126
       excerpt: 4. Add Operations forms and timestamped telemetry/analytics overlays
@@ -10384,7 +10692,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 127
       excerpt: ''
@@ -10393,7 +10701,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 128
       excerpt: Stop here at Milestone 2; these are recommendations only.
@@ -10402,7 +10710,7 @@ recovered_observations:
       path: src/app/features/estate/README.md
       kind: document
       sha256: 7426b4fa79a70bb4e251de9bd9c3bd62ba706a1eb705e670c58a07d17fdf83ca
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:19:45.144431+00:00'
       line: 3
       excerpt: Milestone 2 estate state and navigation live in ../estates/; typed
@@ -10422,6 +10730,18 @@ recovered_observations:
     classification: UNVERIFIED
     confidence: low
     objectives:
+    - "agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:23:\
+      \ | 3A Tapping | Schedule lifecycle and bounded recurrence; duplicate-safe assignments;\
+      \ own-worker execution; missed/cancel rules; estate-local dates; accurate summaries;\
+      \ scoped roles; independent migrations/contracts; atomic events and full local\
+      \ integration | E5: TappingService transaction, Access, DB constraints, real\
+      \ Estate HTTP adapter, outbox; domain/authorization/IT source. Retained XML:\
+      \ 34 unit/security + 10 IT = 44, all pass. Isolated Compose log records real\
+      \ PKCE, Gateway\u2192Operations\u2192Estate, dedup/retry, auditor denial, summaries\
+      \ and four confirmed events. | **Supported for local tapping-only 3A scope,\
+      \ historically verified.** Six event schemas and 18 API operations are documented/validated\
+      \ historically. No latex mass, DRC, incidents, MQTT, analytics or operations\
+      \ UI is delivered by 3A. Parent Milestone 3 remains incomplete. |"
     - 'agrosphere-architecture/docs/roadmap/IMPLEMENTATION_BACKLOG.md:14: | P1 M3-01
       | Tapping/latex/DRC and crop incident use cases | operations | Explicit kg/percent,
       valid ranges and unique event identity |'
@@ -10439,6 +10759,26 @@ recovered_observations:
     - agrosphere-web
     tests: []
     evidence:
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 23
+      excerpt: "| 3A Tapping | Schedule lifecycle and bounded recurrence; duplicate-safe\
+        \ assignments; own-worker execution; missed/cancel rules; estate-local dates;\
+        \ accurate summaries; scoped roles; independent migrations/contracts; atomic\
+        \ events and full local integration | E5: TappingService transaction, Access,\
+        \ DB constraints, real Estate HTTP adapter, outbox; domain/authorization/IT\
+        \ source. Retained XML: 34 unit/security + 10 IT = 44, all pass. Isolated\
+        \ Compose log records real PKCE, Gateway\u2192Operations\u2192Estate, dedup/retry,\
+        \ auditor denial, summaries and four confirmed events. | **Supported for local\
+        \ tapping-only 3A scope, historically verified.** Six event schemas and 18\
+        \ API operations are documented/validated historically. No latex mass, DRC,\
+        \ incidents, MQTT, analytics or operations UI is delivered by 3A. Parent Milestone\
+        \ 3 remains incomplete. |"
+      outcome: null
     - repository: agrosphere-architecture
       path: docs/requirements/POC_SCOPE.md
       kind: document
@@ -10478,7 +10818,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 3
       excerpt: 'Date: October 24, 2026 (America/Chicago). Web release: 0.2.0. Work
@@ -10491,7 +10831,7 @@ recovered_observations:
       path: docs/MILESTONE_2_REPORT.md
       kind: document
       sha256: 9dbe43b2b4c8402a2fd4f6a166481010575433eb8050c34f3cacf1586709e9a5
-      head: ea69d3534ee0020717b5bce0f83d4b5cb7965b7c
+      head: 2a56f819cc653425e4c58bd6306872e352ee5c7a
       modified_at: '2026-10-24T18:32:12.415117+00:00'
       line: 121
       excerpt: '## G. Milestone 3 recommendation'
@@ -12136,6 +12476,19 @@ recovered_observations:
         execution before completion claims.'
       outcome: null
     - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 42
+      excerpt: '| 3A real integrated behavior | [verify_tapping.py](../../../../agrosphere-infrastructure/scripts/verify_tapping.py)
+        creates an isolated project | [3A Compose log](../../../../agrosphere-infrastructure/milestone-3a-compose.log)
+        records successful independent images, real PKCE, signed subject/scope, scoped
+        workflow and four confirmed events; [3A completion report](../milestone-3a-completion.md)
+        records remaining limits |'
+      outcome: null
+    - repository: agrosphere-architecture
       path: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
       kind: commit
       sha256: 8686053cd1317a040268914d0da1120f601e78c0df02ddf0c3b57dd5f8896bec
@@ -12277,6 +12630,15 @@ recovered_observations:
       READY for planning the separately authorized next milestone. Preserve Operations
       ownership and immutable assignment/execution IDs; version future contracts independently
       and deduplicate all consumed events. No Milestone 3B feature was implemented.'
+    - 'agrosphere-architecture/docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md:58:
+      **Next new feature candidate: Milestone 3B, for requirements/design planning
+      only.** The 3A report recommends 3B but does not define an approved specification.
+      A reasonable proposed continuation is latex collection and DRC/dry-rubber calculation
+      from FR-04, keeping explicit kg/percent units, validated ranges, immutable assignment/execution
+      IDs, scoped roles, audit history, independently versioned contracts and idempotent
+      events. That proposal must be scoped explicitly; incidents, MQTT/telemetry,
+      Analytics projections and browser workflows are not implicitly included. No
+      code start or delivery authorization follows from this reconciliation.'
     implementation: []
     repositories:
     - agrosphere-architecture
@@ -12313,6 +12675,23 @@ recovered_observations:
         Preserve Operations ownership and immutable assignment/execution IDs; version
         future contracts independently and deduplicate all consumed events. No Milestone
         3B feature was implemented.'
+      outcome: null
+    - repository: agrosphere-architecture
+      path: docs/milestones/reconciliation-1a-3a/ACCEPTANCE_MATRIX.md
+      kind: document
+      sha256: 63fe8301b01d88e6ccc5b4bfc7cb66bfd85f526c80e0182b2dc400a933d9c4fb
+      head: ab6289d42dcc0ba4a956c39ed55b34c2f0c49746
+      modified_at: '2026-10-26T04:48:03.654232+00:00'
+      line: 58
+      excerpt: '**Next new feature candidate: Milestone 3B, for requirements/design
+        planning only.** The 3A report recommends 3B but does not define an approved
+        specification. A reasonable proposed continuation is latex collection and
+        DRC/dry-rubber calculation from FR-04, keeping explicit kg/percent units,
+        validated ranges, immutable assignment/execution IDs, scoped roles, audit
+        history, independently versioned contracts and idempotent events. That proposal
+        must be scoped explicitly; incidents, MQTT/telemetry, Analytics projections
+        and browser workflows are not implicitly included. No code start or delivery
+        authorization follows from this reconciliation.'
       outcome: null
     verified_acceptance_criteria: []
     outstanding:
@@ -12490,7 +12869,177 @@ recovered_observations:
     - Review historical claims and obtain human approval separately.
     missing_documentation: []
     conflicts: []
-  imported_plans: []
+  imported_plans:
+  - project: agrosphere
+    id: AEO-6
+    spec:
+      id: AEO-6
+      project: agrosphere
+      title: Autonomous Milestone Execution and End-to-End Engineering Orchestration
+      version: 1
+      tasks:
+      - id: controller
+        title: Deterministic controller and additive run persistence
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on: []
+        acceptance_criteria:
+        - Persist intent before dispatch; unknown/conflicting state blocks; no second
+          scheduler, GitHub adapter or process launcher.
+        - Additive migration preserves existing data/audit; reconcile all 16 interruption
+          cases without blindly replaying uncertain execution.
+        - Reserve before parallel dispatch; resume retains counts; unknown cost stays
+          unknown and unenforceable monetary caps block; exhaustion pauses durably.
+      - id: lifecycle
+        title: Discovery, design-first generation and exact approval continuation
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - controller
+        acceptance_criteria:
+        - Reject fixture roots, duplicate IDs, unknown dependencies and unverified
+          completion; never infer numeric advancement.
+        - Register immutable scope/revisions; correct repository ownership; requirements
+          and validated design approvals precede implementation.
+        - Reuse valid unchanged approvals; missing, rejected, expired, revoked or
+          changed authority blocks; no direct approval inserts or self-approval.
+      - id: agents
+        title: Existing scheduler/Codex integration and budget reservations
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - lifecycle
+        acceptance_criteria:
+        - Existing task IDs/results/claims/leases remain authoritative; concurrent
+          work obeys dependency and repository isolation.
+        - Reserve before parallel dispatch; resume retains counts; unknown cost stays
+          unknown and unenforceable monetary caps block; exhaustion pauses durably.
+      - id: quality-delivery
+        title: Independent quality, bounded remediation and AEO-5 integration
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - agents
+        acceptance_criteria:
+        - AEO-4 QA/security/acceptance gates must pass; at most configured repairs
+          (default three); design changes reapprove.
+        - Remote writes default disabled; exact grants required; no duplicate PR/force
+          push/protected writes/merge/deploy; formal completion separately verified.
+      - id: cli-report
+        title: Autonomous CLI, lifecycle reports and operational guides
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - quality-delivery
+        acceptance_criteria:
+        - Default read-only dry-run; simulation isolated; local mode is not a grant;
+          explicit run/milestone and JSON/Markdown reports.
+        - Separate unit/integration/simulation/real Codex/live GitHub/unavailable/pending
+          evidence and next permitted action.
+      - id: verification
+        title: Three-repository simulation, all recovery cases, regression and acceptance
+        repository: agrosphere-orchestrator
+        role: qa-engineer
+        operation: validate
+        depends_on:
+        - cli-report
+        acceptance_criteria:
+        - Additive migration preserves existing data/audit; reconcile all 16 interruption
+          cases without blindly replaying uncertain execution.
+        - All 275 baseline tests and original IDs preserved; three-repository fixture
+          end-to-end, negative security and Windows recovery tests; no automatic application
+          launch.
+  - project: agrosphere
+    id: AEO-5
+    spec:
+      id: AEO-5
+      project: agrosphere
+      title: GitHub integration, durable delivery recovery and evidence
+      version: 1
+      tasks:
+      - id: github
+        title: Typed provider and CLI adapter
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on: []
+        acceptance_criteria:
+        - Authentication/permission failures block writes; repository and branch identities
+          are validated.
+      - id: durable
+        title: Additive delivery persistence and migration
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - github
+        acceptance_criteria:
+        - Intent survives restart and migrations preserve existing records; evidence/audit
+          are append-only.
+      - id: publication
+        title: Safe branch and idempotent PR workflows
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - durable
+        acceptance_criteria:
+        - Isolated branch creation/reuse preserves dirty source; exact authorized
+          push never force-pushes.
+        - Repeated or ambiguous publication reuses an exact matching PR; duplicates
+          and closed/merged matches block.
+      - id: governance
+        title: Coordination, exact-head CI and human approval
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - publication
+        acceptance_criteria:
+        - Existing tasks and resource leases bind each unit; unavailable dependencies
+          block milestone readiness.
+        - Required checks are current-SHA bound; missing, stale and unavailable policy/checks
+          block.
+        - Human review, CODEOWNERS and dismissals are respected; agents do not self-approve.
+        - Fresh activated quality/security and exact human publishing approval are
+          required before mutation.
+      - id: recovery
+        title: Remote recovery and evidence reporting
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - governance
+        acceptance_criteria:
+        - Lost push/PR responses, provider failures and partial completion reconcile
+          without blind replay.
+        - Reports include actual SHA, PR, CI, reviews, approval/quality hashes, blockers
+          and recovery history.
+      - id: cli
+        title: Delivery CLI and fault-injection integration tests
+        repository: agrosphere-orchestrator
+        role: developer
+        operation: code-write
+        depends_on:
+        - recovery
+        acceptance_criteria:
+        - All nine commands expose structured output; observation and default recovery
+          never write remotely.
+      - id: validation
+        title: Regression, diagrams, migration and acceptance validation
+        repository: agrosphere-orchestrator
+        role: qa-engineer
+        operation: validate
+        depends_on:
+        - cli
+        acceptance_criteria:
+        - All 163 baseline and new tests pass; no unauthorized remote writes, merges,
+          deployment or AEO-6.
   recommendation:
     milestone: 1A
     action: Verify and reconcile acceptance criteria before authorizing application

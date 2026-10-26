@@ -1,0 +1,33 @@
+@startuml
+title Proposed authorized delivery sequence
+actor Human
+participant CLI
+participant Coordinator
+participant Governance
+database SQLite
+participant Git
+participant GitHub
+Human -> CLI : Explicit publish for approved unit
+CLI -> Coordinator : Validate manifest and exact source
+Coordinator -> Governance : Recheck design, quality and scoped grant
+Governance --> Coordinator : Authorized or blocked
+alt authorized
+Coordinator -> SQLite : Acquire existing lease and persist push intent
+Coordinator -> Git : Approved non-force branch push
+Coordinator -> GitHub : Observe exact remote branch SHA
+Coordinator -> SQLite : Record observed push outcome
+Coordinator -> GitHub : Find all matching PR states
+alt one matching open PR
+Coordinator -> SQLite : Reconcile immutable PR identity
+else no match
+Coordinator -> SQLite : Persist create intent
+Coordinator -> GitHub : Create PR from verified evidence
+Coordinator -> GitHub : Reconcile result or ambiguous response
+Coordinator -> SQLite : Record identity and append evidence
+else conflicting, closed or merged PR
+Coordinator -> SQLite : Record blocked recovery decision
+end
+else blocked
+Coordinator --> CLI : Structured unmet requirements
+end
+@enduml

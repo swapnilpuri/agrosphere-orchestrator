@@ -1,0 +1,17 @@
+{
+  "executed_at": "2026-10-25T22:21:34.669460+00:00",
+  "scope_id": "22e7ab696621e4f7b779cf49ac2cd04bbfe5eeb58864ca9a372d69df755b0edd",
+  "formal_design_validation": false,
+  "persisted_validation_id": null,
+  "storage": "Temporary preview artifact storage; no database revision, validation or approval written",
+  "passed": true,
+  "artifact_count": 16,
+  "findings": [
+    {
+      "code": "review-limit",
+      "message": "Independent rule review checks declared scope and references; human conceptual review remains mandatory.",
+      "severity": "warning",
+      "artifact": null
+    }
+  ]
+}

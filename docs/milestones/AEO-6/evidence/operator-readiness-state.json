@@ -1,0 +1,62 @@
+{
+  "migration": [
+    "0008"
+  ],
+  "tables": [
+    "alembic_version",
+    "approvals",
+    "audit_events",
+    "autonomous_events",
+    "autonomous_operations",
+    "autonomous_runs",
+    "delivery_events",
+    "delivery_operations",
+    "delivery_runs",
+    "delivery_units",
+    "design_cases",
+    "design_decisions",
+    "design_revisions",
+    "design_scopes",
+    "design_validations",
+    "execution_attempts",
+    "execution_grants",
+    "executions",
+    "governance_records",
+    "milestones",
+    "orchestration_controls",
+    "orchestration_evidence",
+    "orchestration_plans",
+    "projects",
+    "recovery_heads",
+    "recovery_snapshots",
+    "resource_leases",
+    "runs",
+    "task_claims",
+    "task_quality_states",
+    "tasks",
+    "validation_evidence"
+  ],
+  "runs": [],
+  "design_cases": [
+    {
+      "id": "agrosphere:AEO-5",
+      "state": "IMPLEMENTING",
+      "scope_id": "22e7ab696621e4f7b779cf49ac2cd04bbfe5eeb58864ca9a372d69df755b0edd",
+      "revision_id": "9824ee231f67b694234e192084fadfdfcacd3b4e5c35937e2730753098c8d507"
+    },
+    {
+      "id": "agrosphere:AEO-6",
+      "state": "IMPLEMENTING",
+      "scope_id": "48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143",
+      "revision_id": "e93d7e7f28163d47d871faed1a5f4ad16d99662a1cf0955400a2a87b163535fe"
+    }
+  ],
+  "configuration": {
+    "github_remote_writes": false,
+    "autonomous_roadmap": null,
+    "live_enabled": false,
+    "design_approvers_count": 1,
+    "execution_approvers_count": 0,
+    "governance_approvers_count": 0
+  }
+}

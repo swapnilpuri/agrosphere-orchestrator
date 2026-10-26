@@ -1,0 +1,31 @@
+@startuml
+title Autonomous milestone lifecycle (proposed)
+start
+:Load persistent run and repository facts;
+:Reconcile uncertain child operations;
+if (Eligible approved scope?) then (yes)
+ :Prepare explanation and diagrams;
+ :Register requirements;
+ if (Requirements approved?) then (yes)
+  :Generate and validate design;
+  if (Validated design approved?) then (yes)
+   :Prepare approved DAG and exact execution requests;
+   :Run existing scheduler within budgets;
+   :Independent AEO-4 verification;
+   if (Quality accepted?) then (yes)
+    :Prepare AEO-5 manifest and publication gate;
+    :Observe permitted delivery and generate report;
+   else (no)
+    :Bounded permitted remediation or checkpoint;
+   endif
+  else (no)
+   :Persist design checkpoint;
+  endif
+ else (no)
+  :Persist requirements checkpoint;
+ endif
+else (no)
+ :Persist blocked report;
+endif
+stop
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+title Future application design and delivery dependency boundaries
+package "agrosphere-architecture" {
+ rectangle "Approved cross-service design" as Arch
+}
+package "agrosphere-contracts" {
+ rectangle "Versioned API / event contracts" as Contracts
+}
+package "Discovered service repository A" {
+ rectangle "Service design and task A" as ServiceA
+}
+package "Discovered service repository B" {
+ rectangle "Service design and task B" as ServiceB
+}
+package "agrosphere-orchestrator" {
+ rectangle "Run manifest / task DAG / artifact hashes" as Run
+ rectangle "AEO-5 unit dependency state" as Units
+}
+Arch --> Contracts : approved impact only
+Arch --> ServiceA : design requirement references
+Arch --> ServiceB : design requirement references
+Contracts --> ServiceA : pinned compatible version
+Contracts --> ServiceB : pinned compatible version
+Run --> ServiceA : exact isolated execution authority
+Run --> ServiceB : only when prerequisites available
+ServiceA --> Units : verified commits and QA
+ServiceB --> Units : verified commits and QA
+note bottom of Units
+A PR existing does not make dependency content available.
+No sibling source dependency or cross-service SQL.
+end note
+@enduml

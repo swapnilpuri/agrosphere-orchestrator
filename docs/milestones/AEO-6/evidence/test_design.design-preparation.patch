@@ -1,0 +1,73 @@
+--- before/tests/test_design.py
++++ after/tests/test_design.py
+@@ -895,3 +895,70 @@
+     result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+     assert not result["passed"]
+     assert {x["code"] for x in result["findings"]} >= {"plantuml-directive", "diagram-render"}
++
++
++def test_internal_generic_service_narrative_reused_without_scope_changes(
++    engine, internal_workspace
++):
++    f = internal_workspace
++    approved = f.inputs.narratives.pop("service:agrosphere-orchestrator")
++    f.inputs.narratives["service"] = approved
++    original = f.inputs.model_dump(mode="json")
++    prepare(engine, f)
++    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
++    assert result["passed"], result
++    assert f.inputs.model_dump(mode="json") == original
++    artifact = next(a for a in design_status(engine, f.key)["artifacts"] if a["type"] == "service")
++    content = Path(artifact["absolute_path"]).read_text(encoding="utf-8")
++    assert all(text in content for text in approved.values())
++
++
++def test_internal_generic_service_missing_section_still_blocks(engine, internal_workspace):
++    f = internal_workspace
++    f.inputs.narratives["service"] = f.inputs.narratives.pop("service:agrosphere-orchestrator")
++    del f.inputs.narratives["service"]["Security"]
++    prepare(engine, f)
++    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
++    assert not result["passed"]
++    assert any(x["code"] == "missing-information" for x in result["findings"])
++
++
++def test_application_generic_service_cannot_replace_repository_narrative(engine, design_workspace):
++    f = design_workspace
++    f.inputs.narratives["service"] = f.inputs.narratives.pop("service:estate")
++    prepare(engine, f)
++    assert not validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
++
++
++def test_internal_repository_narrative_takes_precedence(engine, internal_workspace):
++    f = internal_workspace
++    f.inputs.narratives["service"] = f.inputs.narratives["service:agrosphere-orchestrator"].copy()
++    f.inputs.narratives["service:agrosphere-orchestrator"] = {}
++    prepare(engine, f)
++    assert not validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
++
++
++@pytest.mark.parametrize("kind", ["sequence", "data-flow"])
++@pytest.mark.parametrize(
++    "body,valid",
++    [
++        ("A -> B: request\nB --> A: result", True),
++        ('"Actor A" -> B: request', True),
++        ("participant A\nparticipant B", False),
++        ("' A -> B: comment", False),
++        ("/'\nA -> B: comment\n'/", False),
++        ("note over A\nA -> B: prose\nend note", False),
++        ("A -> B:", False),
++    ],
++)
++def test_approved_interaction_source_is_reviewed_instead_of_edge_metadata(
++    internal_workspace, kind, body, valid
++):
++    f = internal_workspace
++    diagram = f.inputs.diagrams[0]
++    diagram.kind = kind
++    # Deliberately retain edge metadata: approved source is authoritative even
++    # when that metadata would otherwise satisfy the interaction check.
++    diagram.approved_source = "@startuml\n" + body + "\n@enduml\n"
++    findings = RuleBasedArchitectureReviewer().review(f.inputs, [])
++    assert any(x.code == "review-interactions" for x in findings) is not valid

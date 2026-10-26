@@ -739,3 +739,226 @@ def test_context_changes_after_generation_block_validation_and_approval(engine, 
     result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
     assert not result["passed"] and any(x["code"] == "stale-context" for x in result["findings"])
     assert design_status(engine, f.key)["state"] == "DESIGN_IN_PROGRESS"
+
+
+@pytest.fixture
+def internal_workspace(design_workspace):
+    f = design_workspace
+    data = f.inputs.model_dump(mode="json")
+    data["documentation_scope"] = "internal-orchestrator"
+    data["plan"]["tasks"][0]["repository"] = "agrosphere-orchestrator"
+    context = next(c for c in data["context"] if c["repository"] == "estate")
+    data["context"] = [{**context, "repository": "agrosphere-orchestrator"}]
+    data["diagrams"][0]["repository"] = "agrosphere-orchestrator"
+    data["narratives"]["service:agrosphere-orchestrator"] = data["narratives"]["service:estate"]
+    f.inputs = DesignInput.model_validate(data)
+    f.manifest.write_text(
+        json.dumps(
+            {
+                "repositories": [
+                    {
+                        "id": "agrosphere-orchestrator",
+                        "path": str(f.repos["estate"]),
+                        "status": "confirmed",
+                    }
+                ]
+            }
+        )
+    )
+    return f
+
+
+def test_internal_documentation_full_lifecycle_without_sibling_writes(engine, internal_workspace):
+    from agrosphere_orchestrator.design_validation import expected_owners
+
+    f = internal_workspace
+    revision = approve(engine, f)
+    status = design_status(engine, f.key)
+    assert status["implementation_authorized"]
+    assert {a["repository"] for a in status["artifacts"]} == {"agrosphere-orchestrator"}
+    assert {a["type"] for a in status["artifacts"]} >= {
+        "business",
+        "architecture",
+        "overview",
+        "service",
+    }
+    assert not list(f.repos["agrosphere-architecture"].glob("docs/**/*"))
+    assert not list(f.repos["agrosphere-contracts"].glob("docs/**/*"))
+    for kind in ("activity", "state", "sequence", "component", "deployment"):
+        assert expected_owners("diagram:" + kind, f.inputs) == {"agrosphere-orchestrator"}
+    assert revision
+
+
+@pytest.mark.parametrize("changed", ["task", "context", "diagram", "contract-impact", "contract"])
+def test_internal_scope_rejects_application_and_contract_ownership(internal_workspace, changed):
+    data = internal_workspace.inputs.model_dump(mode="json")
+    if changed == "task":
+        data["plan"]["tasks"][0]["repository"] = "estate"
+    elif changed == "context":
+        data["context"][0]["repository"] = "estate"
+    elif changed == "diagram":
+        data["diagrams"][0]["repository"] = "agrosphere-architecture"
+    elif changed == "contract-impact":
+        data["contract_impact"] = True
+    else:
+        data["contracts"] = [
+            {
+                "id": "api",
+                "kind": "openapi",
+                "content": "openapi: 3.0.0",
+                "requirement_ids": ["REQ-1"],
+                "version": "1",
+            }
+        ]
+    with pytest.raises(ValueError, match="orchestrator-only"):
+        DesignInput.model_validate(data)
+
+
+def test_internal_scope_is_explicit_and_invalidates_old_scope_approval(engine, internal_workspace):
+    f = internal_workspace
+    old = register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+    f.inputs.documentation_scope = "application"
+    with pytest.raises(ValueError, match="Unknown/unconfirmed repository"):
+        register_requirements(engine, f.inputs, f.manifest, f.registry)
+    f.inputs.documentation_scope = "internal-orchestrator"
+    f.inputs.diagrams[0].approved_source = "@startuml\nrectangle A\n@enduml\n"
+    new = register_requirements(engine, f.inputs, f.manifest, f.registry)
+    assert new != old
+    with pytest.raises(PermissionError, match="requirements"):
+        generate_design(engine, f.key, TemplateDocumentationAgents(), RenderFixture(), "fixture")
+    with Session(engine) as session:
+        assert session.scalar(select(func.count()).select_from(DesignDecision)) == 1
+
+
+def test_approved_branching_source_reused_verbatim_and_checked(engine, internal_workspace):
+    from agrosphere_orchestrator.design_artifacts import digest
+    from agrosphere_orchestrator.design_validation import deterministic_findings
+    from agrosphere_orchestrator.persistence import DesignScope
+
+    f = internal_workspace
+    source = "@startuml\nstart\nif (Approved?) then (yes)\n:Proceed;\nelse (no)\n:Block;\nendif\nstop\n@enduml\n"
+    f.inputs.diagrams[0].kind = "activity"
+    f.inputs.diagrams[0].approved_source = source
+    scope, revision = prepare(engine, f)
+    assert validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+    with Session(engine) as session:
+        stored = session.get(DesignRevision, revision)
+        from agrosphere_orchestrator.design import artifacts_of
+
+        artifacts = artifacts_of(stored)
+        diagram = next(a for a in artifacts if a.type == "diagram:activity")
+        assert diagram.content == source
+        assert (
+            Path(stored.payload["repositories"][diagram.repository], diagram.path).read_text()
+            == source
+        )
+        diagram.content = source.replace(":Block;", ":Ignore;")
+        diagram.sha256 = digest(diagram.content)
+        findings = deterministic_findings(
+            f.inputs,
+            artifacts,
+            session.get(DesignScope, scope).payload["repositories"],
+            "design",
+            scope,
+            revision,
+        )
+        assert "diagram-source" in {f.code for f in findings}
+
+
+def test_internal_service_document_remains_mandatory(engine, internal_workspace):
+    class MissingService(TemplateDocumentationAgents):
+        version = "missing-service-test-only"
+
+        def generate(self, task, inputs):
+            result = super().generate(task, inputs)
+            result.artifacts = [a for a in result.artifacts if a.type != "service"]
+            return result
+
+    f = internal_workspace
+    register_requirements(engine, f.inputs, f.manifest, f.registry)
+    decide(engine, f.key, "requirements", True, HumanFixture(), [ACTOR])
+    generate_design(engine, f.key, MissingService(), RenderFixture(), "fixture")
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert not result["passed"]
+    assert any(
+        x["code"] == "required-document" and "service" in x["message"] for x in result["findings"]
+    )
+
+
+def test_unsafe_approved_source_cannot_pass_formal_validation(engine, internal_workspace):
+    f = internal_workspace
+    f.inputs.diagrams[
+        0
+    ].approved_source = "@startuml\n!includeurl https://invalid.example/test\n@enduml\n"
+    prepare(engine, f)
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert not result["passed"]
+    assert {x["code"] for x in result["findings"]} >= {"plantuml-directive", "diagram-render"}
+
+
+def test_internal_generic_service_narrative_reused_without_scope_changes(
+    engine, internal_workspace
+):
+    f = internal_workspace
+    approved = f.inputs.narratives.pop("service:agrosphere-orchestrator")
+    f.inputs.narratives["service"] = approved
+    original = f.inputs.model_dump(mode="json")
+    prepare(engine, f)
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert result["passed"], result
+    assert f.inputs.model_dump(mode="json") == original
+    artifact = next(a for a in design_status(engine, f.key)["artifacts"] if a["type"] == "service")
+    content = Path(artifact["absolute_path"]).read_text(encoding="utf-8")
+    assert all(text in content for text in approved.values())
+
+
+def test_internal_generic_service_missing_section_still_blocks(engine, internal_workspace):
+    f = internal_workspace
+    f.inputs.narratives["service"] = f.inputs.narratives.pop("service:agrosphere-orchestrator")
+    del f.inputs.narratives["service"]["Security"]
+    prepare(engine, f)
+    result = validate_design(engine, f.key, RuleBasedArchitectureReviewer())
+    assert not result["passed"]
+    assert any(x["code"] == "missing-information" for x in result["findings"])
+
+
+def test_application_generic_service_cannot_replace_repository_narrative(engine, design_workspace):
+    f = design_workspace
+    f.inputs.narratives["service"] = f.inputs.narratives.pop("service:estate")
+    prepare(engine, f)
+    assert not validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+
+
+def test_internal_repository_narrative_takes_precedence(engine, internal_workspace):
+    f = internal_workspace
+    f.inputs.narratives["service"] = f.inputs.narratives["service:agrosphere-orchestrator"].copy()
+    f.inputs.narratives["service:agrosphere-orchestrator"] = {}
+    prepare(engine, f)
+    assert not validate_design(engine, f.key, RuleBasedArchitectureReviewer())["passed"]
+
+
+@pytest.mark.parametrize("kind", ["sequence", "data-flow"])
+@pytest.mark.parametrize(
+    "body,valid",
+    [
+        ("A -> B: request\nB --> A: result", True),
+        ('"Actor A" -> B: request', True),
+        ("participant A\nparticipant B", False),
+        ("' A -> B: comment", False),
+        ("/'\nA -> B: comment\n'/", False),
+        ("note over A\nA -> B: prose\nend note", False),
+        ("A -> B:", False),
+    ],
+)
+def test_approved_interaction_source_is_reviewed_instead_of_edge_metadata(
+    internal_workspace, kind, body, valid
+):
+    f = internal_workspace
+    diagram = f.inputs.diagrams[0]
+    diagram.kind = kind
+    # Deliberately retain edge metadata: approved source is authoritative even
+    # when that metadata would otherwise satisfy the interaction check.
+    diagram.approved_source = "@startuml\n" + body + "\n@enduml\n"
+    findings = RuleBasedArchitectureReviewer().review(f.inputs, [])
+    assert any(x.code == "review-interactions" for x in findings) is not valid

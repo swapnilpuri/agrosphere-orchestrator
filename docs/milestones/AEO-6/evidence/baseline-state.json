@@ -1,0 +1,147 @@
+{
+  "observed_at": "2026-10-25T23:51:23.050227+00:00",
+  "workspace": "C:\\Projects\\agrosphere",
+  "repository": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+  "database": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\aeo.db",
+  "migration": [
+    [
+      "0007"
+    ]
+  ],
+  "table_counts": {
+    "alembic_version": 1,
+    "approvals": 0,
+    "audit_events": 36,
+    "delivery_events": 0,
+    "delivery_operations": 0,
+    "delivery_runs": 0,
+    "delivery_units": 0,
+    "design_cases": 1,
+    "design_decisions": 5,
+    "design_revisions": 1,
+    "design_scopes": 3,
+    "design_validations": 1,
+    "execution_attempts": 0,
+    "execution_grants": 0,
+    "executions": 0,
+    "governance_records": 0,
+    "milestones": 1,
+    "orchestration_controls": 0,
+    "orchestration_evidence": 0,
+    "orchestration_plans": 0,
+    "projects": 1,
+    "recovery_heads": 1,
+    "recovery_snapshots": 3,
+    "resource_leases": 0,
+    "runs": 0,
+    "task_claims": 0,
+    "task_quality_states": 0,
+    "tasks": 7,
+    "validation_evidence": 0
+  },
+  "remote_writes": false,
+  "design_approvers_configured": 1,
+  "previous_recovery": "a0baa294d218243bba423d085bc1ad8e89ea4a4e538d9b0db1b849edd13912c4",
+  "previous_candidate": {
+    "milestone": "1A",
+    "action": "Verify and reconcile acceptance criteria before authorizing application development.",
+    "development_candidate": "3B",
+    "approval_granted": false,
+    "aeo_2_started": false
+  },
+  "fresh_candidate": {
+    "milestone": "1A",
+    "action": "Verify and reconcile acceptance criteria before authorizing application development.",
+    "development_candidate": "3B",
+    "approval_granted": false,
+    "aeo_2_started": false
+  },
+  "milestones": [
+    {
+      "id": "0",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation_evidence_count": 0,
+      "test_evidence_count": 0
+    },
+    {
+      "id": "1",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation_evidence_count": 0,
+      "test_evidence_count": 0
+    },
+    {
+      "id": "1A",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation_evidence_count": 13,
+      "test_evidence_count": 50
+    },
+    {
+      "id": "1B",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation_evidence_count": 1,
+      "test_evidence_count": 6
+    },
+    {
+      "id": "1C",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation_evidence_count": 1,
+      "test_evidence_count": 14
+    },
+    {
+      "id": "2",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation_evidence_count": 1,
+      "test_evidence_count": 17
+    },
+    {
+      "id": "3",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation_evidence_count": 0,
+      "test_evidence_count": 0
+    },
+    {
+      "id": "3A",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation_evidence_count": 1,
+      "test_evidence_count": 5
+    },
+    {
+      "id": "3B",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation_evidence_count": 0,
+      "test_evidence_count": 0
+    },
+    {
+      "id": "3C",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation_evidence_count": 0,
+      "test_evidence_count": 0
+    },
+    {
+      "id": "4",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation_evidence_count": 0,
+      "test_evidence_count": 0
+    },
+    {
+      "id": "5",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation_evidence_count": 0,
+      "test_evidence_count": 0
+    }
+  ],
+  "aeo5_state": "IMPLEMENTING",
+  "aeo6_state": "DISCOVERED"
+}

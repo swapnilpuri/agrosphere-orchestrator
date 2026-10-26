@@ -1,0 +1,312 @@
+{
+  "executed_at": "2026-10-25T16:59:11.444344+00:00",
+  "baseline": "e2a080f8c83339f20a3cb3e26506859da100c402",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "e2a080f8c83339f20a3cb3e26506859da100c402\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "109 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No new upgrade operations detected.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "current"
+      ],
+      "exit_code": 0,
+      "stdout": "0006 (head)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "                                                                               \n Usage: python -m agrosphere_orchestrator.cli [OPTIONS] COMMAND [ARGS]...      \n                                                                               \n AEO-1 foundation: read-only inspection and plan validation.                   \n                                                                               \n+- Options -------------------------------------------------------------------+\n| --install-completion          Install completion for the current shell.     |\n| --show-completion             Show completion for the current shell, to     |\n|                               copy it or customize the installation.        |\n| --help                        Show this message and exit.                   |\n+-----------------------------------------------------------------------------+\n+- Commands ------------------------------------------------------------------+\n| repository-inspect  Inspect manifest entries or discover local Git roots;   |\n|                     never update the manifest.                              |\n| milestone-validate  Validate schema, dependencies, confirmed repositories   |\n|                     and role permissions.                                   |\n| project-status      Read existing SQLite state without creating a database  |\n|                     or applying migrations.                                 |\n| project             Read-only discovery and durable project recovery.       |\n| milestones          Observed milestone history; grants no approval.         |\n| milestone           Mandatory documentation-first milestone lifecycle.      |\n| codex               Codex runtime discovery; doctor never invokes a model.  |\n| agents              Existing role registry and specialized execution        |\n|                     contracts.                                              |\n| agent               Explicit single-task execution; no scheduler.           |\n| tasks               Persisted task execution state.                         |\n| quality             Independent deterministic quality governance.           |\n| security            Security findings and exception evidence.               |\n| approvals           Artifact-bound authenticated human decisions.           |\n+-----------------------------------------------------------------------------+\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "repository-inspect"
+      ],
+      "exit_code": 0,
+      "stdout": "[\n  {\n    \"id\": \"agrosphere-ai-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-ai-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"cc92974049a50d64e6a5c1fb06868f01aa7f5def\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-analytics-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-analytics-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"38725317675493237b2769ed38e1840b3991d69e\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-api-gateway\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-api-gateway\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"fcf7daf66fa0d9efaf2d1aa72f8cc88c600ab6c0\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-architecture\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-architecture\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"ab6289d42dcc0ba4a956c39ed55b34c2f0c49746\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-contracts\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-contracts\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"7e962552421f15ad5d1492276817db1e1692b104\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-estate-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-estate-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"7fdd691431a6962f5ac71fb08e9e3e09380bae00\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-immersive\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-immersive\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"2bf7663e412f86956dbdb831184f2d0ab1a03c70\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-infrastructure\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-infrastructure\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"3268651e1d48a38f858351c105ab54b4103c3ded\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-operations-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-operations-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"fbfda7e87dc0f650f013e6082d1f886df888b6c9\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-spatial-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-spatial-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"2a7dbda842141fca041510ca79481ea0454eaaf8\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-telemetry-service\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-telemetry-service\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"8a3c888dea3e1f3c7a94baf5c55a61285b5bcb7a\",\n    \"status\": \"\",\n    \"error\": null\n  },\n  {\n    \"id\": \"agrosphere-web\",\n    \"path\": \"C:\\\\Projects\\\\agrosphere\\\\agrosphere-web\",\n    \"declared_status\": \"confirmed\",\n    \"exists\": true,\n    \"is_git\": true,\n    \"branch\": \"main\",\n    \"head\": \"2a56f819cc653425e4c58bd6306872e352ee5c7a\",\n    \"status\": \"\",\n    \"error\": null\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "agrosphere_orchestrator.cli",
+        "delivery",
+        "--help"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "Usage: python -m agrosphere_orchestrator.cli [OPTIONS] COMMAND [ARGS]...\nTry 'python -m agrosphere_orchestrator.cli --help' for help.\n+- Error ---------------------------------------------------------------------+\n| No such command 'delivery'.                                                 |\n+-----------------------------------------------------------------------------+\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "gh version 2.89.0 (2026-03-26)\nhttps://github.com/cli/cli/releases/tag/v2.89.0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "GET",
+        "user",
+        "--jq",
+        ".login"
+      ],
+      "exit_code": 0,
+      "stdout": "swapnilpuri\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "--method",
+        "GET",
+        "repos/swapnilpuri/agrosphere-orchestrator",
+        "--jq",
+        "{full_name,default_branch,permissions,archived,visibility}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"archived\":false,\"default_branch\":\"master\",\"full_name\":\"swapnilpuri/agrosphere-orchestrator\",\"permissions\":{\"admin\":true,\"maintain\":true,\"pull\":true,\"push\":true,\"triage\":true},\"visibility\":\"public\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "origin\thttps://github.com/swapnilpuri/agrosphere-orchestrator.git (fetch)\norigin\thttps://github.com/swapnilpuri/agrosphere-orchestrator.git (push)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "show-ref",
+        "--heads"
+      ],
+      "exit_code": 0,
+      "stdout": "e2a080f8c83339f20a3cb3e26506859da100c402 refs/heads/master\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "source_hashes": {
+    "migrations/env.py": "3d9cf7c045087515effbb5dbabe81a245c70d52b273c2320ef778bb215385823",
+    "migrations/versions/0001_foundation.py": "91382e2c55b56bf70eda944489112601b22292dc289f9276d2dc1531a40b1704",
+    "migrations/versions/0002_recovery.py": "5ef1c873a84be3e7050e1301f83d2374dbb813cbc27510b36d2ce1271f1d1207",
+    "migrations/versions/0003_design.py": "97c63f4db9709b4764b3eade26dd5d027a94ee33c2ebb9bb0d035dbc304a7a85",
+    "migrations/versions/0004_execution.py": "35166e7dab27b8d845f0a8674164e336214b9372782306c191664325799583e9",
+    "migrations/versions/0005_orchestration.py": "115a89c0ef4828581ce9678ac5b3c4c05cac3018938dbc7762aeb3af10d6c8d1",
+    "migrations/versions/0006_quality.py": "5d916e7266db50a3df2ca4e6ab7a13de492cbc39448f0cc5f8bf1185445413b7",
+    "src/agrosphere_orchestrator/__init__.py": "2c1cf5e9ffd881a1e9b2a0a982bf598c26f0e42861ac611f9f27143d5493e4ff",
+    "src/agrosphere_orchestrator/cli.py": "9e2763a447c227ff06161aa4c2ef360c1086393ea5fd24d1a30eba59f3807adc",
+    "src/agrosphere_orchestrator/codex_runtime.py": "64a8abd1b411be53920a09c538191c661d43cdca0a24334bc6551f3742f639ec",
+    "src/agrosphere_orchestrator/config/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/agrosphere_orchestrator/config/settings.py": "5a19693519f0d620164ef1a5bcc0a7841a2d3156faef3d61affb840149292bd6",
+    "src/agrosphere_orchestrator/configuration.py": "6ef037fcf2fd9ee60419f83a3179091cf6a74df4a65731901aadba4b29c73201",
+    "src/agrosphere_orchestrator/design.py": "1330049444195c4f2ca64cc7f0f28e76a386251200ffb05104f374ddcdfe5900",
+    "src/agrosphere_orchestrator/design_agents.py": "874a105f52de935c27f7e97f238790754d8fdbfb41507b5cef0ddcf5022def90",
+    "src/agrosphere_orchestrator/design_artifacts.py": "1c3fc07932c9a1c0c0365f31d2c7a85674755428513a240e33537250b88f95f0",
+    "src/agrosphere_orchestrator/design_models.py": "587c9045f679a9a1a2f4246227ac8364b12f47f311ce4d3c3c0dea5546b9db8c",
+    "src/agrosphere_orchestrator/design_validation.py": "9fc9568b3d60d57c4e4486150c4e7b9740754a9cf27a4ad4f6f2be2e39d97ea4",
+    "src/agrosphere_orchestrator/execution.py": "22eaf814977bff92e10978d8858a12c23d13a4443a2c57828febfb1d5bccabf0",
+    "src/agrosphere_orchestrator/execution_context.py": "ea12017f30de99e6165d90b89fd5805f28e392c59e4922671f96ba18d580604e",
+    "src/agrosphere_orchestrator/execution_models.py": "f8280689c17b60864a2ceeaff5591c3b3de7188daf5717913e0b24ea8a5d1daa",
+    "src/agrosphere_orchestrator/execution_process.py": "ed12158e44e9b379bc5b96fe59acdb9a0276408ed6386df4204c05c19a0e0658",
+    "src/agrosphere_orchestrator/execution_sessions.py": "0f58c804f2581787d48060344821a5754b4a0f82f29cd0bef2d373fd86b0bcb3",
+    "src/agrosphere_orchestrator/execution_workspace.py": "8591774fa41faadb017f01c37ff473ef39816728a54eec839d74aac51da490a2",
+    "src/agrosphere_orchestrator/human_approval.py": "edb65b1c4c53e62fd28b5b763141fb895beaf4a3b4bafe32bf49ec41a3e206d9",
+    "src/agrosphere_orchestrator/interfaces.py": "9d34ee366e8dd3215c66031336ee166b902df7b4951e132918cc7387bd7556a4",
+    "src/agrosphere_orchestrator/logging.py": "920f0c5cdf8abeb9e92b7984c5c7e1255295bb958bc8686395beeed934ca21ee",
+    "src/agrosphere_orchestrator/models.py": "37c0645a5611be98c28231a78b9d63ae5b5d60cb520ea765243a6cdce526ea0c",
+    "src/agrosphere_orchestrator/orchestration.py": "b68cd8be78948cb6d34305d9b14f12bae43ee1fbf2a6aac6b44fde62cabb13c7",
+    "src/agrosphere_orchestrator/orchestration_models.py": "100ac54abe1fdaaebfa7cf7dc8b9237f6a89afb4e7d78c67973fa96b838db0bf",
+    "src/agrosphere_orchestrator/orchestration_store.py": "e7ad91941648bb7d805db0bc73b98613dfc6d410bcad09a72063ba200c5d5f06",
+    "src/agrosphere_orchestrator/persistence.py": "a35cf95d2f30ed6d5d9d67836a4b82f4eaf5a5ed27585e83ca6900429972db84",
+    "src/agrosphere_orchestrator/planning.py": "55f4a49d35fc2b538728b0069d70dfb8a6e4c110172b82b1ee2bfed66e4c454f",
+    "src/agrosphere_orchestrator/quality.py": "0ca64bfa4952654f10904a227ccf6b5b3dc570f69bfd242528a92e2b3194dd53",
+    "src/agrosphere_orchestrator/quality_adapters.py": "40ba7f8d9cd023540ee5810b5bf80705a41b6156d926a17347d81364810ac084",
+    "src/agrosphere_orchestrator/quality_models.py": "c41a7084b3874d0c39e51d95ae7c181519eeaa8f976aa139268a935399474ddd",
+    "src/agrosphere_orchestrator/quality_store.py": "4b4e6ed7668ea326c285251d65b10adeacb21e13dc79ce912ef796534fe0d21c",
+    "src/agrosphere_orchestrator/recovery.py": "e36d107b314190a33d5a85f3f721d91c5c3efe7636b4cb51de0c2e401d2d54d2",
+    "src/agrosphere_orchestrator/recovery_discovery.py": "fc26cf7771581cc18a624f34fe193e75ab86ea063d1ea3a22f91263621e611b4",
+    "src/agrosphere_orchestrator/recovery_models.py": "5356031eb77b3fb42bc7caa5e2dd54d007dec7ad1478024a565ed2ce8a4c15fe",
+    "src/agrosphere_orchestrator/repositories.py": "5d148c7afa2ea279f5c04e4e7eafe122c532c95f53e742e575a1aa55e0fa6a53",
+    "src/agrosphere_orchestrator/state.py": "f8957bebfa0ef6e92338f7e91fd22dc7cd88e563bccd50c38045c91a55506ebe",
+    "tests/conftest.py": "dc2420d96692dac1dd2d3a36593cea1722bbfd294207da21849ac12f26e6416d",
+    "tests/test_cli_planning.py": "5dad1a53a55f5db3062269b917e96265fd74554ac1aa4e3ea8e3577d01743529",
+    "tests/test_configuration.py": "1031243d6514ef0e6f867aa5e185b0120dc3343980ab45c706e3090a94edcc3f",
+    "tests/test_design.py": "b869731f0ee9823f5defe53c686fa5500374f7c82f06655d73178bc9ec2d1987",
+    "tests/test_execution.py": "76530b8ca9050483869685f9e4db2c419d0c9275bc55d3251dfa876732ba7c38",
+    "tests/test_logging_interfaces.py": "fea6f17fb95cc1aebedf9d57de0613f86d0e1c26aa8523c9ee269cd1eba7de68",
+    "tests/test_models.py": "f9b1fe46bc798e00b595ae59a070a2ef14c4885284fe15accb03e5904c65aa47",
+    "tests/test_orchestration.py": "dd1cd155e65dba1ac963267c9f61724547410e35c26be5012385035ab7b9be4e",
+    "tests/test_persistence_state.py": "76ecba86ba38ed62f6ec0f9dab395adb93f3ac0e05f2b1b2fc8753a4ec158176",
+    "tests/test_quality.py": "dc27fb2c022f39df93eb72c73340f21e5974aa2a918dd3f6d004104e921a70c0",
+    "tests/test_recovery.py": "28b2d425bacfd1fdde4cdd9b29b9a6b3c9a938f5432470644373dac7451f6be6",
+    "tests/test_repositories.py": "134d680e82f7ae1030096f1fd65e7bb49c35d3609d5d2d771460ad6d85f9e709"
+  },
+  "github_reference": "https://cli.github.com/manual/gh_api",
+  "limitations": [
+    "No remote mutations tested or authorized.",
+    "No AEO-5 implementation found.",
+    "Historical remote activity is not audited."
+  ],
+  "source_hashes_unchanged_at_completion": true,
+  "changed_source_files": [],
+  "completed_at": "2026-10-25T17:06:15.380163+00:00",
+  "final_checks": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "e2a080f8c83339f20a3cb3e26506859da100c402\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "show-ref",
+        "--heads"
+      ],
+      "exit_code": 0,
+      "stdout": "e2a080f8c83339f20a3cb3e26506859da100c402 refs/heads/master\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit_code": 0,
+      "stdout": "?? docs/validation/aeo5-commands.json\n?? docs/validation/aeo5-pytest.xml\n",
+      "stderr": ""
+    }
+  ],
+  "head_unchanged": true,
+  "local_branch_refs_unchanged": true,
+  "pytest": {
+    "argv": [
+      "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-v",
+      "--junitxml=docs/validation/aeo5-pytest.xml"
+    ],
+    "exit_code": 0,
+    "tests": 163,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 450.295,
+    "junit_sha256": "4dafcc61d770c2f46196992fed552f1c97154ddaec924da73246e3562bc89544"
+  }
+}

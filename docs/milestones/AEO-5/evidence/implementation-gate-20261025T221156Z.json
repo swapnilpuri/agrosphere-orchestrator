@@ -1,0 +1,76 @@
+{
+  "verified_at": "2026-10-25T22:11:53.784319+00:00",
+  "database_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\aeo.db",
+  "database_access": "SQLite mode=ro",
+  "milestone": "agrosphere:AEO-5",
+  "state": "DESIGN_IN_PROGRESS",
+  "scope_id": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+  "revision_id": null,
+  "validation": null,
+  "implementation_authorized": false,
+  "revision_history": [],
+  "decisions": [
+    {
+      "kind": "requirements",
+      "subject": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+      "decision": "approved",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "created_at": "2026-10-25T17:48:01.005512+00:00"
+    },
+    {
+      "kind": "requirements",
+      "subject": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+      "decision": "approved",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "created_at": "2026-10-25T18:03:42.066587+00:00"
+    },
+    {
+      "kind": "requirements",
+      "subject": "56d8808b4578f16347616e27876d2c53ca772156bf4fb4d9ba5a6376a338537a",
+      "decision": "approved",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "created_at": "2026-10-25T18:08:18.932104+00:00"
+    }
+  ],
+  "stored_scope_hash_matches": true,
+  "stored_context_valid": true,
+  "requirements_approval_currently_authorized": true,
+  "requirements_decision_id": "f898cccc-e533-4257-a48c-2e8803bc0ae4",
+  "design_revision_count": 0,
+  "design_decision_count": 0,
+  "validation_id": null,
+  "decision_audit_matches": [
+    {
+      "decision_id": "584d1c95-e33b-4aaf-b0b1-0bf9081e14cc",
+      "kind": "requirements",
+      "actor_currently_authorized": true,
+      "audit_event_ids": [
+        10
+      ]
+    },
+    {
+      "decision_id": "8d922e63-31e8-4bb4-87e3-9db1b7ca4e7b",
+      "kind": "requirements",
+      "actor_currently_authorized": true,
+      "audit_event_ids": [
+        11
+      ]
+    },
+    {
+      "decision_id": "f898cccc-e533-4257-a48c-2e8803bc0ae4",
+      "kind": "requirements",
+      "actor_currently_authorized": true,
+      "audit_event_ids": [
+        12
+      ]
+    }
+  ],
+  "implementation_plan_imported": false,
+  "existing_state_machine_gate_passed": false,
+  "gate_error": "Implementation requires an approved design in IMPLEMENTATION_READY",
+  "acceptance": "NOT ACCEPTED",
+  "production_implementation_started": false,
+  "remote_mutations_performed": false,
+  "aeo6_started": false,
+  "assurance": "Existing authenticated decision handler and matching persisted audit events checked; historical authentication cannot be independently re-performed by this read-only verifier."
+}

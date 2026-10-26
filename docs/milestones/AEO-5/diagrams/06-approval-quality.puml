@@ -1,0 +1,25 @@
+@startuml
+title Proposed approval and quality enforcement
+start
+:Validate repository, branches and exact source identity;
+if (Approved design and activated AEO-4 policy?) then (yes)
+if (Fresh quality and required security evidence?) then (yes)
+if (Exact authorized publishing action?) then (yes)
+:Persist authorized operation intent before mutation;
+:Reconcile PR and current head;
+if (Required exact-head CI, human review and dependencies verified?) then (yes)
+:Report ready for authorized merge;
+else (no)
+:Report every unmet remote requirement;
+endif
+else (no)
+:Block publication - human grant required;
+endif
+else (no)
+:Block publication - quality or security evidence;
+endif
+else (no)
+:Block publication - design or policy missing;
+endif
+stop
+@enduml

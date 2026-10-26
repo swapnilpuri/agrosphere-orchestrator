@@ -1,0 +1,43 @@
+{
+  "milestone": "agrosphere:AEO-6",
+  "state": "AWAITING_DESIGN_APPROVAL",
+  "revision_id": "e93d7e7f28163d47d871faed1a5f4ad16d99662a1cf0955400a2a87b163535fe",
+  "scope_id": "48fd59274969f5abf0623159f5d15dba1c00111a80a67a654184ee58be6a2143",
+  "requirements_decision_id": "c003c8e6-7477-4c5d-a226-194a5995539e",
+  "bundle_digest": "0f55432b8e4c4508b27795a92a45537ea63b6e8ae94a001a39250adf2d6d4126",
+  "validation_id": "e3c6d54b3da94cbd8c5a2805838e5915e4128050bb7021017a7c393d62879bab",
+  "validation": {
+    "passed": true,
+    "findings": [
+      {
+        "code": "review-limit",
+        "message": "Independent rule review checks declared scope and references; human conceptual review remains mandatory.",
+        "severity": "warning",
+        "artifact": null
+      }
+    ],
+    "review_task": {
+      "role": "solution-architect",
+      "task": "independent-architecture-review",
+      "adapter": "independent-rule-review-v2-approved-source",
+      "state": "succeeded"
+    }
+  },
+  "context_hashes_verified": 28,
+  "artifacts_verified": 22,
+  "acceptance_criteria_verified": 12,
+  "diagram_sources_verified": 9,
+  "diagram_renders_verified": 9,
+  "implementation_plan_sha256": "8ce9d6bd96ef5554bab0ce5d1f7cb0654671fa1eac7cf5f29f5593bdce8e3685",
+  "registered_implementation_tasks": [
+    "controller",
+    "lifecycle",
+    "agents",
+    "quality-delivery",
+    "cli-report",
+    "verification"
+  ],
+  "implementation_plan_status": "Registered in approved DesignScope and linked DesignRevision; not imported for execution.",
+  "design_approval_persisted": false,
+  "design_decision_id": null
+}

@@ -1,0 +1,3 @@
+# AEO-6 end-to-end status
+
+NOT RUN. Requirements and technical-design approval are prerequisites to controller implementation. Existing AEO-5 mocked tests cannot establish AEO-6 execution or readiness. Planned isolated three-repository scenario and all 16 recovery cases are specified in 07-acceptance-criteria.md and 04-state-and-recovery-model.md. No real Codex, application execution or live GitHub operation occurred.

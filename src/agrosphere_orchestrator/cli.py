@@ -1133,5 +1133,15 @@ def approvals_decide(approval: str, decision: str = "approved", reason: str = ty
         fail(exc)
 
 
+from .delivery_cli import app as delivery_app  # noqa: E402
+
+app.add_typer(delivery_app, name="delivery")
+
+
+from .autonomous_cli import app as autonomous_app  # noqa: E402
+
+app.add_typer(autonomous_app, name="autonomous")
+
+
 if __name__ == "__main__":
     app()

@@ -1,0 +1,62 @@
+[
+  {
+    "milestone": "1B",
+    "conflicts": [
+      "Both completion/implementation and not-started claims occur; inspect dates and scope."
+    ],
+    "negative_claims": [
+      {
+        "repository": "agrosphere-architecture",
+        "path": "docs/roadmap/NEXT_CODEX_PROMPT.md",
+        "line": 1,
+        "claim": "# Recommended Milestone 1B prompt (not executed)"
+      },
+      {
+        "repository": "agrosphere-estate-service",
+        "path": "docs/MILESTONE_1A_REPORT.md",
+        "line": 7,
+        "claim": "No other microservice was implemented, no central infrastructure configuration changed, no remote/commit/push/cloud deployment occurred, and Milestone 1B was not started."
+      },
+      {
+        "repository": "agrosphere-spatial-service",
+        "path": "docs/MILESTONE_1B_REPORT.md",
+        "line": 50,
+        "claim": "GeoJSON import is a bounded JSON FeatureCollection wrapper, atomically validated/persisted in the calling request with a durable job/report No partial features/events survive failed imports Export preserves feature/reference identifiers, geometry versions, provenance, bbox, centroid and calculated hectares 3D Tiles metadata is supported through layers no renderer, client or terrain engine is implemented."
+      },
+      {
+        "repository": "agrosphere-spatial-service",
+        "path": "docs/MILESTONE_1B_REPORT.md",
+        "line": 89,
+        "claim": "| Compose overlay config --quiet | PASS using placeholder configuration shared services were not started |"
+      }
+    ]
+  },
+  {
+    "milestone": "1C",
+    "conflicts": [
+      "Both completion/implementation and not-started claims occur; inspect dates and scope."
+    ],
+    "negative_claims": [
+      {
+        "repository": "agrosphere-spatial-service",
+        "path": "docs/MILESTONE_1B_REPORT.md",
+        "line": 126,
+        "claim": "Recommended Milestone 1C integration tasks (not started)"
+      }
+    ]
+  },
+  {
+    "milestone": "2",
+    "conflicts": [
+      "Both completion/implementation and not-started claims occur; inspect dates and scope."
+    ],
+    "negative_claims": [
+      {
+        "repository": "agrosphere-infrastructure",
+        "path": "docs/MILESTONE_1C_REPORT.md",
+        "line": 200,
+        "claim": "Recommended Milestone 2 sequence (not started)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,183 @@
+{
+  "repositories": [
+    {
+      "id": "agrosphere-ai-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-ai-service",
+      "head": "cc92974049a50d64e6a5c1fb06868f01aa7f5def",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-analytics-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-analytics-service",
+      "head": "38725317675493237b2769ed38e1840b3991d69e",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-api-gateway",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-api-gateway",
+      "head": "fcf7daf66fa0d9efaf2d1aa72f8cc88c600ab6c0",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-architecture",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-architecture",
+      "head": "ab6289d42dcc0ba4a956c39ed55b34c2f0c49746",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-contracts",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-contracts",
+      "head": "7e962552421f15ad5d1492276817db1e1692b104",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-estate-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-estate-service",
+      "head": "7fdd691431a6962f5ac71fb08e9e3e09380bae00",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-immersive",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-immersive",
+      "head": "2bf7663e412f86956dbdb831184f2d0ab1a03c70",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-infrastructure",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-infrastructure",
+      "head": "3268651e1d48a38f858351c105ab54b4103c3ded",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-operations-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-operations-service",
+      "head": "fbfda7e87dc0f650f013e6082d1f886df888b6c9",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-spatial-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service",
+      "head": "2a7dbda842141fca041510ca79481ea0454eaaf8",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-telemetry-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-telemetry-service",
+      "head": "8a3c888dea3e1f3c7a94baf5c55a61285b5bcb7a",
+      "dirty": false
+    },
+    {
+      "id": "agrosphere-web",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-web",
+      "head": "2a56f819cc653425e4c58bd6306872e352ee5c7a",
+      "dirty": false
+    }
+  ],
+  "milestones": [
+    {
+      "id": "0",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation": [],
+      "tests_observed": 0,
+      "verified_criteria": []
+    },
+    {
+      "id": "1",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation": [],
+      "tests_observed": 0,
+      "verified_criteria": []
+    },
+    {
+      "id": "1A",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation": [
+        "agrosphere-estate-service: 41 source files observed; see inventory"
+      ],
+      "tests_observed": 12,
+      "verified_criteria": []
+    },
+    {
+      "id": "1B",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation": [
+        "agrosphere-spatial-service: 33 source files observed; see inventory"
+      ],
+      "tests_observed": 6,
+      "verified_criteria": []
+    },
+    {
+      "id": "1C",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation": [
+        "agrosphere-api-gateway: 9 source files observed; see inventory"
+      ],
+      "tests_observed": 14,
+      "verified_criteria": []
+    },
+    {
+      "id": "2",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation": [
+        "agrosphere-web: 37 source files observed; see inventory"
+      ],
+      "tests_observed": 17,
+      "verified_criteria": []
+    },
+    {
+      "id": "3",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation": [],
+      "tests_observed": 0,
+      "verified_criteria": []
+    },
+    {
+      "id": "3A",
+      "classification": "PARTIAL",
+      "confidence": "medium",
+      "implementation": [
+        "agrosphere-operations-service: 30 source files observed; see inventory"
+      ],
+      "tests_observed": 5,
+      "verified_criteria": []
+    },
+    {
+      "id": "3B",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation": [],
+      "tests_observed": 0,
+      "verified_criteria": []
+    },
+    {
+      "id": "4",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation": [],
+      "tests_observed": 0,
+      "verified_criteria": []
+    },
+    {
+      "id": "5",
+      "classification": "UNVERIFIED",
+      "confidence": "low",
+      "implementation": [],
+      "tests_observed": 0,
+      "verified_criteria": []
+    }
+  ],
+  "candidate": {
+    "milestone": "1A",
+    "action": "Verify and reconcile acceptance criteria before authorizing application development.",
+    "development_candidate": "3B",
+    "approval_granted": false,
+    "aeo_2_started": false
+  }
+}

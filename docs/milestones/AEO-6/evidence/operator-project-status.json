@@ -1,0 +1,59 @@
+{
+  "snapshot_id": "49cdf041630e91d3ba8d4d06610285aefe7945058dbb4d42b0acacd384eff113",
+  "observed_at": "2026-10-26T04:59:08.394116+00:00",
+  "repositories": 12,
+  "missing_repositories": [],
+  "milestones": [
+    {
+      "id": "0",
+      "classification": "UNVERIFIED"
+    },
+    {
+      "id": "1",
+      "classification": "UNVERIFIED"
+    },
+    {
+      "id": "1A",
+      "classification": "PARTIAL"
+    },
+    {
+      "id": "1B",
+      "classification": "PARTIAL"
+    },
+    {
+      "id": "1C",
+      "classification": "PARTIAL"
+    },
+    {
+      "id": "2",
+      "classification": "PARTIAL"
+    },
+    {
+      "id": "3",
+      "classification": "UNVERIFIED"
+    },
+    {
+      "id": "3A",
+      "classification": "PARTIAL"
+    },
+    {
+      "id": "3B",
+      "classification": "UNVERIFIED"
+    },
+    {
+      "id": "4",
+      "classification": "UNVERIFIED"
+    },
+    {
+      "id": "5",
+      "classification": "UNVERIFIED"
+    }
+  ],
+  "recommendation": {
+    "milestone": "1A",
+    "action": "Verify and reconcile acceptance criteria before authorizing application development.",
+    "development_candidate": "3B",
+    "approval_granted": false,
+    "aeo_2_started": false
+  }
+}

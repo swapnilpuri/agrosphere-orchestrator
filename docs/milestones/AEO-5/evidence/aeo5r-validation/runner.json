@@ -1,0 +1,13 @@
+{
+  "executed_at": "2026-10-25T23:02:05.699573+00:00",
+  "argv": [
+    "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+    "scripts/validate.py"
+  ],
+  "fixture_root": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.aeo\\aeo5r-fixtures-20261025T225205Z",
+  "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Projects\\agrosphere\\agrosphere-orchestrator\\scripts\\validate.py\", line 120, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"C:\\Projects\\agrosphere\\agrosphere-orchestrator\\scripts\\validate.py\", line 90, in main\n    completed = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True, timeout=600)\n  File \"C:\\myprograms\\Python\\Python314\\Lib\\subprocess.py\", line 556, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\myprograms\\Python\\Python314\\Lib\\subprocess.py\", line 1220, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\myprograms\\Python\\Python314\\Lib\\subprocess.py\", line 1663, in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nsubprocess.TimeoutExpired: Command '['C:\\\\Projects\\\\agrosphere\\\\agrosphere-orchestrator\\\\.venv\\\\Scripts\\\\python.exe', '-m', 'pytest', '-v', '--junitxml=docs/validation/pytest.xml']' timed out after 600 seconds\n",
+  "database": "Disposable SQLite backup; authoritative database not migrated or modified by validation."
+}

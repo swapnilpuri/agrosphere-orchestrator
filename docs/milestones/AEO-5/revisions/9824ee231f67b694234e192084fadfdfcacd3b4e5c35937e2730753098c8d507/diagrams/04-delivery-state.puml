@@ -1,0 +1,26 @@
+@startuml
+title Proposed deterministic delivery state
+[*] --> PLANNED
+PLANNED --> AWAITING_APPROVAL
+AWAITING_APPROVAL --> AUTHORIZED : exact human grant and quality
+AUTHORIZED --> BRANCH_PREPARED : isolated verified branch
+BRANCH_PREPARED --> AWAITING_PUBLICATION
+AWAITING_PUBLICATION --> PR_PUBLISHED : authorized push and reconciled PR
+PR_PUBLISHED --> CHECKS_PENDING
+CHECKS_PENDING --> REVIEW_PENDING : required exact-head checks pass
+REVIEW_PENDING --> READY_FOR_AUTHORIZED_MERGE : human requirements and dependencies met
+PR_PUBLISHED --> BLOCKED : unmet policy
+CHECKS_PENDING --> BLOCKED : failure or stale evidence
+REVIEW_PENDING --> BLOCKED : missing or dismissed review
+READY_FOR_AUTHORIZED_MERGE --> BLOCKED : head, base or policy changed
+AUTHORIZED --> RECOVERY_REQUIRED : ambiguous local operation
+AWAITING_PUBLICATION --> RECOVERY_REQUIRED : ambiguous push or create
+RECOVERY_REQUIRED --> PR_PUBLISHED : observed exact remote identity
+RECOVERY_REQUIRED --> BLOCKED : discrepancy or missing authorization
+BLOCKED --> AWAITING_APPROVAL : reviewed revised scope
+AUTHORIZED --> FAILED : known nonrecoverable failure
+note right of READY_FOR_AUTHORIZED_MERGE
+Readiness is recomputed.
+No merge is performed.
+end note
+@enduml

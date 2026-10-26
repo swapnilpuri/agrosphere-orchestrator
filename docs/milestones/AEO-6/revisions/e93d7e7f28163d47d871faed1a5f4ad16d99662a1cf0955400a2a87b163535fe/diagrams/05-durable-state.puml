@@ -1,0 +1,24 @@
+@startuml
+title Proposed run states; child milestone completion remains separate
+[*] --> PLANNED
+PLANNED --> RECONCILING
+RECONCILING --> PREPARING_DESIGN : consistent eligible scope
+RECONCILING --> RECOVERY_REQUIRED : uncertain child operation
+PREPARING_DESIGN --> AWAITING_APPROVAL
+AWAITING_APPROVAL --> PLANNING_TASKS : requirements and validated design approved
+PLANNING_TASKS --> AWAITING_APPROVAL : plan / execution authority missing
+PLANNING_TASKS --> EXECUTING : all exact gates pass
+EXECUTING --> VERIFYING : observed child results
+VERIFYING --> EXECUTING : bounded permitted repair
+VERIFYING --> PREPARING_DELIVERY : independent quality accepted
+PREPARING_DELIVERY --> AWAITING_APPROVAL : privileged grant missing
+PREPARING_DELIVERY --> OBSERVING_DELIVERY : authorized child operation
+OBSERVING_DELIVERY --> REPORTED : bounded observation/report
+EXECUTING --> PAUSED : budget / operator pause
+OBSERVING_DELIVERY --> PAUSED : polling budget
+PAUSED --> RECONCILING : explicit resume
+RECOVERY_REQUIRED --> RECONCILING : verified recovery
+RECONCILING --> BLOCKED : conflict / unknown authority
+BLOCKED --> RECONCILING : evidence changed
+REPORTED --> [*]
+@enduml
