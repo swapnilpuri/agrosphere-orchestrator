@@ -1,0 +1,36 @@
+{
+  "executed_at": "2026-10-27T03:20:44.651036+00:00",
+  "diagrams": [
+    {
+      "source": "docs\\aeo-4\\diagrams\\approval-invalidation.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-4\\diagrams\\components.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-4\\diagrams\\failure-remediation.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-4\\diagrams\\human-approval.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-4\\diagrams\\quality-lifecycle.puml",
+      "rendered": true,
+      "findings": []
+    },
+    {
+      "source": "docs\\aeo-4\\diagrams\\validation-review.puml",
+      "rendered": true,
+      "findings": []
+    }
+  ],
+  "approval_granted": false
+}

@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "outcome": "STOPPED_AT_ADMINISTRATOR_AUTHORIZATION",
+  "database_mode": "node:sqlite readOnly:true",
+  "database_sha256_before": "6b14cd1dfd7e59d210028e2be8b5be7b37d0a7cf5f1ff80f38d559ffd5653ce9",
+  "database_sha256_after": "6b14cd1dfd7e59d210028e2be8b5be7b37d0a7cf5f1ff80f38d559ffd5653ce9",
+  "database_matches_previous_guarded_audit": true,
+  "protected_files_compared": 54,
+  "protected_file_mismatches": [],
+  "git_head": "d57d6101439b29b89fe962d78d4a131398247c75",
+  "approved_context_head_matches": true,
+  "context_checks": [
+    {
+      "path": "src/agrosphere_orchestrator/recovery_discovery.py",
+      "expected": "7c7a6e4c99ba580febabded363e2a22b250e57e07af5253992675730507a8055",
+      "actual": "7c7a6e4c99ba580febabded363e2a22b250e57e07af5253992675730507a8055"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/recovery_models.py",
+      "expected": "2f20ebf805efc01e1df524921e49eaed0c36f0527fede1579ec617c640621cb8",
+      "actual": "2f20ebf805efc01e1df524921e49eaed0c36f0527fede1579ec617c640621cb8"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/human_approval.py",
+      "expected": "edb65b1c4c53e62fd28b5b763141fb895beaf4a3b4bafe32bf49ec41a3e206d9",
+      "actual": "edb65b1c4c53e62fd28b5b763141fb895beaf4a3b4bafe32bf49ec41a3e206d9"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/quality.py",
+      "expected": "2a3fce5316bf38aacdadf2b011a70bf210f9348851b0fcb11da3e64f6fddda56",
+      "actual": "2a3fce5316bf38aacdadf2b011a70bf210f9348851b0fcb11da3e64f6fddda56"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/design.py",
+      "expected": "1330049444195c4f2ca64cc7f0f28e76a386251200ffb05104f374ddcdfe5900",
+      "actual": "1330049444195c4f2ca64cc7f0f28e76a386251200ffb05104f374ddcdfe5900"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/quality_models.py",
+      "expected": "c41a7084b3874d0c39e51d95ae7c181519eeaa8f976aa139268a935399474ddd",
+      "actual": "c41a7084b3874d0c39e51d95ae7c181519eeaa8f976aa139268a935399474ddd"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous.py",
+      "expected": "dc5582c6ac16022e233b643e33187af0b51a37d0a3580dff768571a2378dab4d",
+      "actual": "dc5582c6ac16022e233b643e33187af0b51a37d0a3580dff768571a2378dab4d"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous_services.py",
+      "expected": "3e8c83ae0defb452ec7caf224d7267276913baa55faaa256ad2a4909623c9e33",
+      "actual": "3e8c83ae0defb452ec7caf224d7267276913baa55faaa256ad2a4909623c9e33"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/autonomous_cli.py",
+      "expected": "1487b01d6e22604c3b8214141ffdc871a8e3729d0801c3775389826fc7e5ee18",
+      "actual": "1487b01d6e22604c3b8214141ffdc871a8e3729d0801c3775389826fc7e5ee18"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/recovery.py",
+      "expected": "e36d107b314190a33d5a85f3f721d91c5c3efe7636b4cb51de0c2e401d2d54d2",
+      "actual": "e36d107b314190a33d5a85f3f721d91c5c3efe7636b4cb51de0c2e401d2d54d2"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/persistence.py",
+      "expected": "a35cf95d2f30ed6d5d9d67836a4b82f4eaf5a5ed27585e83ca6900429972db84",
+      "actual": "a35cf95d2f30ed6d5d9d67836a4b82f4eaf5a5ed27585e83ca6900429972db84"
+    },
+    {
+      "path": "src/agrosphere_orchestrator/config/settings.py",
+      "expected": "bc5c9faacb9acd6a543ae3dd93e276147dc04b83e5e1a6871af437dc16252b08",
+      "actual": "bc5c9faacb9acd6a543ae3dd93e276147dc04b83e5e1a6871af437dc16252b08"
+    },
+    {
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_FORENSIC_REPORT.md",
+      "expected": "781e03ad22b79a37fd96e168136a48f6e25d56fd1ec881489705ef522ebc292c",
+      "actual": "781e03ad22b79a37fd96e168136a48f6e25d56fd1ec881489705ef522ebc292c"
+    },
+    {
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_ADJUDICATION_MATRIX.md",
+      "expected": "9993d67658c4ea6ecf65b0f047772efe33e7a261d7a7af227a4237dc4e1196c2",
+      "actual": "9993d67658c4ea6ecf65b0f047772efe33e7a261d7a7af227a4237dc4e1196c2"
+    },
+    {
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_DECISION_PACKAGE.json",
+      "expected": "19b90ae4457fbb3c9d5004868bd866818c03c2840ce85d5d79fe9ee155d4fdf2",
+      "actual": "19b90ae4457fbb3c9d5004868bd866818c03c2840ce85d5d79fe9ee155d4fdf2"
+    },
+    {
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_RECOVERY_VERIFICATION.md",
+      "expected": "9cadc5eaedecd210fdd8de7ec35adb57007bec63b4f7d0252fefd5258a63aaa8",
+      "actual": "9cadc5eaedecd210fdd8de7ec35adb57007bec63b4f7d0252fefd5258a63aaa8"
+    },
+    {
+      "path": "docs/milestones/AEO-6.1/preparation-20261027T005025Z/00-user-request.md",
+      "expected": "6b5ae12ff0f95ebc01a8c8bc0c169382e5c70143febf98fc572be5677fa01a7a",
+      "actual": "6b5ae12ff0f95ebc01a8c8bc0c169382e5c70143febf98fc572be5677fa01a7a"
+    },
+    {
+      "path": "docs/milestones/AEO-6.1/preparation-20261027T005025Z/01-capability-and-boundary-assessment.md",
+      "expected": "b1649651a11e98289558993127eb432f15278d2f4586a03ee9ca90f17e01e305",
+      "actual": "b1649651a11e98289558993127eb432f15278d2f4586a03ee9ca90f17e01e305"
+    },
+    {
+      "path": "docs/milestones/AEO-6.1/preparation-20261027T005025Z/AUTONOMOUS_OPERATIONS_GUIDE.md",
+      "expected": "e1d750409c39eedfc2005633b8c805dbbc956e9d279ffebe9003dd7f4af8f674",
+      "actual": "e1d750409c39eedfc2005633b8c805dbbc956e9d279ffebe9003dd7f4af8f674"
+    }
+  ],
+  "artifact_checks": [
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/business.md",
+      "expected": "3638e764f9f43639dc77861900af3e242ea9af444c90cf1dcdaa24c7c4588d90",
+      "actual": "3638e764f9f43639dc77861900af3e242ea9af444c90cf1dcdaa24c7c4588d90"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/architecture.md",
+      "expected": "e2028b6751167d1fb0bee601667811c74ec861353107247f1e198e0e4c2f74e2",
+      "actual": "e2028b6751167d1fb0bee601667811c74ec861353107247f1e198e0e4c2f74e2"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/service.md",
+      "expected": "383eb35fbbdd6755290f114c7fbfe3f50852924db1e1d3bb28bfa86183ae8329",
+      "actual": "383eb35fbbdd6755290f114c7fbfe3f50852924db1e1d3bb28bfa86183ae8329"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-components.svg",
+      "expected": "d5d987f699199ac029de66606ea7ecc7fd60f264b86748694431b2afaa0cf9b5",
+      "actual": "d5d987f699199ac029de66606ea7ecc7fd60f264b86748694431b2afaa0cf9b5"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-components.puml",
+      "expected": "496caebbdecde3087b3f12eccd41d972b35181274ce52c9403d5d1f048ab8eb4",
+      "actual": "496caebbdecde3087b3f12eccd41d972b35181274ce52c9403d5d1f048ab8eb4"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-state.svg",
+      "expected": "e8971cca140459c7a7e1b9bce2d52fee710916e7ee31d3f04709be4d4653d572",
+      "actual": "e8971cca140459c7a7e1b9bce2d52fee710916e7ee31d3f04709be4d4653d572"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-state.puml",
+      "expected": "636de3778a8aa2dd2176522b96ff4c2ad98223d34c548750fc442ca6b55aaabd",
+      "actual": "636de3778a8aa2dd2176522b96ff4c2ad98223d34c548750fc442ca6b55aaabd"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-sequence.svg",
+      "expected": "f869c35233bddcc0d1f7bb637f6bf7099c4b1008564950cf0c27f0202240fcc8",
+      "actual": "f869c35233bddcc0d1f7bb637f6bf7099c4b1008564950cf0c27f0202240fcc8"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-sequence.puml",
+      "expected": "b9a724655fec0552d1dfc92737977374ea74fea56ac5ee38b89ff31575cb54ab",
+      "actual": "b9a724655fec0552d1dfc92737977374ea74fea56ac5ee38b89ff31575cb54ab"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/overview.md",
+      "expected": "8ff0f3ba078f8e664718d3844f02c9bb9ed1455c560511930db3854eb02a3e08",
+      "actual": "8ff0f3ba078f8e664718d3844f02c9bb9ed1455c560511930db3854eb02a3e08"
+    }
+  ],
+  "design_case": {
+    "id": "agrosphere:AEO-6-ADJUDICATION",
+    "project_id": "agrosphere",
+    "external_id": "AEO-6-ADJUDICATION",
+    "state": "DESIGN_APPROVED",
+    "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+    "revision_id": "4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066",
+    "validation_id": "7e5e7154abeb1a70d63705b5b8d19b905eb385daf34f3ee8aef640f0253eb329"
+  },
+  "decisions": [
+    {
+      "id": "59196472-83fa-4d48-86ca-307559a1d00c",
+      "case_id": "agrosphere:AEO-6-ADJUDICATION",
+      "subject": "989c1335f933a2505d60391360d96bf9a725a1cd008c284959d3f355bccdb8bf",
+      "kind": "design",
+      "decision": "approved",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "payload": "{\"scope_id\": \"8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138\", \"revision_id\": \"4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\", \"validation_id\": \"7e5e7154abeb1a70d63705b5b8d19b905eb385daf34f3ee8aef640f0253eb329\"}",
+      "created_at": "2026-10-27T04:10:44.372225+00:00"
+    },
+    {
+      "id": "67c78c9f-387d-426b-8e89-64092bd48fd0",
+      "case_id": "agrosphere:AEO-6-ADJUDICATION",
+      "subject": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+      "kind": "requirements",
+      "decision": "approved",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "payload": "{\"scope_id\": \"8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138\", \"revision_id\": null, \"validation_id\": null}",
+      "created_at": "2026-10-27T01:12:08.405829+00:00"
+    }
+  ],
+  "audit_links": [
+    {
+      "id": 84,
+      "entity_id": "agrosphere:AEO-6-ADJUDICATION",
+      "kind": "design.human-decision",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "payload": "{\"decision_id\": \"67c78c9f-387d-426b-8e89-64092bd48fd0\", \"kind\": \"requirements\", \"subject\": \"8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138\", \"decision\": \"approved\"}",
+      "created_at": "2026-10-27T01:12:08.404598+00:00"
+    },
+    {
+      "id": 93,
+      "entity_id": "agrosphere:AEO-6-ADJUDICATION",
+      "kind": "design.human-decision",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "payload": "{\"decision_id\": \"59196472-83fa-4d48-86ca-307559a1d00c\", \"kind\": \"design\", \"subject\": \"989c1335f933a2505d60391360d96bf9a725a1cd008c284959d3f355bccdb8bf\", \"decision\": \"approved\"}",
+      "created_at": "2026-10-27T04:10:44.367725+00:00"
+    }
+  ],
+  "governance_record_count": 0,
+  "legacy_operation_approval_count": 0,
+  "execution_grant_count": 0,
+  "imported_milestone_count": 0,
+  "orchestration_plan_count": 0,
+  "administrator_evidence_candidates": [
+    "docs/milestones/AEO-6.1/after-design-approval/IMPLEMENTATION_APPROVAL_REQUIRED.md",
+    "docs/milestones/AEO-6.1/design-after-requirements/AUTONOMOUS_OPERATIONS_GUIDE.md",
+    "docs/milestones/AEO-6.1/execution-bootstrap/ADMIN_DECISION_REQUIRED.md",
+    "docs/milestones/AEO-6.1/execution-bootstrap/ARTIFACT_MANIFEST.json",
+    "docs/milestones/AEO-6.1/execution-bootstrap/import_after_authorization.py",
+    "docs/milestones/AEO-6.1/execution-bootstrap/OPERATIONS.md",
+    "docs/milestones/AEO-6.1/execution-bootstrap/READINESS_REPORT.md"
+  ],
+  "unreadable_directories": [
+    {
+      "path": "C:/Projects/agrosphere/agrosphere-orchestrator/.aeo/aeo5r-fixtures-20261025T225205Z",
+      "error": "EPERM"
+    },
+    {
+      "path": "C:/Projects/agrosphere/agrosphere-orchestrator/.aeo/aeo5r-fixtures-20261025T231625Z",
+      "error": "EPERM"
+    }
+  ],
+  "run": {
+    "id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+    "milestone": "2",
+    "request_hash": "ea68398c024774bf986a784d1e481e88545e2229162e029c078bd351cdcd6672",
+    "request": "{\"milestone\": \"2\", \"mode\": \"local\", \"requirements\": null, \"task_options\": null, \"delivery_manifest\": null, \"publication_grants\": {}, \"limits\": {\"max_milestones\": 1, \"max_tasks\": 20, \"max_concurrency\": 2, \"max_invocations\": 30, \"max_attempts\": 30, \"max_repairs\": 3, \"max_seconds\": 3600, \"max_poll_seconds\": 60, \"max_steps\": 50, \"max_model_cost\": null}}",
+    "state": "BLOCKED",
+    "step": "RECONCILING",
+    "current_operation": null,
+    "checkpoint": "{\"category\": \"discovery-conflict\", \"reason\": \"Conflicting recovered milestone evidence blocks eligibility\", \"command\": null}",
+    "references": "{}",
+    "usage": "{\"steps\": 3, \"invocations\": 0, \"attempts\": 0, \"repairs\": 0, \"polls\": 0, \"poll_seconds\": 0.0, \"tasks\": [], \"tokens\": null, \"model_cost\": null, \"elapsed_seconds\": 2105.584013500018, \"known_input_tokens\": 0, \"known_output_tokens\": 0, \"usage_observations\": 0}",
+    "created_at": "2026-10-26T05:28:07.706005+00:00",
+    "updated_at": "2026-10-26T06:03:13.296612+00:00",
+    "active_milestone": "2"
+  },
+  "original_deadline_utc": "2026-10-26T06:28:07.706Z",
+  "plan_digest": null,
+  "execution_id": null,
+  "python_guards_executed": false,
+  "tests_executed": false,
+  "human_authentication_invoked": false,
+  "model_invoked": false,
+  "configuration_applied": false,
+  "limitations": [
+    "Shell process creation failed with Access denied; direct Python spawn failed with EPERM. No CLI, Python guard, pytest, or full validation execution occurred.",
+    "No access to an independently identified external administrator/change-management system was supplied.",
+    "Two historical fixture directories could not be enumerated; these have not been treated as authority.",
+    "Runtime process environment overrides were not verified; file configuration and persisted state were inspected."
+  ]
+}

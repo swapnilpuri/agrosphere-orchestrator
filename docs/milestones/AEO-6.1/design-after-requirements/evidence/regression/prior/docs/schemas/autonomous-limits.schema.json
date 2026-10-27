@@ -1,0 +1,83 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "max_milestones": {
+      "default": 1,
+      "maximum": 1,
+      "minimum": 1,
+      "title": "Max Milestones",
+      "type": "integer"
+    },
+    "max_tasks": {
+      "default": 20,
+      "maximum": 1000,
+      "minimum": 1,
+      "title": "Max Tasks",
+      "type": "integer"
+    },
+    "max_concurrency": {
+      "default": 2,
+      "maximum": 32,
+      "minimum": 1,
+      "title": "Max Concurrency",
+      "type": "integer"
+    },
+    "max_invocations": {
+      "default": 30,
+      "maximum": 10000,
+      "minimum": 1,
+      "title": "Max Invocations",
+      "type": "integer"
+    },
+    "max_attempts": {
+      "default": 30,
+      "maximum": 10000,
+      "minimum": 1,
+      "title": "Max Attempts",
+      "type": "integer"
+    },
+    "max_repairs": {
+      "default": 3,
+      "maximum": 3,
+      "minimum": 0,
+      "title": "Max Repairs",
+      "type": "integer"
+    },
+    "max_seconds": {
+      "default": 3600,
+      "maximum": 86400,
+      "minimum": 1,
+      "title": "Max Seconds",
+      "type": "integer"
+    },
+    "max_poll_seconds": {
+      "default": 60,
+      "maximum": 300,
+      "minimum": 0,
+      "title": "Max Poll Seconds",
+      "type": "integer"
+    },
+    "max_steps": {
+      "default": 50,
+      "maximum": 1000,
+      "minimum": 1,
+      "title": "Max Steps",
+      "type": "integer"
+    },
+    "max_model_cost": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Max Model Cost"
+    }
+  },
+  "title": "RunLimits",
+  "type": "object"
+}

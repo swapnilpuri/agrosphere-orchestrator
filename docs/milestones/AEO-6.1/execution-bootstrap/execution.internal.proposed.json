@@ -1,0 +1,46 @@
+{
+  "live_enabled": false,
+  "timeout_limit_seconds": 600,
+  "max_context_bytes": 100000,
+  "max_log_bytes": 2000000,
+  "max_artifact_bytes": 32000000,
+  "validation_commands": [
+    {
+      "id": "aeo61-focused",
+      "argv": [
+        "C:/Projects/agrosphere/agrosphere-orchestrator/.venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_discovery_adjudication.py",
+        "tests/test_quality.py",
+        "tests/test_design.py",
+        "tests/test_orchestration.py",
+        "tests/test_execution.py",
+        "tests/test_autonomous_security.py",
+        "tests/test_autonomous_recovery.py",
+        "tests/test_autonomous_integration.py"
+      ],
+      "read_paths": [
+        "C:/Projects/agrosphere/agrosphere-orchestrator/.venv",
+        "C:/myprograms/Python/Python314"
+      ],
+      "timeout_seconds": 600
+    },
+    {
+      "id": "aeo61-regression",
+      "argv": [
+        "C:/Projects/agrosphere/agrosphere-orchestrator/.venv/Scripts/python.exe",
+        "scripts/validate.py"
+      ],
+      "read_paths": [
+        "C:/Projects/agrosphere/agrosphere-orchestrator/.venv",
+        "C:/myprograms/Python/Python314"
+      ],
+      "timeout_seconds": 600
+    }
+  ],
+  "trace_metadata": false
+}

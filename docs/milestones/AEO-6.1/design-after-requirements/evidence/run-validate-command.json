@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+    "-m",
+    "agrosphere_orchestrator.cli",
+    "autonomous",
+    "validate",
+    "ba0851d4-66bc-417a-851b-f08176bd8061"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"valid\": true,\n  \"run_id\": \"ba0851d4-66bc-417a-851b-f08176bd8061\",\n  \"state\": \"BLOCKED\",\n  \"formally_completed\": false\n}\n",
+  "stderr": ""
+}

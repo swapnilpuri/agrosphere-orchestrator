@@ -1,0 +1,70 @@
+{
+  "cwd": "C:/Projects/agrosphere/agrosphere-orchestrator",
+  "commands": [
+    {
+      "argv": [
+        "C:/Projects/agrosphere/agrosphere-orchestrator/.venv/Scripts/python.exe",
+        "docs/milestones/AEO-6.1/execution-bootstrap/audit_readiness.py"
+      ],
+      "executions": 2,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "kind": "actual read-only audit"
+    },
+    {
+      "argv": [
+        "C:/Projects/agrosphere/agrosphere-orchestrator/.venv/Scripts/python.exe",
+        "docs/milestones/AEO-6.1/execution-bootstrap/run_safe_tests.py"
+      ],
+      "exit_code": 0,
+      "kind": "actual safe targeted regression runner"
+    },
+    {
+      "argv": [
+        "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=C:/Projects/agrosphere/.t61-b-d494bb62",
+        "--junitxml=C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6.1\\execution-bootstrap\\pytest.xml",
+        "tests/test_configuration.py",
+        "tests/test_cli_planning.py",
+        "tests/test_persistence_state.py",
+        "tests/test_orchestration.py",
+        "tests/test_autonomous_recovery.py"
+      ],
+      "exit_code": 0,
+      "kind": "actual child pytest invocation",
+      "result": "54 passed in 85.88s"
+    },
+    {
+      "argv": [
+        "C:/Projects/agrosphere/agrosphere-orchestrator/.venv/Scripts/python.exe",
+        "-c",
+        "import ast,pathlib; p=pathlib.Path('docs/milestones/AEO-6.1/execution-bootstrap'); files=sorted(p.glob('*.py')); [ast.parse(f.read_text(encoding='utf8'),filename=str(f)) for f in files]; print('Syntax verified:', ', '.join(f.name for f in files))"
+      ],
+      "exit_code": 0,
+      "kind": "read-only helper syntax validation"
+    }
+  ],
+  "not_executed": [
+    "authenticated approval commands",
+    "import_after_authorization.py (default or --register)",
+    "implementation-ready",
+    "milestone plan",
+    "milestone prepare/execute",
+    "autonomous start/resume/recover",
+    "scripts/validate.py full regression",
+    "model/provider/native adapter smoke tests"
+  ],
+  "shell_notes": [
+    "Initial sandbox PowerShell startup failed with access denied; read-only audit shell commands subsequently ran through reviewed escalation. No auto-review rejection occurred.",
+    "One read-only source-inspection command failed with a PowerShell brace-list ParserError; corrected inspection passed.",
+    "Read-only source/config inspection used Get-Content, rg, git status --short and git diff --stat. Tracked git diff remained empty."
+  ],
+  "tests_limitations": "Existing tests use disposable SQLite/Git fixtures and injected adapters/verifiers. This is not live identity authentication, provider integration, or certification of the proposed validator profile."
+}

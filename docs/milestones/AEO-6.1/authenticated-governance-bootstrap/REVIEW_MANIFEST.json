@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "PROPOSED_NOT_APPROVED_OR_IMPLEMENTED",
+  "purpose": "Review-only authenticated governance bootstrap capability design",
+  "prepared_date": "2026-10-27",
+  "files": {
+    "ACCEPTANCE_CRITERIA.md": "d42ac0bd6184b715026ca700eb219adc933b7f1e3059e24f3d1a9bcb1bd9894e",
+    "DESIGN_PROPOSAL.md": "6304f666133772c08522f7ec00ee2abbf28c8c60858658699b6213f86acb4e70",
+    "IMPLEMENTATION_GOVERNANCE.md": "aaf462b37f5e8eb5fcb60c8b826e36be76b1d0555786625450530f775c81942e",
+    "READINESS_EVIDENCE.json": "82ae5a3779f097ac44438d6bd8ccb1892fe82690b473dece3c3327f75e718eea",
+    "SECURITY_THREAT_MODEL.md": "30bf964d7395584e2e93ecf19fad98dd7b0e9ebbe400f7abfaa6c1a60df803fa"
+  },
+  "inputs": {
+    "../execution-bootstrap/ADMIN_DECISION_REQUIRED.md": "7697dc536173b2d3d1845776b6e8e43ee70d14269f5255318145696f9aa565d7",
+    "../execution-bootstrap/READINESS_REPORT.md": "f5bf8dd43e59b86c84e3e808247d0f4d96ce577ac730f42e6eb12dd101a2ee06",
+    "../execution-bootstrap/CONTINUATION_OUTCOME.md": "96563b9acb13b8e8fa32492ad2446fbe78821fbf360475267b3d4ba2bd42f80e",
+    "../execution-bootstrap/REVIEW_MANIFEST.json": "434c652c236d2bca7128f054f5d64e2a58b81a1ffc344c1f19d4af94fdfd61d7",
+    "../execution-bootstrap/CONTINUATION_BOUNDARY_EVIDENCE.json": "c06aff3104b6d3c5f4b9809b98911c742189d146ee4191f71aeefd682712cdc6"
+  },
+  "request_attachment_sha256": "884d8cc76cda0115e2b6b3ca5226adc3c6153c63225f60ebfcc9485a3ccb1e4c"
+}

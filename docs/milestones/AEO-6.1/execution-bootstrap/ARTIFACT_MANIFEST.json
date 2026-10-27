@@ -1,0 +1,28 @@
+{
+  "status": "PREPARED_BLOCKED_AT_ADMINISTRATIVE_AUTHORIZATION",
+  "milestone": "AEO-6-ADJUDICATION",
+  "active_configuration_changed": false,
+  "registered_execution_plan": null,
+  "files": {
+    "ADMIN_DECISION_REQUIRED.md": "7697dc536173b2d3d1845776b6e8e43ee70d14269f5255318145696f9aa565d7",
+    "OPERATIONS.md": "7387e02d5a0a3dc4138ccc7d5e16341e1805069dbb3d1633cead017f7fce59e2",
+    "READINESS_REPORT.md": "f5bf8dd43e59b86c84e3e808247d0f4d96ce577ac730f42e6eb12dd101a2ee06",
+    "REVIEW_MANIFEST.json": "434c652c236d2bca7128f054f5d64e2a58b81a1ffc344c1f19d4af94fdfd61d7",
+    "USER_REQUEST.md": "68204b175894e2e0d6f15db88a22fff6b004bdb8b7c4587f831903c7484db1d6",
+    "approved-plan.json": "05ddf08b571552a3cf70f5400e7c55f2bf5c642e6f1ef3fe192cd94b17dc7dfc",
+    "audit_readiness.py": "4a38ef586bd834a8e1bce4923536979d3388258131fefe593d6a199cac82192c",
+    "execution.internal.proposed.json": "6ea042f0909e21783513eadc18c91baa28e3700a9705f178697e8c9048b15565",
+    "import_after_authorization.py": "d3f08abe9973f14f94a45f5dec40f9663389757017cef3cb2d44651967c2cf08",
+    "preservation.json": "eca84da937ee3da3977950f6e91d685acbacc759c398971da396136fd3283d9f",
+    "pytest.xml": "3b6aefb85c8460cb3fd8ad99ca1eabec51fd19cdd29ab4504932193c03de6fa4",
+    "repositories.internal.proposed.json": "2ebc0f7f26846f70c17cc28adaed10335e30ed300588ef5de7f341f921b94a2d",
+    "roles.internal.proposed.json": "7cce8fc56574f3ee232208b3f3e49888243f758bdb9db46404009bdc5a5c30c4",
+    "run_safe_tests.py": "d0d055ca8606b12bfdf5eaa633f5e99beccebf586748eaf788c8722cc8a35449",
+    "source-reference-index.json": "0c3e98fa39749204a582bea3133ea31a835b69ebddc23f14d4dca932117984f2",
+    "task-options.proposed.json": "1ed9a62e56451829eca39458d841b2adba74693ec55cc2b346fadd23e51670e1",
+    "test-results.json": "fb698cd585a65f481af6a764984905394d296bcd0875ac89c763538dda384365",
+    "validation-commands.json": "1eb1f300bd651110bb058896e165a7b98d3f864d37500f9e4ff7858ef3cc9f18",
+    "verification-before-tests.json": "1125d3b3f57ae55bda9ee6168256a4c582b3b42625f639d27e8fdea2d6662a54",
+    "verification.json": "b0e4c0ea87e8a5f853bc8d0b3e88d99d200583aee7a7c5fb355f70a45c5e27f8"
+  }
+}

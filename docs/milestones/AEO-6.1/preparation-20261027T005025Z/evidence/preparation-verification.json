@@ -1,0 +1,56 @@
+{
+  "requirements_schema_valid": true,
+  "context_hash_head_role_guards_valid": true,
+  "requirement_count": 12,
+  "context_references": 19,
+  "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "case_id": "agrosphere:AEO-6-ADJUDICATION",
+  "requirements_registered": true,
+  "requirements_approved": false,
+  "requirements_gate": "Authorized human requirements approval is required",
+  "state": "DISCOVERED",
+  "technical_revision_generated": false,
+  "technical_design_validated": false,
+  "implementation_authorized": false,
+  "approval_commands_executed": false,
+  "resume_executed": false,
+  "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+  "run_unchanged": true,
+  "run_validation": {
+    "valid": true,
+    "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+    "state": "BLOCKED",
+    "formally_completed": false
+  },
+  "discovery_consistent": false,
+  "conflicts": [
+    "1B"
+  ],
+  "application_repository_count": 12,
+  "application_fingerprints_preserved": 454,
+  "runtime_and_migration_files_unchanged": true,
+  "prior_evidence_unchanged": true,
+  "all_original_database_rows_preserved": true,
+  "all_decisions_snapshots_run_history_migrations_unchanged": true,
+  "additive_registration_tables": {
+    "audit_events": {
+      "before": 82,
+      "after": 83
+    },
+    "design_cases": {
+      "before": 2,
+      "after": 3
+    },
+    "design_scopes": {
+      "before": 4,
+      "after": 5
+    }
+  },
+  "design_approver_sids": [
+    "sid:S-1-5-21-1295115365-4060518610-348779417-1001"
+  ],
+  "governance_approver_sids": [],
+  "next_command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli milestone approve-requirements AEO-6-ADJUDICATION",
+  "exact_confirmation_phrase": "APPROVED agrosphere:AEO-6-ADJUDICATION:requirements:8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "tests_executed": []
+}

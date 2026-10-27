@@ -1,0 +1,119 @@
+{
+  "$defs": {
+    "ValidationCommand": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "argv": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Argv",
+          "type": "array"
+        },
+        "read_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Read Paths",
+          "type": "array"
+        },
+        "timeout_seconds": {
+          "default": 120,
+          "maximum": 600,
+          "minimum": 1,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "argv"
+      ],
+      "title": "ValidationCommand",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "live_enabled": {
+      "default": false,
+      "title": "Live Enabled",
+      "type": "boolean"
+    },
+    "timeout_limit_seconds": {
+      "default": 600,
+      "maximum": 3600,
+      "minimum": 1,
+      "title": "Timeout Limit Seconds",
+      "type": "integer"
+    },
+    "max_context_bytes": {
+      "default": 100000,
+      "maximum": 500000,
+      "minimum": 1000,
+      "title": "Max Context Bytes",
+      "type": "integer"
+    },
+    "max_log_bytes": {
+      "default": 2000000,
+      "maximum": 10000000,
+      "minimum": 1000,
+      "title": "Max Log Bytes",
+      "type": "integer"
+    },
+    "max_artifact_bytes": {
+      "default": 32000000,
+      "maximum": 100000000,
+      "minimum": 1000,
+      "title": "Max Artifact Bytes",
+      "type": "integer"
+    },
+    "validation_commands": {
+      "items": {
+        "$ref": "#/$defs/ValidationCommand"
+      },
+      "title": "Validation Commands",
+      "type": "array"
+    },
+    "input_price_per_million": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Input Price Per Million"
+    },
+    "output_price_per_million": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Output Price Per Million"
+    },
+    "trace_metadata": {
+      "default": false,
+      "title": "Trace Metadata",
+      "type": "boolean"
+    }
+  },
+  "title": "ExecutionPolicy",
+  "type": "object"
+}

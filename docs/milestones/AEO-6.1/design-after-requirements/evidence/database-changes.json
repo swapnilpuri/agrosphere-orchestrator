@@ -1,0 +1,22 @@
+{
+  "audit_events": {
+    "before": 84,
+    "after": 91,
+    "original_rows_retained": 84
+  },
+  "design_cases": {
+    "before": 3,
+    "after": 3,
+    "original_rows_retained": 2
+  },
+  "design_revisions": {
+    "before": 3,
+    "after": 4,
+    "original_rows_retained": 3
+  },
+  "design_validations": {
+    "before": 3,
+    "after": 4,
+    "original_rows_retained": 3
+  }
+}

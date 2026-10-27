@@ -1,0 +1,9 @@
+{
+  "revision_id": "4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066",
+  "adapter_version": "aeo61-reviewed-design-v1:a1a70c33322ec989b034c1c999370d0c9528502eacaa2b3422dcb5cada537b93",
+  "content_sha256": "a1a70c33322ec989b034c1c999370d0c9528502eacaa2b3422dcb5cada537b93",
+  "renderer_jar": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.aeo\\tools\\plantuml-1.2026.9.jar",
+  "renderer_sha256": "aa4a1d06f8911c4b842beff4828dd955be431692b631a312d04c0e9fab9581de",
+  "existing_generate_design_service": true,
+  "approval_invoked": false
+}

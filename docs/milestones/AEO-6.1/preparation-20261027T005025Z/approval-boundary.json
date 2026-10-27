@@ -1,0 +1,54 @@
+{
+  "status": "AWAITING_AUTHENTICATED_REQUIREMENTS_APPROVAL",
+  "case_id": "agrosphere:AEO-6-ADJUDICATION",
+  "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "review_artifacts": [
+    "requirements-input.json",
+    "01-capability-and-boundary-assessment.md",
+    "AUTONOMOUS_OPERATIONS_GUIDE.md",
+    "MILESTONE_2_PREPARATION_DRAFT.md",
+    "evidence/registered-requirements-review.json",
+    "evidence/proposal-lineage.json",
+    "00-user-request.md"
+  ],
+  "authorized_design_approver_sids": [
+    "sid:S-1-5-21-1295115365-4060518610-348779417-1001"
+  ],
+  "exact_confirmation_phrase": "APPROVED agrosphere:AEO-6-ADJUDICATION:requirements:8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "existing_review_command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli milestone docs AEO-6-ADJUDICATION",
+  "existing_approve_command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli milestone approve-requirements AEO-6-ADJUDICATION",
+  "existing_reject_command": ".\\.venv\\Scripts\\python.exe -m agrosphere_orchestrator.cli milestone approve-requirements AEO-6-ADJUDICATION --reject",
+  "commands_executed": [
+    "milestone design AEO-6-ADJUDICATION --requirements <this package/requirements-input.json>",
+    "milestone docs AEO-6-ADJUDICATION"
+  ],
+  "commands_not_executed": [
+    "approve-requirements",
+    "milestone design without --requirements",
+    "validate-design",
+    "approve-design",
+    "implementation-ready",
+    "autonomous resume",
+    "autonomous start"
+  ],
+  "requirements_approval_granted": false,
+  "technical_design_revision": null,
+  "technical_design_validated": false,
+  "implementation_authorized": false,
+  "evidence_disposition_decision": null,
+  "active_run_unchanged": true,
+  "active_run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+  "discovery_consistent": false,
+  "remaining_conflicts": [
+    "1B"
+  ],
+  "remaining_independent_gaps": [
+    "Expired persisted 3600-second run deadline; no supported extension policy/command",
+    "No configured governance approver SID; evidence-role authorization undefined until governed policy",
+    "No configured approved autonomous roadmap/dependency evidence",
+    "M2 approved requirements/design/plan and current performance acceptance missing",
+    "No configured verified PlantUML renderer for future design approval",
+    "Evidence disposition CLI/subject/consumer unimplemented; no background approval watcher"
+  ],
+  "approval_effect": "Requirements approval permits governed technical-design preparation only. It does not approve implementation, evidence disposition, M2 acceptance or same-run deadline extension."
+}

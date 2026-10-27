@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+    "-m",
+    "agrosphere_orchestrator.cli",
+    "milestone",
+    "design",
+    "AEO-6-ADJUDICATION",
+    "--requirements",
+    "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6.1\\preparation-20261027T005025Z\\requirements-input.json"
+  ],
+  "environment_overrides": {
+    "AEO_DATABASE_URL": "sqlite:///C:/Projects/agrosphere/agrosphere-orchestrator/aeo.db",
+    "AEO_REPOSITORY_MANIFEST": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6.1\\preparation-20261027T005025Z\\design-repositories.json",
+    "AEO_WORKSPACE_ROOT": "C:\\Projects\\agrosphere"
+  },
+  "exit_code": 0,
+  "stdout": "{\"scope_id\": \"8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138\", \"approval_granted\": false, \"next\": \"Review scope using docs, then run approve-requirements interactively before generation.\"}\n",
+  "stderr": ""
+}

@@ -1,0 +1,368 @@
+{
+  "$defs": {
+    "ArchitectureRule": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "repository": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "required-file",
+            "prohibited-file",
+            "required-token",
+            "prohibited-token",
+            "approved-hash",
+            "database-owner"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "default": "",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "repository",
+        "path",
+        "kind"
+      ],
+      "title": "ArchitectureRule",
+      "type": "object"
+    },
+    "Criterion": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "criterion_id": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Criterion Id",
+          "type": "string"
+        },
+        "criterion_text": {
+          "minLength": 1,
+          "title": "Criterion Text",
+          "type": "string"
+        },
+        "task": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Task",
+          "type": "string"
+        },
+        "gate": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gate"
+        },
+        "test_case": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Test Case"
+        },
+        "human": {
+          "default": false,
+          "title": "Human",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "criterion_id",
+        "criterion_text",
+        "task"
+      ],
+      "title": "Criterion",
+      "type": "object"
+    },
+    "Gate": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "build",
+            "test",
+            "lint",
+            "types",
+            "coverage",
+            "security",
+            "architecture",
+            "contract",
+            "documentation",
+            "database",
+            "infrastructure"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "repository": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "tasks": {
+          "items": {
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+            "type": "string"
+          },
+          "title": "Tasks",
+          "type": "array"
+        },
+        "milestones": {
+          "items": {
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+            "type": "string"
+          },
+          "title": "Milestones",
+          "type": "array"
+        },
+        "inputs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Inputs",
+          "type": "array"
+        },
+        "command": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Command"
+        },
+        "evaluator": {
+          "default": "command",
+          "enum": [
+            "command",
+            "files",
+            "architecture",
+            "execution"
+          ],
+          "title": "Evaluator",
+          "type": "string"
+        },
+        "format": {
+          "default": "exit",
+          "enum": [
+            "exit",
+            "json",
+            "junit",
+            "coverage",
+            "sarif"
+          ],
+          "title": "Format",
+          "type": "string"
+        },
+        "expected_exit": {
+          "default": 0,
+          "title": "Expected Exit",
+          "type": "integer"
+        },
+        "severity": {
+          "$ref": "#/$defs/Severity",
+          "default": "HIGH"
+        },
+        "blocking": {
+          "default": true,
+          "title": "Blocking",
+          "type": "boolean"
+        },
+        "timeout_seconds": {
+          "default": 120,
+          "maximum": 600,
+          "minimum": 1,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        },
+        "retry_eligible": {
+          "default": false,
+          "title": "Retry Eligible",
+          "type": "boolean"
+        },
+        "allow_skip": {
+          "default": false,
+          "title": "Allow Skip",
+          "type": "boolean"
+        },
+        "skip": {
+          "default": false,
+          "title": "Skip",
+          "type": "boolean"
+        },
+        "minimum_coverage": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum Coverage"
+        },
+        "required_files": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Files",
+          "type": "array"
+        },
+        "architecture_rules": {
+          "items": {
+            "$ref": "#/$defs/ArchitectureRule"
+          },
+          "title": "Architecture Rules",
+          "type": "array"
+        },
+        "validator_version": {
+          "minLength": 1,
+          "title": "Validator Version",
+          "type": "string"
+        },
+        "configuration": {
+          "additionalProperties": true,
+          "title": "Configuration",
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "repository",
+        "validator_version"
+      ],
+      "title": "Gate",
+      "type": "object"
+    },
+    "Severity": {
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW",
+        "INFORMATIONAL"
+      ],
+      "title": "Severity",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "version": {
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "gates": {
+      "items": {
+        "$ref": "#/$defs/Gate"
+      },
+      "minItems": 1,
+      "title": "Gates",
+      "type": "array"
+    },
+    "criteria": {
+      "items": {
+        "$ref": "#/$defs/Criterion"
+      },
+      "title": "Criteria",
+      "type": "array"
+    },
+    "evidence_ttl_seconds": {
+      "default": 86400,
+      "maximum": 2592000,
+      "minimum": 1,
+      "title": "Evidence Ttl Seconds",
+      "type": "integer"
+    },
+    "medium_security_blocks": {
+      "default": true,
+      "title": "Medium Security Blocks",
+      "type": "boolean"
+    },
+    "required_gate_types": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Gate Types",
+      "type": "array"
+    },
+    "required_review_roles": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Review Roles",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "gates"
+  ],
+  "title": "QualityPolicy",
+  "type": "object"
+}

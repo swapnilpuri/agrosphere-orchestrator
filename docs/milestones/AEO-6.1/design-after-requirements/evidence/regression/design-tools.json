@@ -1,0 +1,18 @@
+{
+  "executed_at": "2026-10-27T03:20:30.874062+00:00",
+  "source": "docs/diagrams/design-lifecycle.puml",
+  "source_sha256": "01f764b27d651cd7d2703acb9ed24191276284ae255013167bfe2f49d9d19ac6",
+  "java": {
+    "argv": [
+      "C:\\myprograms\\jdk-27\\bin\\java.EXE",
+      "-version"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "openjdk version \"27\" 2026-09-15\nOpenJDK Runtime Environment (build 27+35-2325)\nOpenJDK 64-Bit Server VM (build 27+35-2325, mixed mode, sharing)\n"
+  },
+  "plantuml_jar": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.aeo\\tools\\plantuml-1.2026.9.jar",
+  "rendered": true,
+  "design_approval_blocked": false,
+  "findings": []
+}

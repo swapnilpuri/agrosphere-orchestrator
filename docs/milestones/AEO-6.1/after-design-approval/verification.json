@@ -1,0 +1,207 @@
+{
+  "case_state": "DESIGN_APPROVED",
+  "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "revision_id": "4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066",
+  "bundle_digest": "989c1335f933a2505d60391360d96bf9a725a1cd008c284959d3f355bccdb8bf",
+  "approvals": [
+    {
+      "kind": "requirements",
+      "id": "67c78c9f-387d-426b-8e89-64092bd48fd0",
+      "subject": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "created_at": "2026-10-27T01:12:08.405829+00:00",
+      "currently_authorized": true
+    },
+    {
+      "kind": "design",
+      "id": "59196472-83fa-4d48-86ca-307559a1d00c",
+      "subject": "989c1335f933a2505d60391360d96bf9a725a1cd008c284959d3f355bccdb8bf",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "created_at": "2026-10-27T04:10:44.372225+00:00",
+      "currently_authorized": true
+    }
+  ],
+  "validation_id": "7e5e7154abeb1a70d63705b5b8d19b905eb385daf34f3ee8aef640f0253eb329",
+  "approved_context_and_artifacts_verified": true,
+  "registered_dag": {
+    "id": "AEO-6-ADJUDICATION",
+    "project": "agrosphere",
+    "title": "AEO-6.1 governed evidence adjudication and operational stabilization",
+    "version": 1,
+    "tasks": [
+      {
+        "id": "adjudication-integration",
+        "title": "Implement the reviewed evidence subject and existing-governance integration",
+        "repository": "agrosphere-orchestrator",
+        "role": "developer",
+        "operation": "code-write",
+        "depends_on": [],
+        "acceptance_criteria": [
+          "Define immutable evidence-disposition requests and decisions with approve, reject and unresolved/request-more-evidence outcomes, exact affected milestone(s), rationale and supporting references.",
+          "No approved disposition changes PARTIAL into ACCEPTED/COMPLETED or supplies verified acceptance criteria.",
+          "Canonical subject includes original repository/path/line/hash/commit-or-known-missing provenance, supporting evidence hashes, captured observation and manifest identity.",
+          "Preserve original reports, old snapshots and their history; missing/ambiguous provenance cannot be silently filled in or overridden by newest timestamp.",
+          "Reuse HumanVerifier/WindowsConsoleHumanVerifier and configured governance SID authorization; agent/self-approval or empty allowlist fails closed.",
+          "Exact subject/rationale/disposition is confirmed; recheck scope and authorized identity after authentication; existing design approvals are not evidence-disposition approvals.",
+          "Extend existing governance contracts and category-specific context validation; no independent approval store, authentication subsystem or direct SQLite approval changes.",
+          "Decision and audit writes share one transaction; include actor SID, time, subject digest, scope, supporting references and policy/version identity.",
+          "Rejection/request-more-evidence retains the unresolved checkpoint; no approval consumption from descriptive metadata.",
+          "Subject mismatch, changed manifest/evidence, unauthorized actor or invalid version invalidates applicability while preserving all prior records.",
+          "Repeated identical request/observation is idempotent; duplicate final decisions cannot replay or supersede a rejection without a legitimate revised subject.",
+          "Decision history remains immutable; current authority and expiry/revocation policy are rechecked on every consumption.",
+          "Collect exactly the approved 12 application roots; bind application manifest digest; fixtures and exported quotations do not become independent implementation evidence.",
+          "A valid decision resolves only its exact historical relationship; genuine unrelated contradictions remain blocking and all original evidence remains visible.",
+          "Existing RECONCILING/checkpoint machinery presents the exact review package and applicable supported decision command once implemented.",
+          "After authorized decisions and all other gates pass, the same run can be resumed using existing continuation semantics; independent work proceeds only where current dependency/security rules permit.",
+          "No application development, 3B start, execution eligibility, publication, merge or deployment follows from evidence reconciliation alone.",
+          "Do not recreate runs, reset counters, edit original run requests/limits, alter previous approvals, or substitute historical tests for fresh acceptance.",
+          "Prefer existing GovernanceRecord/DesignDecision/audit persistence; no migrations or rewriting old snapshots/decisions in this scope.",
+          "Legacy observations without new decision metadata remain readable and conservative; unsupported decision versions fail closed.",
+          "Use autonomous status/report/validate for read-only inspection, authenticated approval commands for humans and autonomous resume for gated continuation.",
+          "Do not add a watchdog or parallel scheduler. Report expired immutable run budgets as blockers; extending a deadline requires separate governed policy and is not authorized by this scope.",
+          "Current empty governance allowlist, absent approved roadmap and missing renderer are explicit prerequisites, never silently configured."
+        ]
+      },
+      {
+        "id": "verification",
+        "title": "Verify authority, evidence scope, idempotency and run preservation",
+        "repository": "agrosphere-orchestrator",
+        "role": "qa-engineer",
+        "operation": "validate",
+        "depends_on": [
+          "adjudication-integration"
+        ],
+        "acceptance_criteria": [
+          "Cover approval/reject/unresolved, cross-repository provenance, original evidence preservation, duplicates, fresh discovery, restart, existing-run preservation, M2 blockers and 12-root restriction.",
+          "Run focused suites and established scripts/validate.py after authorized source changes; identify mocks and real local checks; no model/provider live execution or application changes implied."
+        ]
+      }
+    ]
+  },
+  "imported_implementation_milestone": false,
+  "implementation_tasks": [],
+  "run": {
+    "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+    "milestone": "2",
+    "mode": "local",
+    "state": "BLOCKED",
+    "step": "RECONCILING",
+    "checkpoint": {
+      "category": "discovery-conflict",
+      "reason": "Conflicting recovered milestone evidence blocks eligibility",
+      "command": null
+    },
+    "request_hash": "ea68398c024774bf986a784d1e481e88545e2229162e029c078bd351cdcd6672",
+    "limits": {
+      "max_milestones": 1,
+      "max_tasks": 20,
+      "max_concurrency": 2,
+      "max_invocations": 30,
+      "max_attempts": 30,
+      "max_repairs": 3,
+      "max_seconds": 3600,
+      "max_poll_seconds": 60,
+      "max_steps": 50,
+      "max_model_cost": null
+    },
+    "usage": {
+      "steps": 3,
+      "invocations": 0,
+      "attempts": 0,
+      "repairs": 0,
+      "polls": 0,
+      "poll_seconds": 0.0,
+      "tasks": [],
+      "tokens": null,
+      "model_cost": null,
+      "elapsed_seconds": 2105.584013500018,
+      "known_input_tokens": 0,
+      "known_output_tokens": 0,
+      "usage_observations": 0
+    },
+    "references": {},
+    "current_operation": null,
+    "created_at": "2026-10-26T05:28:07.706005+00:00",
+    "updated_at": "2026-10-26T06:03:13.296612+00:00",
+    "formally_completed": false,
+    "freshness": "Persisted observations; continuation rechecks current authority and artifacts. REPORTED is not formal completion."
+  },
+  "execution_approvers": [],
+  "governance_approvers": [],
+  "execution_policy": {
+    "live_enabled": false,
+    "timeout_limit_seconds": 600,
+    "max_context_bytes": 100000,
+    "max_log_bytes": 2000000,
+    "max_artifact_bytes": 32000000,
+    "validation_commands": [],
+    "input_price_per_million": null,
+    "output_price_per_million": null,
+    "trace_metadata": false
+  },
+  "application_manifest": [
+    {
+      "id": "agrosphere-ai-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-ai-service"
+    },
+    {
+      "id": "agrosphere-analytics-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-analytics-service"
+    },
+    {
+      "id": "agrosphere-api-gateway",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-api-gateway"
+    },
+    {
+      "id": "agrosphere-architecture",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-architecture"
+    },
+    {
+      "id": "agrosphere-contracts",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-contracts"
+    },
+    {
+      "id": "agrosphere-estate-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-estate-service"
+    },
+    {
+      "id": "agrosphere-immersive",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-immersive"
+    },
+    {
+      "id": "agrosphere-infrastructure",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-infrastructure"
+    },
+    {
+      "id": "agrosphere-operations-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-operations-service"
+    },
+    {
+      "id": "agrosphere-spatial-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-spatial-service"
+    },
+    {
+      "id": "agrosphere-telemetry-service",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-telemetry-service"
+    },
+    {
+      "id": "agrosphere-web",
+      "path": "C:\\Projects\\agrosphere\\agrosphere-web"
+    }
+  ],
+  "role_repository_blocks": [
+    {
+      "task": "adjudication-integration",
+      "role": "developer",
+      "repository": "agrosphere-orchestrator"
+    },
+    {
+      "task": "verification",
+      "role": "qa-engineer",
+      "repository": "agrosphere-orchestrator"
+    }
+  ],
+  "implementation_authorized": false,
+  "database_writes": false,
+  "approval_commands_executed": false
+}

@@ -1,0 +1,22 @@
+@startuml
+title AEO-6.1 decision and restart
+actor Human
+participant CLI
+participant Verifier
+participant Governance
+participant Discovery
+database Records
+participant Controller
+Human -> CLI : Inspect exact evidence and proposed relationship
+CLI -> Discovery : Recollect manifest-bound evidence
+CLI -> Verifier : Confirm subject, disposition and rationale digest
+Verifier -> Governance : Canonical authenticated SID
+Governance -> Discovery : Recheck current evidence and policy
+Governance -> Records : Serialized transaction: duplicate check, decision and audit
+Records -> CLI : Immutable decision ID
+Human -> Controller : Explicit same-run resume when independently eligible
+Controller -> Discovery : Fresh exact-root collection
+Discovery -> Governance : Validate disposition applicability
+Governance -> Controller : Scoped result or blocking reason
+Controller -> Records : Existing checkpoint machinery and budgets
+@enduml

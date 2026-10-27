@@ -1,0 +1,100 @@
+{
+  "requirements_verified": true,
+  "decision_id": "67c78c9f-387d-426b-8e89-64092bd48fd0",
+  "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "revision_id": "4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066",
+  "bundle_digest": "989c1335f933a2505d60391360d96bf9a725a1cd008c284959d3f355bccdb8bf",
+  "validation_id": "7e5e7154abeb1a70d63705b5b8d19b905eb385daf34f3ee8aef640f0253eb329",
+  "validation_passed": true,
+  "state": "AWAITING_DESIGN_APPROVAL",
+  "design_gate": "Authorized human design approval is required",
+  "design_approved": false,
+  "implementation_authorized": false,
+  "run_unchanged": true,
+  "original_deadline_unchanged": true,
+  "all_original_decisions_snapshots_runs_operations_events_and_migrations_preserved": true,
+  "runtime_tests_config_migrations_unchanged": true,
+  "application_fingerprints_preserved": 454,
+  "application_repositories": 12,
+  "conflicts": [
+    "1B"
+  ],
+  "milestone_1b": "PARTIAL",
+  "artifacts": [
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/business.md",
+      "type": "business",
+      "sha256": "3638e764f9f43639dc77861900af3e242ea9af444c90cf1dcdaa24c7c4588d90"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/architecture.md",
+      "type": "architecture",
+      "sha256": "e2028b6751167d1fb0bee601667811c74ec861353107247f1e198e0e4c2f74e2"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/service.md",
+      "type": "service",
+      "sha256": "383eb35fbbdd6755290f114c7fbfe3f50852924db1e1d3bb28bfa86183ae8329"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-components.svg",
+      "type": "render:component",
+      "sha256": "d5d987f699199ac029de66606ea7ecc7fd60f264b86748694431b2afaa0cf9b5"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-components.puml",
+      "type": "diagram:component",
+      "sha256": "496caebbdecde3087b3f12eccd41d972b35181274ce52c9403d5d1f048ab8eb4"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-state.svg",
+      "type": "render:state",
+      "sha256": "e8971cca140459c7a7e1b9bce2d52fee710916e7ee31d3f04709be4d4653d572"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-state.puml",
+      "type": "diagram:state",
+      "sha256": "636de3778a8aa2dd2176522b96ff4c2ad98223d34c548750fc442ca6b55aaabd"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-sequence.svg",
+      "type": "render:sequence",
+      "sha256": "f869c35233bddcc0d1f7bb637f6bf7099c4b1008564950cf0c27f0202240fcc8"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-sequence.puml",
+      "type": "diagram:sequence",
+      "sha256": "b9a724655fec0552d1dfc92737977374ea74fea56ac5ee38b89ff31575cb54ab"
+    },
+    {
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/overview.md",
+      "type": "overview",
+      "sha256": "8ff0f3ba078f8e664718d3844f02c9bb9ed1455c560511930db3854eb02a3e08"
+    }
+  ],
+  "database_changes": {
+    "audit_events": {
+      "before": 84,
+      "after": 91,
+      "original_rows_retained": 84
+    },
+    "design_cases": {
+      "before": 3,
+      "after": 3,
+      "original_rows_retained": 2
+    },
+    "design_revisions": {
+      "before": 3,
+      "after": 4,
+      "original_rows_retained": 3
+    },
+    "design_validations": {
+      "before": 3,
+      "after": 4,
+      "original_rows_retained": 3
+    }
+  },
+  "approval_commands_executed": false,
+  "resume_executed": false,
+  "full_regression": 0
+}

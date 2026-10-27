@@ -1,0 +1,118 @@
+{
+  "cli.py": [
+    {
+      "line": 770,
+      "definition": "def milestone_approve_plan(milestone: str, project: str = \"agrosphere\"):"
+    }
+  ],
+  "orchestration.py": [
+    {
+      "line": 33,
+      "definition": "def milestone_record(session, external_id, project=\"agrosphere\"):"
+    },
+    {
+      "line": 44,
+      "definition": "def load_plan(session, milestone):"
+    },
+    {
+      "line": 100,
+      "definition": "def propose_plan(engine, settings, milestone_id, options=None, project=\"agrosphere\"):"
+    },
+    {
+      "line": 186,
+      "definition": "def approve_plan(engine, settings, milestone_id, verifier, project=\"agrosphere\"):"
+    },
+    {
+      "line": 336,
+      "definition": "async def prepare(self, milestone_id, project=\"agrosphere\"):"
+    },
+    {
+      "line": 588,
+      "definition": "async def execute(self, milestone_id, project=\"agrosphere\"):"
+    },
+    {
+      "line": 617,
+      "definition": "async def resume(self, milestone_id, project=\"agrosphere\"):"
+    },
+    {
+      "line": 755,
+      "definition": "def milestone_report(engine, milestone_id, project=\"agrosphere\"):"
+    }
+  ],
+  "persistence.py": [
+    {
+      "line": 121,
+      "definition": "def import_plan(engine: Engine, spec: MilestoneSpec, actor: str = \"local-user\") -> list[str]:"
+    }
+  ],
+  "design.py": [
+    {
+      "line": 552,
+      "definition": "def assert_design_gate(session: Session, milestone: Milestone) -> DesignCase:"
+    },
+    {
+      "line": 586,
+      "definition": "def implementation_ready(engine: Engine, key: str):"
+    }
+  ],
+  "execution.py": [
+    {
+      "line": 100,
+      "definition": "def queue_execution("
+    },
+    {
+      "line": 185,
+      "definition": "def approve_execution(engine, settings, identity: str, verifier, expiry_seconds=900) -> str:"
+    },
+    {
+      "line": 332,
+      "definition": "async def run_execution("
+    }
+  ],
+  "execution_context.py": [
+    {
+      "line": 40,
+      "definition": "def build_context("
+    }
+  ],
+  "execution_workspace.py": [
+    {
+      "line": 71,
+      "definition": "def create_worktree("
+    }
+  ],
+  "execution_process.py": [
+    {
+      "line": 34,
+      "definition": "def runtime_environment() -> dict[str, str]:"
+    },
+    {
+      "line": 161,
+      "definition": "async def run("
+    }
+  ],
+  "autonomous.py": [
+    {
+      "line": 347,
+      "definition": "async def run(self, identity):"
+    },
+    {
+      "line": 370,
+      "definition": "async def resume(self, identity, publication_grants=None, delivery_manifest=None):"
+    },
+    {
+      "line": 405,
+      "definition": "async def recover(self, identity):"
+    }
+  ],
+  "autonomous_services.py": [
+    {
+      "line": 298,
+      "definition": "def planning(self, request):"
+    },
+    {
+      "line": 628,
+      "definition": "async def recover(self, step, request, value):"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\.venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=C:/Projects/agrosphere/.t61-b-d494bb62",
+    "--junitxml=C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6.1\\execution-bootstrap\\pytest.xml",
+    "tests/test_configuration.py",
+    "tests/test_cli_planning.py",
+    "tests/test_persistence_state.py",
+    "tests/test_orchestration.py",
+    "tests/test_autonomous_recovery.py"
+  ],
+  "cwd": "C:\\Projects\\agrosphere\\agrosphere-orchestrator",
+  "exit_code": 0,
+  "stdout": "......................................................                   [100%]\n54 passed in 85.88s (0:01:25)\n",
+  "stderr": "",
+  "fixture_root": "C:\\Projects\\agrosphere\\.t61-b-d494bb62",
+  "live_model_or_provider": false,
+  "test_note": "Existing suites use disposable SQLite/Git fixtures and injected test doubles; not live authentication or native certification."
+}

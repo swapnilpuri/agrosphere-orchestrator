@@ -1,0 +1,35 @@
+{
+  "executed_at": "2026-10-27T03:20:36.071649+00:00",
+  "revision_id": "ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d",
+  "artifact_count": 15,
+  "hashes_and_ownership_valid": true,
+  "observation_reference": "documentation-bundle:ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d",
+  "approval_granted": false,
+  "diagrams": [
+    {
+      "source": "docs/milestones/AEO-2/revisions/ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d/diagrams/codex-components.puml",
+      "rendered": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\validation\\aeo2-rendered\\ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d\\codex-components.svg",
+      "findings": []
+    },
+    {
+      "source": "docs/milestones/AEO-2/revisions/ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d/diagrams/task-execution.puml",
+      "rendered": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\validation\\aeo2-rendered\\ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d\\task-execution.svg",
+      "findings": []
+    },
+    {
+      "source": "docs/milestones/AEO-2/revisions/ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d/diagrams/session-recovery.puml",
+      "rendered": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\validation\\aeo2-rendered\\ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d\\session-recovery.svg",
+      "findings": []
+    },
+    {
+      "source": "docs/milestones/AEO-2/revisions/ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d/diagrams/execution-state.puml",
+      "rendered": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\validation\\aeo2-rendered\\ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d\\execution-state.svg",
+      "findings": []
+    },
+    {
+      "source": "docs/milestones/AEO-2/revisions/ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d/diagrams/repository-isolation.puml",
+      "rendered": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\validation\\aeo2-rendered\\ecc485aed3038aaa7a2c78e87de1c49df28644b19b5a5a0980ef2cd632872b6d\\repository-isolation.svg",
+      "findings": []
+    }
+  ]
+}

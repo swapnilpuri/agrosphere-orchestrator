@@ -1,0 +1,12 @@
+{
+  "status": "PROPOSED_NOT_AUTHORIZED_OR_ACTIVE",
+  "milestone": "AEO-6-ADJUDICATION",
+  "files": {
+    "approved-plan.json": "05ddf08b571552a3cf70f5400e7c55f2bf5c642e6f1ef3fe192cd94b17dc7dfc",
+    "roles.internal.proposed.json": "7cce8fc56574f3ee232208b3f3e49888243f758bdb9db46404009bdc5a5c30c4",
+    "repositories.internal.proposed.json": "2ebc0f7f26846f70c17cc28adaed10335e30ed300588ef5de7f341f921b94a2d",
+    "execution.internal.proposed.json": "6ea042f0909e21783513eadc18c91baa28e3700a9705f178697e8c9048b15565",
+    "task-options.proposed.json": "1ed9a62e56451829eca39458d841b2adba74693ec55cc2b346fadd23e51670e1",
+    "import_after_authorization.py": "d3f08abe9973f14f94a45f5dec40f9663389757017cef3cb2d44651967c2cf08"
+  }
+}

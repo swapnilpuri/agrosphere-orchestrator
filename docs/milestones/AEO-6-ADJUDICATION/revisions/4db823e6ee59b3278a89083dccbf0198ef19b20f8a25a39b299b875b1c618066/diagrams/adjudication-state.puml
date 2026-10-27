@@ -1,0 +1,21 @@
+@startuml
+title AEO-6.1 disposition applicability
+state "Unresolved evidence" as Unresolved
+state "Pending authenticated review" as Review
+state "Approved exact relationship" as Scoped
+state "Rejected" as Rejected
+state "More evidence required" as More
+state "Revoked or stale" as Invalid
+Unresolved --> Review : Canonical versioned subject
+Review --> Scoped : Authorized approved decision
+Review --> Rejected : Authorized rejected decision
+Review --> More : Authorized unresolved decision
+Scoped --> Invalid : Revoked, expired, changed evidence or authority
+Rejected --> Unresolved : Still blocking
+More --> Unresolved : Still blocking
+Invalid --> Unresolved : Still blocking
+note right of Scoped
+No milestone acceptance transition
+All independent gates remain
+end note
+@enduml

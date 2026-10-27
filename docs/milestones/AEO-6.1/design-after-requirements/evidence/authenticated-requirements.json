@@ -1,0 +1,14 @@
+{
+  "id": "67c78c9f-387d-426b-8e89-64092bd48fd0",
+  "case_id": "agrosphere:AEO-6-ADJUDICATION",
+  "subject": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "kind": "requirements",
+  "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+  "decision": "approved",
+  "payload": {
+    "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+    "revision_id": null,
+    "validation_id": null
+  },
+  "created_at": "2026-10-27T01:12:08.405829+00:00"
+}

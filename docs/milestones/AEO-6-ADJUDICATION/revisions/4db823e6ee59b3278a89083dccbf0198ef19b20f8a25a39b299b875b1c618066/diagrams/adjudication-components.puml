@@ -1,0 +1,18 @@
+@startuml
+!include <C4/C4_Component>
+title AEO-6.1 authenticated evidence components
+Component(CLI, "Existing CLI", "Python", "Human review and decisions")
+Component(Auth, "Existing HumanVerifier", "Windows", "Exact subject and SID")
+Component(Gov, "Existing governance service", "Python", "Category-specific validation")
+Component(Store, "Existing records and blobs", "SQLite", "Append-only decisions and audit")
+Component(Discovery, "Manifest-bound discovery", "Python", "Twelve exact application roots")
+Component(Classifier, "Recovery classifier", "Python", "Scoped relationship overlay")
+Component(Controller, "Existing autonomous controller", "Python", "RECONCILING checkpoint")
+Rel(CLI, Auth, "Confirm disposition, rationale and subject")
+Rel(Auth, Gov, "Verified SID; recheck current authority")
+Rel(Gov, Store, "Transactional decision and audit")
+Rel(Discovery, Gov, "Exact immutable provenance")
+Rel(Gov, Classifier, "Applicable relationship only")
+Rel(Classifier, Controller, "Fresh classification, acceptance unchanged")
+Rel(Controller, CLI, "Actionable human checkpoint")
+@enduml

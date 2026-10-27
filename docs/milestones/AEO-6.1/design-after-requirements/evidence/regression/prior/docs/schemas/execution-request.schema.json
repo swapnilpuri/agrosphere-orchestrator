@@ -1,0 +1,249 @@
+{
+  "$defs": {
+    "ExecutionMode": {
+      "enum": [
+        "READ_ONLY",
+        "WORKTREE_WRITE",
+        "VALIDATION_ONLY"
+      ],
+      "title": "ExecutionMode",
+      "type": "string"
+    },
+    "InputArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "title": "Repository",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision"
+        },
+        "content": {
+          "default": "",
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "repository",
+        "path",
+        "sha256"
+      ],
+      "title": "InputArtifact",
+      "type": "object"
+    },
+    "RetryConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "max_attempts": {
+          "default": 1,
+          "maximum": 3,
+          "minimum": 1,
+          "title": "Max Attempts",
+          "type": "integer"
+        },
+        "backoff_seconds": {
+          "default": 0,
+          "maximum": 30,
+          "minimum": 0,
+          "title": "Backoff Seconds",
+          "type": "number"
+        }
+      },
+      "title": "RetryConfiguration",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "project_id": {
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Project Id",
+      "type": "string"
+    },
+    "milestone_id": {
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Milestone Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "agent_role": {
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Agent Role",
+      "type": "string"
+    },
+    "specialization": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Specialization"
+    },
+    "repository": {
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Repository",
+      "type": "string"
+    },
+    "worktree_path": {
+      "title": "Worktree Path",
+      "type": "string"
+    },
+    "allowed_file_scopes": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Allowed File Scopes",
+      "type": "array"
+    },
+    "required_input_artifacts": {
+      "items": {
+        "$ref": "#/$defs/InputArtifact"
+      },
+      "title": "Required Input Artifacts",
+      "type": "array"
+    },
+    "instructions": {
+      "maxLength": 64000,
+      "minLength": 1,
+      "title": "Instructions",
+      "type": "string"
+    },
+    "role_instructions": {
+      "default": "",
+      "title": "Role Instructions",
+      "type": "string"
+    },
+    "acceptance_criteria": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Acceptance Criteria",
+      "type": "array"
+    },
+    "mode": {
+      "$ref": "#/$defs/ExecutionMode",
+      "default": "READ_ONLY"
+    },
+    "approval_reference": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Approval Reference"
+    },
+    "timeout_seconds": {
+      "default": 300,
+      "maximum": 3600,
+      "minimum": 1,
+      "title": "Timeout Seconds",
+      "type": "integer"
+    },
+    "retry": {
+      "$ref": "#/$defs/RetryConfiguration"
+    },
+    "correlation_id": {
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "validation_commands": {
+      "items": {
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+        "type": "string"
+      },
+      "title": "Validation Commands",
+      "type": "array"
+    },
+    "source_head": {
+      "title": "Source Head",
+      "type": "string"
+    },
+    "context_digest": {
+      "title": "Context Digest",
+      "type": "string"
+    },
+    "design_revision": {
+      "title": "Design Revision",
+      "type": "string"
+    },
+    "parent_execution_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Execution Id"
+    },
+    "continuation_session_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Continuation Session Id"
+    }
+  },
+  "required": [
+    "project_id",
+    "milestone_id",
+    "task_id",
+    "agent_role",
+    "repository",
+    "worktree_path",
+    "allowed_file_scopes",
+    "instructions",
+    "acceptance_criteria",
+    "source_head",
+    "context_digest",
+    "design_revision"
+  ],
+  "title": "ExecutionRequest",
+  "type": "object"
+}

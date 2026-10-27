@@ -1,0 +1,717 @@
+{
+  "milestone": "agrosphere:AEO-6-ADJUDICATION",
+  "state": "AWAITING_DESIGN_APPROVAL",
+  "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "revision_id": "4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066",
+  "summary": "AEO-6.1 governed evidence adjudication and operational stabilization",
+  "functional_scope": [
+    {
+      "id": "AEO61-DISPOSITION",
+      "text": "Represent explicit evidence dispositions separately from milestone acceptance.",
+      "acceptance_criteria": [
+        "Define immutable evidence-disposition requests and decisions with approve, reject and unresolved/request-more-evidence outcomes, exact affected milestone(s), rationale and supporting references.",
+        "No approved disposition changes PARTIAL into ACCEPTED/COMPLETED or supplies verified acceptance criteria."
+      ]
+    },
+    {
+      "id": "AEO61-PROVENANCE",
+      "text": "Bind decisions to authenticated provenance and immutable original evidence.",
+      "acceptance_criteria": [
+        "Canonical subject includes original repository/path/line/hash/commit-or-known-missing provenance, supporting evidence hashes, captured observation and manifest identity.",
+        "Preserve original reports, old snapshots and their history; missing/ambiguous provenance cannot be silently filled in or overridden by newest timestamp."
+      ]
+    },
+    {
+      "id": "AEO61-AUTH",
+      "text": "Reuse existing verified Windows identity and authorization for evidence decisions.",
+      "acceptance_criteria": [
+        "Reuse HumanVerifier/WindowsConsoleHumanVerifier and configured governance SID authorization; agent/self-approval or empty allowlist fails closed.",
+        "Exact subject/rationale/disposition is confirmed; recheck scope and authorized identity after authentication; existing design approvals are not evidence-disposition approvals."
+      ]
+    },
+    {
+      "id": "AEO61-AUDIT",
+      "text": "Reuse existing approval entities/services and transactional append-only audit.",
+      "acceptance_criteria": [
+        "Extend existing governance contracts and category-specific context validation; no independent approval store, authentication subsystem or direct SQLite approval changes.",
+        "Decision and audit writes share one transaction; include actor SID, time, subject digest, scope, supporting references and policy/version identity."
+      ]
+    },
+    {
+      "id": "AEO61-NEGATIVE",
+      "text": "Fail closed on rejected, unresolved, revoked, expired and changed evidence.",
+      "acceptance_criteria": [
+        "Rejection/request-more-evidence retains the unresolved checkpoint; no approval consumption from descriptive metadata.",
+        "Subject mismatch, changed manifest/evidence, unauthorized actor or invalid version invalidates applicability while preserving all prior records."
+      ]
+    },
+    {
+      "id": "AEO61-IDEMPOTENT",
+      "text": "Prevent duplicate decisions and support restart-safe observation.",
+      "acceptance_criteria": [
+        "Repeated identical request/observation is idempotent; duplicate final decisions cannot replay or supersede a rejection without a legitimate revised subject.",
+        "Decision history remains immutable; current authority and expiry/revocation policy are rechecked on every consumption."
+      ]
+    },
+    {
+      "id": "AEO61-DISCOVERY",
+      "text": "Integrate valid scoped decisions into fresh manifest-bound recovery.",
+      "acceptance_criteria": [
+        "Collect exactly the approved 12 application roots; bind application manifest digest; fixtures and exported quotations do not become independent implementation evidence.",
+        "A valid decision resolves only its exact historical relationship; genuine unrelated contradictions remain blocking and all original evidence remains visible."
+      ]
+    },
+    {
+      "id": "AEO61-CONTROLLER",
+      "text": "Present actionable human checkpoints through the existing controller and CLI.",
+      "acceptance_criteria": [
+        "Existing RECONCILING/checkpoint machinery presents the exact review package and applicable supported decision command once implemented.",
+        "After authorized decisions and all other gates pass, the same run can be resumed using existing continuation semantics; independent work proceeds only where current dependency/security rules permit."
+      ]
+    },
+    {
+      "id": "AEO61-BOUNDARIES",
+      "text": "Keep adjudication, design, quality, execution and delivery authority separate.",
+      "acceptance_criteria": [
+        "No application development, 3B start, execution eligibility, publication, merge or deployment follows from evidence reconciliation alone.",
+        "Do not recreate runs, reset counters, edit original run requests/limits, alter previous approvals, or substitute historical tests for fresh acceptance."
+      ]
+    },
+    {
+      "id": "AEO61-COMPAT",
+      "text": "Preserve version compatibility and migration safety.",
+      "acceptance_criteria": [
+        "Prefer existing GovernanceRecord/DesignDecision/audit persistence; no migrations or rewriting old snapshots/decisions in this scope.",
+        "Legacy observations without new decision metadata remain readable and conservative; unsupported decision versions fail closed."
+      ]
+    },
+    {
+      "id": "AEO61-OPERATIONS",
+      "text": "Document the single existing CLI entry point and remaining operating limits.",
+      "acceptance_criteria": [
+        "Use autonomous status/report/validate for read-only inspection, authenticated approval commands for humans and autonomous resume for gated continuation.",
+        "Do not add a watchdog or parallel scheduler. Report expired immutable run budgets as blockers; extending a deadline requires separate governed policy and is not authorized by this scope.",
+        "Current empty governance allowlist, absent approved roadmap and missing renderer are explicit prerequisites, never silently configured."
+      ]
+    },
+    {
+      "id": "AEO61-VERIFICATION",
+      "text": "Verify real versus simulated evidence and all applicable regressions after authorization.",
+      "acceptance_criteria": [
+        "Cover approval/reject/unresolved, cross-repository provenance, original evidence preservation, duplicates, fresh discovery, restart, existing-run preservation, M2 blockers and 12-root restriction.",
+        "Run focused suites and established scripts/validate.py after authorized source changes; identify mocks and real local checks; no model/provider live execution or application changes implied."
+      ]
+    }
+  ],
+  "architecture_overview": {},
+  "technical_decisions": "MISSING",
+  "risks_and_assumptions": "MISSING",
+  "affected_repositories": [
+    "agrosphere-orchestrator"
+  ],
+  "verified_context": [
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/recovery_discovery.py",
+      "sha256": "7c7a6e4c99ba580febabded363e2a22b250e57e07af5253992675730507a8055",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/recovery_models.py",
+      "sha256": "2f20ebf805efc01e1df524921e49eaed0c36f0527fede1579ec617c640621cb8",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/human_approval.py",
+      "sha256": "edb65b1c4c53e62fd28b5b763141fb895beaf4a3b4bafe32bf49ec41a3e206d9",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/quality.py",
+      "sha256": "2a3fce5316bf38aacdadf2b011a70bf210f9348851b0fcb11da3e64f6fddda56",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/design.py",
+      "sha256": "1330049444195c4f2ca64cc7f0f28e76a386251200ffb05104f374ddcdfe5900",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/quality_models.py",
+      "sha256": "c41a7084b3874d0c39e51d95ae7c181519eeaa8f976aa139268a935399474ddd",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/autonomous.py",
+      "sha256": "dc5582c6ac16022e233b643e33187af0b51a37d0a3580dff768571a2378dab4d",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/autonomous_services.py",
+      "sha256": "3e8c83ae0defb452ec7caf224d7267276913baa55faaa256ad2a4909623c9e33",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/autonomous_cli.py",
+      "sha256": "1487b01d6e22604c3b8214141ffdc871a8e3729d0801c3775389826fc7e5ee18",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/recovery.py",
+      "sha256": "e36d107b314190a33d5a85f3f721d91c5c3efe7636b4cb51de0c2e401d2d54d2",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/persistence.py",
+      "sha256": "a35cf95d2f30ed6d5d9d67836a4b82f4eaf5a5ed27585e83ca6900429972db84",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "src/agrosphere_orchestrator/config/settings.py",
+      "sha256": "bc5c9faacb9acd6a543ae3dd93e276147dc04b83e5e1a6871af437dc16252b08",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_FORENSIC_REPORT.md",
+      "sha256": "781e03ad22b79a37fd96e168136a48f6e25d56fd1ec881489705ef522ebc292c",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_ADJUDICATION_MATRIX.md",
+      "sha256": "9993d67658c4ea6ecf65b0f047772efe33e7a261d7a7af227a4237dc4e1196c2",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_DECISION_PACKAGE.json",
+      "sha256": "19b90ae4457fbb3c9d5004868bd866818c03c2840ce85d5d79fe9ee155d4fdf2",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6/evidence/discovery-reconciliation/MILESTONE_1B_RECOVERY_VERIFICATION.md",
+      "sha256": "9cadc5eaedecd210fdd8de7ec35adb57007bec63b4f7d0252fefd5258a63aaa8",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6.1/preparation-20261027T005025Z/00-user-request.md",
+      "sha256": "6b5ae12ff0f95ebc01a8c8bc0c169382e5c70143febf98fc572be5677fa01a7a",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6.1/preparation-20261027T005025Z/01-capability-and-boundary-assessment.md",
+      "sha256": "b1649651a11e98289558993127eb432f15278d2f4586a03ee9ca90f17e01e305",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    },
+    {
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6.1/preparation-20261027T005025Z/AUTONOMOUS_OPERATIONS_GUIDE.md",
+      "sha256": "e1d750409c39eedfc2005633b8c805dbbc956e9d279ffebe9003dd7f4af8f674",
+      "head": "d57d6101439b29b89fe962d78d4a131398247c75"
+    }
+  ],
+  "implementation_tasks": [
+    {
+      "id": "adjudication-integration",
+      "title": "Implement the reviewed evidence subject and existing-governance integration",
+      "repository": "agrosphere-orchestrator",
+      "role": "developer",
+      "operation": "code-write",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Define immutable evidence-disposition requests and decisions with approve, reject and unresolved/request-more-evidence outcomes, exact affected milestone(s), rationale and supporting references.",
+        "No approved disposition changes PARTIAL into ACCEPTED/COMPLETED or supplies verified acceptance criteria.",
+        "Canonical subject includes original repository/path/line/hash/commit-or-known-missing provenance, supporting evidence hashes, captured observation and manifest identity.",
+        "Preserve original reports, old snapshots and their history; missing/ambiguous provenance cannot be silently filled in or overridden by newest timestamp.",
+        "Reuse HumanVerifier/WindowsConsoleHumanVerifier and configured governance SID authorization; agent/self-approval or empty allowlist fails closed.",
+        "Exact subject/rationale/disposition is confirmed; recheck scope and authorized identity after authentication; existing design approvals are not evidence-disposition approvals.",
+        "Extend existing governance contracts and category-specific context validation; no independent approval store, authentication subsystem or direct SQLite approval changes.",
+        "Decision and audit writes share one transaction; include actor SID, time, subject digest, scope, supporting references and policy/version identity.",
+        "Rejection/request-more-evidence retains the unresolved checkpoint; no approval consumption from descriptive metadata.",
+        "Subject mismatch, changed manifest/evidence, unauthorized actor or invalid version invalidates applicability while preserving all prior records.",
+        "Repeated identical request/observation is idempotent; duplicate final decisions cannot replay or supersede a rejection without a legitimate revised subject.",
+        "Decision history remains immutable; current authority and expiry/revocation policy are rechecked on every consumption.",
+        "Collect exactly the approved 12 application roots; bind application manifest digest; fixtures and exported quotations do not become independent implementation evidence.",
+        "A valid decision resolves only its exact historical relationship; genuine unrelated contradictions remain blocking and all original evidence remains visible.",
+        "Existing RECONCILING/checkpoint machinery presents the exact review package and applicable supported decision command once implemented.",
+        "After authorized decisions and all other gates pass, the same run can be resumed using existing continuation semantics; independent work proceeds only where current dependency/security rules permit.",
+        "No application development, 3B start, execution eligibility, publication, merge or deployment follows from evidence reconciliation alone.",
+        "Do not recreate runs, reset counters, edit original run requests/limits, alter previous approvals, or substitute historical tests for fresh acceptance.",
+        "Prefer existing GovernanceRecord/DesignDecision/audit persistence; no migrations or rewriting old snapshots/decisions in this scope.",
+        "Legacy observations without new decision metadata remain readable and conservative; unsupported decision versions fail closed.",
+        "Use autonomous status/report/validate for read-only inspection, authenticated approval commands for humans and autonomous resume for gated continuation.",
+        "Do not add a watchdog or parallel scheduler. Report expired immutable run budgets as blockers; extending a deadline requires separate governed policy and is not authorized by this scope.",
+        "Current empty governance allowlist, absent approved roadmap and missing renderer are explicit prerequisites, never silently configured."
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Verify authority, evidence scope, idempotency and run preservation",
+      "repository": "agrosphere-orchestrator",
+      "role": "qa-engineer",
+      "operation": "validate",
+      "depends_on": [
+        "adjudication-integration"
+      ],
+      "acceptance_criteria": [
+        "Cover approval/reject/unresolved, cross-repository provenance, original evidence preservation, duplicates, fresh discovery, restart, existing-run preservation, M2 blockers and 12-root restriction.",
+        "Run focused suites and established scripts/validate.py after authorized source changes; identify mocks and real local checks; no model/provider live execution or application changes implied."
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "type": "business",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/business.md",
+      "sha256": "3638e764f9f43639dc77861900af3e242ea9af444c90cf1dcdaa24c7c4588d90",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "business-analyst",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\business.md"
+    },
+    {
+      "type": "architecture",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/architecture.md",
+      "sha256": "e2028b6751167d1fb0bee601667811c74ec861353107247f1e198e0e4c2f74e2",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\architecture.md"
+    },
+    {
+      "type": "service",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/service.md",
+      "sha256": "383eb35fbbdd6755290f114c7fbfe3f50852924db1e1d3bb28bfa86183ae8329",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\service.md"
+    },
+    {
+      "type": "render:component",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-components.svg",
+      "sha256": "d5d987f699199ac029de66606ea7ecc7fd60f264b86748694431b2afaa0cf9b5",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\diagrams\\adjudication-components.svg"
+    },
+    {
+      "type": "diagram:component",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-components.puml",
+      "sha256": "496caebbdecde3087b3f12eccd41d972b35181274ce52c9403d5d1f048ab8eb4",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\diagrams\\adjudication-components.puml"
+    },
+    {
+      "type": "render:state",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-state.svg",
+      "sha256": "e8971cca140459c7a7e1b9bce2d52fee710916e7ee31d3f04709be4d4653d572",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\diagrams\\adjudication-state.svg"
+    },
+    {
+      "type": "diagram:state",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-state.puml",
+      "sha256": "636de3778a8aa2dd2176522b96ff4c2ad98223d34c548750fc442ca6b55aaabd",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\diagrams\\adjudication-state.puml"
+    },
+    {
+      "type": "render:sequence",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-sequence.svg",
+      "sha256": "f869c35233bddcc0d1f7bb637f6bf7099c4b1008564950cf0c27f0202240fcc8",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\diagrams\\adjudication-sequence.svg"
+    },
+    {
+      "type": "diagram:sequence",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/diagrams/adjudication-sequence.puml",
+      "sha256": "b9a724655fec0552d1dfc92737977374ea74fea56ac5ee38b89ff31575cb54ab",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "solution-architect",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\diagrams\\adjudication-sequence.puml"
+    },
+    {
+      "type": "overview",
+      "repository": "agrosphere-orchestrator",
+      "path": "docs/milestones/AEO-6-ADJUDICATION/revisions/4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066/overview.md",
+      "sha256": "8ff0f3ba078f8e664718d3844f02c9bb9ed1455c560511930db3854eb02a3e08",
+      "requirement_ids": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "agent": "technical-writer",
+      "generated_at": "2026-10-27T02:59:24.144628+00:00",
+      "source_requirements": [
+        "AEO61-DISPOSITION",
+        "AEO61-PROVENANCE",
+        "AEO61-AUTH",
+        "AEO61-AUDIT",
+        "AEO61-NEGATIVE",
+        "AEO61-IDEMPOTENT",
+        "AEO61-DISCOVERY",
+        "AEO61-CONTROLLER",
+        "AEO61-BOUNDARIES",
+        "AEO61-COMPAT",
+        "AEO61-OPERATIONS",
+        "AEO61-VERIFICATION"
+      ],
+      "validation_status": "passed",
+      "approval_status": "pending",
+      "approved_version": null,
+      "absolute_path": "C:\\Projects\\agrosphere\\agrosphere-orchestrator\\docs\\milestones\\AEO-6-ADJUDICATION\\revisions\\4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066\\overview.md"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "findings": [
+      {
+        "code": "review-limit",
+        "message": "Independent rule review checks declared scope and references; human conceptual review remains mandatory.",
+        "severity": "warning",
+        "artifact": null
+      }
+    ],
+    "review_task": {
+      "role": "solution-architect",
+      "task": "independent-architecture-review",
+      "adapter": "independent-rule-review-v2-approved-source",
+      "state": "succeeded"
+    }
+  },
+  "file_findings": [],
+  "decisions": [
+    {
+      "kind": "requirements",
+      "subject": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+      "decision": "approved",
+      "actor": "sid:S-1-5-21-1295115365-4060518610-348779417-1001",
+      "created_at": "2026-10-27T01:12:08.405829+00:00"
+    }
+  ],
+  "implementation_authorized": false,
+  "authorization_findings": [],
+  "revision_history": [
+    {
+      "revision_id": "4db823e6ee59b3278a89083dccbf0198ef19b20f8a25a39b299b875b1c618066",
+      "phase": "design",
+      "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+      "bundle_digest": "989c1335f933a2505d60391360d96bf9a725a1cd008c284959d3f355bccdb8bf",
+      "created_at": "2026-10-27T02:59:26.621402+00:00"
+    }
+  ]
+}

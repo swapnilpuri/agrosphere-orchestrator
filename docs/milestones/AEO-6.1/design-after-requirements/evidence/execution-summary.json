@@ -1,0 +1,23 @@
+{
+  "requirements_verification_exit": 0,
+  "design_generation_exit": 0,
+  "design_validation_exit": 0,
+  "completion_verification_exit": 0,
+  "regression_attempt1": {
+    "exit": 1,
+    "passed": 243,
+    "failed": 26,
+    "errors": 100,
+    "reason": "Windows backslashes parsed out of PYTEST_ADDOPTS; overlong fixture path"
+  },
+  "regression_corrected": {
+    "exit": 0,
+    "passed": 369,
+    "validator_commands": 18,
+    "all_commands_exit_zero": true
+  },
+  "live_model_or_provider": false,
+  "application_build_or_benchmark": false,
+  "implementation_security_tests": "planned; capability unimplemented",
+  "original_validation_reports_restored": true
+}

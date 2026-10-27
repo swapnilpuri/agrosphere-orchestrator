@@ -1,0 +1,51 @@
+{
+  "registered_context_references_unchanged": 19,
+  "local_links_verified": [
+    {
+      "source": "REQUIREMENTS_APPROVAL_REQUIRED.md",
+      "target": "requirements-input.json"
+    },
+    {
+      "source": "REQUIREMENTS_APPROVAL_REQUIRED.md",
+      "target": "01-capability-and-boundary-assessment.md"
+    },
+    {
+      "source": "REQUIREMENTS_APPROVAL_REQUIRED.md",
+      "target": "evidence/registered-requirements-review.json"
+    },
+    {
+      "source": "REQUIREMENTS_APPROVAL_REQUIRED.md",
+      "target": "evidence/proposal-lineage.json"
+    },
+    {
+      "source": "REQUIREMENTS_APPROVAL_REQUIRED.md",
+      "target": "AUTONOMOUS_OPERATIONS_GUIDE.md"
+    },
+    {
+      "source": "REQUIREMENTS_APPROVAL_REQUIRED.md",
+      "target": "MILESTONE_2_PREPARATION_DRAFT.md"
+    },
+    {
+      "source": "AEO-6.1_PREPARATION_REPORT.md",
+      "target": "evidence/preparation-verification.json"
+    },
+    {
+      "source": "AEO-6.1_PREPARATION_REPORT.md",
+      "target": "MILESTONE_2_PREPARATION_DRAFT.md"
+    },
+    {
+      "source": "AEO-6.1_PREPARATION_REPORT.md",
+      "target": "AUTONOMOUS_OPERATIONS_GUIDE.md"
+    },
+    {
+      "source": "AEO-6.1_PREPARATION_REPORT.md",
+      "target": "REQUIREMENTS_APPROVAL_REQUIRED.md"
+    }
+  ],
+  "approval_granted": false,
+  "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "requirements_registered": true,
+  "technical_revision_generated": false,
+  "implementation_authorized": false,
+  "stop_reason": "Authenticated human requirements approval required"
+}

@@ -1,0 +1,1 @@
+{"approvals_verified": 2, "context_and_artifacts_verified": true, "implementation_authorized": false, "configuration_blockers": [{"task": "adjudication-integration", "role": "developer", "repository": "agrosphere-orchestrator"}, {"task": "verification", "role": "qa-engineer", "repository": "agrosphere-orchestrator"}], "exit_code": 0}

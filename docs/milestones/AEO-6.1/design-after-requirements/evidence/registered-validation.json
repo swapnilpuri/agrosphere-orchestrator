@@ -1,0 +1,18 @@
+{
+  "id": "7e5e7154abeb1a70d63705b5b8d19b905eb385daf34f3ee8aef640f0253eb329",
+  "passed": true,
+  "findings": [
+    {
+      "code": "review-limit",
+      "message": "Independent rule review checks declared scope and references; human conceptual review remains mandatory.",
+      "severity": "warning",
+      "artifact": null
+    }
+  ],
+  "review_task": {
+    "role": "solution-architect",
+    "task": "independent-architecture-review",
+    "adapter": "independent-rule-review-v2-approved-source",
+    "state": "succeeded"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "adjudication-integration": {
+    "mode": "WORKTREE_WRITE",
+    "allowed_paths": [
+      "src/agrosphere_orchestrator/quality_models.py",
+      "src/agrosphere_orchestrator/quality.py",
+      "src/agrosphere_orchestrator/recovery_discovery.py",
+      "src/agrosphere_orchestrator/autonomous_services.py",
+      "src/agrosphere_orchestrator/cli.py",
+      "tests",
+      "docs/validation",
+      "docs/schemas"
+    ],
+    "validation_commands": [
+      "aeo61-focused",
+      "aeo61-regression"
+    ],
+    "specialization": "python",
+    "timeout_seconds": 600,
+    "max_repairs": 0
+  },
+  "verification": {
+    "mode": "VALIDATION_ONLY",
+    "allowed_paths": [
+      "tests",
+      "docs/validation",
+      "docs/schemas"
+    ],
+    "validation_commands": [
+      "aeo61-focused",
+      "aeo61-regression"
+    ],
+    "timeout_seconds": 600,
+    "max_repairs": 0
+  }
+}

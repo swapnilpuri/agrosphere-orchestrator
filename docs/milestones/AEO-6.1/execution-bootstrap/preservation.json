@@ -1,0 +1,15 @@
+{
+  "database_file_and_all_table_digests_unchanged_across_tests": true,
+  "database_sha256": "6b14cd1dfd7e59d210028e2be8b5be7b37d0a7cf5f1ff80f38d559ffd5653ce9",
+  "configuration_and_source_hashes_unchanged_across_tests": true,
+  "original_run_full_report_and_events_unchanged_across_tests": true,
+  "run_id": "ba0851d4-66bc-417a-851b-f08176bd8061",
+  "state": "BLOCKED",
+  "step": "RECONCILING",
+  "checkpoint": {
+    "category": "discovery-conflict",
+    "reason": "Conflicting recovered milestone evidence blocks eligibility",
+    "command": null
+  },
+  "current_operation": null
+}

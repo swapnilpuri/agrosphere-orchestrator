@@ -1,0 +1,55 @@
+{
+  "id": "AEO-6-ADJUDICATION",
+  "project": "agrosphere",
+  "title": "AEO-6.1 governed evidence adjudication and operational stabilization",
+  "version": 1,
+  "tasks": [
+    {
+      "id": "adjudication-integration",
+      "title": "Implement the reviewed evidence subject and existing-governance integration",
+      "repository": "agrosphere-orchestrator",
+      "role": "developer",
+      "operation": "code-write",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Define immutable evidence-disposition requests and decisions with approve, reject and unresolved/request-more-evidence outcomes, exact affected milestone(s), rationale and supporting references.",
+        "No approved disposition changes PARTIAL into ACCEPTED/COMPLETED or supplies verified acceptance criteria.",
+        "Canonical subject includes original repository/path/line/hash/commit-or-known-missing provenance, supporting evidence hashes, captured observation and manifest identity.",
+        "Preserve original reports, old snapshots and their history; missing/ambiguous provenance cannot be silently filled in or overridden by newest timestamp.",
+        "Reuse HumanVerifier/WindowsConsoleHumanVerifier and configured governance SID authorization; agent/self-approval or empty allowlist fails closed.",
+        "Exact subject/rationale/disposition is confirmed; recheck scope and authorized identity after authentication; existing design approvals are not evidence-disposition approvals.",
+        "Extend existing governance contracts and category-specific context validation; no independent approval store, authentication subsystem or direct SQLite approval changes.",
+        "Decision and audit writes share one transaction; include actor SID, time, subject digest, scope, supporting references and policy/version identity.",
+        "Rejection/request-more-evidence retains the unresolved checkpoint; no approval consumption from descriptive metadata.",
+        "Subject mismatch, changed manifest/evidence, unauthorized actor or invalid version invalidates applicability while preserving all prior records.",
+        "Repeated identical request/observation is idempotent; duplicate final decisions cannot replay or supersede a rejection without a legitimate revised subject.",
+        "Decision history remains immutable; current authority and expiry/revocation policy are rechecked on every consumption.",
+        "Collect exactly the approved 12 application roots; bind application manifest digest; fixtures and exported quotations do not become independent implementation evidence.",
+        "A valid decision resolves only its exact historical relationship; genuine unrelated contradictions remain blocking and all original evidence remains visible.",
+        "Existing RECONCILING/checkpoint machinery presents the exact review package and applicable supported decision command once implemented.",
+        "After authorized decisions and all other gates pass, the same run can be resumed using existing continuation semantics; independent work proceeds only where current dependency/security rules permit.",
+        "No application development, 3B start, execution eligibility, publication, merge or deployment follows from evidence reconciliation alone.",
+        "Do not recreate runs, reset counters, edit original run requests/limits, alter previous approvals, or substitute historical tests for fresh acceptance.",
+        "Prefer existing GovernanceRecord/DesignDecision/audit persistence; no migrations or rewriting old snapshots/decisions in this scope.",
+        "Legacy observations without new decision metadata remain readable and conservative; unsupported decision versions fail closed.",
+        "Use autonomous status/report/validate for read-only inspection, authenticated approval commands for humans and autonomous resume for gated continuation.",
+        "Do not add a watchdog or parallel scheduler. Report expired immutable run budgets as blockers; extending a deadline requires separate governed policy and is not authorized by this scope.",
+        "Current empty governance allowlist, absent approved roadmap and missing renderer are explicit prerequisites, never silently configured."
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Verify authority, evidence scope, idempotency and run preservation",
+      "repository": "agrosphere-orchestrator",
+      "role": "qa-engineer",
+      "operation": "validate",
+      "depends_on": [
+        "adjudication-integration"
+      ],
+      "acceptance_criteria": [
+        "Cover approval/reject/unresolved, cross-repository provenance, original evidence preservation, duplicates, fresh discovery, restart, existing-run preservation, M2 blockers and 12-root restriction.",
+        "Run focused suites and established scripts/validate.py after authorized source changes; identify mocks and real local checks; no model/provider live execution or application changes implied."
+      ]
+    }
+  ]
+}

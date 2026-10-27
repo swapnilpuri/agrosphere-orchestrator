@@ -1,0 +1,111 @@
+{
+  "case_id": "agrosphere:AEO-6-ADJUDICATION",
+  "scope_id": "8367e71ff015366e5c2493c11d199f3d9f7f3ad7bde902f385d10b6a5db96138",
+  "approval_granted": false,
+  "files": [
+    {
+      "path": "00-user-request.md",
+      "sha256": "6b5ae12ff0f95ebc01a8c8bc0c169382e5c70143febf98fc572be5677fa01a7a"
+    },
+    {
+      "path": "01-capability-and-boundary-assessment.md",
+      "sha256": "b1649651a11e98289558993127eb432f15278d2f4586a03ee9ca90f17e01e305"
+    },
+    {
+      "path": "AEO-6.1_PREPARATION_REPORT.md",
+      "sha256": "cd8688e3878ad260bd0a01f93f29165b95f68d8c161932f76776c6e532f0704b"
+    },
+    {
+      "path": "approval-boundary.json",
+      "sha256": "4aff7c1511ba98d2caaf8af4ee9b95f682a1903f2ad68196f49e949c3615d6b3"
+    },
+    {
+      "path": "AUTONOMOUS_OPERATIONS_GUIDE.md",
+      "sha256": "e1d750409c39eedfc2005633b8c805dbbc956e9d279ffebe9003dd7f4af8f674"
+    },
+    {
+      "path": "design-repositories.json",
+      "sha256": "2ebc0f7f26846f70c17cc28adaed10335e30ed300588ef5de7f341f921b94a2d"
+    },
+    {
+      "path": "evidence/application-discovery-after.json",
+      "sha256": "d05cc80cc3479c3396b505f13c0b72e7dab13e6c21c706b53ad406f6cbb52f23"
+    },
+    {
+      "path": "evidence/application-discovery-before.json",
+      "sha256": "cb365c9b05af690f7758c1e3e420f81554385afe42acafeee71920f0801df707"
+    },
+    {
+      "path": "evidence/artifact-verification.json",
+      "sha256": "271453fda1ec459beb72b6581d84b4da4de4340ede4feee29adc4eb6fe8398c7"
+    },
+    {
+      "path": "evidence/baseline-status.json",
+      "sha256": "6c61bdef950e9c5525b9d1a3a271ec77a56942ebaa3833df7a52e5a6cfef6bb6"
+    },
+    {
+      "path": "evidence/capture_baseline.py",
+      "sha256": "550aa14e50d52f186c8328f826711a18c8015b56a1ecea0a3cd270029763b44f"
+    },
+    {
+      "path": "evidence/database-baseline.json",
+      "sha256": "3ade6a7c600584d64bec9b78f39f592d4ae62ce3b803397167ae942803c34ee0"
+    },
+    {
+      "path": "evidence/preliminary-command-notes.json",
+      "sha256": "ec9bc6d3e2e18d9f1a8c3c15646b82b6c660649c2950ecb49451b1593cc41c9c"
+    },
+    {
+      "path": "evidence/preparation-verification.json",
+      "sha256": "2eb0e632dedc05eeededf6b6c6cd5934bb4420abf6fa002c52fedb5c61d5115d"
+    },
+    {
+      "path": "evidence/prior-artifact-hashes.json",
+      "sha256": "53efe186314554b7fee4b4259acf0e8b4ed81eb5d52af4802932292203efffda"
+    },
+    {
+      "path": "evidence/proposal-lineage.json",
+      "sha256": "8c70a231b50740331462adcfc94892c28f5dea436857ff58df81a99dee8cb14c"
+    },
+    {
+      "path": "evidence/registered-requirements-review.json",
+      "sha256": "8894278e3fe083967e70f6a0b9889455afe0462a6e5117ef94397eae194cd7d4"
+    },
+    {
+      "path": "evidence/register_requirements.py",
+      "sha256": "23cd13399d63d460a341fcc6549f90041a21df258854cd1a3ed0ec9e06aee627"
+    },
+    {
+      "path": "evidence/requirements-registration-command.json",
+      "sha256": "9cb537e566ad43837e82159fc8edf9b71ac25d8afc4fcfe871407b7808cba86d"
+    },
+    {
+      "path": "evidence/requirements-review-command.json",
+      "sha256": "81efa4c2c6ad253d941ee3ff561290e8c5f3ae206a7fb1018233ed515765ff24"
+    },
+    {
+      "path": "evidence/run-after.json",
+      "sha256": "54611b5f349e8789a562f021e9c00352fab3ee26c5c90390088040f20d68ad3d"
+    },
+    {
+      "path": "evidence/run-before.json",
+      "sha256": "54611b5f349e8789a562f021e9c00352fab3ee26c5c90390088040f20d68ad3d"
+    },
+    {
+      "path": "evidence/runtime-hashes-before.json",
+      "sha256": "b570bede512fda20a4f0e98eeb9b30dec7cd0edc900ca22528027e7bfbb9cc6d"
+    },
+    {
+      "path": "MILESTONE_2_PREPARATION_DRAFT.md",
+      "sha256": "3c34becf510a92f2173516031fe0c4033f76560f2e4df32513352d79a420ded9"
+    },
+    {
+      "path": "requirements-input.json",
+      "sha256": "850af3da140c25ee9fa81529387ba97c156c91393c42731092187c5fd85c4d03"
+    },
+    {
+      "path": "REQUIREMENTS_APPROVAL_REQUIRED.md",
+      "sha256": "8672de865913b109696b78520b51dc1338cc782b17298c50426b4a70076ad631"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "design_approvers": [
+    "sid:S-1-5-21-1295115365-4060518610-348779417-1001"
+  ],
+  "execution_approvers": [],
+  "governance_approvers": [],
+  "autonomous_roadmap": null,
+  "plantuml_jar": null,
+  "repository_manifest": "config\\repositories.yaml",
+  "workspace_root": ".."
+}

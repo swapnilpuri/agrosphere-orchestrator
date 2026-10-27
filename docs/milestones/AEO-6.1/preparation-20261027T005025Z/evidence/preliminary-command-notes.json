@@ -1,0 +1,4 @@
+{
+  "note": "A preliminary CLI status piped to Select-Object -First emitted BrokenPipeError when output closed; replaced with direct read-only report API. No runtime mutation.",
+  "test_suite_executed": false
+}
